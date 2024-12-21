@@ -46,7 +46,7 @@ function get_current_player_id(): number | null {
     return null;
 }
 
-function get_players_number(): number {
+function get_players_number(): number | null {
     const players_container: HTMLElement = document.querySelector('#players_selection');
 
     if(players_container !== null) {
@@ -111,7 +111,7 @@ function toggle_loading(shown: boolean): void {
     }
 }
 
-function get_parent_element(element: HTMLElement): HTMLElement {
+function get_parent_element(element: HTMLElement): HTMLElement | null {
     if(element === null) {
         return null;
     }
