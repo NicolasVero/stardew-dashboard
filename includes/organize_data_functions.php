@@ -158,7 +158,7 @@ function get_shared_aggregated_data(): array {
     return [
         "farm_animals"          => get_player_farm_animals(),
         "weather"               => get_weather(),
-        "jumino_kart"           => get_jumino_kart_leaderboard(),
+        "jumino_kart"           => get_junimo_kart_leaderboard(),
         "museum_coords"         => get_museum_pieces_coords(),
         "cc_bundles"            => get_player_bundles()
     ];

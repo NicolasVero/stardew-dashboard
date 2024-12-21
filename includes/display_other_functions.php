@@ -1,8 +1,6 @@
 <?php
 
-function display_junimo_kart_button(): string {
-	return "<img src='" . get_images_folder() . "/icons/controller.png' class='controller-icon view-junimo-kart-leaderboard view-junimo-kart-leaderboard-" . get_current_player_id() . " button-elements modal-opener icon' alt='Controller icon'/>";
-}
+
 
 
 
@@ -58,13 +56,6 @@ function get_skills_icons(array $skills, string $current_skill): string {
 
 
 
-function get_animal_status_tooltip(string $status, string $animal_name): string {
-    return [
-        "happy" => "$animal_name looks really happy today!",
-        "fine"  => "$animal_name looks fine today!",
-        "angry" => "$animal_name looks sad today :("
-    ][$status] ?? "";
-}
 
 
 

@@ -276,22 +276,7 @@ function get_player_secret_notes(): array {
 	return $all_secret_notes;
 }
 
-function get_jumino_kart_leaderboard(): array {
-	$data = $GLOBALS["untreated_all_players_data"];
-	$all_entries = $data->junimoKartLeaderboards->entries;
-	$leaderboard = [];
 
-	foreach($all_entries as $entries) {
-		foreach($entries as $entry) {
-			$leaderboard[] = [
-				"score" => (int) $entry->score->int,
-				"name"  => (string) $entry->name->string
-			];
-		}
-	}
-
-	return $leaderboard;
-}
 
 
 

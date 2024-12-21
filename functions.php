@@ -1,5 +1,10 @@
 <?php
 
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_POST["action"] === "display_feedback_panel") {
+    require "utility_functions.php";
+	echo display_feedback_panel();
+}
+
 require_once "includes/utility_functions.php";
 require_once "includes/search_other_data_functions.php";
 require_once "includes/search_player_data_functions.php";
@@ -7,7 +12,6 @@ require_once "includes/organize_data_functions.php";
 require_once "includes/get_player_informations.php";
 require_once "includes/display_other_functions.php";
 require_once "includes/display_sections_functions.php";
-require_once "includes/display_panels_functions.php";
 require_once "includes/display_pages.php";
 
 
@@ -49,3 +53,7 @@ require_once "includes/panels/museum/display_data.php";
 
 require_once "includes/panels/farm_animals/get_data.php";
 require_once "includes/panels/farm_animals/display_data.php";
+
+require_once "includes/panels/junimo_kart/get_data.php";
+require_once "includes/panels/junimo_kart/display_data.php";
+

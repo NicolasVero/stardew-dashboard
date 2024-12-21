@@ -1,14 +1,8 @@
-<?php
+<?php 
 
-
-
-
-
-
-
-
-
-
+function display_junimo_kart_button(): string {
+	return "<img src='" . get_images_folder() . "/icons/controller.png' class='controller-icon view-junimo-kart-leaderboard view-junimo-kart-leaderboard-" . get_current_player_id() . " button-elements modal-opener icon' alt='Controller icon'/>";
+}
 
 function display_junimo_kart_panel(): string {
     $untreated_data = $GLOBALS["untreated_all_players_data"];
@@ -50,12 +44,4 @@ function display_junimo_kart_panel(): string {
             </span>
         </section>
     ";
-}
-
-
-
-
-if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_POST["action"] === "display_feedback_panel") {
-    require "utility_functions.php";
-	echo display_feedback_panel();
 }
