@@ -34,8 +34,8 @@ function toggle_visibility(element: HTMLElement, should_display: boolean): void 
     element.style.display = (should_display) ? "block" : "none";
 }
 
-function get_current_player_id(): number {
-    const visible_player = Array.from(document.querySelectorAll(".player_container"))
+function get_current_player_id(): number | null {
+    const visible_player: Element = Array.from(document.querySelectorAll(".player_container"))
         .find(player => window.getComputedStyle(player).display === "block");
 
     if(visible_player !== null) {
@@ -73,7 +73,7 @@ function close_all_panels(panel_selectors: string[], include_setting_panels: boo
     const settings_panels: string[] = (include_setting_panels) ? get_settings_panels() : [];
     panel_selectors.push(...settings_panels);
     
-    panel_selectors.forEach(panel_base => {
+    panel_selectors.forEach((panel_base: string) => {
         const id: string = settings_panels.includes(panel_base) ? "" : "-" + get_current_player_id();
         const panel_selector: string = panel_base + id;
         const panel: HTMLElement = document.querySelector(panel_selector);
@@ -104,7 +104,7 @@ function toggle_scroll(can_scroll: boolean): void {
 }
 
 function toggle_loading(shown: boolean): void {
-    const loading_strip = document.getElementById("loading-strip");
+    const loading_strip: HTMLElement = document.querySelector("#loading-strip");
 
     if(loading_strip !== null) {
         loading_strip.style.display = (shown) ? "block" : "none";
@@ -131,7 +131,7 @@ function has_class(element: HTMLElement, class_name: string): boolean {
 };
 
 function is_section_empty(section: HTMLElement): boolean {
-    const spans = section.querySelectorAll(".tooltip") as NodeListOf<HTMLElement>;
+    const spans: NodeListOf<HTMLElement> = section.querySelectorAll(".tooltip");
     return Array.from(spans).every(span => span.style.display === "none");
 };
 

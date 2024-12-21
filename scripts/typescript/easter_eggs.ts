@@ -53,7 +53,7 @@ function easter_egg_characters(): void {
 		}
 	};
 
-	elements.forEach(element => {
+	elements.forEach((element: Element) => {
 		element.addEventListener("dblclick", play_once);
 	});
 }
@@ -68,7 +68,7 @@ function easter_egg_kaaris(): void {
     element.classList.add("easter_egg_kaaris");
 
     const audio: HTMLAudioElement = new Audio(get_site_root() + "/medias/audio/kaaris_maison-citrouille.mp3");
-    let is_playing = false;
+    let is_playing: boolean = false;
 
     element.addEventListener("dblclick", () => {
         if(!is_playing) {

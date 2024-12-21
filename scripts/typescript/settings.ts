@@ -49,7 +49,7 @@ function handle_steam_mode(): void {
 
     images.forEach((image: Element) => {
         const src: string = image.getAttribute("src");
-        const [old_folder, new_folder] = (src.includes('steam')) ? images_folder : [...images_folder].reverse();
+        const [old_folder, new_folder]: string[] = (src.includes('steam')) ? images_folder : [...images_folder].reverse();
         image.setAttribute("src", src.replace(old_folder, new_folder));
     });
 }
@@ -84,7 +84,7 @@ function toggle_custom_checkboxes(checkmark_class: string): void {
 }
 
 function toggle_checkboxes_actions(): void {
-    document.querySelectorAll(".checkbox input[type='checkbox']").forEach((checkbox_input) => {
+    document.querySelectorAll(".checkbox input[type='checkbox']").forEach((checkbox_input: Element) => {
         const input = checkbox_input as HTMLInputElement;
         const function_name: string = input.id;
         const is_checked: boolean = input.checked;

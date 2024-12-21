@@ -1,7 +1,7 @@
 function activate_feedback_ajax_trigger(): void {
     const triggers: NodeListOf<Element> = document.querySelectorAll(".feedback-opener");
 
-    triggers.forEach(trigger => {
+    triggers.forEach((trigger) => {
         trigger.addEventListener("click", (): void => {
             const existing_window: Element = document.querySelector(".feedback-panel");
             hide_all_sections();
@@ -38,7 +38,6 @@ function feedback_form_creation(): void {
             xml_upload?.appendChild(temp_container.firstChild);
         }
 
-
         feedback_custom_radio();
         activate_feedback_form();
         activate_close_buttons(".exit-feedback", ".feedback-panel");
@@ -58,7 +57,7 @@ function activate_feedback_form(): void {
         })
         .then(response => response.json())
         .then((data: FeedbackResponse) => {
-            const alert_message = data.success ? data.message : "Error submitting form: " + data.message;
+            const alert_message: string = data.success ? data.message : "Error submitting form: " + data.message;
             alert(alert_message);
         })
         .catch(error => {
@@ -72,7 +71,7 @@ function feedback_custom_radio(): void {
     const feedback_fake_radios: NodeListOf<Element> = document.querySelectorAll(".feedback_custom_radio");
     const feedback_real_radios: NodeListOf<Element> = document.querySelectorAll(".feedback_real_radio");
 
-    feedback_fake_radios.forEach(fake_radio => {
+    feedback_fake_radios.forEach((fake_radio: Element) => {
         const span_topic: HTMLElement = fake_radio.parentElement!;
         
         span_topic.addEventListener("click", () => {
@@ -85,9 +84,9 @@ function feedback_custom_radio(): void {
         });
     });
 
-    feedback_real_radios.forEach(real_radio => {
+    feedback_real_radios.forEach((real_radio: Element) => {
         real_radio.addEventListener("change", () => {
-            feedback_fake_radios.forEach(fake_radio => {
+            feedback_fake_radios.forEach((fake_radio: Element) => {
                 fake_radio.classList.add("topic_not_selected");
             });
 

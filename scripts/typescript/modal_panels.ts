@@ -5,7 +5,7 @@ function activate_buttons(show: string, hide: string, sections_to_show: string):
     const hide_button: NodeListOf<HTMLElement> = document.querySelectorAll(hide);
     const sections: HTMLElement = document.querySelector(sections_to_show);
 
-    show_button.forEach((button) => {
+    show_button.forEach((button: HTMLElement) => {
         button.addEventListener("click", () => {
             hide_all_sections(true);
             if(sections !== null) {
@@ -20,7 +20,7 @@ function activate_buttons(show: string, hide: string, sections_to_show: string):
         });
     });
 
-    hide_button.forEach((button) => {
+    hide_button.forEach((button: HTMLElement) => {
         button.addEventListener("click", () => {
             hide_all_sections(true);
             current_section = null;
@@ -32,7 +32,7 @@ function activate_close_buttons(hide: string, sections_to_hide: string): void {
     const hide_button: NodeListOf<HTMLElement> = document.querySelectorAll(hide);
     const sections: HTMLElement = document.querySelector(sections_to_hide);
 
-    hide_button.forEach((button) => {
+    hide_button.forEach((button: HTMLElement) => {
         button.addEventListener("click", () => {
             if(sections !== null) {
                 sections.remove();
@@ -45,7 +45,7 @@ function activate_close_buttons(hide: string, sections_to_hide: string): void {
 function hide_all_sections(section_destroy: boolean = false): void {
 	const sections: NodeListOf<HTMLElement> = document.querySelectorAll(".modal-window");
 
-	sections.forEach((section) => {
+	sections.forEach((section: HTMLElement) => {
 		if(section.classList.contains("to-destroy") && section_destroy) {
 			section.remove();
 		}
@@ -54,8 +54,8 @@ function hide_all_sections(section_destroy: boolean = false): void {
 	});
 }
 
-const modals = document.querySelectorAll<HTMLDivElement>(".modal-window");
-modals.forEach((modal) => {
+const modals: NodeListOf<HTMLDivElement> = document.querySelectorAll<HTMLDivElement>(".modal-window");
+modals.forEach((modal: HTMLDivElement) => {
     modal.addEventListener(
         "wheel",
         (event: WheelEvent) => {
@@ -63,8 +63,8 @@ modals.forEach((modal) => {
             const scroll_height: number = modal.scrollHeight;
             const client_height: number = modal.clientHeight;
 
-            const is_at_top = scroll_top === 0 && event.deltaY < 0;
-            const is_at_bottom = scroll_top + client_height >= scroll_height && event.deltaY > 0;
+            const is_at_top: boolean = scroll_top === 0 && event.deltaY < 0;
+            const is_at_bottom: boolean = scroll_top + client_height >= scroll_height && event.deltaY > 0;
 
             if(is_at_top || is_at_bottom) {
                 event.preventDefault();
