@@ -11,8 +11,8 @@ function display_monster_eradication_goals_panel(): string {
             continue;
         }
 
-        extract($goal_data);
-        extract($reward);
+        extract($goal_data); //? $target, $counter, $limit, $reward, $is_completed
+        extract($reward); //? $alt, $src
 
         $wiki_link = get_wiki_link(get_item_id_by_name($alt));
         $is_found = ($counter < $limit) ? "not-found" : "found";

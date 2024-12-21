@@ -453,7 +453,7 @@ function get_game_version_score(string $version): int {
 }
 
 function is_this_the_same_day(string $date): bool {
-    extract(get_formatted_date(false));
+    extract(get_formatted_date(false)); //? $day, $season, $year
     return $date === "$day/$season";
 }
 

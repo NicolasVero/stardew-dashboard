@@ -6,7 +6,7 @@ function get_player_achievements(): array {
 	
 	foreach($player_achievements->int as $achievement) {
 		$achievement = find_reference_in_json((int) $achievement, "achievements_details");
-		extract($achievement);
+		extract($achievement); //? $title, $description
 
 		$achievements_data[$title] = [ "description" => $description ];
 	}

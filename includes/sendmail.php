@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 function send_feedback_mail(array $user_details): bool {
 	require_once "load_environment.php";
 	
-	extract($user_details);
+	extract($user_details); //? $topic, $mail, $username, $message
 	
 	$date_time = new DateTime("now", new DateTimeZone("Europe/Paris"));
 	$date = $date_time->format("d/m/Y");
@@ -33,6 +33,7 @@ header("Content-Type: application/json");
 
 ob_start();
 extract($_POST);
+
 $response = [
 	"success" => false,
 	"message" => "Error while sending the email. Please try again"

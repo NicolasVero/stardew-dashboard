@@ -213,6 +213,7 @@ function display_error_page(Exception $exception): string {
         ]
 	];
 
+	//? $dialogue, $image
     extract($exception_dialogues[$exception->getMessage()]);
 
     return "

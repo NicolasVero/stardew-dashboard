@@ -64,7 +64,8 @@ function get_player_unlockables(): array {
 	];
 
 	foreach($unlockables_details as $unlockable_name => $unlockable_details) {
-		extract($unlockable_details);
+		extract($unlockable_details); //? $type, $element_name
+
 		switch($type) {
 			case "mail" :
 				$player_unlockables[$unlockable_name] = has_element_in_mail($element_name);

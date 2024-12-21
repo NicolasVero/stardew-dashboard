@@ -221,6 +221,5 @@ function get_player_bundles(): array {
 	}
 	
 	ksort($player_bundles);
-	
 	return $player_bundles;
 }
