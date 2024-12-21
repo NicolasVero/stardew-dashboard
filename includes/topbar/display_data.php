@@ -138,6 +138,12 @@ function display_feedback_panel(): string {
     ";
 }
 
+//& A voir quoi en faire
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_POST["action"] === "display_feedback_panel") {
+    require "utility_functions.php";
+	echo display_feedback_panel();
+}
+
 function display_player_selection(): string {
     $players_names = $GLOBALS["players_names"];
     $players_name_structure = "";

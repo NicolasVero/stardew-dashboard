@@ -139,7 +139,7 @@ function get_aggregated_data(object $data): array {
         "crafting_recipes"  => get_player_crafting_recipes(),
         "books"             => get_player_books(),
         "masteries"         => get_player_masteries(),
-        "fish_caught"       => get_player_fishes_caught(),
+        "fish_caught"       => get_player_fish_caught(),
         "artifacts_found"   => get_player_artifacts(),
         "minerals_found"    => get_player_minerals(),
         "cooking_recipes"   => get_player_cooking_recipes(),
