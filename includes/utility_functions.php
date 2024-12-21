@@ -411,3 +411,70 @@ function get_tooltip_text(array $player_data, string $json_line_name, string $da
 if(isset($_GET["action"]) && $_GET["action"] === "get_max_upload_size") {	
 	echo get_php_max_upload_size();
 }
+
+
+
+
+
+function is_objective_completed(int $current_counter, int $limit): bool {
+    return ($current_counter >= $limit);
+}
+
+function get_element_completion_percentage(int $max_amount, int $current_amount): float {
+	return round(($current_amount / $max_amount), 3, PHP_ROUND_HALF_DOWN);
+}
+
+function has_element_in_mail(string $element): int {
+	$player_data = $GLOBALS["untreated_player_data"] ?? $GLOBALS["untreated_all_players_data"]->player;
+    return (in_array($element, (array) $player_data->mailReceived->string)) ? 1 : 0;
+}
+
+function has_element(object $element): int {
+    return !empty((array) $element);
+}
+
+function has_element_based_on_version(string $element_older_version, string $element_newer_version): int {
+	$player_data = $GLOBALS["untreated_player_data"];
+
+	if(is_game_older_than_1_6()) {
+		return has_element($player_data->$element_older_version);
+	}
+
+	return has_element_in_mail($element_newer_version);
+}
+
+function get_game_version_score(string $version): int {
+	$version_numbers = explode(".", $version);
+
+	while(count($version_numbers) < 3) {
+        $version_numbers[] = 0;
+    }
+
+	$version_numbers = array_reverse($version_numbers);
+	$score = 0;
+
+	for($i = 0; $i < count($version_numbers); $i++) {
+        $score += $version_numbers[$i] * pow(1000, $i); 
+    }
+
+	return (int) $score;
+}
+
+function is_this_the_same_day(string $date): bool {
+    extract(get_formatted_date(false));
+    return $date === "$day/$season";
+}
+
+function get_gamelocation_index(object $general_data, string $searched_location): int {
+	$index = 0;
+	$locations = $general_data->locations->GameLocation;
+
+	foreach($locations as $location) {
+		if(isset($location->$searched_location)) {
+			break;
+		}
+		$index++;
+	}
+
+	return $index;
+}

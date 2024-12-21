@@ -1,11 +1,4 @@
-<?php
-
-
-
-
-
-
-
+<?php 
 
 function get_level_progress_bar(int $level, int $max_level = 10): string {
     $images_path = get_images_folder();
@@ -53,48 +46,41 @@ function get_skills_icons(array $skills, string $current_skill): string {
     ";
 }
 
+function get_player_skills_data(): array {
+	$player_skills = (array) $GLOBALS["untreated_player_data"]->professions->int;
+	$json_skills = sanitize_json_with_version("skills");
+	$skills_data = [];
 
+	foreach($json_skills as $key => $skill) {
+		if(!in_array($key, $player_skills)) {
+			continue;
+		}
 
+		$skills_data[] = $json_skills[$key];
+	}
 
-
-
-
-
-
-
-
-
-function display_project_contributor(array $options): string {
-    extract($options);
-
-    $images_path = get_images_folder();
-    $portrait =  "$images_path/content/$icon.png";
-    $presentation = "";
-    $socials_links = "";
-
-    foreach($texts as $text) {
-        $presentation .= "<span>$text</span>";
-    }
-
-    foreach($socials as $social_name => $social) {
-        extract($social);
-        if($on_display) {
-            $socials_links .= "<a href='$url' rel='noreferrer' target='_blank'><img src='$images_path/social/$social_name.png' alt='$social_name'/></a>";
-        }
-    }
-
-    return "
-        <span>
-            <img src='$portrait' class='character-image $icon' alt='$name'/>
-            <span>
-                <span class='character-presentation'>
-                    $presentation
-                </span>
-                <span class='socials'>
-                    $socials_links
-                </span>
-            </span>
-        </span>
-    ";
+	return $skills_data;
 }
 
+function get_player_masteries(): array {
+	$player_masteries = $GLOBALS["untreated_player_data"]->stats->Values;
+	return get_player_items_list($player_masteries, "masteries");
+}
+
+function get_total_skills_level(): int {
+    $player_data = $GLOBALS["untreated_player_data"];
+	$skill_types = [
+		"farmingLevel",
+		"miningLevel",
+		"combatLevel",
+		"foragingLevel",
+		"fishingLevel"
+	];
+
+	$total_levels = 0;
+	foreach($skill_types as $skill) {
+		$total_levels += $player_data->$skill;
+	}
+
+	return $total_levels;
+}

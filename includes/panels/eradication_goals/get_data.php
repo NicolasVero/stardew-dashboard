@@ -51,3 +51,7 @@ function are_all_adventurers_guild_categories_completed(array $adventurers_guild
 
     return $counter === count($adventurers_guild_data);
 }
+
+function get_all_adventurers_guild_categories(): array {
+	return $GLOBALS["json"]["adventurer's_guild_goals"];
+}
