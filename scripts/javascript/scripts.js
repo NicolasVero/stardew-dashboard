@@ -50,7 +50,7 @@ function AJAX_send() {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 const data = JSON.parse(xhr.responseText);
                 const html = data.html;
-                page_display.innerHTML = html["sur_header"];
+                page_display.innerHTML = html["topbar"];
                 if (data.code === "success") {
                     page_display.innerHTML += landing_page;
                     const players_count = data.players.length;
@@ -73,7 +73,7 @@ function AJAX_send() {
         xhr.send(form_data);
     });
 }
-let surheader;
+let topbar;
 window.addEventListener("load", () => {
     const os_path = get_os_path(detect_os());
     const tag = document.getElementById("save_os_path");
@@ -100,7 +100,7 @@ window.addEventListener("load", () => {
     if (save_upload !== null) {
         save_upload.addEventListener("change", file_choice);
     }
-    save_landing_surheader();
+    save_landing_topbar();
     activate_buttons(".landing-upload", ".exit-upload", ".upload-panel");
     activate_buttons(".landing-settings", ".exit-settings", ".settings");
     toggle_custom_checkboxes(".checkmark");
@@ -382,9 +382,9 @@ function hide_all_sections(section_destroy = false) {
         section.style.display = "none";
     });
 }
-const modals = document.querySelectorAll('.modal-window');
+const modals = document.querySelectorAll(".modal-window");
 modals.forEach((modal) => {
-    modal.addEventListener('wheel', (event) => {
+    modal.addEventListener("wheel", (event) => {
         const scroll_top = modal.scrollTop;
         const scroll_height = modal.scrollHeight;
         const client_height = modal.clientHeight;
@@ -753,9 +753,9 @@ function toggle_landing_page(display) {
         landing_page.style.display = (display) ? "block" : "none";
     }
 }
-function save_landing_surheader() {
+function save_landing_topbar() {
     const landing_menu = document.getElementById("landing_menu");
     if (landing_menu !== null) {
-        const surheader = landing_menu.innerHTML;
+        const topbar = landing_menu.innerHTML;
     }
 }

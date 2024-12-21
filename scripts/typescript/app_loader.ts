@@ -1,4 +1,4 @@
-let surheader: HTMLElement | null;
+let topbar: HTMLElement | null;
 
 window.addEventListener("load", () => {
     const os_path: string = get_os_path(detect_os());
@@ -34,7 +34,7 @@ window.addEventListener("load", () => {
         save_upload.addEventListener("change", file_choice);
     }
 
-    save_landing_surheader();
+    save_landing_topbar();
     activate_buttons(".landing-upload", ".exit-upload", ".upload-panel");
     activate_buttons(".landing-settings", ".exit-settings", ".settings");
     toggle_custom_checkboxes(".checkmark");

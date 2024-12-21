@@ -1,11 +1,9 @@
 <?php
 
-require_once "includes/functions/utility_functions.php";
-require_once "includes/functions/search_other_data_functions.php";
-require_once "includes/functions/search_player_data_functions.php";
-require_once "includes/functions/organize_data_functions.php";
-require_once "includes/functions/get_player_informations.php";
-require_once "includes/functions/display_other_functions.php";
-require_once "includes/functions/display_sections_functions.php";
-require_once "includes/functions/display_panels_functions.php";
-require_once "includes/functions/display_pages_functions.php";
+require_once "includes/utility_functions.php";
+require_once "includes/functions_loader.php";
+require_once "includes/extract_data_from_save.php";
+require_once "includes/get_player_informations.php";
+require_once "includes/general_get_functions.php";
+require_once "includes/general_display_functions.php";
+require_once "includes/display_pages.php";

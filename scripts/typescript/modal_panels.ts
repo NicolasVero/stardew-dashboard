@@ -54,10 +54,10 @@ function hide_all_sections(section_destroy: boolean = false): void {
 	});
 }
 
-const modals = document.querySelectorAll<HTMLDivElement>('.modal-window');
+const modals = document.querySelectorAll<HTMLDivElement>(".modal-window");
 modals.forEach((modal) => {
     modal.addEventListener(
-        'wheel',
+        "wheel",
         (event: WheelEvent) => {
             const scroll_top: number = modal.scrollTop; 
             const scroll_height: number = modal.scrollHeight;

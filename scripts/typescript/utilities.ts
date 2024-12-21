@@ -141,7 +141,7 @@ function has_section_older_version_items(section: HTMLElement): boolean {
     );
 };
 
-function should_show_element(element, settings):boolean {
+function should_show_element(element, settings): boolean {
     const is_newer: boolean = has_class(element, "newer-version");
     const is_not_found: boolean = has_class(element, "not-found");
     const should_keep_on_display: boolean = has_class(element, "always-on-display");
@@ -164,10 +164,10 @@ function toggle_landing_page(display: boolean): void {
     }
 }
 
-function save_landing_surheader(): void {
+function save_landing_topbar(): void {
 	const landing_menu: HTMLElement = document.getElementById("landing_menu");
 
 	if(landing_menu !== null) {
-		const surheader = landing_menu.innerHTML;
+		const topbar = landing_menu.innerHTML;
 	}
 }

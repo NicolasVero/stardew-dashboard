@@ -13,7 +13,7 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
 
     $players_data = get_all_players_data();
     $GLOBALS["players_names"] = get_players_name();
-    $pages["sur_header"] = display_sur_header();
+    $pages["topbar"] = display_topbar();
 
     
     for($player_count = 0; $player_count < count($players_data); $player_count++) {
@@ -139,7 +139,7 @@ function get_aggregated_data(object $data): array {
         "crafting_recipes"  => get_player_crafting_recipes(),
         "books"             => get_player_books(),
         "masteries"         => get_player_masteries(),
-        "fish_caught"       => get_player_fishes_caught(),
+        "fish_caught"       => get_player_fish_caught(),
         "artifacts_found"   => get_player_artifacts(),
         "minerals_found"    => get_player_minerals(),
         "cooking_recipes"   => get_player_cooking_recipes(),
@@ -158,7 +158,7 @@ function get_shared_aggregated_data(): array {
     return [
         "farm_animals"          => get_player_farm_animals(),
         "weather"               => get_weather(),
-        "jumino_kart"           => get_jumino_kart_leaderboard(),
+        "jumino_kart"           => get_junimo_kart_leaderboard(),
         "museum_coords"         => get_museum_pieces_coords(),
         "cc_bundles"            => get_player_bundles()
     ];

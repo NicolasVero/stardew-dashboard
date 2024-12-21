@@ -18,7 +18,7 @@ try {
         $response["code"] = $responses["code"];
     }
 } catch (Exception $exception) {
-	$page["sur_header"] = display_sur_header(false, true);
+	$page["topbar"] = display_topbar(false, true);
 	$page["error_message"] = display_error_page($exception);
     $response["html"]  = $page;
     $response["code"]  = "failed";

@@ -1,12 +1,12 @@
 <?php 
 
-function display_landing_page(bool $with_surheader = true): string {
+function display_landing_page(bool $with_topbar = true): string {
 	if(is_a_mobile_device()) {
 		return display_mobile_landing_page();
 	}
 
     $images_path = get_images_folder();
-	$sur_header = ($with_surheader) ? display_sur_header(true, false) : "";
+	$topbar = ($with_topbar) ? display_topbar(true, false) : "";
     $save_panel = display_save_panel();
     $settings_panel = display_settings_panel();
 
@@ -18,7 +18,7 @@ function display_landing_page(bool $with_surheader = true): string {
 	}
 
     return "
-        $sur_header
+        $topbar
         $save_panel
         $settings_panel
         <div id='display'>
@@ -162,7 +162,6 @@ function display_page(): string {
 			$structure .= "<div class='separated-galleries'>";
 			$structure .= display_unlockables();
 			$structure .= display_books();
-			// $structure .= display_locations_visited();
 			
 			$structure .= display_cooking_recipes();
 			$structure .= display_fish();

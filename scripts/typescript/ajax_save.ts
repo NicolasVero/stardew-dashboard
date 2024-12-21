@@ -62,7 +62,7 @@ async function AJAX_send(): Promise<void> {
             const data: AjaxResponse = JSON.parse(xhr.responseText);
             const html: Record<string, string> = data.html;
 
-            page_display.innerHTML = html["sur_header"];
+            page_display.innerHTML = html["topbar"];
             
             if(data.code === "success") {
                 page_display.innerHTML += landing_page;
