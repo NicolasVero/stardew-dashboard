@@ -405,7 +405,6 @@ function get_player_with_highest_friendships(): array {
 	];
 }
 
-
 function has_any_player_gotten_all_stardrops(): bool {
 	$total_players = get_number_of_player();
 	$all_data = $GLOBALS["all_players_data"];
@@ -432,4 +431,25 @@ function get_child_tooltip(string $spouse, array $children): string {
     }
 
 	return "With $gender $spouse, you had $children_count $nombre : $children_names";
+}
+
+function get_player_pet(): array {
+	$player_data = $GLOBALS["untreated_player_data"];
+	$breed = (int) $player_data->whichPetBreed;
+	$type = (is_game_older_than_1_6()) ?
+		(((string) $player_data->catPerson === "true") ? "cat" : "dog")
+		:
+		lcfirst((string) $player_data->whichPetType);
+
+	return [
+		"type"  => $type,
+		"breed" => $breed
+	];
+}
+
+function get_player_stardrops_found(): int {
+	$player_stamina = (int) $GLOBALS["untreated_player_data"]->maxStamina;
+	$min_stamina = 270;
+	$stamina_per_stardrop = 34;
+	return ($player_stamina - $min_stamina) / $stamina_per_stardrop;
 }

@@ -255,104 +255,10 @@ function get_player_minerals(): array {
 
 
 
-function are_all_adventurers_guild_categories_completed(array $adventurers_guild_data): bool {
-    $counter = 0;
-    foreach($adventurers_guild_data as $data) {
-        if($data["is_completed"]) {	
-			$counter++;
-		}
-    }
 
-    return $counter === count($adventurers_guild_data);
-}
 
-function get_player_pet(): array {
-	$player_data = $GLOBALS["untreated_player_data"];
-	$breed = (int) $player_data->whichPetBreed;
-	$type = (is_game_older_than_1_6()) ?
-		(((string) $player_data->catPerson === "true") ? "cat" : "dog")
-		:
-		lcfirst((string) $player_data->whichPetType);
 
-	return [
-		"type"  => $type,
-		"breed" => $breed
-	];
-}
 
-function get_player_farm_animals(): array {
-    $data = $GLOBALS["untreated_all_players_data"];
-    $animals_data = [];
-    
-    $all_animals = [
-        "Duck"              => "Duck",
-        "White Chicken"     => "Chicken",
-        "Brown Chicken"     => "Chicken",
-        "Blue Chicken"      => "Chicken",
-        "Golden Chicken"    => "Golden Chicken",
-        "Void Chicken"      => "Void Chicken",
-        "Rabbit"            => "Rabbit",
-        "Dinosaur"          => "Dinosaur",
-        "Brown Cow"         => "Cow",
-        "White Cow"         => "Cow",
-        "Pig"               => "Pig",
-        "Goat"              => "Goat",
-        "Sheep"             => "Sheep",
-        "Ostrich"           => "Ostrich"
-    ];
-
-    foreach($data->locations->GameLocation as $location) {
-        if(!isset($location->buildings)) {
-            continue;
-        }
-
-        foreach($location->buildings->Building as $building) {
-            if(!isset($building->indoors->animals)) {
-                continue;
-            }
-
-            foreach($building->indoors->animals->item as $animal) {
-				$name = (string) $animal->value->FarmAnimal->name;
-                $full_animal_type = (string) $animal->value->FarmAnimal->type;
-				$friendship = (int) $animal->value->FarmAnimal->friendshipTowardFarmer;
-				$happiness = (int) $animal->value->FarmAnimal->happiness;
-
-				$pet = ((string) $animal->value->FarmAnimal->wasPet === "true") ? true : false;
-				$auto_pet = ((string) $animal->value->FarmAnimal->wasAutoPet === "true") ? true : false;
-				$was_pet = (($pet) || ($auto_pet));
-
-				$animal_data = [
-					"name" => $name,
-					"type" => $full_animal_type,
-					"friendship_level" => floor($friendship / 100) / 2,
-					"happiness" => $happiness,
-					"was_pet" => $was_pet
-				];
-
-                if(!isset($all_animals[$full_animal_type])) {
-                    continue;
-                }
-
-                $animal_type = $all_animals[$full_animal_type];
-
-                if(!isset($animals_data[$animal_type])) {
-                    $animals_data[$animal_type] = [
-                        "id" => get_custom_id($animal_type),
-						"animals_data" => [],
-                        "counter" => 0
-                    ];
-                }
-
-                $animals_data[$animal_type]["counter"]++;
-				array_push($animals_data[$animal_type]["animals_data"], $animal_data);
-            }
-        }
-
-        break;
-    }
-
-    return $animals_data;
-}
 
 function get_player_secret_notes(): array {
 	$player_secret_notes = $GLOBALS["untreated_player_data"]->secretNotesSeen;
@@ -387,55 +293,7 @@ function get_jumino_kart_leaderboard(): array {
 	return $leaderboard;
 }
 
-function get_player_stardrops_found(): int {
-	$player_stamina = (int) $GLOBALS["untreated_player_data"]->maxStamina;
-	$min_stamina = 270;
-	$stamina_per_stardrop = 34;
-	return ($player_stamina - $min_stamina) / $stamina_per_stardrop;
-}
 
 
 
-function get_player_bundles(): array {
-    $untreated_all_data = $GLOBALS["untreated_all_players_data"];
-	$bundles_index = get_gamelocation_index($untreated_all_data, "bundles");
-	$bundles_json = sanitize_json_with_version("bundles", true);
-	$bundles_data = $untreated_all_data->bundleData;
-	$bundle_arrays = $untreated_all_data->locations->GameLocation[$bundles_index]->bundles;
 
-	foreach($bundle_arrays->item as $bundle_array) {
-		$bundle_id = (int) $bundle_array->key->int;
-		$bundle_booleans = (array) $bundle_array->value->ArrayOfBoolean->boolean;
-
-		foreach($bundles_json as $bundle_room_name => $bundle_room_details) {
-			if(!in_array($bundle_id, $bundle_room_details["bundle_ids"])) {
-				continue;
-			}
-
-			$bundle_room = $bundle_room_name;
-		}
-		
-		if(empty($bundle_room)) {
-			continue;
-		}
-
-		$bundle_data_name = "$bundle_room/$bundle_id";
-		$bundle_progress = [
-			"room_name" => $bundle_room,
-			"id" => $bundle_id,
-			"progress"  => $bundle_booleans
-		];
-
-		foreach($bundles_data->item as $bundle_data) {
-			if((string) $bundle_data->key->string !== $bundle_data_name) {
-				continue;
-			}
-
-			$player_bundles[$bundle_id] = get_player_bundle_progress($bundle_data, $bundle_progress);
-		}
-	}
-	
-	ksort($player_bundles);
-	
-	return $player_bundles;
-}

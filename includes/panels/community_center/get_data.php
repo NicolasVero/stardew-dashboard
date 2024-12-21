@@ -180,3 +180,47 @@ function has_been_donated_in_bundle(string $name, array $donated_items): bool {
 
 	return $has_been_donated;
 }
+
+function get_player_bundles(): array {
+    $untreated_all_data = $GLOBALS["untreated_all_players_data"];
+	$bundles_index = get_gamelocation_index($untreated_all_data, "bundles");
+	$bundles_json = sanitize_json_with_version("bundles", true);
+	$bundles_data = $untreated_all_data->bundleData;
+	$bundle_arrays = $untreated_all_data->locations->GameLocation[$bundles_index]->bundles;
+
+	foreach($bundle_arrays->item as $bundle_array) {
+		$bundle_id = (int) $bundle_array->key->int;
+		$bundle_booleans = (array) $bundle_array->value->ArrayOfBoolean->boolean;
+
+		foreach($bundles_json as $bundle_room_name => $bundle_room_details) {
+			if(!in_array($bundle_id, $bundle_room_details["bundle_ids"])) {
+				continue;
+			}
+
+			$bundle_room = $bundle_room_name;
+		}
+		
+		if(empty($bundle_room)) {
+			continue;
+		}
+
+		$bundle_data_name = "$bundle_room/$bundle_id";
+		$bundle_progress = [
+			"room_name" => $bundle_room,
+			"id" => $bundle_id,
+			"progress"  => $bundle_booleans
+		];
+
+		foreach($bundles_data->item as $bundle_data) {
+			if((string) $bundle_data->key->string !== $bundle_data_name) {
+				continue;
+			}
+
+			$player_bundles[$bundle_id] = get_player_bundle_progress($bundle_data, $bundle_progress);
+		}
+	}
+	
+	ksort($player_bundles);
+	
+	return $player_bundles;
+}

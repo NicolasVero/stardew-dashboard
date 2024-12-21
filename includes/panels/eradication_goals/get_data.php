@@ -40,3 +40,14 @@ function get_player_adventurers_guild_data(int $player_id): array {
 
 	return $adventurers_guild_data;
 }
+
+function are_all_adventurers_guild_categories_completed(array $adventurers_guild_data): bool {
+    $counter = 0;
+    foreach($adventurers_guild_data as $data) {
+        if($data["is_completed"]) {	
+			$counter++;
+		}
+    }
+
+    return $counter === count($adventurers_guild_data);
+}
