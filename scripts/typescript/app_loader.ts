@@ -1,4 +1,4 @@
-let topbar: HTMLElement | null;
+let topbar: HTMLElement;
 
 window.addEventListener("load", () => {
     const os_path: string = get_os_path(detect_os());

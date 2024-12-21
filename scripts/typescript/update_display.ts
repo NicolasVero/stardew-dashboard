@@ -22,7 +22,7 @@ function update_section_visibility(section: HTMLElement, settings: Settings): vo
     }
 
     if(smaller_title !== null) {
-        let should_show_smaller_title = false;
+        let should_show_smaller_title: boolean = false;
 
         if(settings.no_spoil) {
             should_show_smaller_title = is_empty;
@@ -37,7 +37,7 @@ function update_section_visibility(section: HTMLElement, settings: Settings): vo
 }
 
 function update_display(target_classes: string[]): void {
-    const settings = get_settings();
+    const settings: Settings = get_settings();
 
     const update_elements = (class_name: string) => {
         const elements: HTMLCollectionOf<Element> = document.getElementsByClassName(class_name);

@@ -17,7 +17,7 @@ function initialize_tooltips(section: string = null): void {
 
     tooltips.forEach((tooltip: HTMLElement) => {
         const rect: DOMRect = tooltip.getBoundingClientRect();
-        const span: HTMLElement | null = tooltip.querySelector("span");
+        const span: HTMLElement = tooltip.querySelector("span");
 
         if(span && !["left", "right"].some(className => span.classList.contains(className))) {
             if(rect.left === 0) {

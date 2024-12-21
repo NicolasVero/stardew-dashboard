@@ -27,9 +27,8 @@ function AJAX_send() {
             alert("An error occurred while uploading the file. Please try again.");
             return;
         }
-        // const max_upload_size = await get_max_upload_size();
-        // const is_file_too_big: boolean = file.size > max_upload_size;
-        const is_file_too_big = false;
+        const max_upload_size = yield get_max_upload_size();
+        const is_file_too_big = file.size > max_upload_size;
         const page_display = document.getElementById("display");
         const landing_menu = document.getElementById("landing_menu");
         const landing_page = (_c = (_b = document.getElementById("landing_page")) === null || _b === void 0 ? void 0 : _b.outerHTML) !== null && _c !== void 0 ? _c : "";
@@ -150,7 +149,7 @@ function easter_egg_characters() {
             }, 1000);
         }
     };
-    elements.forEach(element => {
+    elements.forEach((element) => {
         element.addEventListener("dblclick", play_once);
     });
 }
@@ -197,7 +196,7 @@ function load_elements() {
     const players_in_save = get_players_number();
     const dynamic_buttons = [];
     for (let i = 0; i < players_in_save; i++) {
-        dynamic_prefixes.forEach(prefix => {
+        dynamic_prefixes.forEach((prefix) => {
             dynamic_buttons.push({
                 open_button: `.view-${prefix}-${i}`,
                 exit_button: `.exit-${prefix}-${i}`,
@@ -219,7 +218,7 @@ function load_elements() {
 }
 function activate_feedback_ajax_trigger() {
     const triggers = document.querySelectorAll(".feedback-opener");
-    triggers.forEach(trigger => {
+    triggers.forEach((trigger) => {
         trigger.addEventListener("click", () => {
             const existing_window = document.querySelector(".feedback-panel");
             hide_all_sections();
@@ -281,7 +280,7 @@ function activate_feedback_form() {
 function feedback_custom_radio() {
     const feedback_fake_radios = document.querySelectorAll(".feedback_custom_radio");
     const feedback_real_radios = document.querySelectorAll(".feedback_real_radio");
-    feedback_fake_radios.forEach(fake_radio => {
+    feedback_fake_radios.forEach((fake_radio) => {
         const span_topic = fake_radio.parentElement;
         span_topic.addEventListener("click", () => {
             const real_radio = fake_radio.previousElementSibling;
@@ -291,9 +290,9 @@ function feedback_custom_radio() {
             }
         });
     });
-    feedback_real_radios.forEach(real_radio => {
+    feedback_real_radios.forEach((real_radio) => {
         real_radio.addEventListener("change", () => {
-            feedback_fake_radios.forEach(fake_radio => {
+            feedback_fake_radios.forEach((fake_radio) => {
                 fake_radio.classList.add("topic_not_selected");
             });
             const fake_radio = real_radio.nextElementSibling;
@@ -675,7 +674,7 @@ function get_settings_panels() {
 function close_all_panels(panel_selectors, include_setting_panels = false) {
     const settings_panels = (include_setting_panels) ? get_settings_panels() : [];
     panel_selectors.push(...settings_panels);
-    panel_selectors.forEach(panel_base => {
+    panel_selectors.forEach((panel_base) => {
         const id = settings_panels.includes(panel_base) ? "" : "-" + get_current_player_id();
         const panel_selector = panel_base + id;
         const panel = document.querySelector(panel_selector);
@@ -699,7 +698,7 @@ function toggle_scroll(can_scroll) {
     document.body.style.overflow = (can_scroll) ? "auto" : "hidden";
 }
 function toggle_loading(shown) {
-    const loading_strip = document.getElementById("loading-strip");
+    const loading_strip = document.querySelector("#loading-strip");
     if (loading_strip !== null) {
         loading_strip.style.display = (shown) ? "block" : "none";
     }

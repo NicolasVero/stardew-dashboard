@@ -20,7 +20,7 @@ function load_elements(): void {
         { open_button: ".file-upload"     , exit_button: ".exit-upload"  , modal_panel: ".upload-panel" }
     ];
 
-    const dynamic_prefixes = [
+    const dynamic_prefixes: string[] = [
         "all-friends", "all-quests", "monster-eradication-goals",
         "calendar", "all-animals", "junimo-kart-leaderboard",
         "museum", "community-center", "visited-locations"
@@ -29,8 +29,8 @@ function load_elements(): void {
     const players_in_save: number = get_players_number();
     const dynamic_buttons = [];
 	
-    for(let i = 0; i < players_in_save; i++) {
-        dynamic_prefixes.forEach(prefix => {
+    for(let i: number = 0; i < players_in_save; i++) {
+        dynamic_prefixes.forEach((prefix: string) => {
             dynamic_buttons.push({
                 open_button: `.view-${prefix}-${i}`,
                 exit_button: `.exit-${prefix}-${i}`,
