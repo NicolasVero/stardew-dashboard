@@ -69,7 +69,7 @@ function get_settings_panels(): string[] {
     return [...get_closabled_settings_panels(), ...get_deletabled_settings_panels()];
 }
 
-function close_all_panels(panel_selectors: string[], include_setting_panels: boolean = false) {
+function close_all_panels(panel_selectors: string[], include_setting_panels: boolean = false): void {
     const settings_panels: string[] = (include_setting_panels) ? get_settings_panels() : [];
     panel_selectors.push(...settings_panels);
     
@@ -88,7 +88,7 @@ function close_all_panels(panel_selectors: string[], include_setting_panels: boo
     });
 }
 
-function can_close_panel(event: Event):boolean {
+function can_close_panel(event: Event): boolean {
     return (
         current_section
         && event.target instanceof HTMLElement
@@ -141,7 +141,7 @@ function has_section_older_version_items(section: HTMLElement): boolean {
     );
 };
 
-function should_show_element(element, settings): boolean {
+function should_show_element(element: HTMLElement, settings: Settings): boolean {
     const is_newer: boolean = has_class(element, "newer-version");
     const is_not_found: boolean = has_class(element, "not-found");
     const should_keep_on_display: boolean = has_class(element, "always-on-display");

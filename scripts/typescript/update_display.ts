@@ -1,6 +1,7 @@
 interface Settings {
     toggle_versions: boolean;
     no_spoil: boolean;
+    spoil: boolean;
 }
 
 function update_section_visibility(section: HTMLElement, settings: Settings): void {
