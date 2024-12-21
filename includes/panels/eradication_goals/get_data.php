@@ -19,7 +19,7 @@ function get_player_adventurers_guild_data(int $player_id): array {
 
 	foreach($categories as $monsters_name => $monster_data) {
 		$counter = 0;
-		extract($monster_data);
+		extract($monster_data); //? $target_name, $ids, $limit, $reward
 
 		foreach($enemies_killed as $enemy_killed) {
 			if(in_array($enemy_killed["id"], $ids)) {

@@ -7,7 +7,7 @@ function display_header(): string {
 	$festival_icon = display_festival_icon();
     $weather_icon = display_weather_icon();
     
-    extract($all_players_data);  
+    extract($all_players_data); //? all field "general" in extract_data_from_save.php
 
     $pet_icon = $pet['type'] . "_" . $pet['breed'];
 	$farm_name = str_contains(strtolower($farm_name), "farm") ? $farm_name : $farm_name . " farm";

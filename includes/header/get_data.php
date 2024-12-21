@@ -385,7 +385,8 @@ function get_player_with_highest_friendships(): array {
 		$friend_counter = 0;
 
 		foreach($friendships as $friendship_name => $friendship) {
-			extract($friendship);
+			extract($friendship); //? $id, $points, $friend_level, $birthday, $status, $week_gifts
+
 			$can_be_married = in_array($friendship_name, $marriables_npc) && $status === "Friendly";
 
 			if(($can_be_married && $friend_level >= 8) || (!$can_be_married && $friend_level >= 10)) {

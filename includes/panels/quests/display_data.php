@@ -25,7 +25,7 @@ function display_quest_panel(): string {
 	}
 
     foreach($this_player_data as $data) {
-		extract($data);
+		extract($data); //? $time_limited, $objective, $description, $title, $rewards
 
         $quest_structure .= "
             <span class='quest'>

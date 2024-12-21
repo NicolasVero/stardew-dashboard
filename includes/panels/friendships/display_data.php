@@ -1,8 +1,9 @@
 <?php 
 
-//& changer get en display 
-function get_friendship_structure(array $friendship_info): string {
-    extract($friendship_info);
+//& Voir a subdiviser en 2 fonctions
+//& arreter d'importer les 4000  des villageois pour chaque villageois 
+function display_friendship_structure(array $friendship_info): string {
+    extract($friendship_info); //? $name, $friend, $images_path, $marriables_npc, $birthday_json, $json_with_version
     $friend_icon = "$images_path/characters/" . strtolower($name) . ".png";
     $is_newer_version = array_search($name, $json_with_version) ? "older-version" : "newer-version";
     
@@ -101,7 +102,7 @@ function display_friendships(int $limit = -1): string {
             "json_with_version"=> $json_with_version
         ];
 
-        $structure .= get_friendship_structure($friendship_info);
+        $structure .= display_friendship_structure($friendship_info);
         $limit--;
     }
 
@@ -123,7 +124,7 @@ function display_friendships(int $limit = -1): string {
             "json_with_version"=> $json_with_version
         ];
         
-        $structure .= get_friendship_structure($friendship_info);
+        $structure .= display_friendship_structure($friendship_info);
         $limit--;
     }
 

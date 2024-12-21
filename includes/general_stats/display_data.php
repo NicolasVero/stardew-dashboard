@@ -8,7 +8,7 @@ function display_general_stats(): string {
 	$quest_button = display_quest_button();
     $visited_locations_button = display_visited_locations_button();
 
-    extract($all_players_data);
+    extract($all_players_data); //? all field "general" in extract_data_from_save.php
 
     $max_mine_level = 120;
     $deepest_mine_level = ($mine_level > $max_mine_level) ? $max_mine_level : $mine_level; 
@@ -53,9 +53,9 @@ function display_general_stats(): string {
     ";
 }
 
-// [] --> *icon, *value, tooltip, alt, label, wiki_link
 function display_stat(array $parameters): string {
-    extract($parameters);
+    extract($parameters); //? $icon, $value, $tooltip, $alt, $label, $wiki_link
+
     $images_path = get_images_folder();
     $formatted_icon = formate_text_for_file($icon);
     $formatted_value = filter_var($value, FILTER_VALIDATE_INT) ? formate_number($value) : $value;

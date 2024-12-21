@@ -15,12 +15,12 @@ function display_panels(): string {
 }
 
 function display_detailled_gallery(array $gallery_details, string $width = "", array $panel_details = []): string {
-    extract($gallery_details);
+    extract($gallery_details); //? $player_data[$gallery_details]
 	$version_score = $GLOBALS["game_version_score"];
 	$images_path = get_images_folder();
     $json_data = $GLOBALS["json"][$json_filename];
 
-    extract($panel_details);
+    extract($panel_details); //? $panel_alt, $panel_name
 
     $player_id = get_current_player_id();
     $title = (!empty($panel_details)) ?
@@ -112,7 +112,7 @@ function display_detailled_gallery(array $gallery_details, string $width = "", a
 }
 
 function display_project_contributor(array $options): string {
-    extract($options);
+    extract($options); //? $name, $icon, $texts, $socials
 
     $images_path = get_images_folder();
     $portrait =  "$images_path/content/$icon.png";
@@ -124,7 +124,7 @@ function display_project_contributor(array $options): string {
     }
 
     foreach($socials as $social_name => $social) {
-        extract($social);
+        extract($social); //? $url, $on_display
         if($on_display) {
             $socials_links .= "<a href='$url' rel='noreferrer' target='_blank'><img src='$images_path/social/$social_name.png' alt='$social_name'/></a>";
         }
