@@ -408,14 +408,6 @@ function get_tooltip_text(array $player_data, string $json_line_name, string $da
     }
 }
 
-if(isset($_GET["action"]) && $_GET["action"] === "get_max_upload_size") {	
-	echo get_php_max_upload_size();
-}
-
-
-
-
-
 function is_objective_completed(int $current_counter, int $limit): bool {
     return ($current_counter >= $limit);
 }
@@ -477,4 +469,27 @@ function get_gamelocation_index(object $general_data, string $searched_location)
 	}
 
 	return $index;
+}
+
+function get_player_items_list(object $data, string $filename): array {
+	if(is_game_older_than_1_6()) {
+		return [];
+	}
+
+	$items_data = [];
+
+	foreach($data->item as $item) {
+		$item_id = formate_original_data_string($item->key->string);
+		$item_id = get_correct_id($item_id);
+
+		$item_reference = find_reference_in_json($item_id, $filename);
+
+		if(empty($item_reference)) {
+			continue;
+		}
+
+		$items_data[$item_reference] = [ "id" => $item_id ];
+	}
+	
+	return $items_data;
 }

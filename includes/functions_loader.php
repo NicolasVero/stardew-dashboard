@@ -1,9 +1,9 @@
 <?php 
 
 $functions_files = [
-    "general_stats",
-    "header",
     "topbar",
+    "header",
+    "general_stats",
     "galleries" => [
         "achievements",
         "artifacts",
@@ -32,17 +32,18 @@ $functions_files = [
     ]
 ];
 
+$path_prefix = (str_contains(debug_backtrace()[1]["file"], "get_xml_data.php")) ? "../" : "";
 foreach($functions_files as $folder => $subfolders) {
     $folders_to_include = (is_array($subfolders)) ? $subfolders : [$subfolders];
 
-    foreach ($folders_to_include as $subfolder) {
-        include_files_if_exists("includes/{$folder}/{$subfolder}/get_data.php");
-        include_files_if_exists("includes/{$folder}/{$subfolder}/display_data.php");
+    foreach($folders_to_include as $subfolder) {
+        include_files_if_exists("{$path_prefix}includes/{$folder}/{$subfolder}/get_data.php");
+        include_files_if_exists("{$path_prefix}includes/{$folder}/{$subfolder}/display_data.php");
     }
 }
 
-function include_files_if_exists($path) {
-    $path = preg_replace('/\/\d+/', '', $path);
+function include_files_if_exists(string $path): void {
+    $path = preg_replace("/\/\d+/", "", $path);
 
     if(file_exists($path)) {
         require_once $path;

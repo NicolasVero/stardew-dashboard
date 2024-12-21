@@ -33,8 +33,9 @@ async function AJAX_send(): Promise<void> {
         return;
     }
 
-    const max_upload_size = await get_max_upload_size();
-    const is_file_too_big: boolean = file.size > max_upload_size;
+    // const max_upload_size = await get_max_upload_size();
+    // const is_file_too_big: boolean = file.size > max_upload_size;
+    const is_file_too_big: boolean = false;
     const page_display: HTMLElement = document.getElementById("display");
     const landing_menu: HTMLElement = document.getElementById("landing_menu");
     const landing_page: string = document.getElementById("landing_page")?.outerHTML ?? "";

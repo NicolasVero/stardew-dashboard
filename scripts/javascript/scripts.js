@@ -27,8 +27,9 @@ function AJAX_send() {
             alert("An error occurred while uploading the file. Please try again.");
             return;
         }
-        const max_upload_size = yield get_max_upload_size();
-        const is_file_too_big = file.size > max_upload_size;
+        // const max_upload_size = await get_max_upload_size();
+        // const is_file_too_big: boolean = file.size > max_upload_size;
+        const is_file_too_big = false;
         const page_display = document.getElementById("display");
         const landing_menu = document.getElementById("landing_menu");
         const landing_page = (_c = (_b = document.getElementById("landing_page")) === null || _b === void 0 ? void 0 : _b.outerHTML) !== null && _c !== void 0 ? _c : "";
@@ -234,7 +235,7 @@ function activate_feedback_ajax_trigger() {
 // Create feedback form
 function feedback_form_creation() {
     const xml_upload = document.querySelector("body");
-    fetch("./includes/functions/display_panels_functions.php", {
+    fetch("./functions.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -625,7 +626,7 @@ function get_site_root() {
 }
 function get_max_upload_size() {
     return __awaiter(this, void 0, void 0, function* () {
-        return fetch("./includes/functions/utility_functions.php?action=get_max_upload_size")
+        return fetch("./functions.php?action=get_max_upload_size")
             .then(response => response.json())
             .then((data) => {
             return data.post_max_size;
