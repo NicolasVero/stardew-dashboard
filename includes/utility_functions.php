@@ -44,6 +44,7 @@ function load_all_json(): void {
 	foreach($all_json as $json_file) {
 		$GLOBALS["json"][$json_file] = decode($json_file);
 	}
+
 }
 
 function get_site_root(): string {
@@ -492,4 +493,45 @@ function get_player_items_list(object $data, string $filename): array {
 	}
 	
 	return $items_data;
+}
+
+function get_version_class(string $version): string {
+	return ($GLOBALS["game_version_score"] < get_game_version_score($version)) ? "newer-version" : "older-version";
+}
+
+function get_found_classes(array $player_data, string $json_filename, string $json_line_name, bool $is_found): string {
+	$classes = ($is_found) ? "found" : "not-found";
+	
+	if(in_array($json_filename, ["cooking_recipes", "crafting_recipes", "artifacts", "minerals"])) {
+		if($is_found && $player_data[$json_line_name]["counter"] === 0) {
+			$classes .= " unused";
+		}
+	}
+	return $classes;
+}
+
+function get_detailled_gallery_image(string $json_filename, string $json_line_name): string {
+	
+	$images_path = get_images_folder();
+
+	if(!in_array($json_filename, ["secret_notes"])) {
+		return "$images_path/$json_filename/" . formate_text_for_file((string) explode("µ", $json_line_name)[0]). ".png";
+	}
+
+	$line_name = explode(" ", $json_line_name);
+	$icon_name = formate_text_for_file(implode(" ", array_slice($line_name, 0, 2)));
+	return "$images_path/icons/$icon_name.png";
+}
+
+function get_detailled_gallery_wiki_link(string $json_filename, string $json_line_name): string {
+	if(in_array($json_filename, ["achievements", "secret_notes"])) {
+		$wiki_url = [
+			"achievements" => get_wiki_link_by_name("achievements"),
+			"secret_notes" => get_wiki_link_by_name("secret_notes")
+		][$json_filename];
+	} else {
+		$wiki_url = get_wiki_link(get_item_id_by_name($json_line_name));
+	}
+
+	return $wiki_url;
 }
