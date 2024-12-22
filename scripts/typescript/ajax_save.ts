@@ -75,6 +75,7 @@ async function AJAX_send(): Promise<void> {
                 initialize_player_swapper(players_count);
                 initialize_settings();
                 load_elements();
+                prevent_panel_scroll();
             } else {
                 page_display.innerHTML += html["error_message"];
                 load_error_page_items();

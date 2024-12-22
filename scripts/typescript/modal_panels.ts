@@ -54,22 +54,25 @@ function hide_all_sections(section_destroy: boolean = false): void {
 	});
 }
 
-const modals: NodeListOf<HTMLDivElement> = document.querySelectorAll<HTMLDivElement>(".modal-window");
-modals.forEach((modal: HTMLDivElement) => {
-    modal.addEventListener(
-        "wheel",
-        (event: WheelEvent) => {
-            const scroll_top: number = modal.scrollTop; 
-            const scroll_height: number = modal.scrollHeight;
-            const client_height: number = modal.clientHeight;
-
-            const is_at_top: boolean = scroll_top === 0 && event.deltaY < 0;
-            const is_at_bottom: boolean = scroll_top + client_height >= scroll_height && event.deltaY > 0;
-
-            if(is_at_top || is_at_bottom) {
-                event.preventDefault();
-            }
-        },
-        { passive: false }
-    );
-});
+function prevent_panel_scroll(): void {
+    const modals: NodeListOf<HTMLDivElement> = document.querySelectorAll<HTMLDivElement>(".modal-window");
+    
+    modals.forEach((modal: HTMLDivElement) => {
+        modal.addEventListener(
+            "wheel",
+            (event: WheelEvent) => {
+                const scroll_top: number = modal.scrollTop; 
+                const scroll_height: number = modal.scrollHeight;
+                const client_height: number = modal.clientHeight;
+    
+                const is_at_top: boolean = scroll_top === 0 && event.deltaY < 0;
+                const is_at_bottom: boolean = scroll_top + client_height >= scroll_height && event.deltaY > 0;
+    
+                if(is_at_top || is_at_bottom) {
+                    event.preventDefault();
+                }
+            },
+            { passive: false }
+        );
+    });
+}
