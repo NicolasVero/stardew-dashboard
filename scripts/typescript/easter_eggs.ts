@@ -25,7 +25,7 @@ function easter_egg_characters(): void {
 		return;
 	}
 
-	const audio: HTMLAudioElement = new Audio(get_site_root() + "/medias/audio/trigger.mp3");
+	const audio: HTMLAudioElement = new Audio(get_site_root() + "/assets/audio/trigger.mp3");
 	let is_playing: boolean = false;
 
 	const play_once = (): void => {
@@ -33,7 +33,7 @@ function easter_egg_characters(): void {
 			is_playing = true;
 
 			const fullscreen_image: HTMLImageElement = document.createElement("img");
-			fullscreen_image.src = `https://raw.githubusercontent.com/NicolasVero/stardew-dashboard/refs/heads/master/medias/images/characters/${character}.png`;
+			fullscreen_image.src = `https://raw.githubusercontent.com/NicolasVero/stardew-dashboard/refs/heads/master/assets/images/characters/${character}.png`;
 			fullscreen_image.classList.add("fullscreen-image");
 			document.body.appendChild(fullscreen_image);
 
@@ -67,7 +67,7 @@ function easter_egg_kaaris(): void {
 	
     element.classList.add("easter_egg_kaaris");
 
-    const audio: HTMLAudioElement = new Audio(get_site_root() + "/medias/audio/kaaris_maison-citrouille.mp3");
+    const audio: HTMLAudioElement = new Audio(get_site_root() + "/assets/audio/kaaris_maison-citrouille.mp3");
     let is_playing: boolean = false;
 
     element.addEventListener("dblclick", () => {
