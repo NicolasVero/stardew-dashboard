@@ -91,12 +91,19 @@ function display_bundle_requirements(array $requirements, array $added_items): s
 
         $formatted_item_name = formate_text_for_file($name);
         $has_been_donated = (has_been_donated_in_bundle($name, $added_items)) ? "donated" : "not-donated";
+        
+        $item_image = "
+            <img src='$images_path/$type/$formatted_item_name.png' class='item $has_been_donated' alt='$name'/>
+        ";
+        $quality_image = ($quality > 0 && $quality < 4) ? "
+            <img src='$images_path/icons/quality_$quality.png' class='quality' alt=''/>
+        " : "";
         $quantity = ($quantity > 1) ? "<span class='quantity'>$quantity</span>" : "";
 
         $structure .= "
             <span class='required-item'>
-                <img src='$images_path/$type/$formatted_item_name.png' class='item $has_been_donated' alt='$name'/>
-                <img src='$images_path/icons/quality_$quality.png' class='quality' alt=''/>
+                $item_image
+                $quality_image
                 $quantity
             </span>
         ";
