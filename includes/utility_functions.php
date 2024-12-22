@@ -515,7 +515,7 @@ function get_detailled_gallery_image(string $json_filename, string $json_line_na
 	$images_path = get_images_folder();
 
 	if(!in_array($json_filename, ["secret_notes"])) {
-		return "$images_path/$json_filename/" . formate_text_for_file((string) explode("µ", $json_line_name)[0]). ".png";
+		return "$images_path/$json_filename/" . formate_text_for_file($json_line_name). ".png";
 	}
 
 	$line_name = explode(" ", $json_line_name);

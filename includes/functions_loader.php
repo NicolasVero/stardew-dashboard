@@ -32,7 +32,9 @@ $functions_files = [
     ]
 ];
 
-$path_prefix = (str_contains(debug_backtrace()[1]["file"], "get_xml_data.php")) ? "../" : "";
+$backtrace = debug_backtrace()[1]["file"] ?? "";
+$path_prefix = (str_contains($backtrace, "get_xml_data.php")) ? "../" : "";
+
 foreach($functions_files as $folder => $subfolders) {
     $folders_to_include = (is_array($subfolders)) ? $subfolders : [$subfolders];
 
