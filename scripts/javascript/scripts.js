@@ -60,6 +60,7 @@ function AJAX_send() {
                     initialize_player_swapper(players_count);
                     initialize_settings();
                     load_elements();
+                    prevent_panel_scroll();
                 }
                 else {
                     page_display.innerHTML += html["error_message"];
@@ -101,6 +102,7 @@ window.addEventListener("load", () => {
         save_upload.addEventListener("change", file_choice);
     }
     save_landing_topbar();
+    prevent_panel_scroll();
     activate_buttons(".landing-upload", ".exit-upload", ".upload-panel");
     activate_buttons(".landing-settings", ".exit-settings", ".settings");
     toggle_custom_checkboxes(".checkmark");
@@ -382,19 +384,21 @@ function hide_all_sections(section_destroy = false) {
         section.style.display = "none";
     });
 }
-const modals = document.querySelectorAll(".modal-window");
-modals.forEach((modal) => {
-    modal.addEventListener("wheel", (event) => {
-        const scroll_top = modal.scrollTop;
-        const scroll_height = modal.scrollHeight;
-        const client_height = modal.clientHeight;
-        const is_at_top = scroll_top === 0 && event.deltaY < 0;
-        const is_at_bottom = scroll_top + client_height >= scroll_height && event.deltaY > 0;
-        if (is_at_top || is_at_bottom) {
-            event.preventDefault();
-        }
-    }, { passive: false });
-});
+function prevent_panel_scroll() {
+    const modals = document.querySelectorAll(".modal-window");
+    modals.forEach((modal) => {
+        modal.addEventListener("wheel", (event) => {
+            const scroll_top = modal.scrollTop;
+            const scroll_height = modal.scrollHeight;
+            const client_height = modal.clientHeight;
+            const is_at_top = scroll_top === 0 && event.deltaY < 0;
+            const is_at_bottom = scroll_top + client_height >= scroll_height && event.deltaY > 0;
+            if (is_at_top || is_at_bottom) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+    });
+}
 var OS;
 (function (OS) {
     OS["mac"] = "mac";
