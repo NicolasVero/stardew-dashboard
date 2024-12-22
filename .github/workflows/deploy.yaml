@@ -49,7 +49,7 @@ jobs:
           --exclude assets/images/steam_achievements/ \
           --exclude assets/images/unlockables/ \
           --exclude styles/less/ \
-          --exclude script/typescript/ \
+          --exclude scripts/typescript/ \
           --exclude .gitignore \
           --exclude .htaccess \
           --exclude composer.json \
