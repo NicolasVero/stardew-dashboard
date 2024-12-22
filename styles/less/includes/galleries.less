@@ -1,0 +1,46 @@
+// out: false
+
+.gallery {
+	display: flex;
+	flex-direction: column;
+
+	& > span {
+		display: flex;
+		flex-wrap: wrap;
+		gap: @small-gap;
+	}
+
+	& > .has_panel {
+		span {
+			align-self: flex-end;
+			color: @secondary-fc;
+			cursor: @pointer;
+			font-family: @primary-ff;
+			font-size: @xsmall-fs;
+		}
+	}
+
+	img {
+		height: @big-icon;
+		min-width: @big-icon;
+		object-fit: contain;
+
+		&.enemies {
+			width: @big-icon !important;
+		}
+	}
+}
+
+.intra-gallery {
+	display: flex;
+	flex-direction: column;
+	gap: @big-gap;
+}
+
+.separated-galleries {
+	display: flex;
+	flex-wrap: wrap;
+	gap: @big-gap 0;
+	justify-content: space-between;
+	width: 100%;
+}

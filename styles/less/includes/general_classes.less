@@ -21,7 +21,16 @@ pre {
 	opacity: 0.2;
 }
 
-.not-found, .not-gifted, .not-talked, .isnt_birthday, .isnt_festival, .topic_not_selected, .not-petted, .not-met, .incomplete, .donated {
+.not-found,
+.not-gifted,
+.not-talked,
+.isnt_birthday,
+.isnt_festival,
+.topic_not_selected,
+.not-petted,
+.not-met,
+.incomplete,
+.donated {
 	.grey;
 }
 
@@ -124,83 +133,8 @@ pre {
 	width: @big-icon;
 }
 
-// Wiki links 
 .wiki_link {
 	text-decoration: none;
-}
-
-// Tooltips
-.tooltip {
-	&.calendar-tooltip, &.museum-tooltip, &.bundle-tooltip {
-		&:hover {
-			z-index: 1;
-		}
-
-		& > span {
-			bottom: 0;
-		}
-	}
-
-	&.bundle-tooltip {
-		& > span {
-			border-image: none;
-			border-image-width: 0px;
-			font-size: 0px;
-			padding: 0;
-		}
-	}
-	
-    &:hover {
-        position: relative;
-    }
-
-    & > span {
-        .data;
-        background-color: @stardew-bg;
-        border-image: url("../../assets/images/content/border_image.png") 15 stretch;
-        border-image-width: 2px;
-        display: none !important;
-		max-width: calc(100vw / 2);
-        padding: @small-gap (@small-gap + @xsmall-gap);
-        position: absolute;
-        width: max-content;
-
-        &.left {
-            right: 100%;
-        }
-
-        &.right {
-            left: 100%;
-        }
-    }
-
-	img, a {
-		display: inline-block;
-
-        &:hover {
-            cursor: @help;
-
-            & ~ span {
-                display: inline !important;
-
-               	&.left {
-               	    left: auto;
-               	    right: 100%;
-					z-index: 1;
-               	}
-
-               	&.right {
-               	    left: 100%;
-               	    right: auto;
-					z-index: 1;
-               	}
-            }
-        }
-    }
-
-	a {
-		height: @big-icon;
-	}
 }
 
 // Easter eggs
@@ -215,10 +149,10 @@ pre {
     transition: opacity 1s ease;
     width: 180vw;
     z-index: 2;
-}
 
-.fullscreen-image.show {
-    opacity: 1;
+	&.show {
+		opacity: 1;
+	}
 }
 
 @keyframes rainbow {

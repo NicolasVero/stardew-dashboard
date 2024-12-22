@@ -1,0 +1,46 @@
+// out: false
+
+&.general-stats {
+	flex-basis: 100%;
+	position: relative;
+
+	div {
+		display: flex;
+		flex-wrap: wrap;
+		gap: @md-gap @bigger-gap;
+		margin-top: @md-gap;
+	}
+	
+	span {
+		align-items: flex-end;
+		display: flex;
+		gap: @small-gap;
+	}
+	
+	img {
+		height: @md-icon;
+		
+		&.icon {
+			cursor: @pointer;
+			position: absolute;
+			top: 0;
+
+			&.quest-icon {
+				right: 0;
+			}
+
+			&.controller-icon {
+				right: (@big-icon + @small-gap);
+				top: -2px;
+			}
+
+			&.golden-scroll-icon {
+				right: (@big-icon + @small-gap) * 2;
+			}
+
+			&.visited-locations-icon {
+				right: (@big-icon + @small-gap) * 3;
+			}
+		}
+	}
+}

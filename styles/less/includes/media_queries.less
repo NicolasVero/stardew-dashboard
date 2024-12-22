@@ -24,3 +24,24 @@
 		}
 	}
 }
+
+@media (max-width: @desktop-breakpoint) {
+	// Gallery items
+	._50, ._100 {
+		flex-basis: 100%;
+	}
+
+	body {
+		main {
+			.first-gallery {
+				.intra-gallery {
+					order: 2;
+				}
+
+				.friends-section {
+					order: 1;
+				}
+			}
+		}
+	}
+}
