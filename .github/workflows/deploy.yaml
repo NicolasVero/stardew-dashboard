@@ -1,0 +1,59 @@
+name: Website Deployment
+
+on:
+  push:
+    branches:
+      - deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code Verification
+        uses: actions/checkout@v2
+
+      - name: LFTP install
+        run: sudo apt-get install -y lftp
+
+      - name: Deployment script execution
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+        run: |
+          echo "Script beginning..."
+          echo "Connection to $FTP_HOST with username $FTP_USER"
+          /usr/bin/lftp -u $FTP_USER,$FTP_PASS $FTP_HOST -e "mirror -R ./ /htdocs/ \
+          --exclude .github/ \
+          --exclude .git/ \
+          --exclude medias/images/achievements/ \
+          --exclude medias/images/additionnal_items/ \
+          --exclude medias/images/artifacts/ \
+          --exclude medias/images/books/ \
+          --exclude medias/images/bundles/ \
+          --exclude medias/images/characters/ \
+          --exclude medias/images/cooking_recipes/ \
+          --exclude medias/images/crafting_recipes/ \
+          --exclude medias/images/dialogue_boxes/ \
+          --exclude medias/images/enemies/ \
+          --exclude medias/images/farm_animals/ \
+          --exclude medias/images/fish/ \
+          --exclude medias/images/icons/ \
+          --exclude medias/images/minerals/ \
+          --exclude medias/images/rewards/ \
+          --exclude medias/images/shipped_items/ \
+          --exclude medias/images/skills/ \
+          --exclude medias/images/social/ \
+          --exclude medias/images/steam_achievements/ \
+          --exclude medias/images/unlockables/ \
+          --exclude styles/less/ \
+          --exclude script/typescript/ \
+          --exclude .gitignore \
+          --exclude .htaccess \
+          --exclude composer.json \
+          --exclude tsconfig.json \
+          --exclude package.json \
+          --exclude composer.lock \
+          --exclude package.lock \
+          --exclude README.md; quit"
