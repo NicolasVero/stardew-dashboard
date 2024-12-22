@@ -5,287 +5,51 @@
 	color: @text-selection-fc;
 }
 
-body {
-	margin: 5vh 10vw;
+* {
+	padding: 0;
+	box-sizing: border-box;
+	cursor: @auto;
+}
 
-	main {
-		background-color: @secondary-bg;
-		border-radius: 0 0 5px 5px;
-		display: flex;
-		flex-wrap: wrap;
-		gap: @big-gap 0;
-		padding: @small-gap @big-gap;
+html {
+	background: @dark-bg url("../../assets/images/content/bg.png") no-repeat fixed center center / cover;
 	
-		section {
-			&:not(.general-stats) {
-				display: flex;
-				flex-direction: column;
-				gap: @md-gap;
-			}
-		}
-		
-		.section-title {
-			align-self: flex-start;
-			color: @primary-fc;
-			font-size: @small-fs;
-			font-family: @primary-ff;
-			font-weight: 400;
-			margin-bottom: 0;
-		}
-	
-		.info-section {
-			justify-content: flex-start;
-			min-width: fit-content;
-			
-			&.general-stats {
-				flex-basis: 100%;
-				position: relative;
-	
-				div {
-					display: flex;
-					flex-wrap: wrap;
-					gap: @md-gap @bigger-gap;
-					margin-top: @md-gap;
-				}
-				
-				span {
-					align-items: flex-end;
-					display: flex;
-					gap: @small-gap;
-				}
-				
-				img {
-					height: @md-icon;
-					
-					&.icon {
-						cursor: @pointer;
-						position: absolute;
-						top: 0;
+	body {
+		margin: 5vh 10vw;
 
-						&.quest-icon {
-							right: 0;
-						}
-
-						&.controller-icon {
-							right: (@big-icon + @small-gap);
-							top: -2px;
-						}
-
-						&.golden-scroll-icon {
-							right: (@big-icon + @small-gap) * 2;
-						}
-
-						&.visited-locations-icon {
-							right: (@big-icon + @small-gap) * 3;
-						}
-					}
-				}
-			}
-	
-			&.skills-section {
-				.skill {
-					align-items: center;
-					display: flex;
-					gap: @md-gap;
-
-					div {
-						display: flex;
-  						gap: @md-gap;
-					}
-	
-					.level {
-						align-items: center;
-						display: flex;
-						justify-content: center;
-						width: 20px;
-					}
-	
-					.level-progress-bar {
-						align-items: center;
-						display: flex;
-						gap: @small-gap;
-					}
-	
-					img {
-						height: @md-icon;
-					
-						&.level-icon {
-							height: @big-icon;
-						}
-					}
-				}
-			}
-	
-			&.friends-section {
-				& > .has_panel {
-					display: flex;
-					flex-wrap: wrap;
-					gap: @small-gap;
-
-					.view-all-friends {
-						align-self: flex-end;
-						color: @secondary-fc;
-						cursor: @pointer;
-						font-family: @primary-ff;
-						font-size: @xsmall-fs;
-						height: fit-content;
-					}
-				}
-
-				& > .friendlist {
-					display: flex;
-					flex-direction: column;
-	
-					& > span {
-						align-items: center;
-						display: flex;
-					}
-		
-					.character-icon {
-						cursor: @help;
-						width: @bigger-icon;
-					}
-
-					.character-name {
-						font-family: @primary-ff;
-						min-width: 75px;
-					}
-	
-					.hearts-level {
-						display: flex;
-						flex-wrap: wrap;
-						gap: @small-gap;
-						width: 245px;
-					
-						.hearts {
-							width: @small-icon;
-						}
-					}
-
-					.birthday_icon {
-						width: @md-icon;
-					}
-
-					.interactions {
-						align-items: center;
-						display: flex;
-						gap: @big-gap;
-
-						& > span {
-							display: flex;
-							gap: @md-gap;
-						}
-						
-						.interaction {
-							width: @md-icon;
-						}
-
-						.gift-counter {
-							.data;
-						}
-	
-						.week {
-							color: @secondary-fc;
-							font-family: @secondary-ff;
-							font-size: @xsmall-fs;
-							width: max-content;
-						}
-					}
-
-					.friend-status {
-						.data;
-						font-size: @md-fs;
-					}
-				}
-	
-				&.top-friends {
-					& > .friendlist {
-						height: 100%;
-						justify-content: space-between;
-
-						& > span {
-							gap: @md-gap;
-							justify-content: space-between;
-
-							.character-name {
-								text-align: left;
-							}
-						}
-					}
-				}
-	
-				&.all-friends {
-					.invisible-panel;
-					.panel;
-					.panel-with-border;
-					height: 80vh;
-					padding: @md-gap @big-gap;
-	
-					& > span {
-						& > span {
-							gap: @bigger-gap;
-						}
-					}
-		
-					.section-title {
-						font-size: @big-fs;
-					}
-					
-					& > .friendlist {
-						gap: @md-gap;
-						justify-content: center;
-					}
-				}
-			}
-		}
-
-		.intra-gallery {
-			display: flex;
-			flex-direction: column;
-			gap: @big-gap;
-		}
-	
-		.separated-galleries {
+		main {
+			background-color: @secondary-bg;
+			border-radius: 0 0 5px 5px;
 			display: flex;
 			flex-wrap: wrap;
 			gap: @big-gap 0;
-			justify-content: space-between;
-			width: 100%;
-		}
-	
-		.gallery {
-			display: flex;
-			flex-direction: column;
-	
-			& > span {
-				display: flex;
-				flex-wrap: wrap;
-				gap: @small-gap;
-			}
-
-			& > .has_panel {
-				span {
-					align-self: flex-end;
-					color: @secondary-fc;
-					cursor: @pointer;
-					font-family: @primary-ff;
-					font-size: @xsmall-fs;
+			padding: @small-gap @big-gap;
+		
+			section {
+				&:not(.general-stats) {
+					display: flex;
+					flex-direction: column;
+					gap: @md-gap;
 				}
 			}
-	
-			img {
-				height: @big-icon;
-				min-width: @big-icon;
-				object-fit: contain;
-
-				&.enemies {
-					width: @big-icon !important;
-				}
+			
+			.section-title {
+				align-self: flex-start;
+				color: @primary-fc;
+				font-size: @small-fs;
+				font-family: @primary-ff;
+				font-weight: 400;
+				margin-bottom: 0;
 			}
-		}
-	
-		& > :last-child {
-			margin-bottom: @big-gap;
+
+			.info-section {
+				justify-content: flex-start;
+				min-width: fit-content;
+			}
+		
+			& > :last-child {
+				margin-bottom: @big-gap;
+			}
 		}
 	}
 }

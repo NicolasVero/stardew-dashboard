@@ -1,0 +1,123 @@
+// out: false
+
+&.friends-section {
+	& > .has_panel {
+		display: flex;
+		flex-wrap: wrap;
+		gap: @small-gap;
+
+		.view-all-friends {
+			align-self: flex-end;
+			color: @secondary-fc;
+			cursor: @pointer;
+			font-family: @primary-ff;
+			font-size: @xsmall-fs;
+			height: fit-content;
+		}
+	}
+
+	& > .friendlist {
+		display: flex;
+		flex-direction: column;
+
+		& > span {
+			align-items: center;
+			display: flex;
+		}
+
+		.character-icon {
+			cursor: @help;
+			width: @bigger-icon;
+		}
+
+		.character-name {
+			font-family: @primary-ff;
+			min-width: 75px;
+		}
+
+		.hearts-level {
+			display: flex;
+			flex-wrap: wrap;
+			gap: @small-gap;
+			width: 245px;
+		
+			.hearts {
+				width: @small-icon;
+			}
+		}
+
+		.birthday_icon {
+			width: @md-icon;
+		}
+
+		.interactions {
+			align-items: center;
+			display: flex;
+			gap: @big-gap;
+
+			& > span {
+				display: flex;
+				gap: @md-gap;
+			}
+			
+			.interaction {
+				width: @md-icon;
+			}
+
+			.gift-counter {
+				.data;
+			}
+
+			.week {
+				color: @secondary-fc;
+				font-family: @secondary-ff;
+				font-size: @xsmall-fs;
+				width: max-content;
+			}
+		}
+
+		.friend-status {
+			.data;
+			font-size: @md-fs;
+		}
+	}
+
+	&.top-friends {
+		& > .friendlist {
+			height: 100%;
+			justify-content: space-between;
+
+			& > span {
+				gap: @md-gap;
+				justify-content: space-between;
+
+				.character-name {
+					text-align: left;
+				}
+			}
+		}
+	}
+
+	&.all-friends {
+		.invisible-panel;
+		.panel;
+		.panel-with-border;
+		height: 80vh;
+		padding: @md-gap @big-gap;
+
+		& > span {
+			& > span {
+				gap: @bigger-gap;
+			}
+		}
+
+		.section-title {
+			font-size: @big-fs;
+		}
+		
+		& > .friendlist {
+			gap: @md-gap;
+			justify-content: center;
+		}
+	}
+}

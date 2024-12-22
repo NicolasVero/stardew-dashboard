@@ -1,60 +1,5 @@
 // out: false
 
-.topbar {
-	align-items: flex-end;
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 20px;
-	width: 100%;
-	
-	&#landing_menu, &#error_menu {
-		justify-content: flex-end;
-		gap: @md-gap;
-	}
-
-	#players_selection {
-		align-items: center;
-		display: flex;
-		flex-wrap: wrap;
-		gap: @small-gap @md-gap;
-		list-style-type: none;
-		margin: 0;
-		width: 70%;
-
-		li {
-			.button-elements;
-			.filled-element;
-			padding: extract(@button-gaps, 1) * @ratio extract(@button-gaps, 2) * @d-ratio;
-		}
-	}
-
-	& > span {
-		align-items: flex-end;
-		display: flex;
-		gap: @md-gap;
-
-		.game_version {
-			color: @third-fc;
-			font-family: @primary-ff;
-			font-size: @md-fs;
-		}
-
-		.modal-opener {
-			display: flex;
-		}
-
-		.landing-page-opener {
-			aspect-ratio: 1/1;
-			display: flex;
-		}
-
-		img {
-			.button-elements;
-			width: @bigger-icon;
-		}
-	}
-}
-
 header {
 	background-color: @primary-bg;
 	border-radius: 5px 5px 0 0;
@@ -80,7 +25,7 @@ header {
 				position: relative;
 				text-decoration: underline;
 
-				& .date-in-game:hover {
+				&.date-in-game:hover {
 					cursor: @pointer;
 				}
 
