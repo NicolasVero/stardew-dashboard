@@ -27,6 +27,7 @@ jobs:
           /usr/bin/lftp -u $FTP_USER,$FTP_PASS $FTP_HOST -e "mirror -R ./ /htdocs/ \
           --exclude .github/ \
           --exclude .git/ \
+          --exclude bash/ \
           --exclude medias/images/achievements/ \
           --exclude medias/images/additionnal_items/ \
           --exclude medias/images/artifacts/ \
