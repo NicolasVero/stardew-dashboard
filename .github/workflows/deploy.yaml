@@ -28,26 +28,26 @@ jobs:
           --exclude .github/ \
           --exclude .git/ \
           --exclude bash/ \
-          --exclude medias/images/achievements/ \
-          --exclude medias/images/additionnal_items/ \
-          --exclude medias/images/artifacts/ \
-          --exclude medias/images/books/ \
-          --exclude medias/images/bundles/ \
-          --exclude medias/images/characters/ \
-          --exclude medias/images/cooking_recipes/ \
-          --exclude medias/images/crafting_recipes/ \
-          --exclude medias/images/dialogue_boxes/ \
-          --exclude medias/images/enemies/ \
-          --exclude medias/images/farm_animals/ \
-          --exclude medias/images/fish/ \
-          --exclude medias/images/icons/ \
-          --exclude medias/images/minerals/ \
-          --exclude medias/images/rewards/ \
-          --exclude medias/images/shipped_items/ \
-          --exclude medias/images/skills/ \
-          --exclude medias/images/social/ \
-          --exclude medias/images/steam_achievements/ \
-          --exclude medias/images/unlockables/ \
+          --exclude assets/images/achievements/ \
+          --exclude assets/images/additionnal_items/ \
+          --exclude assets/images/artifacts/ \
+          --exclude assets/images/books/ \
+          --exclude assets/images/bundles/ \
+          --exclude assets/images/characters/ \
+          --exclude assets/images/cooking_recipes/ \
+          --exclude assets/images/crafting_recipes/ \
+          --exclude assets/images/dialogue_boxes/ \
+          --exclude assets/images/enemies/ \
+          --exclude assets/images/farm_animals/ \
+          --exclude assets/images/fish/ \
+          --exclude assets/images/icons/ \
+          --exclude assets/images/minerals/ \
+          --exclude assets/images/rewards/ \
+          --exclude assets/images/shipped_items/ \
+          --exclude assets/images/skills/ \
+          --exclude assets/images/social/ \
+          --exclude assets/images/steam_achievements/ \
+          --exclude assets/images/unlockables/ \
           --exclude styles/less/ \
           --exclude script/typescript/ \
           --exclude .gitignore \
