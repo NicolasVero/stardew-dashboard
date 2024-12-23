@@ -7,26 +7,27 @@ CYAN="\033[1;36m"
 RED="\033[1;31m"
 ORANGE="\033[1;33m"
 GREEN="\033[1;32m"
-CARRIAGE_RETURN="\033[0m"
+BLANK_SPACE="\033[0m"
+CARRIAGE_RETURN="\n"
 
 MASTER_BRANCH="master"
 DEPLOY_BRANCH="deploy"
 
 handle_error() {
-  echo -e "\n${RED}❌ An error occured : $1 (╯°□°)╯︵ ┻━┻ ${CARRIAGE_RETURN} \n"
+  echo -e "${CARRIAGE_RETURN}${RED}❌ An error occured: $1 (╯°□°)╯︵ ┻━┻ ${BLANK_SPACE}${CARRIAGE_RETURN}"
   exit 1
 }
 
 warning_message() {
-  echo -e "\n${ORANGE}$1 ¯\_(ツ)_/¯ ${CARRIAGE_RETURN}\n"
-}
-
-info_message() {
-  echo -e "\n${CYAN}$1${CARRIAGE_RETURN}\n"
+  echo -e "${CARRIAGE_RETURN}${ORANGE}$1 ¯\_(ツ)_/¯ ${BLANK_SPACE}${CARRIAGE_RETURN}"
 }
 
 success_message() {
-  echo -e "\n${GREEN}$1 *\(^o^)/* ${CARRIAGE_RETURN}\n"
+  echo -e "${CARRIAGE_RETURN}${GREEN}$1 *\(^o^)/* ${BLANK_SPACE}${CARRIAGE_RETURN}"
+}
+
+info_message() {
+  echo -e "${CARRIAGE_RETURN}${CYAN}$1${BLANK_SPACE}${CARRIAGE_RETURN}"
 }
 
 info_message "Fetching the latest changes from origin..."
@@ -60,4 +61,4 @@ fi
 info_message "Switching to branch '$MASTER_BRANCH'..."
 git checkout "$MASTER_BRANCH" || handle_error "Can't switch to '$MASTER_BRANCH'."
 
-read -p "Press Enter to continue..."
+read -p "Press any key to continue..."
