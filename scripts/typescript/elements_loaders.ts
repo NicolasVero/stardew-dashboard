@@ -1,4 +1,4 @@
-function load_error_page_items(): void {
+function load_error_page_elements(): void {
     const button_configurations = [
         { open_button: ".main-settings", exit_button: ".exit-settings", modal_panel: ".settings"     },
         { open_button: ".file-upload",   exit_button: ".exit-upload",   modal_panel: ".upload-panel" }
@@ -9,9 +9,24 @@ function load_error_page_items(): void {
     });
 }
 
-function load_elements(): void {
+function load_dashboard_elements(): void {
     toggle_landing_page(false);
+    
+    load_buttons();
+    load_easter_eggs();
+
+    initialize_settings();
     toggle_checkboxes_actions();
+
+    update_tooltips_after_ajax();
+
+    prevent_panel_scroll();
+
+    initialize_player_swapper(get_players_number());
+}
+
+function load_buttons(): void {
+    const players_in_save: number = get_players_number();
 
     const common_buttons = [
         { open_button: ".landing-settings", exit_button: ".exit-settings", modal_panel: ".settings"     },
@@ -20,14 +35,12 @@ function load_elements(): void {
         { open_button: ".file-upload"     , exit_button: ".exit-upload"  , modal_panel: ".upload-panel" }
     ];
 
+    const dynamic_buttons = [];
     const dynamic_prefixes: string[] = [
         "all-friends", "all-quests", "monster-eradication-goals",
         "calendar", "all-animals", "junimo-kart-leaderboard",
         "museum", "community-center", "visited-locations"
     ];
-
-    const players_in_save: number = get_players_number();
-    const dynamic_buttons = [];
 	
     for(let i: number = 0; i < players_in_save; i++) {
         dynamic_prefixes.forEach((prefix: string) => {
@@ -49,7 +62,10 @@ function load_elements(): void {
         const display: boolean = document.getElementById("landing_page")?.style.display !== "none";
         toggle_landing_page(!display);
     });
+}
 
-    load_easter_eggs();
-    update_tooltips_after_ajax();
+function load_final_elements(): void {
+    activate_feedback_ajax_trigger();
+    toggle_visibility(current_section, false);
+    toggle_loading(false);
 }

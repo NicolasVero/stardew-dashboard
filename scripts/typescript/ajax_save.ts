@@ -72,18 +72,13 @@ async function AJAX_send(): Promise<void> {
                     page_display.innerHTML += html["player_" + i];
                 }
 
-                initialize_player_swapper(players_count);
-                initialize_settings();
-                load_elements();
-                prevent_panel_scroll();
+                load_dashboard_elements();
             } else {
                 page_display.innerHTML += html["error_message"];
-                load_error_page_items();
+                load_error_page_elements();
             }
 
-            activate_feedback_ajax_trigger();
-            toggle_visibility(current_section, false);
-            toggle_loading(false);
+            load_final_elements();
         }
     };
 

@@ -9,7 +9,7 @@ function update_tooltips_after_ajax(): void {
 function initialize_tooltips(section: string = null): void {
     let tooltips : NodeListOf<HTMLElement>;
     
-    if (section === null || section === '') {
+    if(section === null || section === '') {
         tooltips = document.querySelectorAll(".tooltip");
     } else {
         tooltips = document.querySelector("." + section).querySelectorAll(".tooltip");

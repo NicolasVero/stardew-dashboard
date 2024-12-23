@@ -353,10 +353,7 @@ function get_script_loader(): string {
 	return "
 		<script>
 			document.addEventListener('DOMContentLoaded', function() {
-				const players_count = " . count($GLOBALS["players_names"]) . "
-				initialize_player_swapper(players_count);
-				initialize_settings();
-				load_elements();
+				load_dashboard_elements();
 			});
 		</script>
 	";

@@ -52,10 +52,11 @@ function display_quest_panel(): string {
             $quest_structure .= ((is_numeric($rewards[$i]) || str_ends_with($rewards[$i], 'q'))) ? "<span class='quest-reward'>" : "<span class='quest-reward tooltip'>";
             
 			/*
-            if Friendship hearts/points
-			elseif Gold
-			elseif Qi Gems
-			elseif something else
+            Plusieurs types de rewards :
+            Friendship hearts/points
+			Gold
+			Qi Gems
+			Objects (string)
             */
             if(strstr($rewards[$i], "Friendship")) {
                 $reward_number = explode(" ", $rewards[$i])[0];
