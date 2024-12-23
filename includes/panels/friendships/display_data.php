@@ -5,13 +5,12 @@
 function display_friendship_structure(array $friendship_info): string {
     $images_path = get_images_folder();
     $json_with_version = sanitize_json_with_version("villagers", true);
+    
     $friendship_info = prepare_all_friendship_info($friendship_info);
-
     extract($friendship_info); //? $villager_name, $status, $hearts_structure, $week_gifts, $wiki_link, $birthday[]
     extract($birthday); //? $is_birthday, $birthdate
 
     $formatted_villager_name = strtolower($villager_name);
-
     $version_class = array_search($villager_name, $json_with_version) ? "older-version" : "newer-version";
     $meet_class = ($status === "Unknown") ? "not-met" : "met";
     $birthday_class = ($is_birthday) ? "is_birthday" : "isnt_birthday";

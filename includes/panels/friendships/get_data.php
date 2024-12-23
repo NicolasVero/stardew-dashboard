@@ -30,6 +30,38 @@ function get_player_friendship_data(): array {
 	return $friends_data; 
 }
 
+function prepare_all_friendship_info(array $friendship_info): array {
+    $marriables_npc = sanitize_json_with_version("marriables");
+
+    $friendship_info = get_verified_friend_data($friendship_info);
+    extract($friendship_info); //? $id, $points, $friend_level, $birthday, $status, $week_gifts
+
+    $villager_name = get_item_name_by_id($id);
+    $wiki_url = get_wiki_link(get_item_id_by_name($villager_name));
+
+    $can_be_married = in_array($villager_name, $marriables_npc) && $status === "Friendly";
+    $hearts_structure = get_hearts_structure([
+        "status" => $status,
+        "friend_level" => $friend_level,
+        "can_be_married" => $can_be_married
+    ]);
+
+    $is_birthday = $birthday && is_this_the_same_day($birthday);
+    $birthdate = $birthday ? "Day " . explode("/", $birthday)[0] . " of " . explode("/", $birthday)[1] : "Unknown";
+
+	return [
+		"villager_name" => $villager_name,
+		"status" => $status,
+		"hearts_structure" => $hearts_structure,
+		"week_gifts" => $week_gifts,
+		"wiki_link" => $wiki_url,
+		"birthday" => [
+			"is_birthday" => $is_birthday,
+			"birthdate" => $birthdate
+		]
+	];
+}
+
 function get_verified_friend_data(array $friendship_info): array {
     $birthday_json = sanitize_json_with_version("villagers_birthday");
 
@@ -69,36 +101,4 @@ function get_hearts_structure(array $hearts_info): string {
     }
 
 	return $hearts_structure;
-}
-
-function prepare_all_friendship_info(array $friendship_info): array {
-    $marriables_npc = sanitize_json_with_version("marriables");
-
-    $friendship_info = get_verified_friend_data($friendship_info);
-    extract($friendship_info); //? $id, $points, $friend_level, $birthday, $status, $week_gifts
-
-    $villager_name = get_item_name_by_id($id);
-    $wiki_url = get_wiki_link(get_item_id_by_name($villager_name));
-
-    $can_be_married = in_array($villager_name, $marriables_npc) && $status === "Friendly";
-    $hearts_structure = get_hearts_structure([
-        "status" => $status,
-        "friend_level" => $friend_level,
-        "can_be_married" => $can_be_married
-    ]);
-
-    $is_birthday = $birthday && is_this_the_same_day($birthday);
-    $birthdate = $birthday ? "Day " . explode("/", $birthday)[0] . " of " . explode("/", $birthday)[1] : "Unknown";
-
-	return [
-		"villager_name" => $villager_name,
-		"status" => $status,
-		"hearts_structure" => $hearts_structure,
-		"week_gifts" => $week_gifts,
-		"wiki_link" => $wiki_url,
-		"birthday" => [
-			"is_birthday" => $is_birthday,
-			"birthdate" => $birthdate
-		]
-	];
 }
