@@ -68,27 +68,21 @@ function display_friendships(int $limit = -1): string {
             <span class='friendlist'>
         ";
 
-    foreach($friendship_data as $villager_name => $friendship_info) {
-        if($limit === 0) {
-            break;
-        }
+        $all_villagers = array_merge(array_keys($friendship_data), array_diff($villagers_json, array_keys($friendship_data)));
 
-        $structure .= display_friendship_structure($friendship_info);
-        $limit--;
-    }
-
-    foreach($villagers_json as $villager_name) {
-        if($limit === 0) {
-            break;
-        }
-
-        if(isset($friendship_data[$villager_name])) {   
-            continue;
-        }
+        foreach ($all_villagers as $villager_name) {
+            if($limit === 0) {
+                break;
+            }
         
-        $structure .= display_friendship_structure(["id" => get_custom_id($villager_name)]);
-        $limit--;
-    }
+            if(isset($friendship_data[$villager_name])) {
+                $structure .= display_friendship_structure($friendship_data[$villager_name]);
+            } else {
+                $structure .= display_friendship_structure(["id" => get_custom_id($villager_name)]);
+            }
+        
+            $limit--;
+        }
 
     $structure .= "
             </span>

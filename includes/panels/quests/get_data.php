@@ -53,7 +53,7 @@ function get_daily_quest_data(object $quest): array|null {
 		],
 	];
 
-	if (!isset($quest_configs[$quest_type])) {
+	if(!isset($quest_configs[$quest_type])) {
 		return null;
 	}
 	
@@ -135,7 +135,7 @@ function get_player_quest_log(): array {
 		if(!empty($quest_reference)){
 			$quests_data[] = get_story_quest_data($quest_reference);
 		} else {
-			if (($quest_data = get_daily_quest_data($quest)) !== null) {
+			if(($quest_data = get_daily_quest_data($quest)) !== null) {
 				$quests_data[] = $quest_data;
 			}
 		}
@@ -143,7 +143,7 @@ function get_player_quest_log(): array {
 
 	// Special Orders (Weekly)
 	foreach($entire_data->specialOrders->SpecialOrder as $special_order) {
-		if (($special_order_data = get_special_order_data($special_order)) !== null) {
+		if(($special_order_data = get_special_order_data($special_order)) !== null) {
 			$quests_data[] = $special_order_data;
 		}
 	}
