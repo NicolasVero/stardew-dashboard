@@ -84,7 +84,7 @@ info_message "Starting minification..."
 uglifyjs "$FILE_NAME" -o "$FILE_NAME" --compress --mangle
 
 if [ $? -eq 0 ]; then
-    success_message "$FILE_NAME has been minfied successfully."
+    success_message "$FILE_NAME has been minified successfully."
 else
     handle_error "Error during file minification."
 fi
