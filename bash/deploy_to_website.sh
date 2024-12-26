@@ -3,6 +3,12 @@
 # Mode strict, arrête le script en cas d'erreur
 set -euo pipefail
 
+# Project root dir
+ROOT_DIR="$(cd "$(dirname "$0")" && cd .. && pwd)"
+
+# Variables and functions import
+source ${ROOT_DIR}/bash/functions.sh
+
 MASTER_BRANCH="master"
 DEPLOY_BRANCH="deploy"
 
