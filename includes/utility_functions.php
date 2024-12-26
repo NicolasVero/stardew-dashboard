@@ -507,28 +507,36 @@ function get_found_classes(array $player_data, string $json_filename, string $js
 	return $classes;
 }
 
-function get_detailled_gallery_image(string $json_filename, string $json_line_name): string {
-	
-	$images_path = get_images_folder();
+function display_project_contributor(array $options): string {
+    extract($options); //? $name, $icon, $texts, $socials
 
-	if(!in_array($json_filename, ["secret_notes"])) {
-		return "$images_path/$json_filename/" . formate_text_for_file($json_line_name). ".png";
-	}
+    $images_path = get_images_folder();
+    $portrait =  "$images_path/content/$icon.png";
+    $presentation = "";
+    $socials_links = "";
 
-	$line_name = explode(" ", $json_line_name);
-	$icon_name = formate_text_for_file(implode(" ", array_slice($line_name, 0, 2)));
-	return "$images_path/icons/$icon_name.png";
-}
+    foreach($texts as $text) {
+        $presentation .= "<span>$text</span>";
+    }
 
-function get_detailled_gallery_wiki_link(string $json_filename, string $json_line_name): string {
-	if(in_array($json_filename, ["achievements", "secret_notes"])) {
-		$wiki_url = [
-			"achievements" => get_wiki_link_by_name("achievements"),
-			"secret_notes" => get_wiki_link_by_name("secret_notes")
-		][$json_filename];
-	} else {
-		$wiki_url = get_wiki_link(get_item_id_by_name($json_line_name));
-	}
+    foreach($socials as $social_name => $social) {
+        extract($social); //? $url, $on_display
+        if($on_display) {
+            $socials_links .= "<a href='$url' rel='noreferrer' target='_blank'><img src='$images_path/social/$social_name.png' alt='$social_name'/></a>";
+        }
+    }
 
-	return $wiki_url;
+    return "
+        <span>
+            <img src='$portrait' class='character-image $icon' alt='$name'/>
+            <span>
+                <span class='character-presentation'>
+                    $presentation
+                </span>
+                <span class='socials'>
+                    $socials_links
+                </span>
+            </span>
+        </span>
+    ";
 }

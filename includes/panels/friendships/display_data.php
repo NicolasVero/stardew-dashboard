@@ -70,7 +70,7 @@ function display_friendships(int $limit = -1): string {
 
         $all_villagers = array_merge(array_keys($friendship_data), array_diff($villagers_json, array_keys($friendship_data)));
 
-        foreach ($all_villagers as $villager_name) {
+        foreach($all_villagers as $villager_name) {
             if($limit === 0) {
                 break;
             }

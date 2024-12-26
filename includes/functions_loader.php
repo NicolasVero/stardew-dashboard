@@ -1,9 +1,12 @@
 <?php 
 
 $functions_files = [
-    "topbar",
-    "header",
-    "general_stats",
+    "full_header" => [
+        "general_stats",
+        "header",
+        "topbar",
+    ],
+    "galleries",
     "galleries" => [
         "achievements",
         "artifacts",
@@ -18,6 +21,7 @@ $functions_files = [
         "shipped_items",
         "skills"
     ],
+    "panels",
     "panels" => [
         "calendar",
         "community_center",
