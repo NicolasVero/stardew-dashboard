@@ -24,9 +24,9 @@ function display_landing_page(bool $with_topbar = true): string {
         <div id='display'>
 			<div id='landing_page'>
 				<main>
-					<h1 class='section-title'>Welcome to Stardew Dashboard</h1>
+					<h1 class='section-title'>" . _("Welcome to Stardew Dashboard") . "</h1>
 					<section class='project-description'>
-						<h2 class='section-title'>What is Stardew Dashboard?</h2>
+						<h2 class='section-title'>" . _("What is Stardew Dashboard?") . "</h2>
 						<span>
 							<span>
 								Are you an avid farmer in Stardew Valley looking to optimize your gameplay experience? Look no further! Stardew Dashboard is your ultimate companion to manage your farm and track your progress.
