@@ -4,6 +4,7 @@ $functions_files = [
     "topbar",
     "header",
     "general_stats",
+    "galleries",
     "galleries" => [
         "achievements",
         "artifacts",
@@ -18,6 +19,7 @@ $functions_files = [
         "shipped_items",
         "skills"
     ],
+    "panels",
     "panels" => [
         "calendar",
         "community_center",
