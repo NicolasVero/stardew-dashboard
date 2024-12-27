@@ -373,8 +373,8 @@ function get_tooltip_text(array $player_data, string $json_line_name, string $da
     extract($data_array);
 
     switch($data_type) {
-        case "locations_to_visit" :
-            return "$json_line_name";
+        case "shipped_items" :
+            return "$json_line_name: $counter shipped";
 
         case "farm_animals" : 
             return "$json_line_name: $counter in your farm";
