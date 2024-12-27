@@ -1,19 +1,20 @@
 <?php
 
-$domain = "app";
-$lang = "fr_FR";
 $lang = "es_ES";
-putenv('LANG=' . $lang);
-putenv("LANGUAGE=" . $lang);
+// $lang = "fr_FR";
+$domain = [
+    "en_US" => "default",
+    "es_ES" => "app_es",
+    "fr_FR" => "app_fr"
+][$lang];
 
-bindtextdomain($domain, "./locale");
+bindtextdomain($domain, __DIR__ . "/locale");
 textdomain($domain);
 
-if(!setlocale(LC_ALL, "es_ES", "es-ES")) {
-    throw new Exception("Locale non supportée : " . $lang);
-}
+putenv('LANGUAGE=' . $lang);
+putenv('LANG=' . $lang);
 
-
+setlocale(LC_ALL, $lang);
 
 require_once "functions.php";
 

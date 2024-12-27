@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-12-26 15:30+0100\n"
-"PO-Revision-Date: 2024-12-26 15:53+0100\n"
+"POT-Creation-Date: 2024-12-27 16:11+0100\n"
+"PO-Revision-Date: 2024-12-27 16:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -22,4 +22,12 @@ msgstr ""
 
 #: includes/display_pages.php:27
 msgid "Welcome to Stardew Dashboard"
-msgstr "Hola senor"
+msgstr "Bonjour"
+
+#: includes/display_pages.php:29
+msgid "What is Stardew Dashboard?"
+msgstr "Qu'est ce que Stardew Dashboard"
+
+#: index.php:23
+msgid "Your string"
+msgstr "ma chiane"
