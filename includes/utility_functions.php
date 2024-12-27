@@ -293,8 +293,8 @@ function get_contributors(): array {
 			"name" => "Romain",
 			"icon" => "romain",
 			"texts" => [
-				"Romain is a hard-working web developer. He loves taking on challenges and always going the extra mile.",
-				"He took care of the Front-End, and helped Nicolas with the Back-End."
+				__("Romain is a hard-working web developer. He loves taking on challenges and always going the extra mile."),
+				__("He took care of the Front-End, and helped Nicolas with the Back-End.")
 			],
 			"socials" => [
 				"github" => [
@@ -319,8 +319,8 @@ function get_contributors(): array {
 			"name" => "Nicolas",
 			"icon" => "nicolas",
 			"texts" => [
-				"Nicolas is passionate about sleep and web development. He works as a web developer at Neoma Business School.",
-				"He took care of the Back-End of the website, as well as the UX / UI design."
+				__("Nicolas is passionate about sleep and web development. He works as a web developer at Neoma Business School."),
+				__("He took care of the Back-End of the website, as well as the UX / UI design.")
 			],
 			"socials" => [
 				"github" => [

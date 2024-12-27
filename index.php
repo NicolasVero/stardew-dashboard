@@ -1,7 +1,9 @@
 <?php
 
 require_once "functions.php";
-putenv("SITE_LANGUAGE=fr");
+
+$lang = $_GET["lang"] ?? "default";
+putenv("SITE_LANGUAGE=$lang");
 require_once "locales/locale_loader.php";
 locale_file_loader();
 
