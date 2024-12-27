@@ -7,6 +7,12 @@ require_once "includes/display_pages.php";
 
 require_once "includes/extract_data_from_save.php";
 
+$lang = $_GET["lang"] ?? "default";
+putenv("SITE_LANGUAGE=$lang");
+require_once "locales/locale_loader.php";
+locale_file_loader();
+
+
 if(isset($_GET["action"]) && $_GET["action"] === "get_max_upload_size") {	
 	echo get_php_max_upload_size();
 }

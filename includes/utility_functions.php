@@ -1,5 +1,13 @@
 <?php
 
+function __(string $text): string {
+    if(!$GLOBALS["is_site_translate"]) {
+        return $text;
+    }
+
+    return $GLOBALS["site_language"][$text] ?? $text;
+}
+
 function log_(mixed $element, string $title = null): void {
     if($title !== null) {
 		echo "<h2>$title</h2>";
