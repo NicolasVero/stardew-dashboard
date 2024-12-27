@@ -17,7 +17,7 @@ function locale_file_loader(): bool {
         $file_content = decode($traduction_file, get_languages_folder() . "/$site_language/");
         $GLOBALS["site_language"] = array_merge($GLOBALS["site_language"], $file_content);
     }
-
+    log_($GLOBALS["site_language"]);
     $GLOBALS["is_site_translate"] = true;
 
     return true;
@@ -25,7 +25,7 @@ function locale_file_loader(): bool {
 
 function get_traductions_files(): array {
     return [
-        "landing_page", "topbar_panels"
+        "landing_page", "topbar_panels", "errors"
     ];
 }
 

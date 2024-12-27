@@ -188,27 +188,27 @@ function display_error_page(Exception $exception): string {
     $images_path = get_images_folder();
     $exception_dialogues = [
         "The file is not in xml format." => [
-            "dialogue" => "Oh, my stars! It appears this file has lost its way in the tangled underbrush of incompatible formats. XML, my dear friend, is the language of precision and organization, much like the delicate balance of ecosystems on our beloved Ginger Island!",
+            "dialogue" => __("Oh, my stars! It appears this file has lost its way in the tangled underbrush of incompatible formats. XML, my dear friend, is the language of precision and organization, much like the delicate balance of ecosystems on our beloved Ginger Island!"),
             "image"    => "dialogue_box_professor_snail"
 		],
         "Error loading file." => [
-            "dialogue" => "Oh, bother! It seems like the file got lost in the mines. Could you try again? Or perhaps seek help from a trusty adventurer to retrieve it?",
+            "dialogue" => __("Oh, bother! It seems like the file got lost in the mines. Could you try again? Or perhaps seek help from a trusty adventurer to retrieve it?"),
             "image"    => "dialogue_box_dwarf"
 		],
         "Error downloading file." => [
-            "dialogue" => "Oops! Looks like the file is playing hide and seek in the shadows. Maybe a stealthier approach is needed to capture it. Keep your eyes peeled, friend!",
+            "dialogue" => __("Oops! Looks like the file is playing hide and seek in the shadows. Maybe a stealthier approach is needed to capture it. Keep your eyes peeled, friend!"),
             "image"    => "dialogue_box_henchman"
 		],
         "Invalid file size." => [
-            "dialogue" => "Hold up there! The file size seems a bit too hefty for our cozy little village. Let's trim it down a tad before trying to squeeze it through the gate, shall we?",
+            "dialogue" => __("Hold up there! The file size seems a bit too hefty for our cozy little village. Let's trim it down a tad before trying to squeeze it through the gate, shall we?"),
             "image"    => "dialogue_box_bouncer"
 		],
         "File not conforming to a Stardew Valley save." => [
-            "dialogue" => "Ah, shucks! This file doesn't quite match the charm of Stardew Valley. It's like trying to plant a melon seed in winter – just won't work! Let's find a file more in tune with the rhythm of the seasons, shall we?",
+            "dialogue" => __("Ah, shucks! This file doesn't quite match the charm of Stardew Valley. It's like trying to plant a melon seed in winter – just won't work! Let's find a file more in tune with the rhythm of the seasons, shall we?"),
             "image"    => "dialogue_box_grandpa"
 		],
         "Save file is from an unsupported version." => [
-            "dialogue" => "Ah, wanderer of the shadows, it seems your version is shrouded in the mists of the past, before the 1.4 era. The depths of the sewers have whispered to me of the new wonders that await in the updated realms. To venture forth, you must embrace the light of the latest version.",
+            "dialogue" => __("Ah, wanderer of the shadows, it seems your version is shrouded in the mists of the past, before the 1.4 era. The depths of the sewers have whispered to me of the new wonders that await in the updated realms. To venture forth, you must embrace the light of the latest version."),
             "image"    => "dialogue_box_krobus"
         ]
 	];
