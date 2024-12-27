@@ -64,6 +64,10 @@ function get_json_folder(): string {
     return get_site_root() . "/data/json";
 }
 
+function get_languages_folder(): string {
+    return get_site_root() . "/locales/languages";
+}
+
 function get_saves_folder(bool $use_directory = false): string {
     if($use_directory) {
 		return get_site_directory() . "/data/saves";
@@ -232,8 +236,10 @@ function is_object_empty(object $object): bool {
 	return ($object->attributes()->count() === 0);
 }
 
-function decode(string $filename): array {
-    $url = get_json_folder() . "/$filename.json";
+function decode(string $filename, string $path = null): array {
+	$path = $path ?? get_json_folder();
+	$url = "$path/$filename.json";
+
     $ch = curl_init($url);
 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

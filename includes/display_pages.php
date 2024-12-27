@@ -24,12 +24,12 @@ function display_landing_page(bool $with_topbar = true): string {
         <div id='display'>
 			<div id='landing_page'>
 				<main>
-					<h1 class='section-title'>" . _("Welcome to Stardew Dashboard") . "</h1>
+					<h1 class='section-title'>" . __("Welcome to Stardew Dashboard") . "</h1>
 					<section class='project-description'>
-						<h2 class='section-title'>" . _("What is Stardew Dashboard?") . "</h2>
+						<h2 class='section-title'>" . __("What is Stardew Dashboard?") . "</h2>
 						<span>
 							<span>
-								Are you an avid farmer in Stardew Valley looking to optimize your gameplay experience? Look no further! Stardew Dashboard is your ultimate companion to manage your farm and track your progress.
+								" . __("Are you an avid farmer in Stardew Valley looking to optimize your gameplay experience? Look no further! Stardew Dashboard is your ultimate companion to manage your farm and track your progress.") . "
 							</span>
 							<span>
 								Upload your game save file effortlessly and gain access to a wealth of information about your farm, from tracking your progress in mastering recipes to discovering new elements of the game world. With our intuitive interface, staying on top of your farm's needs and exploring everything that Stardew Valley has to offer has never been easier.
