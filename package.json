@@ -6,7 +6,8 @@
 	"scripts": {
 		"build": "tsc",
 		"postbuild": "bash ./bash/js_minifier.sh",
-		"watch": "tsc --watch"
+		"watch": "tsc --watch",
+		"deploy": "bash ./bash/deploy_to_website.sh"
 	},
 	"keywords": [],
 	"author": "",
