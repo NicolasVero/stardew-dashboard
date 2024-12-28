@@ -1,11 +1,11 @@
 <?php
 
 function __(string $text): string {
-    if(!$GLOBALS["is_site_translate"]) {
+    if(!$GLOBALS["is_site_translated"]) {
         return $text;
     }
 
-    return $GLOBALS["site_language"][$text] ?? $text;
+    return $GLOBALS["site_translations"][$text] ?? $text;
 }
 
 function log_(mixed $element, string $title = null): void {

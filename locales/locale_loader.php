@@ -2,24 +2,22 @@
 
 function locale_file_loader(): bool {
 
-    $env = getenv();
-    $site_language = $env["SITE_LANGUAGE"];
+    $site_language = $GLOBALS["site_language"];
 
     if(!is_a_supported_language($site_language)) {
-        $GLOBALS["is_site_translate"] = false;
+        $GLOBALS["is_site_translated"] = false;
         return false;
     }
 
-    $GLOBALS["site_language"] = [];
+    $GLOBALS["site_translations"] = [];
     $traductions_files = get_traductions_files();
 
     foreach($traductions_files as $traduction_file) {
         $file_content = decode($traduction_file, get_languages_folder() . "/$site_language/");
-        $GLOBALS["site_language"] = array_merge($GLOBALS["site_language"], $file_content);
+        $GLOBALS["site_translations"] = array_merge($GLOBALS["site_translations"], $file_content);
     }
-    log_($GLOBALS["site_language"]);
-    $GLOBALS["is_site_translate"] = true;
-
+    
+    $GLOBALS["is_site_translated"] = true;
     return true;
 }
 

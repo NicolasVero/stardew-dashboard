@@ -19,7 +19,7 @@ function activate_feedback_ajax_trigger(): void {
 function feedback_form_creation(): void {
     const xml_upload: HTMLBodyElement = document.querySelector("body");
 
-    fetch("./functions.php", {
+    fetch("./functions.php/?lang=fr", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"

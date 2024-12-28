@@ -8,7 +8,7 @@ require_once "includes/display_pages.php";
 require_once "includes/extract_data_from_save.php";
 
 $lang = $_GET["lang"] ?? "default";
-putenv("SITE_LANGUAGE=$lang");
+$GLOBALS["site_language"] = $lang;
 require_once "locales/locale_loader.php";
 locale_file_loader();
 
