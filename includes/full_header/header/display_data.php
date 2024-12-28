@@ -10,7 +10,7 @@ function display_header(): string {
     extract($all_players_data); //? all field "general" in extract_data_from_save.php
 
     $pet_icon = $pet['type'] . "_" . $pet['breed'];
-	$farm_name = str_contains(strtolower($farm_name), "farm") ? $farm_name : $farm_name . " farm";
+	$farm_name = str_contains(strtolower($farm_name), "farm") ? $farm_name : $farm_name . " " . __("farm");
 
     return "
         <header>
@@ -18,7 +18,7 @@ function display_header(): string {
                 <span class='player'>
                     <img src='$images_path/icons/$pet_icon.png' alt='Pet type'/>
                     <img src='$images_path/icons/" . strtolower($gender) . ".png' class='player_gender_logo' alt='Gender logo: $gender'/>
-                    <span class='data player_name'>" . formate_usernames($name) . "<span class='data-label'> $farmer_level at $farm_name</span></span>
+                    <span class='data player_name'>" . formate_usernames($name) . "<span class='data-label'> " . __("$farmer_level") . " " . __("at") . " $farm_name</span></span>
                 </span>
 
                 <span class='date'>
@@ -27,9 +27,9 @@ function display_header(): string {
                     $festival_icon
                 </span>
 
-                <span class='game_time'>
+                <span class='game-time'>
                     <span class='data time-in-game'>$game_duration</span>
-                    <span class='data-label'>time in game</span>
+                    <span class='data-label'>" . __("time in game") . "</span>
                 </span>
             </div>
 

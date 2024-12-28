@@ -111,7 +111,7 @@ function get_formatted_date(bool $display_date = true): mixed {
     $year   = $data->yearForSaveGame;
 
     if($display_date) {
-		return "Day $day of $season, Year $year";
+		return __("Day") . " $day " . __("of $season") . ", " . __("Year") . " $year";
 	}
 
     return [

@@ -62,7 +62,7 @@ function display_quest_panel(): string {
                 $reward_number = explode(" ", $rewards[$i])[0];
                 $quest_structure .= "<img src='$images_path/rewards/heart_$reward_number.png' alt='Friendship reward'/>";
             } elseif(is_numeric($rewards[$i])) {
-                $quest_structure .= formate_number($rewards[$i]) . "<img src='$images_path/rewards/gold.png' alt='Gold coins reward'/>";
+                $quest_structure .= formate_number($rewards[$i], $GLOBALS["site_language"]) . "<img src='$images_path/rewards/gold.png' alt='Gold coins reward'/>";
             } elseif(str_ends_with($rewards[$i], 'q')) {
                 $quest_structure .= explode('_', $rewards[$i])[0] . "<img src='$images_path/rewards/qi_gem.png' alt='Qi gems reward'/>";
             } else {

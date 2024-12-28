@@ -17,7 +17,7 @@ function display_general_stats(): string {
 
     return "
         <section class='info-section general-stats'>
-        	<h2 class='section-title'>General stats</h2>
+        	<h2 class='section-title'>" . __("General stats") . "</h2>
             $visited_locations_button
             $community_center_button
             $junimo_kart_button
@@ -58,7 +58,7 @@ function display_stat(array $parameters): string {
 
     $images_path = get_images_folder();
     $formatted_icon = formate_text_for_file($icon);
-    $formatted_value = filter_var($value, FILTER_VALIDATE_INT) ? formate_number($value) : $value;
+    $formatted_value = filter_var($value, FILTER_VALIDATE_INT) ? formate_number($value, $GLOBALS["site_language"]) : $value;
     $alt = $alt ?? $icon;
     $label = $label ?? $icon;
     $image = "<img src='$images_path/icons/$formatted_icon.png' alt='$alt'/>";
@@ -78,7 +78,7 @@ function display_stat(array $parameters): string {
                 <span>
                     $image
                     <span class='data $formatted_icon'>$formatted_value</span>
-                    <span class='data-label'>$label</span>
+                    <span class='data-label'>" . __($label) . "</span>
                 </span>
             </a>
         ";

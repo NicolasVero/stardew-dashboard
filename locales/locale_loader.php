@@ -23,7 +23,7 @@ function locale_file_loader(): bool {
 
 function get_traductions_files(): array {
     return [
-        "landing_page", "topbar_panels", "errors"
+        "landing_page", "topbar_panels", "errors", "dashboard"
     ];
 }
 
