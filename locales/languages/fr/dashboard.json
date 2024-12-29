@@ -79,5 +79,11 @@
     "Deal 15% more damage.": "Infligez 15% de dégâts supplémentaires.",
     "+25 HP.": "+25 PV.",
     "Cooldown on special moves cut in half.": "Le temps de recharge des attaques spéciales est réduit de moitié.",
-    "Critical strikes are deadlier.": "Les coups critiques sont plus meurtriers."
+    "Critical strikes are deadlier.": "Les coups critiques sont plus meurtriers.",
+
+    "Friendship progression" : "Progression des relations",
+    "View all friendships" : "Voir toutes les relations",
+    "Married" : "Marié",
+    "Friendly" : "Amical",
+    "Gifts made in the last week" : "Cadeaux faits cette semaine"
 }

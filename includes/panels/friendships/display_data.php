@@ -30,10 +30,10 @@ function display_friendship_structure(array $friendship_info): string {
                 <span class='tooltip'>
                     <img src='$images_path/icons/gift.png' class='interaction {$week_gifts[0]}' alt=''/>
                     <img src='$images_path/icons/gift.png' class='interaction {$week_gifts[1]}' alt=''/>
-                    <span>Gifts made in the last week</span>
+                    <span>" . __("Gifts made in the last week") . "</span>
                 </span>
             </span>
-            <span class='friend-status'>$status</span>
+            <span class='friend-status'>" . __($status) . "</span>
         </span>
     ";
 }
@@ -49,12 +49,12 @@ function display_friendships(int $limit = -1): string {
     $villagers_json = sanitize_json_with_version("villagers");
     
     $section_class = ($limit === -1) ? "all-friends" : "top-friends";
-    $view_all = ($limit === -1) ? "" : "<span class='view-all-friends view-all-friends-$player_id modal-opener'>- View all friendships</span>";
+    $view_all = ($limit === -1) ? "" : "<span class='view-all-friends view-all-friends-$player_id modal-opener'>- " . __("View all friendships") . "</span>";
     $structure = ($limit === -1)
         ? "
         <section class='info-section friends-section $section_class $section_class-$player_id modal-window'>
             <div class='panel-header'>
-                <h2 class='section-title panel-title'>Friendship progression</h2>
+                <h2 class='section-title panel-title'>" . __("Friendship progression") . "</h2>
                 <img src='$images_path/icons/exit.png' class='exit-all-friends-$player_id exit' alt='Exit'/>
             </div>
             <span class='friendlist'>
@@ -62,7 +62,7 @@ function display_friendships(int $limit = -1): string {
         : "
         <section class='info-section friends-section $section_class _50'>
             <span class='has_panel'>
-                <h2 class='section-title'>Friendship progression</h2>
+                <h2 class='section-title'>" . __("Friendship progression") . "</h2>
                 $view_all
             </span>
             <span class='friendlist'>

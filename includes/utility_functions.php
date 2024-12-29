@@ -1,11 +1,18 @@
 <?php
 
-function __(string $text): string {
+function __(string $text, int $option = SPACE_NONE): string {
     if(!$GLOBALS["is_site_translated"]) {
         return $text;
     }
 
-    return $GLOBALS["site_translations"][$text] ?? $text;
+	$text = $GLOBALS["site_translations"][$text] ?? $text;
+	
+    return [
+        SPACE_NONE => $text,
+        SPACE_BEFORE => ' ' . $text,
+        SPACE_AFTER => $text . ' ',
+        SPACE_BOTH => ' ' . $text . ' ',
+    ][$option] ?? $text;
 }
 
 function log_(mixed $element, string $title = null): void {
