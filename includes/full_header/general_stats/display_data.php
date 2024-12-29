@@ -42,11 +42,11 @@ function display_general_stats(): string {
                 display_spouse($spouse, $children)
                 .
                 display_stat([
-                    "icon" => "House", "alt" => "House upgrades", "label" => "upgrades done", "value" => $house_level, "wiki_link" => "Farmhouse", "tooltip" => "$house_level / 3 improvements"
+                    "icon" => "House", "alt" => "House upgrades", "label" => "upgrades done", "value" => $house_level, "wiki_link" => "Farmhouse", "tooltip" => "$house_level / 3 " . __("improvements")
                 ])
                 .
                 display_stat([
-                    "icon" => "Raccoons", "label" => "raccoons helped", "value" => $raccoons, "wiki_link" => "Giant_Stump", "tooltip" => "$raccoons / 10 missions for the raccoon family"
+                    "icon" => "Raccoons", "label" => "raccoons helped", "value" => $raccoons, "wiki_link" => "Giant_Stump", "tooltip" => "$raccoons / 10 " . __("missions for the raccoon family")
                 ])
             . "</div>
         </section>

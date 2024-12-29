@@ -32,8 +32,8 @@ function get_skills_icons(array $skills, string $current_skill): string {
 
             $skill_structure .= "
                 <span class='tooltip'>
-                    <img src='$skill_icon_path' alt='$skill_description'/>
-                    <span>$skill_description</span>
+                    <img src='$skill_icon_path' alt='" . __($skill_description) . "'/>
+                    <span>" . __($skill_description) . "</span>
                 </span>
 			";
         }
