@@ -13,7 +13,7 @@ function display_general_stats(): string {
     $max_mine_level = 120;
     $deepest_mine_level = ($mine_level > $max_mine_level) ? $max_mine_level : $mine_level; 
     $deepest_skull_mine_level = ($mine_level - $max_mine_level < 0) ? 0 : $mine_level - $max_mine_level;
-    $deepest_mine_level_tooltip = "$deepest_mine_level floors in the Stardew Mine" . (($deepest_skull_mine_level > 0) ? " & $deepest_skull_mine_level floors in the Skull Mine" : "");
+    $deepest_mine_level_tooltip = $deepest_mine_level . __("floors in the Stardew Mine") . (($deepest_skull_mine_level > 0) ? " + $deepest_skull_mine_level " . __("floors in the Skull Mine") : "");
 
     return "
         <section class='info-section general-stats'>
@@ -24,7 +24,7 @@ function display_general_stats(): string {
 			$quest_button
             <div>" .
                 display_stat([
-                    "icon" => "Energy", "label" => "max energy", "value" => $max_stamina, "wiki_link" => "Energy", "tooltip" => "$stardrops_found / 7 stardrops found" 
+                    "icon" => "Energy", "label" => "max energy", "value" => $max_stamina, "wiki_link" => "Energy", "tooltip" => "$stardrops_found / 7 " . __("stardrops found") 
                 ])
                 .
                 display_stat([
@@ -108,7 +108,7 @@ function display_spouse(mixed $spouse, array $children): string {
                 <span> " . get_child_tooltip($spouse, $children) . "</span>
             </span>
             <span class='data data-family'>" . count($children) . "</span>
-            <span class='data-label'>" . ((count($children) > 1) ? 'children' : 'child') . "</span>
+            <span class='data-label'>" . ((count($children) > 1) ? __("children") : __("child")) . "</span>
         </span>
     ";
 }

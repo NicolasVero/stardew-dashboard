@@ -54,7 +54,7 @@ function display_header(): string {
                 . "</span>
                 <span class='perfection-stats'> ".
                     display_stat([
-                        "icon" => "Grandpa", "alt" => "GrandPa candles", "label" => "candles lit", "value" => get_candles_lit($grandpa_score), "wiki_link" => "Grandpa", "tooltip" => "Number of candles lit on the altar ($grandpa_score points)"
+                        "icon" => "Grandpa", "alt" => "GrandPa candles", "label" => "candles lit", "value" => get_candles_lit($grandpa_score), "wiki_link" => "Grandpa", "tooltip" => __("Number of candles lit on the altar") . " ($grandpa_score " . __("points") . ")"
                     ])
                     .
                     display_stat([

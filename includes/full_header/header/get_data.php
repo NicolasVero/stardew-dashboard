@@ -99,14 +99,14 @@ function get_the_married_person_gender(string $spouse): string {
 	$husbands = ["alex", "elliott", "harvey", "sam", "sebastian", "shane"];
 
 	if(in_array(strtolower($spouse), $wifes)) {
-		return "your wife";
+		return "wife";
 	}
 
 	if(in_array(strtolower($spouse), $husbands)) {
-		return "your husband";
+		return "husband";
 	}
 
-	return "";
+	return "spouse";
 }
 
 function get_weather(string $weather_location = "Default"): string {
@@ -424,14 +424,14 @@ function has_any_player_gotten_all_stardrops(): bool {
 function get_child_tooltip(string $spouse, array $children): string {
 	$gender = get_the_married_person_gender($spouse);
 	$children_count = count($children);
-	$children_names = ($children_count === 1) ? $children[0] : implode(" and ", $children);
-	$nombre = ($children_count > 1) ? "children" : "child";
+	$children_names = ($children_count === 1) ? $children[0] : implode(" " . __("and") . " ", $children);
+	$nombre = ($children_count > 1) ? __("children") : __("child");
 
 	if($children_count === 0) {   
-        return "With $gender $spouse, haven't yet had $nombre";
+        return __("With your") . " " . __($gender) . " $spouse, " . _("haven't yet had") . " $nombre";
     }
 
-	return "With $gender $spouse, you had $children_count $nombre : $children_names";
+	return __("With your") . " " . __($gender) . " $spouse, " . __("you had") . " $children_count $nombre : $children_names";
 }
 
 function get_player_pet(): array {

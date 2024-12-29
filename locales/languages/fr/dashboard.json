@@ -15,10 +15,29 @@
 
     "Gold coins" : "Pièces d'or",
     "Golden Walnuts" : "Noix d'or",
+    "golden walnuts found" : "noix d'or trouvées",
     "Qi gems" : "Gemmes Qi",
     "Casino coins" : "Jetons du casino",
     "candles lit" : "bougies allumées",
+    "Number of candles lit on the altar" : "Nombre de bougies allumées sur l'autel",
     "perfection progression" : "progression de la perfection",
 
-    "General stats" : "Statistiques générales"
+    "General stats" : "Statistiques générales",
+    "max energy" : "enermie maximum",
+    "stardrops found" : "fruits étoilés trouvés",
+    "max health" : "vie maximum",
+    "inventory spaces" : "place d'inventaire",
+    "deepest mine level" : "niveau de mine le plus profond",
+    "floors in the Stardew Mine" : "étages de la mine de la vallée",
+    "floors in the Skull Mine" : "étages dans la mine du crâne",
+    "child" : "enfant",
+    "children" : "enfants",
+    "With your" : "Avec votre",
+    "wife" : "femme",
+    "husband" : "mari",
+    "you had" : "vous avez",
+    "haven't yet had" : "vous n'avez pas encore",
+    "and" : "et",
+    "upgrades done" : "améliorations faites",
+    "raccoons helped" : "aide aux ratons-laveurs"
 }
