@@ -381,7 +381,7 @@ function get_script_loader(): string {
 }
 
 function no_items_placeholder(): string {
-	return "Nothing to see here";
+	return __("Nothing to see here");
 }
 
 function get_tooltip_text(array $player_data, string $json_line_name, string $data_type): string {

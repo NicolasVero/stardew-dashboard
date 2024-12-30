@@ -17,39 +17,39 @@ function get_daily_quest_data(object $quest): array|null {
 	$target = $quest->target;
 	$quest_configs = [
 		3 => [
-			'goal_name' => fn($quest) => find_reference_in_json(formate_original_data_string($quest->item), "shipped_items"),
-			'keyword' => "Deliver",
-			'keyword_ing' => "Delivering",
-			'number_to_get' => fn($quest) => $quest->number,
-			'number_obtained' => fn($quest) => 0,
+			"goal_name" => fn($quest) => find_reference_in_json(formate_original_data_string($quest->item), "shipped_items"),
+			"keyword" => "Deliver",
+			"keyword_ing" => "Delivering",
+			"number_to_get" => fn($quest) => $quest->number,
+			"number_obtained" => fn($quest) => 0,
 		],
 		4 => [
-			'goal_name' => fn($quest) => $quest->monsterName,
-			'keyword' => "Kill",
-			'keyword_ing' => "Killing",
-			'number_to_get' => fn($quest) => $quest->numberToKill,
-			'number_obtained' => fn($quest) => $quest->numberKilled,
+			"goal_name" => fn($quest) => $quest->monsterName,
+			"keyword" => "Kill",
+			"keyword_ing" => "Killing",
+			"number_to_get" => fn($quest) => $quest->numberToKill,
+			"number_obtained" => fn($quest) => $quest->numberKilled,
 		],
 		5 => [
-			'goal_name' => fn() => "people",
-			'keyword' => "Talk to",
-			'keyword_ing' => "Socializing",
-			'number_to_get' => fn($quest) => $quest->total,
-			'number_obtained' => fn($quest) => $quest->whoToGreet,
+			"goal_name" => fn() => "people",
+			"keyword" => "Talk to",
+			"keyword_ing" => "Socializing",
+			"number_to_get" => fn($quest) => $quest->total,
+			"number_obtained" => fn($quest) => $quest->whoToGreet,
 		],
 		7 => [
-			'goal_name' => fn($quest) => find_reference_in_json(formate_original_data_string($quest->whichFish), "fish"),
-			'keyword' => "Fish",
-			'keyword_ing' => "Fishing",
-			'number_to_get' => fn($quest) => $quest->numberToFish,
-			'number_obtained' => fn($quest) => $quest->numberFished,
+			"goal_name" => fn($quest) => find_reference_in_json(formate_original_data_string($quest->whichFish), "fish"),
+			"keyword" => "Fish",
+			"keyword_ing" => "Fishing",
+			"number_to_get" => fn($quest) => $quest->numberToFish,
+			"number_obtained" => fn($quest) => $quest->numberFished,
 		],
 		10 => [
-			'goal_name' => fn($quest) => find_reference_in_json(formate_original_data_string($quest->resource), "shipped_items"),
-			'keyword' => "Fish",
-			'keyword_ing' => "Fishing",
-			'number_to_get' => fn($quest) => $quest->number,
-			'number_obtained' => fn($quest) => $quest->numberCollected,
+			"goal_name" => fn($quest) => find_reference_in_json(formate_original_data_string($quest->resource), "shipped_items"),
+			"keyword" => "Fish",
+			"keyword_ing" => "Fishing",
+			"number_to_get" => fn($quest) => $quest->number,
+			"number_obtained" => fn($quest) => $quest->numberCollected,
 		],
 	];
 
@@ -59,15 +59,15 @@ function get_daily_quest_data(object $quest): array|null {
 	
 	$config = $quest_configs[$quest_type];
 
-	$goal_name = $config['goal_name']($quest);
-	$keyword = $config['keyword'];
-	$keyword_ing = $config['keyword_ing'];
-	$number_to_get = $config['number_to_get']($quest);
-	$number_obtained = $config['number_obtained']($quest);
+	$goal_name = $config["goal_name"]($quest);
+	$keyword = $config["keyword"];
+	$keyword_ing = $config["keyword_ing"];
+	$number_to_get = $config["number_to_get"]($quest);
+	$number_obtained = $config["number_obtained"]($quest);
 
-	$title = "$keyword_ing Quest";
-	$description = "Help $target with his $keyword_ing request.";
-	$objective = "$keyword $number_to_get $goal_name for $target: $number_obtained/$number_to_get";
+	$title = __("$keyword_ing Quest");
+	$description = __("Help") . " $target " . __("with the") . __($keyword_ing, SPACE_BOTH) . __("request") . ".";
+	$objective = __($keyword) . "$number_to_get " . __($goal_name) . __("for", SPACE_BEFORE) . " $target: $number_obtained/$number_to_get";
 
 	return [
 		"time_limited"	=> true,

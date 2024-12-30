@@ -9,6 +9,10 @@ function get_data(string $data_key, ?int $player_id = null): array {
     return $GLOBALS["all_players_data"][$player_id][$data_key] ?? [];
 }
 
+function get_date_data(?int $player_id = null): array {
+    return get_general_data()["date"];
+}
+
 function get_friendships_data(?int $player_id = null): array {
     return get_data("friendship", $player_id);
 }

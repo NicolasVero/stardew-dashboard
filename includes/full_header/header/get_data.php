@@ -2,12 +2,12 @@
 
 function get_weather_tooltip(string $weather): string {
 	return [
-		"sun"        => "It's going to be clear and sunny all day",
-		"rain"       => "It's going to rain all day tomorrow",
-		"green_rain" => "Um... There appears to be some kind of... anomalous reading... I... don't know what this means...",
-		"wind"       => "It's going to be cloudy, with gusts of wind throughout the day",
-		"storm"      => "Looks like a storm is approaching. Thunder and lightning is expected",
-		"snow"       => "Expect a few inches of snow tomorrow"
+		"sun"        => __("It's going to be clear and sunny all day"),
+		"rain"       => __("It's going to rain all day tomorrow"),
+		"green_rain" => __("Um... There appears to be some kind of... anomalous reading... I... don't know what this means..."),
+		"wind"       => __("It's going to be cloudy, with gusts of wind throughout the day"),
+		"storm"      => __("Looks like a storm is approaching. Thunder and lightning is expected"),
+		"snow"       => __("Expect a few inches of snow tomorrow")
 	][$weather] ?? "";
 }
 
@@ -34,10 +34,6 @@ function get_player_gender(): string {
 	}
 
 	return "Neutral";
-}
-
-function get_player_season(): string {
-	return get_formatted_date(false)["season"];
 }
 
 function get_is_married(): bool {

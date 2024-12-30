@@ -3,7 +3,7 @@
 function display_calendar_panel(): string {
 	$player_id = get_current_player_id();
     $images_path = get_images_folder();
-    $season = get_player_season();
+    $season = get_date_data()["season"];
     $all_dates = $GLOBALS["json"]["all_dates"];
     $villagers = sanitize_json_with_version("villagers");
     $week_count = 4;
@@ -34,7 +34,7 @@ function display_calendar_panel(): string {
                     <td class='simple-event filled'>
                         <span class='calendar-tooltip tooltip'>
                             <a href='$wiki_link' class='wiki_link' rel='noreferrer' target='_blank'></a>
-                            <span>$calendar_tooltip</span>
+                            <span>" . __($calendar_tooltip) . "</span>
                         </span>
                     </td>
                 ";
@@ -55,11 +55,11 @@ function display_calendar_panel(): string {
                 <td class='double-event filled'>
                     <span class='calendar-tooltip tooltip'>
                         <a href='" . $wiki_link[0] . "' class='wiki_link' rel='noreferrer' target='_blank'></a>
-                        <span class='left'>" . $calendar_tooltip[0] . "</span>
+                        <span class='left'>" . __($calendar_tooltip[0]) . "</span>
                     </span>
                     <span class='calendar-tooltip tooltip'>
                         <a href='" . $wiki_link[1] . "' class='wiki_link' rel='noreferrer' target='_blank'></a>
-                        <span class='right'>" . $calendar_tooltip[1] . "</span>
+                        <span class='right'>" . __($calendar_tooltip[1]) . "</span>
                     </span>
                 </td>;
             ";

@@ -23,7 +23,7 @@ function display_header(): string {
 
                 <span class='date'>
                     $weather_icon
-                    <span class='data date-in-game view-calendar-$player_id modal-opener'>$date</span>
+                    <span class='data date-in-game view-calendar-$player_id modal-opener'>$formatted_date</span>
                     $festival_icon
                 </span>
 
@@ -41,7 +41,7 @@ function display_header(): string {
                     ])
                     .
                     display_stat([
-                        "icon" => "Golden Walnuts", "value" => $golden_walnuts, "wiki_link" => "Golden_Walnut", "tooltip" => "$golden_walnuts / 130 golden walnuts found"
+                        "icon" => "Golden Walnuts", "value" => $golden_walnuts, "wiki_link" => "Golden_Walnut", "tooltip" => "$golden_walnuts / 130 " . __("golden walnuts found")
                     ])
                     .
                     display_stat([
@@ -84,7 +84,7 @@ function display_weather_icon(): string {
 function display_festival_icon(): string {
     $images_path = get_images_folder();
     $festivals = sanitize_json_with_version("festivals", true);
-	$festival_name = "Not a festival day";
+	$festival_name = __("Not a festival day");
 	$festival_class = "isnt_festival";
 
 	foreach($festivals as $key => $festival) {
@@ -104,13 +104,13 @@ function display_festival_icon(): string {
 		<a href='$wiki_url' class='wiki_link' rel='noreferrer' target='_blank'>
 			<img src='$images_path/icons/festival_icon.gif' class='festival_icon $festival_class' alt='Festival icon'/>
 		</a>
-		<span class='right'>$festival_name</span>
+		<span class='right'>" . __($festival_name) . "</span>
 	</span>"
 	:
 	"<span class='tooltip'>
         <a href='" . get_wiki_link_by_name("festival") . "' class='wiki_link' rel='noreferrer' target='_blank'>
 		    <img src='$images_path/icons/festival_icon.png' class='festival_icon $festival_class' alt='Festival icon'/>
 		</a>
-        <span class='right'>$festival_name</span>
+        <span class='right'>" . __($festival_name) . "</span>
 	</span>";
 }

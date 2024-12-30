@@ -13,7 +13,7 @@ function display_general_stats(): string {
     $max_mine_level = 120;
     $deepest_mine_level = ($mine_level > $max_mine_level) ? $max_mine_level : $mine_level; 
     $deepest_skull_mine_level = ($mine_level - $max_mine_level < 0) ? 0 : $mine_level - $max_mine_level;
-    $deepest_mine_level_tooltip = $deepest_mine_level . __("floors in the Stardew Mine") . (($deepest_skull_mine_level > 0) ? " + $deepest_skull_mine_level " . __("floors in the Skull Mine") : "");
+    $deepest_mine_level_tooltip = $deepest_mine_level . __("floors in the Stardew Mine", SPACE_BOTH) . (($deepest_skull_mine_level > 0) ? "+ $deepest_skull_mine_level" . __("floors in the Skull Mine", SPACE_BEFORE) : "");
 
     return "
         <section class='info-section general-stats'>
