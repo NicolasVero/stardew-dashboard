@@ -19,7 +19,7 @@ function display_community_center_panel(): string {
 
         $cc_structure .= "
             <span class='room'>
-                <h2>$room_name</h2>
+                <h2>" . __($room_name) . "</h2>
                 <span class='bundles'>
         ";
 

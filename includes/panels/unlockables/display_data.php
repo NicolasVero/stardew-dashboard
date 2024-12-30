@@ -25,7 +25,7 @@ function display_unlockables(): string {
 					<a href='$wiki_url' class='wiki_link' rel='noreferrer' target='_blank'>
 						<img src='$unlockable_image' class='gallery-item unlockables $unlockable_class $is_newer_version_class' alt='$unlockable'/>
 					</a>
-					<span>$unlockable</span>
+					<span>" . __($unlockable) . "</span>
 				</span>
 			";
 		}
@@ -33,7 +33,7 @@ function display_unlockables(): string {
 
     return "
         <section class='gallery unlockables-section _50'>
-            <h2 class='section-title'>Unlockables</h2>
+            <h2 class='section-title'>" . __("Unlockables") . "</h2>
             <span>
 				<h3 class='no-spoil-title'>" . no_items_placeholder() . "</h3>
                 $unlockables_structure

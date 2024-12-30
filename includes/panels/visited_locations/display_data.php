@@ -19,7 +19,7 @@ function display_visited_locations_panel(): string {
             $wiki_link = get_wiki_link(get_item_id_by_name($json_line_name));
             $locations .= "
                 <a href='$wiki_link' class='wiki_link' rel='noreferrer' target='_blank'>
-                    <span class='$element_class'>$json_line_name</span>
+                    <span class='$element_class'>" . __($json_line_name) . "</span>
                 </a>
             ";
         }
@@ -29,7 +29,7 @@ function display_visited_locations_panel(): string {
         <section class='visited-locations-$player_id panel visited-locations-panel modal-window'>
              <span class='header'>
                 <span class='title'>
-                    <span>Visited Locations</span>
+                    <span>" . __("Visited Locations") . "</span>
                 </span>
                 <img src='$images_path/content/white_dashes.png' class='dashes' alt=''/>
                 <img src='$images_path/icons/exit.png' class='exit-visited-locations exit-visited-locations-$player_id exit' alt='Exit'/>
