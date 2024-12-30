@@ -428,7 +428,7 @@ function get_child_tooltip(string $spouse, array $children): string {
 	$nombre = ($children_count > 1) ? __("children") : __("child");
 
 	if($children_count === 0) {   
-        return __("With your") . " " . __($gender) . " $spouse, " . _("haven't yet had") . " $nombre";
+        return __("With your") . " " . __($gender) . " $spouse, " . __("haven't yet had a child");
     }
 
 	return __("With your") . " " . __($gender) . " $spouse, " . __("you had") . " $children_count $nombre : $children_names";
