@@ -47,7 +47,7 @@ function prepare_all_friendship_info(array $friendship_info): array {
     ]);
 
     $is_birthday = $birthday && is_this_the_same_day($birthday);
-    $birthdate = $birthday ? "Day " . explode("/", $birthday)[0] . " of " . explode("/", $birthday)[1] : "Unknown";
+    $birthdate = $birthday ? __("Day", SPACE_AFTER) . explode("/", $birthday)[0] . __("of " . explode("/", $birthday)[1], SPACE_BEFORE) : "Unknown";
 
 	return [
 		"villager_name" => $villager_name,

@@ -1,5 +1,20 @@
 <?php
 
+function __(string $text, int $option = SPACE_NONE): string {
+    if(!$GLOBALS["is_site_translated"]) {
+        return $text;
+    }
+
+	$text = $GLOBALS["site_translations"][$text] ?? $text;
+	
+    return [
+        SPACE_NONE => $text,
+        SPACE_BEFORE => " $text",
+        SPACE_AFTER => "$text ",
+        SPACE_BOTH => " $text ",
+    ][$option] ?? $text;
+}
+
 function log_(mixed $element, string $title = null): void {
     if($title !== null) {
 		echo "<h2>$title</h2>";
@@ -64,6 +79,10 @@ function get_json_folder(): string {
     return get_site_root() . "/data/json";
 }
 
+function get_languages_folder(): string {
+    return get_site_root() . "/locales/languages";
+}
+
 function get_saves_folder(bool $use_directory = false): string {
     if($use_directory) {
 		return get_site_directory() . "/data/saves";
@@ -99,7 +118,7 @@ function get_formatted_date(bool $display_date = true): mixed {
     $year   = $data->yearForSaveGame;
 
     if($display_date) {
-		return "Day $day of $season, Year $year";
+		return __("Day") . " $day " . __("of $season") . ", " . __("Year") . " $year";
 	}
 
     return [
@@ -232,8 +251,10 @@ function is_object_empty(object $object): bool {
 	return ($object->attributes()->count() === 0);
 }
 
-function decode(string $filename): array {
-    $url = get_json_folder() . "/$filename.json";
+function decode(string $filename, string $path = null): array {
+	$path = $path ?? get_json_folder();
+	$url = "$path/$filename.json";
+
     $ch = curl_init($url);
 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -287,8 +308,8 @@ function get_contributors(): array {
 			"name" => "Romain",
 			"icon" => "romain",
 			"texts" => [
-				"Romain is a hard-working web developer. He loves taking on challenges and always going the extra mile.",
-				"He took care of the Front-End, and helped Nicolas with the Back-End."
+				__("Romain is a hard-working web developer. He loves taking on challenges and always going the extra mile."),
+				__("He took care of the Front-End, and helped Nicolas with the Back-End.")
 			],
 			"socials" => [
 				"github" => [
@@ -313,8 +334,8 @@ function get_contributors(): array {
 			"name" => "Nicolas",
 			"icon" => "nicolas",
 			"texts" => [
-				"Nicolas is passionate about sleep and web development. He works as a web developer at Neoma Business School.",
-				"He took care of the Back-End of the website, as well as the UX / UI design."
+				__("Nicolas is passionate about sleep and web development. He works as a web developer at Neoma Business School."),
+				__("He took care of the Back-End of the website, as well as the UX / UI design.")
 			],
 			"socials" => [
 				"github" => [
@@ -360,50 +381,57 @@ function get_script_loader(): string {
 }
 
 function no_items_placeholder(): string {
-	return "Nothing to see here";
+	return __("Nothing to see here");
 }
 
 function get_tooltip_text(array $player_data, string $json_line_name, string $data_type): string {
-    $data_array = $player_data[$json_line_name];
-
-    if(empty($data_array)) {
-        return $json_line_name;
-    }
+	if(!array_key_exists($json_line_name, $player_data) || !isset($player_data[$json_line_name])) {
+		return __($json_line_name);
+	}
+	$data_array = $player_data[$json_line_name];
 
     extract($data_array);
 
     switch($data_type) {
-        case "shipped_items" :
-            return "$json_line_name: $counter shipped";
-
+		case "shipped_items" :
+			$tooltip_end_text = $counter . __("shipped", SPACE_BEFORE);
+			break;
+			
         case "farm_animals" : 
-            return "$json_line_name: $counter in your farm";
+			$tooltip_end_text = $counter . __("in your farm", SPACE_BEFORE);
+			break;
 
         case "fish" : 
-            if($max_length > 0) return "$json_line_name: caught $caught_counter times ($max_length inches)";
-            return "$json_line_name: caught $caught_counter times";
+			$tooltip_end_text = __("caught", SPACE_AFTER) . $caught_counter . __("times", SPACE_BEFORE) . (($max_length > 0) ? " ($max_length " . __("inches") . ")" : "");
+			break;
 
         case "enemies" : 
-            return "$json_line_name: $killed_counter killed";
+			$tooltip_end_text = $killed_counter . __("killed", SPACE_BEFORE);
+			break;
 
         case "cooking_recipes" :
-            if(!$counter) return "$json_line_name: not cooked yet";
-            return "$json_line_name: cooked " . (int) $counter . " times";
+			$tooltip_end_text = ($counter === 0) ? __("not cooked yet") : __("cooked", SPACE_AFTER) . (int) $counter . __("times", SPACE_BEFORE);
+			break;
 
 		case "crafting_recipes" :
-			if(!$counter) return "$json_line_name: not crafted yet";
-			return "$json_line_name: crafted " . (int) $counter . " times";
+			$tooltip_end_text = ($counter === 0) ? __("not crafted yet") : __("crafted", SPACE_AFTER) . (int) $counter . __("times", SPACE_BEFORE);
+			break;
 
         case "achievements" :
-            return "$json_line_name: $description";
+			$tooltip_end_text = __($description);
+			break;
 
         case "artifacts":
         case "minerals":  
-            if($counter === 0) return "$json_line_name: not given yet";
-            return "$json_line_name: given to museum";
+			$tooltip_end_text = ($counter === 0) ? __("not given yet") : __("given to museum");
+			break;
 
-        default : return $json_line_name;
-    }
+		case "locations_to_visit" :
+        default : 
+			return __($json_line_name);
+	}
+
+	return __($json_line_name) . ": $tooltip_end_text";
 }
 
 function is_objective_completed(int $current_counter, int $limit): bool {

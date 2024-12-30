@@ -1,11 +1,22 @@
 <?php
 
+define('SPACE_NONE', 0);
+define('SPACE_BEFORE', 1);
+define('SPACE_AFTER', 2);
+define('SPACE_BOTH', 3);
+
 require_once "includes/utility_functions.php";
 require_once "includes/functions_loader.php";
 require_once "includes/get_player_informations.php";
 require_once "includes/display_pages.php";
 
 require_once "includes/extract_data_from_save.php";
+
+$lang = $_GET["lang"] ?? "default";
+$GLOBALS["site_language"] = $lang;
+require_once "locales/locale_loader.php";
+locale_file_loader();
+
 
 if(isset($_GET["action"]) && $_GET["action"] === "get_max_upload_size") {	
 	echo get_php_max_upload_size();

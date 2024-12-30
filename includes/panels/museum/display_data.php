@@ -40,7 +40,7 @@ function display_museum_panel(): string {
                     $museum_tooltip = "
                         <span class='museum-tooltip tooltip'>
                             <img src='$images_path/$piece_type/$piece_filename.png' class='museum-piece' alt='$piece_name'/>
-                            <span>$piece_name</span>
+                            <span>" . __($piece_name) . "</span>
                         </span>
                     ";
 

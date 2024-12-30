@@ -3,14 +3,14 @@
 function display_detailled_gallery_title(string $section_title, array $panel_details): string {
     $player_id = get_current_player_id();
     if(empty($panel_details)) {
-        return "<h2 class='section-title'>$section_title</h2>";
+        return "<h2 class='section-title'>" . __($section_title) . "</h2>";
     }
 
     extract($panel_details); //? $panel_alt, $panel_name
     return "
         <span class='has_panel'>
-            <h2 class='section-title'>$section_title</h2>
-            <span class='view-$panel_alt view-$panel_alt-$player_id modal-opener'>- View $panel_name</span>
+            <h2 class='section-title'>" . __($section_title) . "</h2>
+            <span class='view-$panel_alt view-$panel_alt-$player_id modal-opener'>- " . __("View $panel_name") . "</span>
         </span>
     ";
 
@@ -32,14 +32,14 @@ function display_detailled_gallery(array $gallery_details, string $width = "", a
             $element_class = get_found_classes($player_data, $json_filename, $json_line_name, $is_found);
             $element_image = get_detailled_gallery_image($json_filename, $json_line_name);
             $wiki_url = get_detailled_gallery_wiki_link($json_filename, $json_line_name);
-            $element_tooltip = ($is_found) ? get_tooltip_text($player_data, $json_line_name, $json_filename) : $json_line_name;
+            $element_tooltip = get_tooltip_text($player_data, $json_line_name, $json_filename);
 
 			$item_structure .= "
 				<span class='tooltip'>
 					<a href='$wiki_url' class='wiki_link' rel='noreferrer' target='_blank'>
                         <img src='$element_image' class='gallery-item $json_filename $element_class $version_class' alt='$json_line_name'/>
                     </a>
-                    <span>$element_tooltip</span>
+                    <span>" . __($element_tooltip) . "</span>
                 </span>
             ";
         }

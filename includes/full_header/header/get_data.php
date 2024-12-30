@@ -2,12 +2,12 @@
 
 function get_weather_tooltip(string $weather): string {
 	return [
-		"sun"        => "It's going to be clear and sunny all day",
-		"rain"       => "It's going to rain all day tomorrow",
-		"green_rain" => "Um... There appears to be some kind of... anomalous reading... I... don't know what this means...",
-		"wind"       => "It's going to be cloudy, with gusts of wind throughout the day",
-		"storm"      => "Looks like a storm is approaching. Thunder and lightning is expected",
-		"snow"       => "Expect a few inches of snow tomorrow"
+		"sun"        => __("It's going to be clear and sunny all day"),
+		"rain"       => __("It's going to rain all day tomorrow"),
+		"green_rain" => __("Um... There appears to be some kind of... anomalous reading... I... don't know what this means..."),
+		"wind"       => __("It's going to be cloudy, with gusts of wind throughout the day"),
+		"storm"      => __("Looks like a storm is approaching. Thunder and lightning is expected"),
+		"snow"       => __("Expect a few inches of snow tomorrow")
 	][$weather] ?? "";
 }
 
@@ -34,10 +34,6 @@ function get_player_gender(): string {
 	}
 
 	return "Neutral";
-}
-
-function get_player_season(): string {
-	return get_formatted_date(false)["season"];
 }
 
 function get_is_married(): bool {
@@ -99,14 +95,14 @@ function get_the_married_person_gender(string $spouse): string {
 	$husbands = ["alex", "elliott", "harvey", "sam", "sebastian", "shane"];
 
 	if(in_array(strtolower($spouse), $wifes)) {
-		return "your wife";
+		return "wife";
 	}
 
 	if(in_array(strtolower($spouse), $husbands)) {
-		return "your husband";
+		return "husband";
 	}
 
-	return "";
+	return "spouse";
 }
 
 function get_weather(string $weather_location = "Default"): string {
@@ -424,14 +420,14 @@ function has_any_player_gotten_all_stardrops(): bool {
 function get_child_tooltip(string $spouse, array $children): string {
 	$gender = get_the_married_person_gender($spouse);
 	$children_count = count($children);
-	$children_names = ($children_count === 1) ? $children[0] : implode(" and ", $children);
-	$nombre = ($children_count > 1) ? "children" : "child";
+	$children_names = ($children_count === 1) ? $children[0] : implode(" " . __("and") . " ", $children);
+	$nombre = ($children_count > 1) ? __("children") : __("child");
 
 	if($children_count === 0) {   
-        return "With $gender $spouse, haven't yet had $nombre";
+        return __("With your") . " " . __($gender) . " $spouse, " . __("haven't yet had a child");
     }
 
-	return "With $gender $spouse, you had $children_count $nombre : $children_names";
+	return __("With your") . " " . __($gender) . " $spouse, " . __("you had") . " $children_count $nombre : $children_names";
 }
 
 function get_player_pet(): array {

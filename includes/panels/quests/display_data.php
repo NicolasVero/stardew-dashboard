@@ -10,19 +10,9 @@ function display_quest_panel(): string {
     $images_path = get_images_folder();
     $quest_structure = "";
 
-	if(empty($this_player_data)) {
-        return "
-            <section class='all-quests-$player_id panel quests-panel modal-window'>
-                <div class='panel-header'>
-                    <h2 class='section-title panel-title'>Quests in progress</h2>
-                    <img src='$images_path/icons/exit.png' class='exit-all-quests-$player_id exit' alt='Exit'/>
-                </div>
-                <span class='quests'>
-					<h3>" . no_items_placeholder() . "</h3>
-				</span>
-			</section>
-        ";
-	}
+    if(empty($this_player_data)) {
+        $quest_structure = no_items_placeholder();
+    }
 
     foreach($this_player_data as $data) {
 		extract($data); //? $time_limited, $objective, $description, $title, $rewards
@@ -30,8 +20,8 @@ function display_quest_panel(): string {
         $quest_structure .= "
             <span class='quest'>
                 <span class='quest-infos'>
-                    <span class='quest-description'>$objective</span>
-                    <span class='quest-title'>$title</span>
+                    <span class='quest-description'>" . __($objective) . "</span>
+                    <span class='quest-title'>" . __($title) . "</span>
                 </span>
         ";
 
@@ -42,7 +32,7 @@ function display_quest_panel(): string {
         
 		if(isset($daysLeft)) {
 			$day_text = ($daysLeft > 1) ? "days" : "day";
-			$quest_structure .= " <span class='days-left'><img src='$images_path/icons/timer.png' alt='Time left'/>$daysLeft $day_text</span>";
+			$quest_structure .= " <span class='days-left'><img src='$images_path/icons/timer.png' alt='Time left'/>$daysLeft " . __($day_text) . "</span>";
 		}
 
 		$quest_structure .= "<span class='quest-rewards'>";
@@ -62,14 +52,14 @@ function display_quest_panel(): string {
                 $reward_number = explode(" ", $rewards[$i])[0];
                 $quest_structure .= "<img src='$images_path/rewards/heart_$reward_number.png' alt='Friendship reward'/>";
             } elseif(is_numeric($rewards[$i])) {
-                $quest_structure .= formate_number($rewards[$i]) . "<img src='$images_path/rewards/gold.png' alt='Gold coins reward'/>";
+                $quest_structure .= formate_number($rewards[$i], $GLOBALS["site_language"]) . "<img src='$images_path/rewards/gold.png' alt='Gold coins reward'/>";
             } elseif(str_ends_with($rewards[$i], 'q')) {
                 $quest_structure .= explode('_', $rewards[$i])[0] . "<img src='$images_path/rewards/qi_gem.png' alt='Qi gems reward'/>";
             } else {
                 $quest_structure .= $rewards[$i];
             }
 
-            $quest_structure .= (is_numeric($rewards[$i])) ? "" : "<span>$rewards[$i]</span>";
+            $quest_structure .= (is_numeric($rewards[$i]) || $rewards[$i] === null) ? "" : "<span>" . __($rewards[$i]) . "</span>";
             $quest_structure .= "</span>";
         }
 
@@ -82,7 +72,7 @@ function display_quest_panel(): string {
     return "
         <section class='all-quests-$player_id panel quests-panel modal-window'>
             <div class='panel-header'>
-                <h2 class='section-title panel-title'>Quests in progress</h2>
+                <h2 class='section-title panel-title'>" . __("Quests in progress") . "</h2>
                 <img src='$images_path/icons/exit.png' class='exit-all-quests-$player_id exit' alt='Exit'/>
             </div>
             <span class='quests'>

@@ -23,19 +23,19 @@ function display_monster_eradication_goals_panel(): string {
                 <a href='$wiki_link' class='wiki_link' rel='noreferrer' target='_blank'>
                     <img src='$images_path/rewards/$src.png' class='reward $is_found always-on-display' alt='$alt'/>
                 </a>
-                <span>$alt</span>
+                <span>" . __($alt) . "</span>
             </span>
         ";
 
-        $goals .= "<span class='goal'>$reward_icon $total $target $is_completed_icon</span>";
+        $goals .= "<span class='goal'>$reward_icon $total " . __($target) . " $is_completed_icon</span>";
     }
 
     return "
         <section class='monster-eradication-goals-$player_id panel monster-eradication-goals-panel modal-window'>
             <span class='header'>
                 <span class='title'>
-                    <span>Monster Eradication Goals</span>
-                    <span>Help us keep the valley safe.</span>
+                    <span>" . __("Monster Eradication Goals") . "</span>
+                    <span>" . __("Help us keep the valley safe") . "</span>
                 </span>
                 <img src='$images_path/content/dashes.png' class='dashes' alt=''/>
                 <img src='$images_path/icons/exit.png' class='exit-monster-eradication-goals exit-monster-eradication-goals-$player_id exit' alt='Exit'/>

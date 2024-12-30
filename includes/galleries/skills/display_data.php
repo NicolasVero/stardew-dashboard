@@ -21,7 +21,7 @@ function display_skills(): string {
                     <a href='" . get_wiki_link_by_name("mastery_cave") . "' class='wiki_link' rel='noreferrer' target='_blank'>
                         <img src='$images_path/skills/mastery.png' class='level-icon $mastery_class $mastery_visible_class $is_newer_version_class' alt='$key'/>
                     </a>
-                    <span>" . ucfirst($mastery_tooltip) . "</span>
+                    <span>" . __($mastery_tooltip) . "</span>
                 </span>
         
                 <span class='tooltip'>
@@ -43,7 +43,7 @@ function display_skills(): string {
 
     return "
 		<section class='skills-section info-section'>
-			<h2 class='section-title'>Skills</h2>
+			<h2 class='section-title'>" . __("Skills") . "</h2>
             <span>
                 $skill_structure
             </span>
