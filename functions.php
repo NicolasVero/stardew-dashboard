@@ -1,10 +1,6 @@
 <?php
 
-define('SPACE_NONE', 0);
-define('SPACE_BEFORE', 1);
-define('SPACE_AFTER', 2);
-define('SPACE_BOTH', 3);
-
+require_once "includes/constants.php";
 require_once "includes/utility_functions.php";
 require_once "includes/functions_loader.php";
 require_once "includes/get_player_informations.php";
