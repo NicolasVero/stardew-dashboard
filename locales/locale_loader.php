@@ -47,9 +47,3 @@ function get_traductions_files(): array {
         "landing_page", "topbar_panels", "errors", "panels", "generic", "quests", "full_header"
     ];
 }
-
-function is_a_supported_language(string $language): bool {
-    return in_array($language, [
-        "fr"
-    ]);
-}

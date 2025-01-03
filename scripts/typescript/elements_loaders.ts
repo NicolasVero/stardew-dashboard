@@ -29,10 +29,11 @@ function load_buttons(): void {
     const players_in_save: number = get_players_number();
 
     const common_buttons = [
-        { open_button: ".landing-settings", exit_button: ".exit-settings", modal_panel: ".settings"     },
-        { open_button: ".landing-upload"  , exit_button: ".exit-upload"  , modal_panel: ".upload-panel" },
-        { open_button: ".main-settings"   , exit_button: ".exit-settings", modal_panel: ".settings"     },
-        { open_button: ".file-upload"     , exit_button: ".exit-upload"  , modal_panel: ".upload-panel" }
+        { open_button: ".landing-settings" , exit_button: ".exit-settings" , modal_panel: ".settings"     },
+        { open_button: ".landing-languages", exit_button: ".exit-languages", modal_panel: ".languages"    },
+        { open_button: ".landing-upload"   , exit_button: ".exit-upload"   , modal_panel: ".upload-panel" },
+        { open_button: ".main-settings"    , exit_button: ".exit-settings" , modal_panel: ".settings"     },
+        { open_button: ".file-upload"      , exit_button: ".exit-upload"   , modal_panel: ".upload-panel" }
     ];
 
     const dynamic_buttons = [];

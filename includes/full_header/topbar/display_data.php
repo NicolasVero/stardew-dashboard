@@ -3,6 +3,7 @@
 function display_topbar(bool $is_landing_page = false, bool $is_error_screen = false): string {
 	$menu_id = ($is_landing_page) ? "landing_menu" : (($is_error_screen) ? "error_menu" : "dashboard_menu");
 	$save_id = ($is_landing_page) ? "landing" : "file";
+    $languages_id = ($is_landing_page) ? "landing" : "a_changer";
 	$settings_id = ($is_landing_page) ? "landing" : "main";
     $player_selection = (!$is_landing_page && !$is_error_screen) ? display_player_selection() : "";
 	$game_version = (!$is_landing_page && !$is_error_screen) ? display_game_version() : "";
@@ -14,6 +15,7 @@ function display_topbar(bool $is_landing_page = false, bool $is_error_screen = f
             <span>
                 $game_version
                 " . display_save_button($save_id) . "
+                " . display_languages_button($languages_id) . "
                 " . display_settings_button($settings_id) . "
                 " . display_feedback_button() . "
                 $home_button
@@ -37,6 +39,18 @@ function display_save_panel(): string {
                     <input type='file' id='save-upload'>
                 </span>
             </span>
+        </section>
+    ";
+}
+
+function display_languages_panel(): string {
+    $images_path = get_images_folder();
+    return "
+        <section class='languages-panel panel modal-window'>
+            <div class='panel-header'>
+                <h2 class='section-title panel-title'>" . __("Choose language") . "</h2>
+                <img src='$images_path/icons/exit.png' class='exit-languages exit' alt='Exit'/>
+            </div>
         </section>
     ";
 }
@@ -167,6 +181,15 @@ function display_settings_button(string $prefix): string {
     ";
 }
 
+function display_languages_button(string $prefix): string {
+    $language = get_site_language();
+    return "
+        <span class='$prefix-languages modal-opener'>
+            <img src='" . get_images_folder() . "/languages/$language.png' class='modal-opener' alt='Language= icon'/>
+        </span>
+    ";
+}
+
 function display_save_button(string $prefix): string {
     return "
         <span class='$prefix-upload modal-opener'>
@@ -189,4 +212,10 @@ function display_home_button(): string {
             <img src='" . get_images_folder() . "/icons/home.png' id='home-icon' alt='Home icon'/>
         </span>
     ";
+}
+
+function display_all_languages_button(): string {
+    $languages = get_supported_languages();
+
+    return "";
 }

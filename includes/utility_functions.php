@@ -23,12 +23,26 @@ function log_(mixed $element, string $title = null): void {
 	echo "<pre>" . print_r($element, true) . "</pre>";
 }
 
+function is_a_supported_language(string $language): bool {
+    return in_array($language, get_supported_languages());
+}
+
+function get_supported_languages(): array {
+	return [
+		"en", "fr"
+	];
+}
+
+function get_site_language() :string {
+	return $GLOBALS["site_language"] ?? "en";
+}
+
 function define_site_language(): void {
-	$url = $_SERVER['REQUEST_URI'];
+	$url = $_SERVER["REQUEST_URI"];
 	$url_without_query = parse_url($url, PHP_URL_PATH);
 	$url_trimmed = rtrim($url_without_query, '/');
 	$lang = basename($url_trimmed);
-	$GLOBALS["site_language"] = $lang;
+	$GLOBALS["site_language"] = (is_a_supported_language($lang)) ? $lang : "en";
 }
 
 function load_all_json(): void {

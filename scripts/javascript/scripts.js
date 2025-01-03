@@ -100,6 +100,7 @@ window.addEventListener("load", () => {
     save_landing_topbar();
     prevent_panel_scroll();
     activate_buttons(".landing-upload", ".exit-upload", ".upload-panel");
+    activate_buttons(".landing-languages", ".exit-languages", ".languages-panel");
     activate_buttons(".landing-settings", ".exit-settings", ".settings");
     toggle_custom_checkboxes(".checkmark");
     activate_feedback_ajax_trigger();
@@ -191,6 +192,7 @@ function load_buttons() {
     const players_in_save = get_players_number();
     const common_buttons = [
         { open_button: ".landing-settings", exit_button: ".exit-settings", modal_panel: ".settings" },
+        { open_button: ".landing-languages", exit_button: ".exit-languages", modal_panel: ".languages" },
         { open_button: ".landing-upload", exit_button: ".exit-upload", modal_panel: ".upload-panel" },
         { open_button: ".main-settings", exit_button: ".exit-settings", modal_panel: ".settings" },
         { open_button: ".file-upload", exit_button: ".exit-upload", modal_panel: ".upload-panel" }
@@ -385,6 +387,7 @@ function activate_close_buttons(hide, sections_to_hide) {
 }
 function hide_all_sections(section_destroy = false) {
     const sections = document.querySelectorAll(".modal-window");
+    console.log(sections);
     sections.forEach((section) => {
         if (section.classList.contains("to-destroy") && section_destroy) {
             section.remove();
