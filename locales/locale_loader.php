@@ -3,7 +3,7 @@
 function locale_file_loader(): bool {
     $site_language = $GLOBALS["site_language"];
 
-    if(!is_a_supported_language($site_language)) {
+    if(!is_a_supported_language($site_language) || is_the_original_language($site_language)) {
         $GLOBALS["is_site_translated"] = false;
         return false;
     }

@@ -51,6 +51,9 @@ function display_languages_panel(): string {
                 <h2 class='section-title panel-title'>" . __("Choose language") . "</h2>
                 <img src='$images_path/icons/exit.png' class='exit-languages exit' alt='Exit'/>
             </div>
+            <span>
+                " . display_all_languages_button() . " 
+            </span>
         </section>
     ";
 }
@@ -216,6 +219,8 @@ function display_home_button(): string {
 
 function display_all_languages_button(): string {
     $languages = get_supported_languages();
+
+    // log_($languages);
 
     return "";
 }

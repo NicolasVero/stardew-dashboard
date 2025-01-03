@@ -5,6 +5,7 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
     $data = simplexml_load_file($uploaded_file);
     load_all_json();
 
+    // log_($_SERVER['HTTP_REFERER'], "hihi");
     $GLOBALS["untreated_all_players_data"] = $data;
     $GLOBALS["game_version"] = $data->gameVersion;
 	$GLOBALS["game_version_score"] = (int) get_game_version_score((string) $data->gameVersion);;
