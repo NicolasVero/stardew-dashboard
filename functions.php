@@ -5,15 +5,9 @@ require_once "includes/utility_functions.php";
 require_once "includes/functions_loader.php";
 require_once "includes/get_player_informations.php";
 require_once "includes/display_pages.php";
-
 require_once "includes/extract_data_from_save.php";
 
-$url = $_SERVER['REQUEST_URI'];
-$url_without_query = parse_url($url, PHP_URL_PATH);
-$url_trimmed = rtrim($url_without_query, '/');
-$lang = basename($url_trimmed);
-$GLOBALS["site_language"] = $lang;
-
+define_site_language();
 require_once "locales/locale_loader.php";
 locale_file_loader();
 

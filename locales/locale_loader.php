@@ -3,7 +3,7 @@
 function locale_file_loader(): bool {
     $site_language = $GLOBALS["site_language"];
 
-    if (!is_a_supported_language($site_language)) {
+    if(!is_a_supported_language($site_language)) {
         $GLOBALS["is_site_translated"] = false;
         return false;
     }
@@ -11,7 +11,7 @@ function locale_file_loader(): bool {
     $GLOBALS["site_translations"] = [];
     $traductions_files = get_traductions_files();
 
-    foreach ($traductions_files as $traduction_file) {
+    foreach($traductions_files as $traduction_file) {
         $file_content = decode($traduction_file, get_languages_folder() . "/$site_language/");
         $GLOBALS["site_translations"] = array_merge($GLOBALS["site_translations"], expand_dynamic_keys($file_content));
     }

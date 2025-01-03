@@ -23,6 +23,14 @@ function log_(mixed $element, string $title = null): void {
 	echo "<pre>" . print_r($element, true) . "</pre>";
 }
 
+function define_site_language(): void {
+	$url = $_SERVER['REQUEST_URI'];
+	$url_without_query = parse_url($url, PHP_URL_PATH);
+	$url_trimmed = rtrim($url_without_query, '/');
+	$lang = basename($url_trimmed);
+	$GLOBALS["site_language"] = $lang;
+}
+
 function load_all_json(): void {
 	$all_json = [
 		"achievements_details",
