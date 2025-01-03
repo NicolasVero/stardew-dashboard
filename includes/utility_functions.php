@@ -41,12 +41,28 @@ function get_site_language() :string {
 	return $GLOBALS["site_language"] ?? "en";
 }
 
-function define_site_language(): void {
-	$url = (isset($_SERVER["HTTP_REFERER"])) ? $_SERVER["HTTP_REFERER"] : $_SERVER["REQUEST_URI"];
+function get_correct_url(): string {
+	// Ca doit etre la uri si pas appel ajax de fonction avec
+	// Si ajax, ca doit etre refferer 
+
+	$request_uri = $_SERVER["REQUEST_URI"] ?? null;
+	// log_($request_uri);
+    if($request_uri && !str_contains($request_uri, "functions.php")) {
+		// log_('here0');
+        return $request_uri;
+    }
+
+	// log_('here1');
+	return (isset($_SERVER["HTTP_REFERER"])) ? $_SERVER["HTTP_REFERER"] : $request_uri;
+}
+
+function define_site_language(): string {
+	$url = get_correct_url();
 	$url_without_query = parse_url($url, PHP_URL_PATH);
 	$url_trimmed = rtrim($url_without_query, '/');
 	$lang = basename($url_trimmed);
 	$GLOBALS["site_language"] = (is_a_supported_language($lang)) ? $lang : "en";
+	return $GLOBALS["site_language"];
 }
 
 function load_all_json(): void {
