@@ -8,8 +8,12 @@ require_once "includes/display_pages.php";
 
 require_once "includes/extract_data_from_save.php";
 
-$lang = $_GET["lang"] ?? "default";
+$url = $_SERVER['REQUEST_URI'];
+$url_without_query = parse_url($url, PHP_URL_PATH);
+$url_trimmed = rtrim($url_without_query, '/');
+$lang = basename($url_trimmed);
 $GLOBALS["site_language"] = $lang;
+
 require_once "locales/locale_loader.php";
 locale_file_loader();
 

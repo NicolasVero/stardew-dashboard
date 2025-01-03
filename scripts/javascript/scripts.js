@@ -38,7 +38,8 @@ function AJAX_send() {
         page_display.innerHTML = "";
         const form_data = new FormData();
         const xhr = new XMLHttpRequest();
-        const url = get_site_root() + "/includes/get_xml_data.php?lang=fr";
+        const url = get_site_root() + "/includes/get_xml_data.php";
+        // const url: string = get_site_root() + "/includes/get_xml_data.php?lang=fr";
         if (is_file_too_big) {
             form_data.append("save-upload", new File(["SizeException"], "Error_SizeException.xml"));
         }
@@ -242,7 +243,8 @@ function activate_feedback_ajax_trigger() {
 // Create feedback form
 function feedback_form_creation() {
     const xml_upload = document.querySelector("body");
-    fetch("./functions.php/?lang=fr", {
+    fetch("./functions.php", {
+        // fetch("./functions.php/?lang=fr", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
