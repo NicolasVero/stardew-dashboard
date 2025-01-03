@@ -150,7 +150,6 @@ function display_page(): string {
     $structure = display_header();
     $structure .= "<main>";
 		$structure .= display_panels();
-
 		$structure .= display_general_stats();
 		
 		$structure .= "<div class='separated-galleries first-gallery'>";
