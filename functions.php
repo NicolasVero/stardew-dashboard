@@ -7,8 +7,8 @@ require_once "includes/get_player_informations.php";
 require_once "includes/display_pages.php";
 require_once "includes/extract_data_from_save.php";
 
-define_site_language();
 require_once "locales/locale_loader.php";
+define_site_language();
 locale_file_loader();
 
 

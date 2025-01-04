@@ -46,5 +46,14 @@
     "of winter" : "d'hiver",
     "Year" : "Année",
 
-    "time in game" : "temps en jeu"
+    "time in game" : "temps en jeu",
+
+    "Gold coins" : "Pièces d'or",
+    "Golden Walnuts" : "Noix d'or",
+    "golden walnuts found" : "noix d'or trouvées",
+    "Qi gems" : "Gemmes Qi",
+    "Casino coins" : "Jetons du casino",
+    "candles lit" : "bougies allumées",
+    "Number of candles lit on the altar" : "Nombre de bougies allumées sur l'autel",
+    "perfection progression" : "progression de la perfection"
 }

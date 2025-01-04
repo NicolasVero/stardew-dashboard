@@ -1,7 +1,9 @@
 <?php 
 
 function locale_file_loader(): bool {
-    $site_language = define_site_language();
+    $site_language = $GLOBALS["site_language"];
+    // $site_language = define_site_language();
+    // log_($site_language);
 
     // if(!is_a_supported_language($site_language)) {
     //     log_($site_language);
@@ -27,6 +29,7 @@ function locale_file_loader(): bool {
         $GLOBALS["site_translations"] = array_merge($GLOBALS["site_translations"], expand_dynamic_keys($file_content));
     }
 
+    // log_($GLOBALS["site_translations"]);
     $GLOBALS["is_site_translated"] = true;
     return true;
 }

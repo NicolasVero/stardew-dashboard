@@ -1,6 +1,8 @@
 <?php
 
 function __(string $text, int $option = SPACE_NONE): string {
+	// log_($GLOBALS["is_site_translated"]);
+
     if(!$GLOBALS["is_site_translated"]) {
         return $text;
     }
@@ -58,10 +60,12 @@ function get_correct_url(): string {
 
 function define_site_language(): string {
 	$url = get_correct_url();
+	// log_($url);
 	$url_without_query = parse_url($url, PHP_URL_PATH);
 	$url_trimmed = rtrim($url_without_query, '/');
 	$lang = basename($url_trimmed);
 	$GLOBALS["site_language"] = (is_a_supported_language($lang)) ? $lang : "en";
+	// log_($GLOBALS["site_language"]);
 	return $GLOBALS["site_language"];
 }
 
