@@ -260,11 +260,11 @@ function get_item_name_by_id(int $id): string {
 }
 
 function get_wiki_link(int $id): string {
-	return $GLOBALS["json"]["wiki_links"][$id];
+	return __($GLOBALS["json"]["wiki_links"][$id]);
 }
 
 function get_wiki_link_by_name(string $name): string {
-	return "https://stardewvalleywiki.com/" . [
+	$wiki_link = "https://stardewvalleywiki.com/" . [
 		"achievements" => "Achievements",
 		"children"     => "Children",
 		"festival"     => "Festivals",
@@ -272,6 +272,8 @@ function get_wiki_link_by_name(string $name): string {
 		"secret_notes" => "Secret_Notes",
 		"skills"       => "Skills"
 	][$name] ?? "";
+
+	return __($wiki_link);
 }
 
 function array_keys_exists(array $keys, array $array): bool {
