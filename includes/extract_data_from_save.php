@@ -1,15 +1,9 @@
 <?php
 
 function load_save(string $save_file, bool $use_ajax = true): mixed {
-
-    log_($GLOBALS);
-
     $uploaded_file = $save_file;
     $data = simplexml_load_file($uploaded_file);
     load_all_json();
-    // define_site_language();
-
-    // log_($GLOBALS["is_site_translated"]);
 
     $GLOBALS["untreated_all_players_data"] = $data;
     $GLOBALS["game_version"] = $data->gameVersion;
