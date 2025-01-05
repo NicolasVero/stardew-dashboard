@@ -3,7 +3,7 @@
 function display_topbar(bool $is_landing_page = false, bool $is_error_screen = false): string {
 	$menu_id = ($is_landing_page) ? "landing_menu" : (($is_error_screen) ? "error_menu" : "dashboard_menu");
 	$save_id = ($is_landing_page) ? "landing" : "file";
-    $languages_id = ($is_landing_page) ? "landing" : "a_changer";
+    $languages_id = ($is_landing_page) ? "landing" : "main";
 	$settings_id = ($is_landing_page) ? "landing" : "main";
     $player_selection = (!$is_landing_page && !$is_error_screen) ? display_player_selection() : "";
 	$game_version = (!$is_landing_page && !$is_error_screen) ? display_game_version() : "";
@@ -51,6 +51,7 @@ function display_languages_panel(): string {
                 <h2 class='section-title panel-title'>" . __("Choose language") . "</h2>
                 <img src='$images_path/icons/exit.png' class='exit-languages exit' alt='Exit'/>
             </div>
+            <span class='panel-warning'>" . __("Changing the language will reload the page. If you had uploaded a backup, you will have to start again.") . "</span>
             <span>
                 " . display_all_languages_button() . " 
             </span>
@@ -223,7 +224,7 @@ function display_all_languages_button(): string {
 
     foreach($languages as $language) {
         $url = get_site_root() . (is_the_original_language($language) ? "" : "/$language");
-        $structure .= "<a href='$url' class='language-selection buttons' value='$language'><img src='" . get_images_folder() . "/languages/$language.png' alt='$language'/></a>";
+        $structure .= "<a href='$url' class='language-selection buttons' value='$language' rel='noreferrer'><img src='" . get_images_folder() . "/languages/$language.png' alt='$language'/></a>";
     }
 
     return $structure;

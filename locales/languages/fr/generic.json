@@ -31,6 +31,9 @@
     "request" : "",
     "With your" : "Avec votre",
 
+    "Choose language" : "Choisir une langue",
+    "Changing the language will reload the page. If you had uploaded a backup, you will have to start again." : "Le changement de langue rechargera la page, si vous aviez uploadé une savegarde, il faudra recommencer.",
+
     "Kent's Birthday" : "Anniversaire de Kent",
     "Lewis's Birthday" : "Anniversaire de Lewis",
     "Vincent's Birthday" : "Anniversaire de Vincent",
