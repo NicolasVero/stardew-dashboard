@@ -9,6 +9,7 @@ function display_landing_page(bool $with_topbar = true): string {
 	$topbar = ($with_topbar) ? display_topbar(true, false) : "";
     $save_panel = display_save_panel();
     $settings_panel = display_settings_panel();
+	$languages_panel = display_languages_panel();
 
 	$contributors_structure = "";
 	$contributors = get_contributors();
@@ -21,6 +22,7 @@ function display_landing_page(bool $with_topbar = true): string {
         $topbar
         $save_panel
         $settings_panel
+		$languages_panel
         <div id='display'>
 			<div id='landing_page'>
 				<main>
@@ -148,7 +150,6 @@ function display_page(): string {
     $structure = display_header();
     $structure .= "<main>";
 		$structure .= display_panels();
-
 		$structure .= display_general_stats();
 		
 		$structure .= "<div class='separated-galleries first-gallery'>";

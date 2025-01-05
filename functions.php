@@ -5,12 +5,10 @@ require_once "includes/utility_functions.php";
 require_once "includes/functions_loader.php";
 require_once "includes/get_player_informations.php";
 require_once "includes/display_pages.php";
-
 require_once "includes/extract_data_from_save.php";
 
-$lang = $_GET["lang"] ?? "default";
-$GLOBALS["site_language"] = $lang;
 require_once "locales/locale_loader.php";
+define_site_language();
 locale_file_loader();
 
 

@@ -37,6 +37,7 @@ window.addEventListener("load", () => {
     save_landing_topbar();
     prevent_panel_scroll();
     activate_buttons(".landing-upload", ".exit-upload", ".upload-panel");
+    activate_buttons(".landing-languages", ".exit-languages", ".languages-panel");
     activate_buttons(".landing-settings", ".exit-settings", ".settings");
     toggle_custom_checkboxes(".checkmark");
     activate_feedback_ajax_trigger();

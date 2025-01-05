@@ -23,6 +23,37 @@ function log_(mixed $element, string $title = null): void {
 	echo "<pre>" . print_r($element, true) . "</pre>";
 }
 
+function is_the_original_language(string $language): bool {
+	return $language == "en";
+}
+
+function is_a_supported_language(string $language): bool {
+    return in_array($language, get_supported_languages());
+}
+
+function get_supported_languages(): array {
+	return [
+		"en", "fr"
+	];
+}
+
+function get_site_language() :string {
+	return $GLOBALS["site_language"] ?? "en";
+}
+
+function get_correct_url(): string {
+	return (isset($_SERVER["HTTP_REFERER"])) ? $_SERVER["HTTP_REFERER"] : $_SERVER["REQUEST_URI"];
+}
+
+function define_site_language(): void {
+	$url = get_correct_url();
+
+	$url_without_query = parse_url($url, PHP_URL_PATH);
+	$url_trimmed = rtrim($url_without_query, '/');
+	$lang = basename($url_trimmed);
+	$GLOBALS["site_language"] = (is_a_supported_language($lang)) ? $lang : "en";
+}
+
 function load_all_json(): void {
 	$all_json = [
 		"achievements_details",

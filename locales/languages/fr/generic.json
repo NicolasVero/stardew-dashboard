@@ -23,13 +23,16 @@
     "spouse" : "époux",
     "wife" : "femme",
     "husband" : "mari",
+    "you had" : "vous avez",
     "haven't yet had" : "pas encore eu",
     "haven't yet had a child" : "vous n'avez pas encore eu d'enfant",
-    "Secret Note #|1-27|" : "Note secrète #|1-27|",
-    "Journal Scrap #|1-11|" : "Page de journal #|1-11|",
     "Help" : "Aide",
     "with the" : "avec la requête de",
     "request" : "",
+    "With your" : "Avec votre",
+
+    "Choose language" : "Choisir une langue",
+    "Changing the language will reload the page. If you had uploaded a backup, you will have to start again." : "Le changement de langue rechargera la page, si vous aviez uploadé une savegarde, il faudra recommencer.",
 
     "Kent's Birthday" : "Anniversaire de Kent",
     "Lewis's Birthday" : "Anniversaire de Lewis",

@@ -121,6 +121,31 @@
 		}
 	}
 
+	&.languages-panel {
+		.invisible-panel;
+		.modal-panel;
+		.small-panel-width;
+		max-width: 500px;
+
+		& > .panel-header {
+			margin-bottom: 0;
+		}
+
+		& > .panel-warning {
+			margin-bottom: @big-gap;
+		}
+
+		span {
+			display: flex;
+			gap: @md-gap;
+			
+			img {
+				cursor: @pointer;
+				width: 36px;
+			}
+		}
+	}
+
 	&.settings-panel {
 		.invisible-panel;
 		.modal-panel;

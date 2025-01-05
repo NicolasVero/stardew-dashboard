@@ -47,7 +47,8 @@ async function AJAX_send(): Promise<void> {
 
     const form_data: FormData = new FormData();
     const xhr: XMLHttpRequest = new XMLHttpRequest();
-    const url: string = get_site_root() + "/includes/get_xml_data.php?lang=fr";
+    const url: string = get_site_root() + "/includes/get_xml_data.php";
+    // const url: string = get_site_root() + "/includes/get_xml_data.php?lang=fr";
 
     if(is_file_too_big) {
         form_data.append("save-upload", new File(["SizeException"], "Error_SizeException.xml"));

@@ -38,7 +38,8 @@ function AJAX_send() {
         page_display.innerHTML = "";
         const form_data = new FormData();
         const xhr = new XMLHttpRequest();
-        const url = get_site_root() + "/includes/get_xml_data.php?lang=fr";
+        const url = get_site_root() + "/includes/get_xml_data.php";
+        // const url: string = get_site_root() + "/includes/get_xml_data.php?lang=fr";
         if (is_file_too_big) {
             form_data.append("save-upload", new File(["SizeException"], "Error_SizeException.xml"));
         }
@@ -99,6 +100,7 @@ window.addEventListener("load", () => {
     save_landing_topbar();
     prevent_panel_scroll();
     activate_buttons(".landing-upload", ".exit-upload", ".upload-panel");
+    activate_buttons(".landing-languages", ".exit-languages", ".languages-panel");
     activate_buttons(".landing-settings", ".exit-settings", ".settings");
     toggle_custom_checkboxes(".checkmark");
     activate_feedback_ajax_trigger();
@@ -169,6 +171,7 @@ function easter_egg_kaaris() {
 function load_error_page_elements() {
     const button_configurations = [
         { open_button: ".main-settings", exit_button: ".exit-settings", modal_panel: ".settings" },
+        { open_button: ".main-languages", exit_button: ".exit-languages", modal_panel: ".languages-panel" },
         { open_button: ".file-upload", exit_button: ".exit-upload", modal_panel: ".upload-panel" }
     ];
     button_configurations.forEach(({ open_button, exit_button, modal_panel }) => {
@@ -190,9 +193,11 @@ function load_buttons() {
     const players_in_save = get_players_number();
     const common_buttons = [
         { open_button: ".landing-settings", exit_button: ".exit-settings", modal_panel: ".settings" },
+        { open_button: ".landing-languages", exit_button: ".exit-languages", modal_panel: ".languages" },
         { open_button: ".landing-upload", exit_button: ".exit-upload", modal_panel: ".upload-panel" },
         { open_button: ".main-settings", exit_button: ".exit-settings", modal_panel: ".settings" },
-        { open_button: ".file-upload", exit_button: ".exit-upload", modal_panel: ".upload-panel" }
+        { open_button: ".file-upload", exit_button: ".exit-upload", modal_panel: ".upload-panel" },
+        { open_button: ".main-languages", exit_button: ".exit-languages", modal_panel: ".languages-panel" },
     ];
     const dynamic_buttons = [];
     const dynamic_prefixes = [
@@ -242,7 +247,8 @@ function activate_feedback_ajax_trigger() {
 // Create feedback form
 function feedback_form_creation() {
     const xml_upload = document.querySelector("body");
-    fetch("./functions.php/?lang=fr", {
+    fetch("./functions.php", {
+        // fetch("./functions.php/?lang=fr", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -383,6 +389,7 @@ function activate_close_buttons(hide, sections_to_hide) {
 }
 function hide_all_sections(section_destroy = false) {
     const sections = document.querySelectorAll(".modal-window");
+    console.log(sections);
     sections.forEach((section) => {
         if (section.classList.contains("to-destroy") && section_destroy) {
             section.remove();

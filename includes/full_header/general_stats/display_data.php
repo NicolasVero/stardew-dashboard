@@ -88,7 +88,7 @@ function display_stat(array $parameters): string {
         <span>
             $image
             <span class='data $formatted_icon'>$formatted_value</span>
-            <span class='data-label'>$label</span>
+            <span class='data-label'>" . __($label) . "</span>
         </span>
     ";
 }
