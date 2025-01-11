@@ -44,6 +44,7 @@ function expand_dynamic_keys(array $translations): array {
 
 function get_traductions_files(): array {
     return [
-        "landing_page", "topbar_panels", "errors", "panels", "generic", "quests", "full_header", "galleries", "wiki_links"
+        "landing_page", "topbar_panels", "errors", "panels", "generic", "quests", "full_header", "galleries"
+        // , "wiki_links"
     ];
 }

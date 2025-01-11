@@ -5,6 +5,10 @@ function __(string $text, int $option = SPACE_NONE): string {
         return $text;
     }
 
+	if(str_contains($text, "stardewvalleywiki")) {
+		return get_translated_wiki_link($text, $GLOBALS["site_language"]);
+	}
+
 	$text = $GLOBALS["site_translations"][$text] ?? $text;
 	
     return [
@@ -13,6 +17,21 @@ function __(string $text, int $option = SPACE_NONE): string {
         SPACE_AFTER => "$text ",
         SPACE_BOTH => " $text ",
     ][$option] ?? $text;
+}
+
+function get_translated_wiki_link(string $wiki_link, string $lang): string {
+	$wiki_base_url = [
+		"fr" => "https://fr.stardewvalleywiki.com/"
+	][$lang];
+	
+	$wiki_url = parse_url($wiki_link);
+    if(isset($wiki_url["path"])) {
+		$wiki_page = basename($wiki_url["path"]);
+		$wiki_page = str_replace("_", " ", $wiki_page);
+        return $wiki_base_url . __($wiki_page);
+    }
+
+	return "";
 }
 
 function log_(mixed $element, string $title = null): void {
@@ -37,7 +56,7 @@ function get_supported_languages(): array {
 	];
 }
 
-function get_site_language() :string {
+function get_site_language(): string {
 	return $GLOBALS["site_language"] ?? "en";
 }
 
@@ -169,7 +188,7 @@ function formate_number(int $number, string $lang = "en"): string {
 
 function formate_text_for_file(string $string): string {
     $search  = [" ", "'", "(", ")", ",", ".", ":"];
-    $replace = ["_", ""  , "" , "", "", "", ""   ];
+    $replace = ["_", "" , "" , "" , "" , "" , "" ];
     $string = str_replace($search, $replace, $string);
     $string = strtolower($string);
 
