@@ -1,3 +1,11 @@
 {
-    "Void_Chicken" : "https://fr.stardewvalleywiki.com/Poulet_vide"
+    "Void_Chicken" : "https://fr.stardewvalleywiki.com/Poulet_vide",
+    "Big_Slime" : "https://fr.stardewvalleywiki.com/Slimes",
+    "Green_Slime" : "https://fr.stardewvalleywiki.com/Slimes",
+    "Frost_Jelly" : "https://fr.stardewvalleywiki.com/Slimes",
+    "Sludge" : "https://fr.stardewvalleywiki.com/Slimes",
+    "Bat" : "https://fr.stardewvalleywiki.com/Chauves-souris",
+    "Frost_Bat" : "https://fr.stardewvalleywiki.com/Chauves-souris",
+    "Lava_Bat" : "https://fr.stardewvalleywiki.com/Chauves-souris",
+    "Iridium_Bat" : "https://fr.stardewvalleywiki.com/Chauves-souris"
 }
