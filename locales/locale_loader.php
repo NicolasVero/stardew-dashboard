@@ -16,7 +16,9 @@ function locale_file_loader(): bool {
         $GLOBALS["site_translations"] = array_merge($GLOBALS["site_translations"], expand_dynamic_keys($file_content));
     }
 
+    $GLOBALS["wiki_link_overload"] = decode("wiki_links_overload", get_languages_folder() . "/$site_language/");
     $GLOBALS["is_site_translated"] = true;
+
     return true;
 }
 
@@ -45,6 +47,5 @@ function expand_dynamic_keys(array $translations): array {
 function get_traductions_files(): array {
     return [
         "landing_page", "topbar_panels", "errors", "panels", "generic", "quests", "full_header", "galleries"
-        // , "wiki_links"
     ];
 }

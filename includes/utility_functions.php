@@ -20,15 +20,19 @@ function __(string $text, int $option = SPACE_NONE): string {
 }
 
 function get_translated_wiki_link(string $wiki_link, string $lang): string {
+	$wiki_url = parse_url($wiki_link);
+	$wiki_page = basename($wiki_url["path"]);
+
+	if(isset($GLOBALS["wiki_link_overload"][$wiki_page])) {
+		return $GLOBALS["wiki_link_overload"][$wiki_page];
+	}
+
 	$wiki_base_url = [
 		"fr" => "https://fr.stardewvalleywiki.com/"
 	][$lang];
-	
-	$wiki_url = parse_url($wiki_link);
+
     if(isset($wiki_url["path"])) {
-		$wiki_page = basename($wiki_url["path"]);
-		$wiki_page = str_replace("_", " ", $wiki_page);
-        return $wiki_base_url . __($wiki_page);
+        return $wiki_base_url . __(str_replace("_", " ", $wiki_page));
     }
 
 	return "";
