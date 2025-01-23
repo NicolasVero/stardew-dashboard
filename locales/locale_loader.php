@@ -16,7 +16,9 @@ function locale_file_loader(): bool {
         $GLOBALS["site_translations"] = array_merge($GLOBALS["site_translations"], expand_dynamic_keys($file_content));
     }
 
+    $GLOBALS["wiki_link_overload"] = decode("wiki_links_overload", get_languages_folder() . "/$site_language/");
     $GLOBALS["is_site_translated"] = true;
+
     return true;
 }
 

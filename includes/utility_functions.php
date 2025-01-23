@@ -5,6 +5,10 @@ function __(string $text, int $option = SPACE_NONE): string {
         return $text;
     }
 
+	if(str_contains($text, "stardewvalleywiki")) {
+		return get_translated_wiki_link($text, $GLOBALS["site_language"]);
+	}
+
 	$text = $GLOBALS["site_translations"][$text] ?? $text;
 	
     return [
@@ -13,6 +17,25 @@ function __(string $text, int $option = SPACE_NONE): string {
         SPACE_AFTER => "$text ",
         SPACE_BOTH => " $text ",
     ][$option] ?? $text;
+}
+
+function get_translated_wiki_link(string $wiki_link, string $lang): string {
+	$wiki_url = parse_url($wiki_link);
+	$wiki_page = basename($wiki_url["path"]);
+
+	if(isset($GLOBALS["wiki_link_overload"][$wiki_page])) {
+		return $GLOBALS["wiki_link_overload"][$wiki_page];
+	}
+
+	$wiki_base_url = [
+		"fr" => "https://fr.stardewvalleywiki.com/"
+	][$lang];
+
+    if(isset($wiki_url["path"])) {
+        return $wiki_base_url . __(str_replace("_", " ", $wiki_page));
+    }
+
+	return "";
 }
 
 function log_(mixed $element, string $title = null): void {
@@ -37,7 +60,7 @@ function get_supported_languages(): array {
 	];
 }
 
-function get_site_language() :string {
+function get_site_language(): string {
 	return $GLOBALS["site_language"] ?? "en";
 }
 
@@ -169,7 +192,7 @@ function formate_number(int $number, string $lang = "en"): string {
 
 function formate_text_for_file(string $string): string {
     $search  = [" ", "'", "(", ")", ",", ".", ":"];
-    $replace = ["_", ""  , "" , "", "", "", ""   ];
+    $replace = ["_", "" , "" , "" , "" , "" , "" ];
     $string = str_replace($search, $replace, $string);
     $string = strtolower($string);
 
@@ -260,11 +283,11 @@ function get_item_name_by_id(int $id): string {
 }
 
 function get_wiki_link(int $id): string {
-	return $GLOBALS["json"]["wiki_links"][$id];
+	return __($GLOBALS["json"]["wiki_links"][$id]);
 }
 
 function get_wiki_link_by_name(string $name): string {
-	return "https://stardewvalleywiki.com/" . [
+	$wiki_link = "https://stardewvalleywiki.com/" . [
 		"achievements" => "Achievements",
 		"children"     => "Children",
 		"festival"     => "Festivals",
@@ -272,6 +295,8 @@ function get_wiki_link_by_name(string $name): string {
 		"secret_notes" => "Secret_Notes",
 		"skills"       => "Skills"
 	][$name] ?? "";
+
+	return __($wiki_link);
 }
 
 function array_keys_exists(array $keys, array $array): bool {
