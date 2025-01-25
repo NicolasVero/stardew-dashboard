@@ -73,7 +73,7 @@ function display_weather_icon(): string {
 
     return "
         <span class='tooltip'>
-            <a href='https://stardewvalleywiki.com/Weather' class='wiki_link' rel='noreferrer' target='_blank'>
+            <a href='" . __("https://stardewvalleywiki.com/Weather") . "' class='wiki_link' rel='noreferrer' target='_blank'>
                 <img src='$images_path/icons/$weather.png' class='weather_icon' alt='Weather icon'/>
             </a>
             <span class='left'>" . get_weather_tooltip($weather) . "</span>

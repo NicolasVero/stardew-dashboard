@@ -46,14 +46,29 @@
     "of winter" : "d'hiver",
     "Year" : "Année",
 
+    "Weather" : "Météo",
+
     "time in game" : "temps en jeu",
 
+    "Gold" : "Or",
     "Gold coins" : "Pièces d'or",
-    "Golden Walnuts" : "Noix d'or",
-    "golden walnuts found" : "noix d'or trouvées",
+    "Golden Walnut" : "Noix dorée",
+    "Golden Walnuts" : "Noix dorées",
+    "golden walnuts found" : "noix dorées trouvées",
+    "Qi Gem" : "Gemme de Qi",
     "Qi gems" : "Gemmes Qi",
+    "Casino" : "Casino",
     "Casino coins" : "Jetons du casino",
+    "Grandpa" : "Grand-père",
     "candles lit" : "bougies allumées",
     "Number of candles lit on the altar" : "Nombre de bougies allumées sur l'autel",
-    "perfection progression" : "progression de la perfection"
+    "Perfection" : "Perfection",
+    "perfection progression" : "progression de la perfection",
+
+    "Energy" : "Énergie",
+    "Health" : "Santé",
+    "Inventory" : "Inventaire",
+    "The Mines" : "Mines",
+    "Farmhouse" : "Maison de ferme",
+    "Giant Stump" : "Souche Géante"
 }
