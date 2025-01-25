@@ -36,6 +36,10 @@
     "Mastery_Cave" : "Grotte de maîtrise",
     "Secret_Notes" : "Notes secrètes",
     "Skills" : "Compétences",
+    "Spring" : "Printemps",
+    "Summer" : "Été",
+    "Fall" : "Automne",
+    "Winter" : "Hiver",
 
     "Choose language" : "Choisir une langue",
     "Changing the language will reload the page. If you had uploaded a backup, you will have to start again." : "Le changement de langue rechargera la page, si vous aviez uploadé une savegarde, il faudra recommencer."
