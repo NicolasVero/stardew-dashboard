@@ -1,15 +1,13 @@
 <?php
 
 function __(string $text, int $option = SPACE_NONE): string {
-    if(!$GLOBALS["is_site_translated"]) {
-        return $text;
-    }
-
-	if(str_contains($text, "stardewvalleywiki")) {
-		return get_translated_wiki_link($text, $GLOBALS["site_language"]);
+    if($GLOBALS["is_site_translated"]) {
+		if(str_contains($text, "stardewvalleywiki")) {
+			return get_translated_wiki_link($text, $GLOBALS["site_language"]);
+		}
+		
+		$text = $GLOBALS["site_translations"][$text] ?? $text;
 	}
-
-	$text = $GLOBALS["site_translations"][$text] ?? $text;
 
     return [
         SPACE_NONE => $text,
