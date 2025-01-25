@@ -74,7 +74,7 @@ function display_stat(array $parameters): string {
 
     if(isset($wiki_link)) {
         return "
-            <a href='https://stardewvalleywiki.com/$wiki_link' class='wiki_link' rel='noreferrer' target='_blank'>
+            <a href='" . __("https://stardewvalleywiki.com/$wiki_link") . "' class='wiki_link' rel='noreferrer' target='_blank'>
                 <span>
                     $image
                     <span class='data $formatted_icon'>$formatted_value</span>

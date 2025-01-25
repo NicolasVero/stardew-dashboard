@@ -495,9 +495,9 @@
 		@calendar-border-width: ((@used-width * 2) / @calendar-width) * @calendar-ratio;
 		@calendar-left-margin: ((@used-width * 16) / @calendar-width) * @calendar-ratio;
 		@calendar-real-width: ((@used-width * @calendar-width) / @calendar-width) * @calendar-ratio;
-		@calendar-top-margin: ((@used-width * 64) / @calendar-width) * @calendar-ratio;
+		@calendar-top-margin: ((@used-width * 37) / @calendar-width) * @calendar-ratio;
 
-		aspect-ratio: 1.43;
+		aspect-ratio: 1.55;
 		width: @calendar-real-width;
 
 		& > .calendar-block {
@@ -509,6 +509,15 @@
 			& > .calendar-bg {
 				height: 100%;
 				position: absolute;
+				width: 100%;
+			}
+
+			& > .calendar-month {
+				font-family: @primary-ff;
+				font-size: @md-fs * 2;
+				margin-top: @big-gap;
+				position: absolute;
+				text-align: center;
 				width: 100%;
 			}
 

@@ -20,7 +20,7 @@ function display_friendship_structure(array $friendship_info): string {
             <a href='$wiki_link' class='wiki_link' rel='noreferrer' target='_blank'>
                 <img src='$images_path/characters/$formatted_villager_name.png' class='character-icon $version_class $meet_class' alt='$villager_name icon'/>
             </a>
-            <span class='character-name $formatted_villager_name'>$villager_name</span>
+            <span class='character-name $formatted_villager_name'>" . __($villager_name) . "</span>
             <span class='hearts-level'>$hearts_structure</span>
             <span class='tooltip'> 
                 <img src='$images_path/icons/birthday_icon.png' class='birthday_icon $birthday_class' alt=''/>

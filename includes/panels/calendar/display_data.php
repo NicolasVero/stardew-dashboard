@@ -74,6 +74,7 @@ function display_calendar_panel(): string {
             <span class='calendar-block'>
                 <img src='$images_path/icons/exit.png' class='absolute-exit exit exit-calendar-$player_id' alt='Exit'/>
                 <img src='$images_path/content/calendar_$season.png' class='calendar-bg' alt='Calendar background'/>
+                <span class='calendar-month'>" . __(ucfirst($season)) . "</span>
                 <table>
                     <tbody>
                         $table_structure

@@ -10,7 +10,7 @@ function __(string $text, int $option = SPACE_NONE): string {
 	}
 
 	$text = $GLOBALS["site_translations"][$text] ?? $text;
-	
+
     return [
         SPACE_NONE => $text,
         SPACE_BEFORE => " $text",
@@ -287,7 +287,9 @@ function get_item_name_by_id(int $id): string {
 }
 
 function get_wiki_link(int $id): string {
-	return __($GLOBALS["json"]["wiki_links"][$id]);
+	return htmlspecialchars(
+		__($GLOBALS["json"]["wiki_links"][$id], ENT_QUOTES, 'UTF-8')
+	);
 }
 
 function get_wiki_link_by_name(string $name): string {
