@@ -46,6 +46,9 @@ function expand_dynamic_keys(array $translations): array {
 
 function get_traductions_files(): array {
     return [
-        "landing_page", "topbar_panels", "errors", "panels", "generic", "quests", "full_header", "galleries", "characters"
+        "achievement", "artifacts", "books", "characters", "cooking_recipes", "crafting_recipes",
+        "enemies", "errors", "farm_animals", "fish", "full_header", "galleries", "general_stats",
+        "generic", "landing_page", "minerals", "panels", "quests", "shipped_items", "topbar_panels",
+        "unlockables"
     ];
 }
