@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in *Stardew Dashboard*, please follow the steps below to ensure responsible disclosure:
+If you discover a security vulnerability in **Stardew Dashboard**, please follow the steps below to ensure responsible disclosure:
 
 1. **Do not publicly disclose the issue**: Avoid posting details about the vulnerability in public forums or GitHub issues before a fix is available.
 2. **Contact the maintainers**: Send the details of the vulnerability to:
@@ -23,4 +23,4 @@ Thank you for helping make *Stardew Dashboard* safer for everyone!
 
 ## Additional Notes
 
-For general questions about the project, please use the [Discussions](https://github.com/stardew-dashboard/discussions) or [Issues](https://github.com/stardew-dashboard/issues) section on GitHub.
+For general questions about the project, please use the [Discussions](https://github.com/NicolasVero/stardew-dashboard/discussions) or [Issues](https://github.com/NicolasVero/stardew-dashboard/issues) section on GitHub.
