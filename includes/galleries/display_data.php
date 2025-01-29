@@ -78,6 +78,6 @@ function get_detailled_gallery_wiki_link(string $json_filename, string $json_lin
 	} else {
 		$wiki_url = get_wiki_link(get_item_id_by_name($json_line_name));
 	}
-
+    
 	return $wiki_url;
 }

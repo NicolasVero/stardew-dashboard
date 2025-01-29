@@ -38,12 +38,13 @@
     "Critical strikes are deadlier." : "Les coups critiques sont plus meurtriers.",
     "Friendship progression" : "Progression des relations",
     "View all friendships" : "Voir toutes les relations",
-    "Married" : "Marié",
-    "Dating" : "Fiancé",
-    "Friendly" : "Amical",
+    "Married" : "Marié(e)",
+    "Dating" : "Fiancé(e)",
+    "Friendly" : "Ami(e)",
     "Gifts made in the last week" : "Cadeaux faits cette semaine",
-    
-    "Secret notes" : "Notes secrètes",
+
+    "Secret_Notes" : "Notes secrètes",
+    "Secret Notes" : "Notes secrètes",
     "Secret Note #|1-27|" : "Note secrète #|1-27|",
     "Journal Scrap #|1-11|" : "Page de journal #|1-11|"
 }
