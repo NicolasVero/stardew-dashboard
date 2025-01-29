@@ -6,6 +6,11 @@
     "Combat mastery" : "Maîtrise du combat",
     "Foraging mastery" : "Maîtrise de la cueillette",
     "Fishing mastery" : "Maîtrise de la pêche",
+    "Farming" : "Agriculture",
+    "Mining" : "Extraction minière",
+    "Combat" : "Combat",
+    "Foraging" : "Cueillette",
+    "Fishing" : "Pêche", 
     "Animal products worth 20% more." : "Les produits d'origine animale valent 20% de plus.",
     "Crops worth 10% more." : "Les cultures valent 10% de plus.",
     "Befriend coop animals quicker. Incubation time (for Incubator and Ostrich Incubator) cut in half." : "Soyez ami avec les animaux de basse-cour plus rapidement. Le temps d'incubation (pour Incubateur et Incubateur d'autruche) est réduit de moitié.",
@@ -38,13 +43,12 @@
     "Critical strikes are deadlier." : "Les coups critiques sont plus meurtriers.",
     "Friendship progression" : "Progression des relations",
     "View all friendships" : "Voir toutes les relations",
-    "Married" : "Marié(e)",
-    "Dating" : "Fiancé(e)",
-    "Friendly" : "Ami(e)",
+    "Married" : "Marié",
+    "Dating" : "Fiancé",
+    "Friendly" : "Amical",
     "Gifts made in the last week" : "Cadeaux faits cette semaine",
-
-    "Secret_Notes" : "Notes secrètes",
-    "Secret Notes" : "Notes secrètes",
+    
+    "Secret notes" : "Notes secrètes",
     "Secret Note #|1-27|" : "Note secrète #|1-27|",
     "Journal Scrap #|1-11|" : "Page de journal #|1-11|"
 }
