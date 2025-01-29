@@ -14,6 +14,7 @@ function display_skills(): string {
         $mastery_class   = (array_key_exists(ucfirst(explode('_', $key)[0]) . " Mastery", $player_masteries)) ? 'found' : 'not-found';
         $mastery_tooltip = ucfirst(explode('_', $key)[0]) . " mastery";
         $is_newer_version_class = (is_game_older_than_1_6()) ? "newer-version" : "older-version";
+        $skill_wiki_link = get_wiki_link_by_name("skills") . "#" . str_replace(" ", "_", __(ucfirst($level_icon_name)));
 
         $skill_structure .= "
             <span class='skill $key'>
@@ -25,10 +26,10 @@ function display_skills(): string {
                 </span>
         
                 <span class='tooltip'>
-                    <a href='" . get_wiki_link_by_name("skills") . "#" . ucfirst($level_icon_name) . "' class='wiki_link' rel='noreferrer' target='_blank'>
+                    <a href='$skill_wiki_link' class='wiki_link' rel='noreferrer' target='_blank'>
                         <img src='$images_path/skills/$level_icon_name.png' class='level-icon' alt='$key'/>
                     </a>
-                    <span>" . ucfirst($level_icon_name) . "</span>
+                    <span>" . __(ucfirst($level_icon_name)) . "</span>
                 </span>
                 " . get_level_progress_bar($level) . "
                 <span class='level data'>$level</span>

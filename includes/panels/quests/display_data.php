@@ -56,7 +56,11 @@ function display_quest_panel(): string {
             } elseif(str_ends_with($rewards[$i], 'q')) {
                 $quest_structure .= explode('_', $rewards[$i])[0] . "<img src='$images_path/rewards/qi_gem.png' alt='Qi gems reward'/>";
             } else {
-                $quest_structure .= $rewards[$i];
+                if($rewards[$i] === null) {
+                    continue;
+                }
+                
+                $quest_structure .= __($rewards[$i]);
             }
 
             $quest_structure .= (is_numeric($rewards[$i]) || $rewards[$i] === null) ? "" : "<span>" . __($rewards[$i]) . "</span>";

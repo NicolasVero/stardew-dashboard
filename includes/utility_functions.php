@@ -292,12 +292,12 @@ function get_wiki_link(int $id): string {
 
 function get_wiki_link_by_name(string $name): string {
 	$wiki_link = "https://stardewvalleywiki.com/" . [
-		"achievements" => "Achievements",
-		"children"     => "Children",
-		"festival"     => "Festivals",
-		"mastery_cave" => "Mastery_Cave",
-		"secret_notes" => "Secret_Notes",
-		"skills"       => "Skills"
+		"achievements" => __("Achievements"),
+		"children"     => __("Children"),
+		"festival"     => __("Festivals"),
+		"mastery_cave" => __("Mastery_Cave"),
+		"secret_notes" => __("Secret_Notes"),
+		"skills"       => __("Skills")
 	][$name] ?? "";
 
 	return __($wiki_link);

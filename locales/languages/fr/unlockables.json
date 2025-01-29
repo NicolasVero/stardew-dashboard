@@ -1,15 +1,16 @@
 {
     "Unlockables" : "Eléments débloquables",
-    "Dwarvish Translation Guide" : "Guide de Traduction Nain",
-    "Rusty Key" : "Clé Rouillée",
-    "Club Card" : "Carte de Membre",
-    "Skull Key" : "Clé du Crâne",
-    "Forest Magic" : "Magie de la Forêt",
-    "Dark Talisman" : "Talisman Sombre",
-    "Magic Ink" : "Encre Magique",
-    "Special Charm" : "Charme Spécial",
+    "Dwarvish Translation Guide" : "Manuel de traduction de la langue des Nains",
+    "Rusty Key" : "Clé rouillée",
+    "Club Card" : "Carte du club",
+    "Skull Key" : "Clé en tête-de-mort",
+    "Forest Magic" : "Magie de la forêt",
+    "Dark Talisman" : "Talisman noir",
+    "Magic Ink" : "Encre magique",
+    "Special Charm" : "Charme spécial",
     "Magnifying Glass" : "Loupe",
-    "Bear's Knowledge" : "Savoir de l'Ours",
-    "Spring Onion Mastery" : "Maîtrise de l'Oignon Sauvage",
-    "Town Key" : "Clé de la Ville"
+    "Bear's Knowledge" : "Savoir de l’ours",
+    "Spring Onion Mastery" : "Maîtrise de l’oignon de printemps",
+    "Town Key" : "Clé du village",
+    "Key To The Town" : "Clé du village"
 }

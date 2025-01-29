@@ -19,7 +19,8 @@ $functions_files = [
         "minerals",
         "secret_notes",
         "shipped_items",
-        "skills"
+        "skills",
+        "unlockables"
     ],
     "panels",
     "panels" => [
@@ -31,7 +32,6 @@ $functions_files = [
         "junimo_kart",
         "museum",
         "quests",
-        "unlockables",
         "visited_locations"
     ]
 ];
