@@ -17,8 +17,8 @@ function display_header(): string {
             <div class='header'>
                 <span class='player'>
                     <img src='$images_path/icons/$pet_icon.png' alt='Pet type'/>
-                    <img src='$images_path/icons/" . strtolower($gender) . ".png' class='player_gender_logo' alt='Gender logo: $gender'/>
-                    <span class='data player_name'>$name<span class='data-label'> " . __("$farmer_level") . " " . __("at") . " $farm_name</span></span>
+                    <img src='$images_path/icons/" . strtolower($gender) . ".png' class='player-gender-logo' alt='Gender logo: $gender'/>
+                    <span class='data player-name'>$name<span class='data-label farmer-level'> " . __("$farmer_level") . " " . __("at") . " $farm_name</span></span>
                 </span>
 
                 <span class='date'>

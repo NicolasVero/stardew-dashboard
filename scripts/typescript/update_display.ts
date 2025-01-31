@@ -11,11 +11,11 @@ function update_section_visibility(section: HTMLElement, settings: Settings): vo
     const has_older_items: boolean = has_section_older_version_items(section);
 
     if(settings.toggle_versions && is_empty && !has_older_items) {
-        section.style.visibility = "hidden";
+        section.classList.add("hidden");
         return;
     }
 
-    section.style.visibility = "visible";
+    section.classList.remove("hidden");
 
     if(title !== null) {
         title.style.display = "block";

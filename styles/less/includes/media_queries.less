@@ -34,8 +34,22 @@
 	._50, ._100 {
 		flex-basis: 100%;
 	}
+	
+	.hidden {
+		display: none !important;
+	}
 
 	body {
+		header {
+			.player {
+				.player-name {
+					.farmer-level {
+						display: none;
+					}
+				}
+			}
+		}
+
 		main {
 			.first-gallery {
 				.intra-gallery {
@@ -46,6 +60,7 @@
 					order: 1;
 				}
 			}
+
 			.characters {
 				flex-direction: column;
 			}
