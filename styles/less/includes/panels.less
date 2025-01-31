@@ -43,7 +43,6 @@
 	display: none;
 }
 
-
 .absolute-exit {
 	position: absolute;
 	top: @big-gap;
@@ -283,48 +282,37 @@
 		font-family: @dialogue-ff;
 		font-size: @giant-fs;
 		padding: @big-gap @big-gap;
-
-		& > * {
+	
+		& > .title {
+			color: @third-fc;
 			display: flex;
 			flex-direction: column;
-			gap: @md-gap;
+			font-weight: 900;
+			letter-spacing: 3px;
+			text-align: center;
 		}
 
-		& > .header {
-			margin-bottom: @big-gap;
-			position: relative;
-	
-			& > .title {
-				color: @third-fc;
-				display: flex;
-				flex-direction: column;
-				font-weight: 900;
-				letter-spacing: 3px;
-				text-align: center;
-			}
+		& > .dashes {
+			display: block;
+			margin: @big-gap auto;
+		}
 
-			& > .dashes {
-				@dash-amount: 30;
-				@dash-gap: 3px;
-				@dash-width: 14px;
-				margin-inline: auto;
-				width: @dash-amount * @dash-width + (@dash-amount - 1) * @dash-gap;
-			}
-
-			& > .exit {
-				position: absolute;
-				right: @md-gap;
-				top: @md-gap;
-				width: @big-icon;
-			}
+		& > .exit {
+			position: absolute;
+			right: @md-gap;
+			top: @md-gap;
+			width: @big-icon;
 		}
 
 		& > .locations {
 			display: flex;
+			margin: 0 auto;
+			width: fit-content;
 
-			& > .location-batch {
+			& > .locations-batch {
 				display: flex;
 				flex-direction: column;
+				gap: @md-gap;
 
 				a {
 					box-sizing: border-box;
