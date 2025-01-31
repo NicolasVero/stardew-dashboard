@@ -320,23 +320,21 @@
 		}
 
 		& > .locations {
-			display: grid;
-			gap: @md-gap @bigger-gap;
-			grid-template-columns: repeat(2, 1fr);
+			display: flex;
 
-			a {
-				box-sizing: border-box;
-				color: @third-fc;
-				padding-inline: @big-gap;
-				width: fit-content;
-				
-				&:hover, & > span:hover {
-					cursor: @pointer;
-				}
+			& > .location-batch {
+				display: flex;
+				flex-direction: column;
 
-				&:nth-child(odd) {
-					left: 55%;
-					position: relative;
+				a {
+					box-sizing: border-box;
+					color: @third-fc;
+					padding-inline: @big-gap;
+					width: fit-content;
+					
+					&:hover, & > span:hover {
+						cursor: @pointer;
+					}
 				}
 			}
 		}
@@ -654,6 +652,7 @@
 	&.junimo-kart-leaderboard-panel {
 		.big-panel-width;
 		.invisible-panel;
+		.limit-panel-height;
 		.panel-with-background;
 		.panel-with-border;
 		aspect-ratio: 2/1;
