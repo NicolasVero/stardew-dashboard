@@ -155,10 +155,6 @@ function get_github_assets_url(): string {
 	return "https://raw.githubusercontent.com/NicolasVero/stardew-dashboard/refs/heads/master/assets/images";
 }
 
-function get_test_save_url(): string {
-	return "https://stardew-dashboard.42web.io/data/saves/save_1.xml";
-}
-
 function is_on_localhost(): bool {
 	return $_SERVER["HTTP_HOST"] === "localhost";
 }

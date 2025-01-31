@@ -68,7 +68,7 @@ function display_landing_page(bool $with_topbar = true): string {
 							</span>
 							<span>
 								" . __("You don't have a backup of Stardew Valley? Try our dashboard with this one!") . "
-								<a href='" . get_test_save_url() . "' download='" . __("Stardew_Dashboard_default_save") . "'>
+								<a href='" . get_saves_folder() . "/example.xml' download='example.xml'>
 									" . __("Download the save.") . "
 								</a>
 							</span>
