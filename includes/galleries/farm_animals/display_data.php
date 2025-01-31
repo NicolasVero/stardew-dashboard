@@ -39,7 +39,6 @@ function display_farm_animals_panel(): string {
         foreach($animals_data as $animal_data) {
             extract($animal_data); //? $name, $type, $friendship_level, $happiness, $was_pet
 
-            $formatted_name = formate_usernames($name);
             $formatted_type = formate_text_for_file($type);
             $wiki_url = get_wiki_link($id);
             $animal_icon = "$images_path/farm_animals/$formatted_type.png";
@@ -65,7 +64,7 @@ function display_farm_animals_panel(): string {
                     <a href='$wiki_url' class='wiki_link' rel='noreferrer' target='_blank'>
                         <img src='$animal_icon' class='animal-icon' alt='$type icon'/>
                     </a>
-                    <span class='animal-name'>$formatted_name</span>
+                    <span class='animal-name'>$name</span>
                     <span class='hearts-level'>$hearts_html</span>
                     <span class='interactions'>
                         <span class='tooltip'>
@@ -74,7 +73,7 @@ function display_farm_animals_panel(): string {
                         </span>
                         <span class='tooltip'>
                             <img src='$status_icon' class='status' alt='$status'/>
-                            <span>" . get_animal_status_tooltip($status, $formatted_name) . "</span>
+                            <span>" . get_animal_status_tooltip($status, $name) . "</span>
                         </span>
                     </span>
                 </span>
