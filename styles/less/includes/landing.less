@@ -6,9 +6,10 @@ body {
 			padding: @big-gap @bigger-gap;
 
 			section {
+				max-width: 100%;
+
 				& > span {
 					&.characters {
-						flex-direction: row;
 						font-size: @small-fs;
 					}
 				}
@@ -21,7 +22,6 @@ body {
 			section {
 				& > span {
 					&.characters {
-						flex-direction: column;
 						font-size: @xsmall-fs;
 					}
 				}
@@ -66,9 +66,11 @@ body {
 
 			section {
 				& > span {
-					display: flex;
-					flex-direction: column;
-					gap: @md-gap;
+					&:not(.characters) {
+						display: flex;
+						flex-direction: column;
+						gap: @md-gap;
+					}
 
 					&.characters {
 						display: flex;
