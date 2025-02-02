@@ -23,7 +23,7 @@ function display_farm_animals_panel(): string {
         return "
             <section class='all-animals-$player_id panel all-animals-panel modal-window'>
                 <div class='panel-header'>
-                    <h2 class='section-title panel-title'>Farm animals friendships</h2>
+                    <h2 class='section-title panel-title'>" . __("Farm animals friendships") . "</h2>
                     <img src='$images_path/icons/exit.png' class='exit-all-animals-$player_id exit' alt='Exit'/>
                 </div>
                 <span class='friendlist'>
@@ -43,7 +43,7 @@ function display_farm_animals_panel(): string {
             $wiki_url = get_wiki_link($id);
             $animal_icon = "$images_path/farm_animals/$formatted_type.png";
             $pet_class = ($was_pet) ? "pet" : "not-petted";
-            $pet_tooltip = ($was_pet) ? "Caressed by the auto-petter" : "No auto-petter in this building";
+            $pet_tooltip = ($was_pet) ? __("Caressed by the auto-petter") : __("No auto-petter in this building");
             $status = ($happiness > 200) ? "happy" : (($happiness > 30) ? "fine" : "sad");
             $status_icon = "$images_path/icons/{$status}_emote.png";
 
@@ -84,7 +84,7 @@ function display_farm_animals_panel(): string {
     return "
         <section class='all-animals-$player_id panel all-animals-panel modal-window'>
             <div class='panel-header'>
-                <h2 class='section-title panel-title'>Farm animals friendships</h2>
+                <h2 class='section-title panel-title'>" . __("Farm animals friendships") . "</h2>
                 <img src='$images_path/icons/exit.png' class='exit-all-animals-$player_id exit' alt='Exit'/>
             </div>
             <span class='friendlist'>

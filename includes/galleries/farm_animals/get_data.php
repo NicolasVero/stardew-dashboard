@@ -76,8 +76,8 @@ function get_player_farm_animals(): array {
 
 function get_animal_status_tooltip(string $status, string $animal_name): string {
     return [
-        "happy" => "$animal_name looks really happy today!",
-        "fine"  => "$animal_name looks fine today!",
-        "angry" => "$animal_name looks sad today :("
+        "happy" => "$animal_name " . __("looks really happy today!"),
+        "fine"  => "$animal_name " . __("looks fine today!"),
+        "angry" => "$animal_name " . __("looks sad today :(")
     ][$status] ?? "";
 }
