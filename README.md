@@ -16,7 +16,7 @@ Whether you're a seasoned veteran or just starting out, Stardew Dashboard is des
 - **A link to the wiki**: Easy access to wiki pages directly from your Dashboard.
 
 > [!IMPORTANT]
-> Stardew Dashboard works with 1.4+ version.
+> Stardew Dashboard supports version 1.4 and higher.
 
 ## How to use Stardew Dashboard?
 To start using Stardew Dashboard, retrieve your save from your game files. <br> The save file is the one with the same name as your folder.
