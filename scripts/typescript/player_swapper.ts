@@ -11,8 +11,16 @@ function initialize_player_swapper(players_count: number): void {
 function swap_displayed_player(player_id: number): void {
 	const players_display: HTMLCollectionOf<HTMLElement> = document.getElementsByClassName("player_container") as HTMLCollectionOf<HTMLElement>;
 
+	if(!players_display[player_id].hasAttribute('data-tooltips-initialized')) {
+		initialize_tooltips(players_display[player_id].classList[0]);
+		players_display[player_id].setAttribute('data-tooltips-initialized', 'true');
+	}
+	
+	players_display[player_id].style.display = "block";
+
 	for(let i = 0; i < players_display.length; i++) {
-		players_display[i].style.display = (player_id !== i) ? "none" : "block";
-		players_display[i].style.opacity = "1";
+		if(player_id !== i) {
+			players_display[i].style.display = "none";
+		}
 	}
 }

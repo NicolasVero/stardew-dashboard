@@ -24,6 +24,7 @@ function load_dashboard_elements(): void {
     prevent_panel_scroll();
 
     initialize_player_swapper(get_players_number());
+    swap_displayed_player(0);
 }
 
 function load_buttons(): void {

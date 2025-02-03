@@ -1,7 +1,6 @@
 function update_tooltips_after_ajax(): void {
     on_images_loaded(() => {
         initialize_tooltips();
-        swap_displayed_player(0);
     });
 }
 

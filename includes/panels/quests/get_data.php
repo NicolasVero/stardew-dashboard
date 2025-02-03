@@ -51,7 +51,7 @@ function get_daily_quest_data(object $quest): array|null {
 			"number_obtained" => fn($quest) => $quest->numberKilled,
 		],
 		5 => [
-			"goal_name" => fn() => "people",
+			"goal_name" => "people",
 			"keyword" => "Talk to",
 			"keyword_ing" => "Socializing",
 			"number_to_get" => fn($quest) => $quest->total,
@@ -62,14 +62,14 @@ function get_daily_quest_data(object $quest): array|null {
 			"keyword" => "Fish",
 			"keyword_ing" => "Fishing",
 			"number_to_get" => fn($quest) => $quest->numberToFish,
-			"number_obtained" => fn($quest) => $quest->numberFished,
+			"number_obtained" => 0,
 		],
 		10 => [
-			"goal_name" => fn($quest) => find_reference_in_json(formate_original_data_string($quest->resource), "shipped_items"),
+			"goal_name" => fn($quest) => find_reference_in_json(formate_original_data_string($quest->resource), "fish"),
 			"keyword" => "Fish",
 			"keyword_ing" => "Fishing",
 			"number_to_get" => fn($quest) => $quest->number,
-			"number_obtained" => fn($quest) => $quest->numberCollected,
+			"number_obtained" => 0,
 		],
 	];
 
@@ -87,7 +87,7 @@ function get_daily_quest_data(object $quest): array|null {
 
 	$title = __("$keyword_ing Quest");
 	$description = __("Help") . " $target " . __("with the") . __($keyword_ing, SPACE_BOTH) . __("request") . ".";
-	$objective = __($keyword) . "$number_to_get " . __($goal_name) . __("for", SPACE_BEFORE) . " $target: $number_obtained/$number_to_get";
+	$objective = __($keyword) . " $number_to_get " . __($goal_name) . __("for", SPACE_BEFORE) . " $target: $number_obtained/$number_to_get";
 
 	return [
 		"time_limited"	=> true,
