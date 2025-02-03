@@ -99,10 +99,6 @@ function can_close_panel(event: Event): boolean {
     );
 }
 
-function toggle_scroll(can_scroll: boolean): void {
-    document.body.style.overflow = (can_scroll) ? "auto" : "hidden";
-}
-
 function toggle_loading(shown: boolean): void {
     const loading_strip: HTMLElement = document.querySelector("#loading-strip");
 

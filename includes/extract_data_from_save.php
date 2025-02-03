@@ -18,8 +18,9 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
     
     for($player_count = 0; $player_count < count($players_data); $player_count++) {
         $GLOBALS["player_id"] = $player_count;
+        $additional_class = ($player_count === 0) ? "host" : "farmhand";
         $pages["player_" . $player_count] = "
-            <div class='player_container player_{$player_count}_container'>" . 
+            <div class='player_container player_{$player_count}_container $additional_class'>" . 
                 display_page() . "
             </div>
         ";

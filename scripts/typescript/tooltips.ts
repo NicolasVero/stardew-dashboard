@@ -2,7 +2,6 @@ function update_tooltips_after_ajax(): void {
     on_images_loaded(() => {
         initialize_tooltips();
         swap_displayed_player(0);
-        toggle_scroll(true);
     });
 }
 
@@ -31,7 +30,6 @@ function initialize_tooltips(section: string = null): void {
 }
 
 function on_images_loaded(callback: () => void): void {
-    toggle_scroll(false);
     let images_loaded: number = 0;
     const images: NodeListOf<HTMLImageElement> = document.querySelectorAll("img");
     const total_images: number = images.length;

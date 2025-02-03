@@ -39,7 +39,7 @@ function display_quest_panel(): string {
 		
         for($i = 0; $i<count($rewards); $i++) {
 			// Reward tooltip (pas besoin pourgold and qi gems)
-            $quest_structure .= ((is_numeric($rewards[$i]) || str_ends_with($rewards[$i], 'q'))) ? "<span class='quest-reward'>" : "<span class='quest-reward tooltip'>";
+            $quest_structure .= ((is_numeric($rewards[$i]) || $rewards[$i] === null || str_ends_with($rewards[$i], 'q'))) ? "<span class='quest-reward'>" : "<span class='quest-reward tooltip'>";
             
 			/*
             Plusieurs types de rewards :

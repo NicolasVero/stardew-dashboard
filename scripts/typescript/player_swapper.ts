@@ -13,5 +13,6 @@ function swap_displayed_player(player_id: number): void {
 
 	for(let i = 0; i < players_display.length; i++) {
 		players_display[i].style.display = (player_id !== i) ? "none" : "block";
+		players_display[i].style.opacity = "1";
 	}
 }

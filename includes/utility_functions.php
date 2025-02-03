@@ -219,13 +219,13 @@ function in_bytes_conversion(string $size, string $use = "local"): int {
     return $value * pow(1024, $unit_to_power[$unite]);
 }
 
-function sanitize_json_with_version(string $json_name, bool $version_controler = false): array {
+function sanitize_json_with_version(string $json_name, bool $version_controller = false): array {
 	$original_json = $GLOBALS["json"][$json_name];
 	$game_version_score = $GLOBALS["game_version_score"] ?? "";
 	$sanitize_json = [];
 
 	foreach($original_json as $key => $json_version) {
-		if($game_version_score > get_game_version_score($key) || !$version_controler) {
+		if($game_version_score > get_game_version_score($key) || !$version_controller) {
 			$sanitize_json += $json_version;
 		}
 	}

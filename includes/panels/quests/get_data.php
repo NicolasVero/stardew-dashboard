@@ -10,6 +10,26 @@ function get_story_quest_data(array $quest): array {
 	];
 }
 
+function find_reference(string $reference_id): string {
+	$reference_id = formate_original_data_string($reference_id);
+	$json_list = [
+		"shipped_items",
+		"fish",
+		"minerals"
+	];
+
+
+	foreach($json_list as $json) {
+		if(isset($reference) && $reference !== null) {
+			continue;
+		}
+
+		$reference = find_reference_in_json($reference_id, $json);
+	}
+
+	return $reference;
+}
+
 function get_daily_quest_data(object $quest): array|null {
 	$quest_type = (int) $quest->questType;
 	$days_left = (int) $quest->daysLeft;
@@ -17,11 +37,11 @@ function get_daily_quest_data(object $quest): array|null {
 	$target = $quest->target;
 	$quest_configs = [
 		3 => [
-			"goal_name" => fn($quest) => find_reference_in_json(formate_original_data_string($quest->item), "shipped_items"),
+			"goal_name" => fn($quest) => find_reference($quest->item),
 			"keyword" => "Deliver",
 			"keyword_ing" => "Delivering",
 			"number_to_get" => fn($quest) => $quest->number,
-			"number_obtained" => fn($quest) => 0,
+			"number_obtained" => 0,
 		],
 		4 => [
 			"goal_name" => fn($quest) => $quest->monsterName,
@@ -63,7 +83,7 @@ function get_daily_quest_data(object $quest): array|null {
 	$keyword = $config["keyword"];
 	$keyword_ing = $config["keyword_ing"];
 	$number_to_get = $config["number_to_get"]($quest);
-	$number_obtained = $config["number_obtained"]($quest);
+	$number_obtained = $config["number_obtained"];
 
 	$title = __("$keyword_ing Quest");
 	$description = __("Help") . " $target " . __("with the") . __($keyword_ing, SPACE_BOTH) . __("request") . ".";
