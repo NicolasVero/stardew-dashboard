@@ -271,6 +271,7 @@ function get_wiki_link_by_name(string $name): string {
 		"festival"     => __("Festivals"),
 		"mastery_cave" => __("Mastery_Cave"),
 		"secret_notes" => __("Secret_Notes"),
+		"journal_scraps" => __("Journal_Scraps"),
 		"skills"       => __("Skills")
 	][$name] ?? "";
 
