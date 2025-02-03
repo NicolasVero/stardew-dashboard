@@ -70,14 +70,16 @@ function get_detailled_gallery_image(string $json_filename, string $json_line_na
 }
 
 function get_detailled_gallery_wiki_link(string $json_filename, string $json_line_name): string {
-	if(in_array($json_filename, ["achievements", "secret_notes"])) {
-		$wiki_url = [
-			"achievements" => get_wiki_link_by_name("achievements"),
-			"secret_notes" => get_wiki_link_by_name("secret_notes")
-		][$json_filename];
-	} else {
-		$wiki_url = get_wiki_link(get_item_id_by_name($json_line_name));
+	if($json_filename === "achievements") {
+		return get_wiki_link_by_name("achievements");
 	}
-    
-	return $wiki_url;
+	
+	if($json_filename === "secret_notes") {
+		// Renvoie secret_notes || journal_scraps 
+		$json_line_name = implode(" ", array_slice(explode(" ", $json_line_name), 0, 2)) . "s";
+		$formatted_name = formate_text_for_file($json_line_name);
+		return get_wiki_link_by_name($formatted_name);
+	}
+
+	return get_wiki_link(get_item_id_by_name($json_line_name));
 }
