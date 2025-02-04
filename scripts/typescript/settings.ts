@@ -25,6 +25,7 @@ function handle_no_spoil_mode(): void {
 
 function handle_toggle_versions_mode(): void {
     update_display(["newer-version"]);
+    update_display(["newer-version-icon"]);
 };
 
 function handle_spoil_mode(): void {

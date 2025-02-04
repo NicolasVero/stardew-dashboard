@@ -138,7 +138,7 @@ function has_section_older_version_items(section: HTMLElement): boolean {
 };
 
 function should_show_element(element: HTMLElement, settings: Settings): boolean {
-    const is_newer: boolean = has_class(element, "newer-version");
+    const is_newer: boolean = has_class(element, "newer-version") ||has_class(element, "newer-version-icon");
     const is_not_found: boolean = has_class(element, "not-found");
     const should_keep_on_display: boolean = has_class(element, "always-on-display");
     const is_found: boolean = has_class(element, "found");

@@ -18,7 +18,6 @@ function display_detailled_gallery_title(string $section_title, array $panel_det
 
 function display_detailled_gallery(array $gallery_details, string $width = "", array $panel_details = []): string {
     extract($gallery_details); //? $player_data, $json_filename, $section_title
-	$images_path = get_images_folder();
     $json_data = $GLOBALS["json"][$json_filename];
     $title = display_detailled_gallery_title($section_title, $panel_details);
 

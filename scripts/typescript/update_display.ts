@@ -42,13 +42,22 @@ function update_display(target_classes: string[]): void {
     const update_elements = (class_name: string) => {
         const elements: HTMLCollectionOf<Element> = document.getElementsByClassName(class_name);
 
-        Array.from(elements).forEach((element: HTMLElement) => {
-            const parent: HTMLElement = get_parent_element(element);
-
-            if(parent !== null) {
-                set_element_display(parent, should_show_element(element, settings));
-            }
-        });
+        if(class_name.split("-").pop() === "icon") {
+            Array.from(elements).forEach((element: HTMLElement) => {
+                if(element !== null) {
+                    console.log(element);
+                    set_element_display(element, should_show_element(element, settings));
+                }
+            });
+        } else {
+            Array.from(elements).forEach((element: HTMLElement) => {
+                const parent: HTMLElement = get_parent_element(element);
+    
+                if(parent !== null) {
+                    set_element_display(parent, should_show_element(element, settings));
+                }
+            });
+        }
     };
 
     target_classes.forEach(update_elements);
