@@ -7,7 +7,7 @@ function get_player_minerals(): array {
 
 	foreach($player_minerals->item as $mineral) {
 		$mineral_id = ((is_game_older_than_1_6())) ? $mineral->key->int : $mineral->key->string;
-		$mineral_id = formate_original_data_string((string) $mineral_id);
+		$mineral_id = format_original_data_string((string) $mineral_id);
 		$mineral_id = get_correct_id($mineral_id);
 		
 		$minerals_reference = find_reference_in_json($mineral_id, "minerals");

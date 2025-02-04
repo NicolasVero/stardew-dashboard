@@ -60,11 +60,11 @@ function get_detailled_gallery_image(string $json_filename, string $json_line_na
 	$images_path = get_images_folder();
 
 	if(!in_array($json_filename, ["secret_notes"])) {
-		return "$images_path/$json_filename/" . formate_text_for_file($json_line_name). ".png";
+		return "$images_path/$json_filename/" . format_text_for_file($json_line_name). ".png";
 	}
 
 	$line_name = explode(" ", $json_line_name);
-	$icon_name = formate_text_for_file(implode(" ", array_slice($line_name, 0, 2)));
+	$icon_name = format_text_for_file(implode(" ", array_slice($line_name, 0, 2)));
 	return "$images_path/icons/$icon_name.png";
 }
 
@@ -76,7 +76,7 @@ function get_detailled_gallery_wiki_link(string $json_filename, string $json_lin
 	if($json_filename === "secret_notes") {
 		// Renvoie secret_notes || journal_scraps 
 		$json_line_name = implode(" ", array_slice(explode(" ", $json_line_name), 0, 2)) . "s";
-		$formatted_name = formate_text_for_file($json_line_name);
+		$formatted_name = format_text_for_file($json_line_name);
 		return get_wiki_link_by_name($formatted_name);
 	}
 

@@ -113,7 +113,7 @@ function get_weather(string $weather_location = "Default"): string {
 		foreach($complex_location as $location) {
 			if($location->key->string === $weather_location) {
 				if($location->value->LocationWeather->weather->string !== "Festival") {
-					return formate_text_for_file((string)$location->value->LocationWeather->weather->string);
+					return format_text_for_file((string)$location->value->LocationWeather->weather->string);
 				}
 
 				if($location->value->LocationWeather->isRaining->string === true) {

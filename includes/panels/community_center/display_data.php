@@ -26,7 +26,7 @@ function display_community_center_panel(): string {
         foreach($room_details["bundle_ids"] as $bundle_id) {
             $bundle_details = $player_bundles[$bundle_id];
             $bundle_name = $bundle_details["bundle_name"];
-            $formatted_bundle_name = formate_text_for_file($bundle_name);
+            $formatted_bundle_name = format_text_for_file($bundle_name);
 
             if($bundle_details["is_complete"]) {
                 $is_complete_class = "complete";
@@ -89,7 +89,7 @@ function display_bundle_requirements(array $requirements, array $added_items): s
     foreach($requirements as $requirement) {
         extract($requirement); //? $id, $name, $quantity, $quality, $type
 
-        $formatted_item_name = formate_text_for_file($name);
+        $formatted_item_name = format_text_for_file($name);
         $has_been_donated = (has_been_donated_in_bundle($name, $added_items)) ? "donated" : "not-donated";
         
         $item_image = "
@@ -121,7 +121,7 @@ function display_bundle_added_items(array $added_items, int $limit): string {
 
         if(isset($added_items[$i])) {
             $item_name = $added_items[$i]["name"];
-            $formatted_item_name = formate_text_for_file($item_name);
+            $formatted_item_name = format_text_for_file($item_name);
             $type = $added_items[$i]["type"];
             $added_item = "<img src='$images_path/$type/$formatted_item_name.png' class='added-item' alt='$item_name'/>";
         }

@@ -11,7 +11,7 @@ function get_story_quest_data(array $quest): array {
 }
 
 function find_reference(string $reference_id): string {
-	$reference_id = formate_original_data_string($reference_id);
+	$reference_id = format_original_data_string($reference_id);
 	$json_list = [
 		"shipped_items",
 		"fish",
@@ -58,14 +58,14 @@ function get_daily_quest_data(object $quest): array|null {
 			"number_obtained" => fn($quest) => $quest->whoToGreet,
 		],
 		7 => [
-			"goal_name" => fn($quest) => find_reference_in_json(formate_original_data_string($quest->whichFish), "fish"),
+			"goal_name" => fn($quest) => find_reference_in_json(format_original_data_string($quest->whichFish), "fish"),
 			"keyword" => "Fish",
 			"keyword_ing" => "Fishing",
 			"number_to_get" => fn($quest) => $quest->numberToFish,
 			"number_obtained" => 0,
 		],
 		10 => [
-			"goal_name" => fn($quest) => find_reference_in_json(formate_original_data_string($quest->resource), "fish"),
+			"goal_name" => fn($quest) => find_reference_in_json(format_original_data_string($quest->resource), "fish"),
 			"keyword" => "Fish",
 			"keyword_ing" => "Fishing",
 			"number_to_get" => fn($quest) => $quest->number,

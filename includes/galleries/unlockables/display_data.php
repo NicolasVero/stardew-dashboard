@@ -11,7 +11,7 @@ function display_unlockables(): string {
         $is_newer_version_class = ($version_score < get_game_version_score($version)) ? "newer-version" : "older-version";
         
 		foreach($unlockables as $unlockable) {
-			$formatted_name = formate_text_for_file($unlockable);
+			$formatted_name = format_text_for_file($unlockable);
 			if(!isset($player_unlockables[$formatted_name]["is_found"])) {
 				continue;
             }
