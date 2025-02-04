@@ -12,6 +12,10 @@
 	min-width: 60vw;
 }
 
+.limit-panel-width {
+	max-width: 80vw;
+}
+
 .small-panel-height {
 	min-height: 30vh;
 }
@@ -640,7 +644,7 @@
 	&.junimo-kart-leaderboard-panel {
 		.big-panel-width;
 		.invisible-panel;
-		.limit-panel-height;
+		.limit-panel-width;
 		.panel-with-background;
 		.panel-with-border;
 		aspect-ratio: 2/1;
@@ -669,13 +673,14 @@
 				flex-direction: column;
 				gap: @md-gap;
 				margin: 0 auto @bigger-gap auto;
-				width: 25%;
+				width: 33%;
 
 				& > .record-holder {
 					color: @third-fc;
 					display: flex;
 					font-family: @primary-ff;
 					font-size: @bigger-fs;
+					gap: @md-gap;
 					justify-content: space-between;
 					text-shadow: 3px 3px 3px @primary-fc;
 
