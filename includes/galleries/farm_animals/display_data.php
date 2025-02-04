@@ -39,7 +39,7 @@ function display_farm_animals_panel(): string {
         foreach($animals_data as $animal_data) {
             extract($animal_data); //? $name, $type, $friendship_level, $happiness, $was_pet
 
-            $formatted_type = formate_text_for_file($type);
+            $formatted_type = format_text_for_file($type);
             $wiki_url = get_wiki_link($id);
             $animal_icon = "$images_path/farm_animals/$formatted_type.png";
             $pet_class = ($was_pet) ? "pet" : "not-petted";

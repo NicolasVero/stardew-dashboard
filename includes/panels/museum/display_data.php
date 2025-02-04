@@ -35,7 +35,7 @@ function display_museum_panel(): string {
             foreach($museum_data as $piece_index => $piece_details) {
                 if($piece_details["coords"]["X"] === $column_count && $piece_details["coords"]["Y"] === $row_count) {
                     $piece_name = ucfirst(get_item_name_by_id($piece_details["id"]));
-                    $piece_filename = formate_text_for_file($piece_name);
+                    $piece_filename = format_text_for_file($piece_name);
                     $piece_type = $piece_details["type"];
                     $museum_tooltip = "
                         <span class='museum-tooltip tooltip'>

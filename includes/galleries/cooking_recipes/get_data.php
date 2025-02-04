@@ -9,7 +9,7 @@ function get_player_cooking_recipes(): array {
 	$has_ever_cooked = (empty((array) $player_recipes_cooked)) ? false : true;
 
 	foreach($player_recipes->item as $recipe) {
-		$item_name = formate_original_data_string($recipe->key->string);
+		$item_name = format_original_data_string($recipe->key->string);
 		$index = array_search($item_name, $cooking_recipes_json);      
 
 		if($has_ever_cooked) {

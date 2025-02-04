@@ -57,8 +57,8 @@ function display_stat(array $parameters): string {
     extract($parameters); //? $icon, $value, $tooltip, $alt, $label, $wiki_link
 
     $images_path = get_images_folder();
-    $formatted_icon = formate_text_for_file($icon);
-    $formatted_value = filter_var($value, FILTER_VALIDATE_INT) ? formate_number($value, $GLOBALS["site_language"]) : $value;
+    $formatted_icon = format_text_for_file($icon);
+    $formatted_value = filter_var($value, FILTER_VALIDATE_INT) ? format_number($value, $GLOBALS["site_language"]) : $value;
     $alt = $alt ?? $icon;
     $label = $label ?? $icon;
     $image = "<img src='$images_path/icons/$formatted_icon.png' alt='$alt'/>";

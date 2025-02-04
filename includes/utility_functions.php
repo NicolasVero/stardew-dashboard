@@ -181,7 +181,7 @@ function get_formatted_date(bool $display_date = true): mixed {
 	];
 }
 
-function formate_number(int $number, string $lang = "en"): string {
+function format_number(int $number, string $lang = "en"): string {
 	if($lang === "fr") {
 		return number_format($number, 0, ",", " ");
 	}
@@ -189,7 +189,7 @@ function formate_number(int $number, string $lang = "en"): string {
 	return number_format($number);
 } 
 
-function formate_text_for_file(string $string): string {
+function format_text_for_file(string $string): string {
     $search  = [" ", "'", "(", ")", ",", ".", ":"];
     $replace = ["_", "" , "" , "" , "" , "" , "" ];
     $string = str_replace($search, $replace, $string);
@@ -202,7 +202,7 @@ function formate_text_for_file(string $string): string {
     return $string;
 }
 
-function formate_original_data_string(string $data): string {
+function format_original_data_string(string $data): string {
     return str_replace("(O)", "", $data);
 }
 
@@ -540,7 +540,7 @@ function get_player_items_list(object $data, string $filename): array {
 	$items_data = [];
 
 	foreach($data->item as $item) {
-		$item_id = formate_original_data_string($item->key->string);
+		$item_id = format_original_data_string($item->key->string);
 		$item_id = get_correct_id($item_id);
 
 		$item_reference = find_reference_in_json($item_id, $filename);

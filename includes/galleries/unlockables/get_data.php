@@ -106,7 +106,7 @@ function get_player_unlockables_list(): array {
 	$unlockables = get_player_unlockables();
 
 	foreach($unlockables_json as $unlockable_id => $unlockable_name) {
-		$formatted_name = formate_text_for_file($unlockable_name);
+		$formatted_name = format_text_for_file($unlockable_name);
 		$unlockables[$formatted_name] = [
 			"id" => $unlockable_id,
 			"is_found" => $unlockables[$formatted_name]
