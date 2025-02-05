@@ -20,7 +20,7 @@ function get_museum_pieces_coords(): array {
 		];
 	}
 
-	usort($museum_piece_details, function($a, $b) {
+	usort($museum_piece_details, function(array $a, array $b): bool {
 		return $a["coords"]["X"] <=> $b["coords"]["X"];
 	});
 

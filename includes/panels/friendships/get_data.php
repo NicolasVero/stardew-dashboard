@@ -23,7 +23,7 @@ function get_player_friendship_data(): array {
 		];
 	}
 
-	uasort($friends_data, function ($a, $b) {
+	uasort($friends_data, function (array $a, array $b): bool {
 		return $b["points"] - $a["points"];
 	});
 

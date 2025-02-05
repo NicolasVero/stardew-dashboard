@@ -232,7 +232,7 @@ function get_grandpa_score(): int {
         $grandpa_points++;
     }
 
-    $cc_completed = array_reduce($cc_rooms, function($completed, $room) use ($data) {
+    $cc_completed = array_reduce($cc_rooms, function(bool $completed, string $room): bool {
         return $completed && has_element_in_mail($room);
     }, true);
 
@@ -339,7 +339,7 @@ function get_highest_count_for_category(string $category): array {
 
 	for($current_player = 0; $current_player < $total_players; $current_player++) {
 		if(in_array($category, $exceptions_recipes)) {
-			$filtered_elements = array_filter($all_data[$current_player][$category], function($item) {
+			$filtered_elements = array_filter($all_data[$current_player][$category], function(mixed $item): bool {
 				return $item["counter"] > 0;
 			});
 			$amount_elements = count($filtered_elements);

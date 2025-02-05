@@ -604,7 +604,7 @@ function display_project_contributor(array $options): string {
     ";
 }
 
-function display_loading_strip() {
+function display_loading_strip(): string {
 	$images_path = get_images_folder();
 	$loading_translation = __("loading");
 	return "<img src='$images_path/content/strip_$loading_translation.gif' id='loading-strip' class='loading' alt=''/>";
