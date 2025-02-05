@@ -3,7 +3,36 @@
 function get_player_unlockables(): array {
 	$player_data = $GLOBALS["untreated_player_data"];
 	$player_unlockables = [];
-	$unlockables_details = [
+	$unlockables_details = get_unlockables_details();
+
+	foreach($unlockables_details as $unlockable_name => $unlockable_details) {
+		extract($unlockable_details); //? $type, $element_name
+
+		switch($type) {
+			case "mail" :
+				$player_unlockables[$unlockable_name] = has_element_in_mail($element_name);
+				break;
+			case "version" :
+				$player_unlockables[$unlockable_name] = has_element_based_on_version($older_element, $newer_element);
+				break;
+			case "event" :
+				$player_unlockables[$unlockable_name] = (int) in_array($event_id, (array) $player_data->eventsSeen->int);
+				break;
+			case "element_host" :
+				if(is_game_older_than_1_6()) {
+					$player_unlockables[$unlockable_name] = has_element($player_data->$older_element);
+				} else {
+					$player_unlockables[$unlockable_name] = has_unlockable_element_based_on_host($unlockable_name, $newer_element);
+				}
+				break;
+		}
+	}
+
+	return $player_unlockables;
+}
+
+function get_unlockables_details(): array {
+	return [
 		"forest_magic" => [
 			"type" => "mail",
 			"element_name" => "canReadJunimoText"
@@ -62,31 +91,6 @@ function get_player_unlockables(): array {
 			"newer_element" => "HasTownKey",
 		]
 	];
-
-	foreach($unlockables_details as $unlockable_name => $unlockable_details) {
-		extract($unlockable_details); //? $type, $element_name
-
-		switch($type) {
-			case "mail" :
-				$player_unlockables[$unlockable_name] = has_element_in_mail($element_name);
-				break;
-			case "version" :
-				$player_unlockables[$unlockable_name] = has_element_based_on_version($older_element, $newer_element);
-				break;
-			case "event" :
-				$player_unlockables[$unlockable_name] = (int) in_array($event_id, (array) $player_data->eventsSeen->int);
-				break;
-			case "element_host" :
-				if(is_game_older_than_1_6()) {
-					$player_unlockables[$unlockable_name] = has_element($player_data->$older_element);
-				} else {
-					$player_unlockables[$unlockable_name] = has_unlockable_element_based_on_host($unlockable_name, $newer_element);
-				}
-				break;
-		}
-	}
-
-	return $player_unlockables;
 }
 
 function has_unlockable_element_based_on_host(string $element, string $element_newer_version): int {

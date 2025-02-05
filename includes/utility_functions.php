@@ -609,3 +609,38 @@ function display_loading_strip(): string {
 	$loading_translation = __("loading");
 	return "<img src='$images_path/content/strip_$loading_translation.gif' id='loading-strip' class='loading' alt=''/>";
 }
+
+function find_xml_tags($xml_object, $tag_path) {
+    $path_elements = explode('.', $tag_path);
+    return recursive_xml_search($xml_object, $path_elements);
+}
+
+function recursive_xml_search($current_level, $remaining_path) {
+    $results = [];
+
+    if (empty($remaining_path)) {
+        return is_array($current_level) ? $current_level : [$current_level];
+    }
+
+    $current_tag = $remaining_path[0];
+
+    if (!isset($current_level->$current_tag)) {
+        return $results;
+    }
+
+    if (count($remaining_path) == 1) {
+        foreach ($current_level->$current_tag as $item) {
+            $results[] = $item;
+        }
+        return $results;
+    }
+
+    $child_remaining_path = array_slice($remaining_path, 1);
+
+    foreach ($current_level->$current_tag as $child) {
+        $child_results = recursive_xml_search($child, $child_remaining_path);
+        $results = array_merge($results, $child_results);
+    }
+
+    return $results;
+}
