@@ -29,8 +29,8 @@ function get_player_farm_animals(): array {
 	    $friendship = (int) $animal->FarmAnimal->friendshipTowardFarmer;
 	    $happiness = (int) $animal->FarmAnimal->happiness;
 
-	    $pet = ((string) $animal->FarmAnimal->wasPet === "true") ? true : false;
-	    $auto_pet = ((string) $animal->FarmAnimal->wasAutoPet === "true") ? true : false;
+	    $pet = ((string) $animal->FarmAnimal->wasPet === "true");
+	    $auto_pet = ((string) $animal->FarmAnimal->wasAutoPet === "true");
 	    $was_pet = (($pet) || ($auto_pet));
 
 	    $animal_data = [
