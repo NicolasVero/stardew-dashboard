@@ -2,7 +2,7 @@
 
 function get_museum_pieces_coords(): array {
     $untreated_all_data = $GLOBALS["untreated_all_players_data"];
-	$museum_index = get_gamelocation_index($untreated_all_data, "museumPieces");
+	$museum_index = get_museum_index();
 	$in_game_museum_pieces = $untreated_all_data->locations->GameLocation[$museum_index]->museumPieces;
 	$museum_piece_details = [];
 
@@ -33,7 +33,6 @@ function get_museum_piece_type(string $piece_name): string {
 }
 
 function is_given_to_museum(int $item_id, object $general_data, int $museum_index): int { 
-
 	$museum_items = $general_data->locations->GameLocation[$museum_index]->museumPieces;
 
 	foreach($museum_items->item as $museum_item) {

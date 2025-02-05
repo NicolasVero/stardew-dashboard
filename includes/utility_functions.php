@@ -518,20 +518,6 @@ function is_this_the_same_day(string $date): bool {
     return $date === "$day/$season";
 }
 
-function get_gamelocation_index(object $general_data, string $searched_location): int {
-	$index = 0;
-	$locations = $general_data->locations->GameLocation;
-
-	foreach($locations as $location) {
-		if(isset($location->$searched_location)) {
-			break;
-		}
-		$index++;
-	}
-
-	return $index;
-}
-
 function get_player_items_list(object $data, string $filename): array {
 	if(is_game_older_than_1_6()) {
 		return [];
@@ -643,4 +629,24 @@ function recursive_xml_search($current_level, $remaining_path) {
     }
 
     return $results;
+}
+
+function get_gamelocation_index(object $general_data, string $searched_location): int {
+	$index = 0;
+	$locations = $general_data->locations->GameLocation;
+
+	foreach($locations as $location) {
+		if(isset($location->$searched_location)) {
+			break;
+		}
+		
+		$index++;
+	}
+
+	return $index;
+}
+
+function get_museum_index(): int {
+    $untreated_all_data = $GLOBALS["untreated_all_players_data"];
+	return get_gamelocation_index($untreated_all_data, "museumPieces");
 }
