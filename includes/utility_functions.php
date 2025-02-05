@@ -596,34 +596,35 @@ function display_loading_strip(): string {
 	return "<img src='$images_path/content/strip_$loading_translation.gif' id='loading-strip' class='loading' alt=''/>";
 }
 
-function find_xml_tags($xml_object, $tag_path) {
+function find_xml_tags(object $xml_object, string $tag_path): array {
     $path_elements = explode('.', $tag_path);
     return recursive_xml_search($xml_object, $path_elements);
 }
 
-function recursive_xml_search($current_level, $remaining_path) {
+function recursive_xml_search(object $current_level, array $remaining_path): array {
     $results = [];
 
-    if (empty($remaining_path)) {
+    if(empty($remaining_path)) {
         return is_array($current_level) ? $current_level : [$current_level];
     }
 
     $current_tag = $remaining_path[0];
 
-    if (!isset($current_level->$current_tag)) {
+    if(!isset($current_level->$current_tag)) {
         return $results;
     }
 
-    if (count($remaining_path) == 1) {
-        foreach ($current_level->$current_tag as $item) {
+    if(count($remaining_path) == 1) {
+        foreach($current_level->$current_tag as $item) {
             $results[] = $item;
         }
+		
         return $results;
     }
 
     $child_remaining_path = array_slice($remaining_path, 1);
 
-    foreach ($current_level->$current_tag as $child) {
+    foreach($current_level->$current_tag as $child) {
         $child_results = recursive_xml_search($child, $child_remaining_path);
         $results = array_merge($results, $child_results);
     }
