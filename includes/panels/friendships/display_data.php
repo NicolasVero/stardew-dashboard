@@ -1,7 +1,5 @@
 <?php 
 
-//& Voir a subdiviser en 2 fonctions
-//& arreter d'importer les 4000 des villageois pour chaque villageois 
 function display_friendship_structure(array $friendship_info): string {
     $images_path = get_images_folder();
     $json_with_version = sanitize_json_with_version("villagers", true);

@@ -12,7 +12,7 @@ function get_player_artifacts(): array {
 		$artifact_id = get_correct_id($artifact_id);
 
 		$artifacts_reference = find_reference_in_json($artifact_id, "artifacts");
-		$museum_index = get_gamelocation_index($general_data, "museumPieces");
+		$museum_index = get_museum_index();
 
 		if(!empty($artifacts_reference)) {
 			$artifacts_data[$artifacts_reference] = [

@@ -518,20 +518,6 @@ function is_this_the_same_day(string $date): bool {
     return $date === "$day/$season";
 }
 
-function get_gamelocation_index(object $general_data, string $searched_location): int {
-	$index = 0;
-	$locations = $general_data->locations->GameLocation;
-
-	foreach($locations as $location) {
-		if(isset($location->$searched_location)) {
-			break;
-		}
-		$index++;
-	}
-
-	return $index;
-}
-
 function get_player_items_list(object $data, string $filename): array {
 	if(is_game_older_than_1_6()) {
 		return [];
@@ -604,8 +590,64 @@ function display_project_contributor(array $options): string {
     ";
 }
 
-function display_loading_strip() {
+function display_loading_strip(): string {
 	$images_path = get_images_folder();
 	$loading_translation = __("loading");
 	return "<img src='$images_path/content/strip_$loading_translation.gif' id='loading-strip' class='loading' alt=''/>";
+}
+
+function find_xml_tags(object $xml_object, string $tag_path): array {
+    $path_elements = explode('.', $tag_path);
+    return recursive_xml_search($xml_object, $path_elements);
+}
+
+function recursive_xml_search(object $current_level, array $remaining_path): array {
+    $results = [];
+
+    if(empty($remaining_path)) {
+        return is_array($current_level) ? $current_level : [$current_level];
+    }
+
+    $current_tag = $remaining_path[0];
+
+    if(!isset($current_level->$current_tag)) {
+        return $results;
+    }
+
+    if(count($remaining_path) == 1) {
+        foreach($current_level->$current_tag as $item) {
+            $results[] = $item;
+        }
+		
+        return $results;
+    }
+
+    $child_remaining_path = array_slice($remaining_path, 1);
+
+    foreach($current_level->$current_tag as $child) {
+        $child_results = recursive_xml_search($child, $child_remaining_path);
+        $results = array_merge($results, $child_results);
+    }
+
+    return $results;
+}
+
+function get_gamelocation_index(object $general_data, string $searched_location): int {
+	$index = 0;
+	$locations = $general_data->locations->GameLocation;
+
+	foreach($locations as $location) {
+		if(isset($location->$searched_location)) {
+			break;
+		}
+		
+		$index++;
+	}
+
+	return $index;
+}
+
+function get_museum_index(): int {
+    $untreated_all_data = $GLOBALS["untreated_all_players_data"];
+	return get_gamelocation_index($untreated_all_data, "museumPieces");
 }

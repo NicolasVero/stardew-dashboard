@@ -52,37 +52,21 @@ function get_house_upgrade_level(): int {
 
 function get_children_amount(): array {
 	$player_id = (int) $GLOBALS["untreated_player_data"]->UniqueMultiplayerID;
-	$locations = $GLOBALS["untreated_all_players_data"]->locations->GameLocation;
+	$data = $GLOBALS["untreated_all_players_data"];
 	$children_name = [];
+	$npc_locations =  [
+		find_xml_tags($data, 'locations.GameLocation.characters.NPC'),
+		find_xml_tags($data, 'locations.GameLocation.buildings.Building.indoors.characters.NPC')
+	];
 
-	foreach($locations as $location) {
-		if(isset($location->characters)) {
-			foreach($location->characters->NPC as $npc) {
-				if(!isset($npc->idOfParent)) {
-                    continue;
-                }
-
-				if((int) $npc->idOfParent === $player_id) {
-                    array_push($children_name, $npc->name);
-                }
+	foreach($npc_locations as $npc_location) {
+		foreach($npc_location as $npc) {
+			if(!isset($npc->idOfParent)) {
+				continue;
 			}
-		}
-	}
 
-	foreach($locations as $location) {
-		if(isset($location->buildings)) {
-			foreach($location->buildings->Building as $building) {
-				if(isset($building->indoors->characters)) {
-					foreach($building->indoors->characters->NPC as $npc) {
-						if(!isset($npc->idOfParent)) {
-                            continue;
-                        }
-
-						if((int) $npc->idOfParent === $player_id) {
-                            array_push($children_name, $npc->name);
-                        }
-                    }
-				}
+			if((int) $npc->idOfParent === $player_id) {
+				array_push($children_name, $npc->name);
 			}
 		}
 	}
@@ -108,30 +92,28 @@ function get_the_married_person_gender(string $spouse): string {
 function get_weather(string $weather_location = "Default"): string {
     $data = $GLOBALS["untreated_all_players_data"];
     $locations = $data->locationWeather;
+	$weather_conditions = [
+		'Festival' => 'Festival',
+		'isRaining' => 'rain',
+		'isSnowing' => 'snow', 
+		'isLightning' => 'storm',
+		'isGreenRain' => 'green_rain'
+	];
 
     foreach($locations as $complex_location) {
 		foreach($complex_location as $location) {
-			if($location->key->string === $weather_location) {
-				if($location->value->LocationWeather->weather->string !== "Festival") {
-					return format_text_for_file((string)$location->value->LocationWeather->weather->string);
-				}
+			if($location->key->string !== $weather_location) {
+				continue;
+			}
 
-				if($location->value->LocationWeather->isRaining->string === true) {
-					return "rain";
-				}
-
-				if($location->value->LocationWeather->isSnowing->string === true) {
-					return "snow";
-				}
-
-				if($location->value->LocationWeather->isLightning->string === true) {
-					return "storm";
-				}
-
-				if($location->value->LocationWeather->isGreenRain->string === true) {
-					return "green_rain";
+			$weather_data = $location->value->LocationWeather;
+			foreach($weather_conditions as $condition => $result) {
+				if((string) $weather_data->$condition->string === 'true') {
+					return $result;
 				}
 			}
+
+			return format_text_for_file((string)$weather_data->weather->string);
         }
     }
 
@@ -232,7 +214,7 @@ function get_grandpa_score(): int {
         $grandpa_points++;
     }
 
-    $cc_completed = array_reduce($cc_rooms, function($completed, $room) use ($data) {
+    $cc_completed = array_reduce($cc_rooms, function(bool $completed, string $room): bool {
         return $completed && has_element_in_mail($room);
     }, true);
 
@@ -339,7 +321,7 @@ function get_highest_count_for_category(string $category): array {
 
 	for($current_player = 0; $current_player < $total_players; $current_player++) {
 		if(in_array($category, $exceptions_recipes)) {
-			$filtered_elements = array_filter($all_data[$current_player][$category], function($item) {
+			$filtered_elements = array_filter($all_data[$current_player][$category], function(mixed $item): bool {
 				return $item["counter"] > 0;
 			});
 			$amount_elements = count($filtered_elements);
@@ -452,38 +434,37 @@ function get_player_stardrops_found(): int {
 }
 
 function get_amount_obelisk_on_map(): int {
-	$locations = $GLOBALS["untreated_all_players_data"]->locations->GameLocation;
 	$obelisk_count = 0;
-	$obelisk_names = [
-		"Earth Obelisk",
-		"Water Obelisk",
-		"Island Obelisk",
-		"Desert Obelisk",
-	];
+	$obelisk_names = get_obelisk_names();
+	$data = $GLOBALS["untreated_all_players_data"];
+	$buildings = find_xml_tags($data, 'locations.GameLocation.buildings.Building');
 
-	foreach($locations as $location) {
-		if(isset($location->buildings->Building)) {
-			foreach($location->buildings->Building as $building) {
-				if(in_array((string) $building->buildingType, $obelisk_names)) {
-                    $obelisk_count++;
-                }
-			}
-		}
+	foreach($buildings as $building) {
+		if(in_array((string) $building->buildingType, $obelisk_names)) {
+            $obelisk_count++;
+        }
 	}
 
 	return $obelisk_count;
 }
 
-function is_golden_clock_on_farm(): bool {
-	$locations = $GLOBALS["untreated_all_players_data"]->locations->GameLocation;
-	foreach($locations as $location) {
-		if(isset($location->buildings->Building)) {
-			foreach($location->buildings->Building as $building) {
-				if((string) $building->buildingType === "Gold Clock") {
-                    return true;
-                }
-			}
-		}
+function get_obelisk_names() :array {
+	return [
+		"Earth Obelisk",
+		"Water Obelisk",
+		"Island Obelisk",
+		"Desert Obelisk",
+	];
+}
+
+function is_golden_clock_on_farm(): bool {	
+	$data = $GLOBALS["untreated_all_players_data"];
+	$buildings = find_xml_tags($data, 'locations.GameLocation.buildings.Building');
+
+	foreach($buildings as $building) {
+		if((string) $building->buildingType === "Gold Clock") {
+            return true;
+        }
 	}
 
 	return false;
