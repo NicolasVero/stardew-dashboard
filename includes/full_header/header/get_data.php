@@ -452,38 +452,37 @@ function get_player_stardrops_found(): int {
 }
 
 function get_amount_obelisk_on_map(): int {
-	$locations = $GLOBALS["untreated_all_players_data"]->locations->GameLocation;
 	$obelisk_count = 0;
-	$obelisk_names = [
-		"Earth Obelisk",
-		"Water Obelisk",
-		"Island Obelisk",
-		"Desert Obelisk",
-	];
+	$obelisk_names = get_obelisk_names();
+	$data = $GLOBALS["untreated_all_players_data"];
+	$buildings = find_xml_tags($data, 'locations.GameLocation.buildings.Building');
 
-	foreach($locations as $location) {
-		if(isset($location->buildings->Building)) {
-			foreach($location->buildings->Building as $building) {
-				if(in_array((string) $building->buildingType, $obelisk_names)) {
-                    $obelisk_count++;
-                }
-			}
-		}
+	foreach($buildings as $building) {
+		if(in_array((string) $building->buildingType, $obelisk_names)) {
+            $obelisk_count++;
+        }
 	}
 
 	return $obelisk_count;
 }
 
-function is_golden_clock_on_farm(): bool {
-	$locations = $GLOBALS["untreated_all_players_data"]->locations->GameLocation;
-	foreach($locations as $location) {
-		if(isset($location->buildings->Building)) {
-			foreach($location->buildings->Building as $building) {
-				if((string) $building->buildingType === "Gold Clock") {
-                    return true;
-                }
-			}
-		}
+function get_obelisk_names() :array {
+	return [
+		"Earth Obelisk",
+		"Water Obelisk",
+		"Island Obelisk",
+		"Desert Obelisk",
+	];
+}
+
+function is_golden_clock_on_farm(): bool {	
+	$data = $GLOBALS["untreated_all_players_data"];
+	$buildings = find_xml_tags($data, 'locations.GameLocation.buildings.Building');
+	
+	foreach($buildings as $building) {
+		if((string) $building->buildingType === "Gold Clock") {
+            return true;
+        }
 	}
 
 	return false;
