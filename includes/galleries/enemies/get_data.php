@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Récupère les données des ennemis tués par le joueur.
+ * 
+ * @return array Les données des ennemis tués par le joueur.
+ */
 function get_player_enemies_killed_data(): array { 
 	$player_enemies_killed = $GLOBALS["untreated_player_data"]->stats;
 	$enemies_data = [];

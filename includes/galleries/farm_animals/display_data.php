@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Génère le code HTML de la galerie des animaux de la ferme.
+ * 
+ * @return string Le code HTML de la galerie des animaux de la ferme.
+ */
 function display_farm_animals(): string {
     $gallery_details = [
         "player_data" => get_farm_animals_data(),
@@ -13,6 +18,11 @@ function display_farm_animals(): string {
     return display_detailled_gallery($gallery_details, "", $panel_details);
 }
 
+/**
+ * Génère le code HTML du panneau des animaux de la ferme.
+ * 
+ * @return string Le code HTML du panneau des animaux de la ferme.
+ */
 function display_farm_animals_panel(): string {
 	$player_id = get_current_player_id();
     $animals_friendship = get_farm_animals_data();

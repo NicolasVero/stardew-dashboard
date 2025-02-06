@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Génère le code HTML de la galerie des artéfacts.
+ * 
+ * @return string Le code HTML de la galerie des artéfacts.
+ */
 function display_artifacts(): string {
     $gallery_details = [
         "player_data" => get_artifacts_data(),

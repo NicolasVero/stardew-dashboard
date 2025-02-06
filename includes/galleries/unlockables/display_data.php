@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Génère le code HTML de la galerie des éléments débloqués par le joueur.
+ * 
+ * @return string Le code HTML de la galerie des éléments débloqués par le joueur.
+ */
 function display_unlockables(): string {
     $player_unlockables = get_unlockables_data();
     $images_path = get_images_folder();

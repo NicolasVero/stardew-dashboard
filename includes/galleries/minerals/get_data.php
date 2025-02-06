@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Récupère les données des minéraux trouvés par le joueur.
+ * 
+ * @return array Les données des minéraux trouvés par le joueur.
+ */
 function get_player_minerals(): array {
 	$player_minerals = $GLOBALS["untreated_player_data"]->mineralsFound;
     $general_data = $GLOBALS["untreated_all_players_data"];

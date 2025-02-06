@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Génère le code HTML de la galerie des ennemis tués.
+ * 
+ * @return string Le code HTML de la galerie des ennemis tués.
+ */
 function display_enemies(): string {
     $gallery_details = [
         "player_data" => get_enemies_killed_data(),

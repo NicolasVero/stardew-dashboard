@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Génère le code HTML de la galerie des objets expédiés.
+ * 
+ * @return string Le code HTML de la galerie des objets expédiés.
+ */
 function display_shipped_items(): string {
     $gallery_details = [
         "player_data" => get_shipped_items_data(),
