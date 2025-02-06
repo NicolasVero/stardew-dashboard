@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Charge la sauvegarde puis affiche le contenu HTML de la page.
+ *
+ * @param string $save_file Le nom du fichier de sauvegarde à charger (local ou tmp).
+ * @param bool $use_ajax Indique s'il s'agit d'une utilisation AJAX ou non.
+ * @return mixed : Un tableau contenant les données des joueurs et le HTML de la page si l'utilisation est AJAX, true sinon.
+ */
 function load_save(string $save_file, bool $use_ajax = true): mixed {
     $uploaded_file = $save_file;
     $data = simplexml_load_file($uploaded_file);
@@ -46,6 +53,11 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
     return true;
 }
 
+/**
+ * Cherche et renvoie les joueurs non-hôtes de la sauvegarde à charger.
+ *
+ * @return array Le nom des joueurs non-hôtes dans la sauvegarde.
+ */
 function get_farmhands(): array {
     $data = $GLOBALS["untreated_all_players_data"];
     $all_farmhands = [];
@@ -82,6 +94,11 @@ function get_farmhands(): array {
     return $all_farmhands;
 }
 
+/**
+ * Récupère et agrège les données de tous les joueurs
+ *
+ * @return array Un tableau contenant les données agrégées des joueurs.
+ */
 function get_all_players_data(): array {
     $players_data = [];
     $data = $GLOBALS["untreated_all_players_data"];
@@ -98,6 +115,12 @@ function get_all_players_data(): array {
     return $players_data;
 }
 
+/**
+ * Agrège les données d'un joueur.
+ *
+ * @param object $data Les données brutes du joueur issues de la sauvegarde.
+ * @return array Les données agrégées du joueur.
+ */
 function get_aggregated_data(object $data): array {
     $general_data = $GLOBALS["untreated_all_players_data"];
 	$GLOBALS["untreated_player_data"] = $data;
@@ -156,6 +179,11 @@ function get_aggregated_data(object $data): array {
     ];
 }
 
+/**
+ * Agrège les données partagées des joueurs.
+ *
+ * @return array Les données agrégées partagées des joueurs.
+ */
 function get_shared_aggregated_data(): array {
     return [
         "farm_animals"          => get_player_farm_animals(),
