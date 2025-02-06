@@ -4,6 +4,12 @@ require __DIR__ . "/../vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+/**
+ * Envoie un mail de feedback à l'adresse mail de l'administrateur.
+ *
+ * @param array $user_details Les détails de l'utilisateur.
+ * @return bool Indique si le mail a bien été envoyé.
+ */
 function send_feedback_mail(array $user_details): bool {
 	require_once "load_environment.php";
 	

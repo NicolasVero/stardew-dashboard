@@ -1,5 +1,12 @@
 <?php 
 
+/**
+ * Vérifie si le fichier téléchargé est sécurisé.
+ *
+ * @param mixed $file Le fichier téléchargé.
+ * @param string $external_error L'erreur externe communiquée manuellement.
+ * @return bool Indique si le fichier est sécurisé ou non.
+ */
 function is_file_secure(mixed $file, string $external_error = null): bool {
 	$finfo = finfo_open(FILEINFO_MIME_TYPE);
 
