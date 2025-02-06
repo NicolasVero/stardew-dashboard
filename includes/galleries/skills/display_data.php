@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_skills(): string {
     $images_path = get_images_folder();

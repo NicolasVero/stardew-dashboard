@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_farm_animals(): string {
     $gallery_details = [

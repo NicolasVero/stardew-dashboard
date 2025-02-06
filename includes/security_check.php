@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * Vérifie si le fichier téléchargé est sécurisé.

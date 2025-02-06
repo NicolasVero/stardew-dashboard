@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_crafting_recipes(): string {
     $gallery_details = [

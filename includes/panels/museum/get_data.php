@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_museum_pieces_coords(): array {
     $untreated_all_data = $GLOBALS["untreated_all_players_data"];

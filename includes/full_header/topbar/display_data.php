@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_topbar(bool $is_landing_page = false, bool $is_error_screen = false): string {
 	$menu_id = ($is_landing_page) ? "landing_menu" : (($is_error_screen) ? "error_menu" : "dashboard_menu");

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_story_quest_data(array $quest): array {
 	return [

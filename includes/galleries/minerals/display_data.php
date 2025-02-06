@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_minerals(): string {
     $gallery_details = [

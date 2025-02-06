@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_quest_button(): string {
 	return "<img src='" . get_images_folder() . "/icons/quest_icon.png' class='quest-icon view-all-quests view-all-quests-" . get_current_player_id() . " button-elements modal-opener icon' alt='Quest icon'/>";

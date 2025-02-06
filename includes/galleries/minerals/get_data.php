@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_player_minerals(): array {
 	$player_minerals = $GLOBALS["untreated_player_data"]->mineralsFound;

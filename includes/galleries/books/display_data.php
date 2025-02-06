@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_books(): string {
     $gallery_details = [

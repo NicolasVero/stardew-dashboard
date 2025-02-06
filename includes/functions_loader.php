@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $functions_files = [
     "full_header" => [

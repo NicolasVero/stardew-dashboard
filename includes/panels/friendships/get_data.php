@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_player_friendship_data(): array {
 	$player_friendships = $GLOBALS["untreated_player_data"]->friendshipData;

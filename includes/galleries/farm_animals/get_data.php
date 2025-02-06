@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_player_farm_animals(): array {
     $data = $GLOBALS["untreated_all_players_data"];

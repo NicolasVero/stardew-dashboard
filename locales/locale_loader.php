@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function locale_file_loader(): bool {
     $site_language = $GLOBALS["site_language"];

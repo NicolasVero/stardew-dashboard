@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_detailled_gallery_title(string $section_title, array $panel_details): string {
     $player_id = get_current_player_id();

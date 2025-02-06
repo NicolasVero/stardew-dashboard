@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 function get_cc_binary_hash(array $player_bundles): string {

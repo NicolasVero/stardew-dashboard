@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_artifacts(): string {
     $gallery_details = [

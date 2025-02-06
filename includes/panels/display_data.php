@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_panels(): string {
 	$structure  = display_friendships();

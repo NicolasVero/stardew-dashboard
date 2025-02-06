@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * Génère et retourne le contenu HTML de la page d'accueil de Stardew Dashboard en version desktop.

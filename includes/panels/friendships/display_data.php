@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_friendship_structure(array $friendship_info): string {
     $images_path = get_images_folder();

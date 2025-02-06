@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_player_visited_locations(): array {
 	if(is_game_older_than_1_6()) {

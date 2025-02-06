@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_level_progress_bar(int $level, int $max_level = 10): string {
     $images_path = get_images_folder();

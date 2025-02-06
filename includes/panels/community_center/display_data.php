@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_community_center_button(): string {
 	return "<img src='" . get_images_folder() . "/icons/golden_scroll.png' class='golden-scroll-icon view-community-center view-community-center-" . get_current_player_id() . " button-elements modal-opener icon' alt='Golden Scroll icon'/>";

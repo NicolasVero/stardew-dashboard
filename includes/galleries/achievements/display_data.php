@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_achievements(): string {
     $gallery_details = [

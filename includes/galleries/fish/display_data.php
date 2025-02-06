@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_fish(): string {
     $gallery_details = [

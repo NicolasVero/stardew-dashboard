@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function has_players_done_monster_slayer_hero(): bool {
 	$total_players = get_number_of_player();

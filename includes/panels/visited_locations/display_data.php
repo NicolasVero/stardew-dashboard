@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_visited_locations_button(): string {
     $version_class = get_version_class("1.6.0");

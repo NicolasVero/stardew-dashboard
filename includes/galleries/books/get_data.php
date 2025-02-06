@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_player_books(): array {
 	$player_books = $GLOBALS["untreated_player_data"]->stats->Values;

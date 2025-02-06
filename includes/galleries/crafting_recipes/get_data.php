@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_player_crafting_recipes(): array {
 	$player_crafting_recipes = $GLOBALS["untreated_player_data"]->craftingRecipes;

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_secret_notes(): string {
     $gallery_details = [

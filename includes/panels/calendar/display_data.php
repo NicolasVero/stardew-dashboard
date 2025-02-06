@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_calendar_panel(): string {
 	$player_id = get_current_player_id();

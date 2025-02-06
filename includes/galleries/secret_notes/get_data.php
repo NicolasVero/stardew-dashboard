@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_player_secret_notes(): array {
 	$player_secret_notes = $GLOBALS["untreated_player_data"]->secretNotesSeen;

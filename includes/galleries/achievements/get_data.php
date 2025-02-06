@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_player_achievements(): array {
     $player_achievements = $GLOBALS["untreated_player_data"]->achievements;

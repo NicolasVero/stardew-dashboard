@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_enemies(): string {
     $gallery_details = [

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_player_artifacts(): array {
 	$player_artifacts = $GLOBALS["untreated_player_data"]->archaeologyFound;

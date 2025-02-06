@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_player_unlockables(): array {
 	$player_data = $GLOBALS["untreated_player_data"];

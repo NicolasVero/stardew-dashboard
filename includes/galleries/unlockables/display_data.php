@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_unlockables(): string {
     $player_unlockables = get_unlockables_data();

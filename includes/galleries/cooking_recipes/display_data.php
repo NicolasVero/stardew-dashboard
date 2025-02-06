@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function display_cooking_recipes(): string {
     $gallery_details = [

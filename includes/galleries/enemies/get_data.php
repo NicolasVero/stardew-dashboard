@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function get_player_enemies_killed_data(): array { 
 	$player_enemies_killed = $GLOBALS["untreated_player_data"]->stats;
