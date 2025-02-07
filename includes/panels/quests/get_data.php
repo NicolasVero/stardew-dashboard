@@ -1,5 +1,11 @@
-<?php 
+<?php
 
+/**
+ * Récupère les données d'une quête d'histoire.
+ *
+ * @param array $quest Les données raw de la quête.
+ * @return array Les données de la quête.
+ */
 function get_story_quest_data(array $quest): array {
 	return [
 		"time_limited"	=> false,
@@ -10,6 +16,13 @@ function get_story_quest_data(array $quest): array {
 	];
 }
 
+/**
+ * Récupère la référence d'un item dans un fichier JSON.
+ *
+ * @param string $reference_id L'ID de la référence.
+ * @param string $json Le nom du fichier JSON.
+ * @return string La référence.
+ */
 function find_reference(string $reference_id): string {
 	$reference_id = format_original_data_string($reference_id);
 	$json_list = [
@@ -29,6 +42,12 @@ function find_reference(string $reference_id): string {
 	return $reference;
 }
 
+/**
+ * Récupère les données d'une quête journalière.
+ *
+ * @param object $quest Les données raw de la quête.
+ * @return array|null Les données de la quête.
+ */
 function get_daily_quest_data(object $quest): array|null {
 	$quest_type = (int) $quest->questType;
 	$days_left = (int) $quest->daysLeft;
@@ -62,6 +81,12 @@ function get_daily_quest_data(object $quest): array|null {
 	];
 }
 
+/**
+ * Récupère les données d'une quête spéciale.
+ *
+ * @param object $special_order Les données raw de la quête.
+ * @return array|null Les données de la quête.
+ */
 function get_special_order_data(object $special_order): array|null {
 	$special_orders_json = sanitize_json_with_version("special_orders", true);
 
@@ -102,6 +127,11 @@ function get_special_order_data(object $special_order): array|null {
 	];
 }
 
+/**
+ * Récupère le journal de quêtes d'un joueur.
+ *
+ * @return array Le journal de quêtes.
+ */
 function get_player_quest_log(): array {
 	$entire_data = $GLOBALS["untreated_all_players_data"];
 	$player_quest_log = $GLOBALS["untreated_player_data"]->questLog;
@@ -134,7 +164,12 @@ function get_player_quest_log(): array {
 	return $quests_data;
 }
 
-function get_daily_quest_configs() {
+/**
+ * Récupère les configurations des quêtes journalières.
+ *
+ * @return array Les configurations des quêtes journalières.
+ */
+function get_daily_quest_configs(): array {
 	return [
 		3 => [
 			"goal_name" => fn($quest) => find_reference($quest->item),

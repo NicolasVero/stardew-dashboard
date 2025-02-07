@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML du header du site.
+ * 
+ * @return string Le code HTML du header.
+ */
 function display_header(): string {
 	$player_id = get_current_player_id();
     $images_path = get_images_folder();
@@ -66,6 +71,11 @@ function display_header(): string {
     ";
 }
 
+/**
+ * Génère le code HTML de l'icône de la météo.
+ * 
+ * @return string Le code HTML de l'icône de la météo.
+ */
 function display_weather_icon(): string {
     $data = $GLOBALS["shared_players_data"];
     $images_path = get_images_folder();
@@ -81,6 +91,11 @@ function display_weather_icon(): string {
     ";
 }
 
+/**
+ * Génère le code HTML de l'icône du festival.
+ * 
+ * @return string Le code HTML de l'icône du festival.
+ */
 function display_festival_icon(): string {
     $images_path = get_images_folder();
     $festivals = sanitize_json_with_version("festivals", true);

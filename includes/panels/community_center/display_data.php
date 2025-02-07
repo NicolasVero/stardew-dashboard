@@ -1,9 +1,19 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML du bouton du Centre communautaire.
+ * 
+ * @return string Le code HTML du bouton du Centre communautaire.
+ */
 function display_community_center_button(): string {
 	return "<img src='" . get_images_folder() . "/icons/golden_scroll.png' class='golden-scroll-icon view-community-center view-community-center-" . get_current_player_id() . " button-elements modal-opener icon' alt='Golden Scroll icon'/>";
 }
 
+/**
+ * Génère le code HTML du panneau du Centre communautaire.
+ * 
+ * @return string Le code HTML du panneau du Centre communautaire.
+ */
 function display_community_center_panel(): string {
     $player_id = get_current_player_id();
     $player_bundles = $GLOBALS["shared_players_data"]["cc_bundles"];
@@ -82,6 +92,11 @@ function display_community_center_panel(): string {
     ";
 }
 
+/**
+ * Génère le code HTML des items requis pour un bundle.
+ * 
+ * @return string Le code HTML des items requis pour un bundle.
+ */
 function display_bundle_requirements(array $requirements, array $added_items): string {
     $images_path = get_images_folder();
     $structure = "";
@@ -112,6 +127,11 @@ function display_bundle_requirements(array $requirements, array $added_items): s
     return $structure;
 }
 
+/**
+ * Génère le code HTML des items ajoutés à un bundle.
+ * 
+ * @return string Le code HTML des items ajoutés à un bundle.
+ */
 function display_bundle_added_items(array $added_items, int $limit): string {
     $structure = "";
     $images_path = get_images_folder();
@@ -137,6 +157,11 @@ function display_bundle_added_items(array $added_items, int $limit): string {
     return $structure;
 }
 
+/**
+ * Génère le code HTML du bouton d'achat du Centre communautaire.
+ * 
+ * @return string Le code HTML du bouton d'achat du Centre communautaire.
+ */
 function display_bundle_purchase(): string {
     return "<img src='" . get_images_folder() . "/content/purchase.png' class='purchase' alt=''/>";
 }

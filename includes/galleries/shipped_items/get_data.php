@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Récupère les données des objets expédiés par le joueur.
+ * 
+ * @return array Les données des objets expédiés par le joueur.
+ */
 function get_player_shipped_items(): array {
 	$player_items = $GLOBALS["untreated_player_data"]->basicShipped;
 	$shipped_items_data = [];

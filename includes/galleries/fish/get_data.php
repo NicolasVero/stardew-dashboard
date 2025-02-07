@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Récupère les données des poissons pêchés par le joueur.
+ * 
+ * @return array Les données des poissons pêchés par le joueur.
+ */
 function get_player_fish_caught(): array {
 	$player_fishes = $GLOBALS["untreated_player_data"]->fishCaught;
 	$fishes_data = [];

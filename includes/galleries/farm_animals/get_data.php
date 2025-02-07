@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Récupère les données des animaux de la ferme par le joueur.
+ * 
+ * @return array Les données des animaux de la ferme par le joueur.
+ */
 function get_player_farm_animals(): array {
     $data = $GLOBALS["untreated_all_players_data"];
     $animals_data = [];
@@ -62,6 +67,13 @@ function get_player_farm_animals(): array {
     return $animals_data;
 }
 
+/**
+ * Génère un texte d'info-bulle pour l'état de l'animal.
+ * 
+ * @param string $status L'état de l'animal.
+ * @param string $animal_name Le nom de l'animal.
+ * @return string Le texte d'info-bulle pour l'état de l'animal.
+ */
 function get_animal_status_tooltip(string $status, string $animal_name): string {
     return [
         "happy" => "$animal_name " . __("looks really happy today!"),

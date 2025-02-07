@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Charge les fichiers de traduction et met à jour les variables globales.
+ *
+ * @return bool Indique si le chargement des fichiers de traduction a réussi.
+ */
 function locale_file_loader(): bool {
     $site_language = $GLOBALS["site_language"];
     
@@ -22,7 +27,12 @@ function locale_file_loader(): bool {
     return true;
 }
 
-
+/**
+ * Remplace les clés dynamiques dans les traductions.
+ *
+ * @param array $translations Les traductions à traiter.
+ * @return array Les traductions avec les clés dynamiques remplacées.
+ */
 function expand_dynamic_keys(array $translations): array {
     $expanded_translations = [];
 
@@ -44,6 +54,11 @@ function expand_dynamic_keys(array $translations): array {
     return $expanded_translations;
 }
 
+/**
+ * Retourne les fichiers de traduction à charger.
+ *
+ * @return array Les fichiers de traduction à charger.
+ */
 function get_traductions_files(): array {
     return [
         "achievement", "artifacts", "books", "characters", "cooking_recipes", "crafting_recipes",

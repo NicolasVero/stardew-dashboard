@@ -1,5 +1,11 @@
-<?php 
+<?php
 
+/**
+ * Génère et retourne le contenu HTML de la page d'accueil de Stardew Dashboard en version desktop.
+ *
+ * @param bool $with_topbar Indique si la barre de navigation doit être affichée ou non.
+ * @return string Le contenu HTML de la page d'accueil.
+ */
 function display_landing_page(bool $with_topbar = true): string {
 	if(is_a_mobile_device()) {
 		return display_mobile_landing_page();
@@ -113,6 +119,11 @@ function display_landing_page(bool $with_topbar = true): string {
     ";
 }
 
+/**
+ * Génère et retourne le contenu HTML de la page d'accueil de Stardew Dashboard en version mobile.
+ *
+ * @return string Le contenu HTML de la page d'accueil.
+ */
 function display_mobile_landing_page(): string {
 	$contributors_structure = "";
 	$contributors = get_contributors();
@@ -153,6 +164,11 @@ function display_mobile_landing_page(): string {
 	";
 }
 
+/**
+ * Génère et retourne tous les composants de la page principal du dashboard.
+ *
+ * @return string Le contenu HTML du dashboard.
+ */
 function display_page(): string {
     $structure = display_header();
     $structure .= "<main>";
@@ -192,6 +208,12 @@ function display_page(): string {
     return $structure;
 }
 
+/**
+ * Génère et retourne une page d'erreur.
+ *
+ * @param Exception $exception L'exception qui a été levée.
+ * @return string Le contenu HTML de l'erreur.
+ */
 function display_error_page(Exception $exception): string {
     $images_path = get_images_folder();
     $exception_dialogues = [
@@ -221,8 +243,7 @@ function display_error_page(Exception $exception): string {
         ]
 	];
 
-	//? $dialogue, $image
-    extract($exception_dialogues[$exception->getMessage()]);
+    extract($exception_dialogues[$exception->getMessage()]); //? $dialogue, $image
 
     return "
         <div class='error-wrapper'>

@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML des compétences du joueur.
+ * 
+ * @return string Le code HTML des compétences du joueur.
+ */
 function display_skills(): string {
     $images_path = get_images_folder();
 	$player_skills = get_skills_data();

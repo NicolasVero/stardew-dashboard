@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $file_path = __DIR__ . "/../.env";
 

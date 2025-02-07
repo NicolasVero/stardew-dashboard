@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Vérifie si le joueur a effectué l'ojectif "Monster Slayer Hero".
+ * 
+ * @return bool Indique si le joueur a effectué l'ojectif "Monster Slayer Hero".
+ */
 function has_players_done_monster_slayer_hero(): bool {
 	$total_players = get_number_of_player();
 	
@@ -12,6 +17,12 @@ function has_players_done_monster_slayer_hero(): bool {
 	return false;
 }
 
+/**
+ * Récupère les données de l'objectif "Monster Slayer Hero" pour un joueur.
+ * 
+ * @param int $player_id L'identifiant du joueur.
+ * @return array Les données de l'objectif "Monster Slayer Hero".
+ */
 function get_player_adventurers_guild_data(int $player_id): array {
 	$categories = get_all_adventurers_guild_categories();
 	$enemies_killed = $GLOBALS["all_players_data"][$player_id]["enemies_killed"];
@@ -41,6 +52,12 @@ function get_player_adventurers_guild_data(int $player_id): array {
 	return $adventurers_guild_data;
 }
 
+/**
+ * Vérifie si le joueur a rempli toutes les catégories de l'objectif "Monster Slayer Hero".
+ * 
+ * @param array $adventurers_guild_data Les données de l'objectif "Monster Slayer Hero".
+ * @return bool Indique si le joueur a rempli toutes les catégories de l'objectif "Monster Slayer Hero".
+ */
 function are_all_adventurers_guild_categories_completed(array $adventurers_guild_data): bool {
     $counter = 0;
     foreach($adventurers_guild_data as $data) {
@@ -52,6 +69,11 @@ function are_all_adventurers_guild_categories_completed(array $adventurers_guild
     return $counter === count($adventurers_guild_data);
 }
 
+/**
+ * Récupère toutes les catégories de l'objectif "Monster Slayer Hero".
+ * 
+ * @return array Les catégories de l'objectif "Monster Slayer Hero".
+ */
 function get_all_adventurers_guild_categories(): array {
 	return $GLOBALS["json"]["adventurer's_guild_goals"];
 }
