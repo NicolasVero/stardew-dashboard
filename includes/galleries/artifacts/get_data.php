@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Récupère les données des artéfacts trouvés par le joueur.
+ * 
+ * @return array Les données des artéfacts trouvés par le joueur.
+ */
 function get_player_artifacts(): array {
 	$player_artifacts = $GLOBALS["untreated_player_data"]->archaeologyFound;
     $general_data = $GLOBALS["untreated_all_players_data"];

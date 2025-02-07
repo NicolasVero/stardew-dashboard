@@ -1,7 +1,11 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML pour afficher les statistiques générales du joueur.
+ * 
+ * @return string Le code HTML des statistiques générales.
+ */
 function display_general_stats(): string {
-	$player_id = get_current_player_id();
 	$all_players_data = get_general_data();
 	$community_center_button = display_community_center_button();
 	$junimo_kart_button = display_junimo_kart_button();
@@ -53,6 +57,12 @@ function display_general_stats(): string {
     ";
 }
 
+/**
+ * Génère le code HTML pour afficher une statistique générale.
+ * 
+ * @param array $parameters Les paramètres de la statistique.
+ * @return string Le code HTML de la statistique.
+ */
 function display_stat(array $parameters): string {
     extract($parameters); //? $icon, $value, $tooltip, $alt, $label, $wiki_link
 
@@ -93,6 +103,13 @@ function display_stat(array $parameters): string {
     ";
 }
 
+/**
+ * Génère le code HTML pour afficher le conjoint du joueur.
+ * 
+ * @param mixed $spouse Le nom du conjoint.
+ * @param array $children Les enfants du joueur.
+ * @return string Le code HTML du conjoint.
+ */
 function display_spouse(mixed $spouse, array $children): string {
     if(empty($spouse)) {
         return "";

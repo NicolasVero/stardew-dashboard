@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML du panneau d'objectifs d'éradication de monstres.
+ * 
+ * @return string Le code HTML du panneau d'objectifs d'éradication de monstres.
+ */
 function display_monster_eradication_goals_panel(): string {
 	$player_id = get_current_player_id();
     $images_path = get_images_folder();

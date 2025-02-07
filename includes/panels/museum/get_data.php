@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Récupère les coordonnées des pièces du musée.
+ *
+ * @return array Les coordonnées des pièces du musée.
+ */
 function get_museum_pieces_coords(): array {
     $untreated_all_data = $GLOBALS["untreated_all_players_data"];
 	$museum_index = get_museum_index();
@@ -27,11 +32,25 @@ function get_museum_pieces_coords(): array {
 	return $museum_piece_details;
 }
 
+/**
+ * Récupère le type de pièce du musée.
+ *
+ * @param string $piece_name Le nom de la pièce.
+ * @return string Le type de pièce du musée.
+ */
 function get_museum_piece_type(string $piece_name): string {
 	$artifacts = sanitize_json_with_version("artifacts", true);
 	return (in_array($piece_name, $artifacts)) ? "artifacts" : "minerals";
 }
 
+/**
+ * Vérifie si un objet est donné au musée.
+ *
+ * @param int $item_id L'ID de l'objet.
+ * @param object $general_data Les données générales du jeu.
+ * @param int $museum_index L'index du musée.
+ * @return int Indique si l'objet est donné au musée.
+ */
 function is_given_to_museum(int $item_id, object $general_data, int $museum_index): int { 
 	$museum_items = $general_data->locations->GameLocation[$museum_index]->museumPieces;
 

@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML de la galerie des minéraux.
+ * 
+ * @return string Le code HTML de la galerie des minéraux.
+ */
 function display_minerals(): string {
     $gallery_details = [
         "player_data" => get_minerals_data(),

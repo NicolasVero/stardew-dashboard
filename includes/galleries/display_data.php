@@ -1,5 +1,12 @@
-<?php 
+<?php
 
+/**
+ * Affiche le titre détaillé de la galerie avec un lien pour l'aperçu d'un panneau.
+ * 
+ * @param string $section_title Le titre de la section.
+ * @param array $panel_details Les détails du panneau.
+ * @return string Le titre de la section.
+ */
 function display_detailled_gallery_title(string $section_title, array $panel_details): string {
     $player_id = get_current_player_id();
     if(empty($panel_details)) {
@@ -16,6 +23,14 @@ function display_detailled_gallery_title(string $section_title, array $panel_det
 
 }
 
+/**
+ * Affiche la galerie détaillée avec les images et les liens associés aux éléments.
+ * 
+ * @param array $gallery_details Les détails de la galerie.
+ * @param string $width_class La classe de largeur de la galerie.
+ * @param array $panel_details Les détails du panneau.
+ * @return string La galerie détaillée.
+ */
 function display_detailled_gallery(array $gallery_details, string $width_class = "", array $panel_details = []): string {
     extract($gallery_details); //? $player_data, $json_filename, $section_title
     $json_data = $GLOBALS["json"][$json_filename];
@@ -55,6 +70,13 @@ function display_detailled_gallery(array $gallery_details, string $width_class =
     ";
 }
 
+/**
+ * Récupère le lien d'image pour un élément de la galerie détaillée.
+ * 
+ * @param string $json_filename Le nom du fichier JSON.
+ * @param string $json_line_name Le nom de la ligne JSON.
+ * @return string Le lien de l'image.
+ */
 function get_detailled_gallery_image(string $json_filename, string $json_line_name): string {
 	
 	$images_path = get_images_folder();
@@ -68,6 +90,13 @@ function get_detailled_gallery_image(string $json_filename, string $json_line_na
 	return "$images_path/icons/$icon_name.png";
 }
 
+/**
+ * Récupère le lien vers la page wiki d'un élément de la galerie détaillée.
+ * 
+ * @param string $json_filename Le nom du fichier JSON.
+ * @param string $json_line_name Le nom de la ligne JSON.
+ * @return string Le lien de la page wiki.
+ */
 function get_detailled_gallery_wiki_link(string $json_filename, string $json_line_name): string {
 	if($json_filename === "achievements") {
 		return get_wiki_link_by_name("achievements");

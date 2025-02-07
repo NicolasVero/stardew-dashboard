@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Récupère les données du tableau des scores de Junimo Kart.
+ *
+ * @return array Les données du tableau des scores de Junimo Kart.
+ */
 function get_junimo_kart_leaderboard(): array {
 	$data = $GLOBALS["untreated_all_players_data"];
 	$all_entries = $data->junimoKartLeaderboards->entries;
@@ -17,7 +22,13 @@ function get_junimo_kart_leaderboard(): array {
 	return $leaderboard;
 }
 
-function get_junimo_leaderboard(object $junimo_leaderboard): object {
+/**
+ * Vérifie si le tableau des scores de Junimo Kart est vide.
+ *
+ * @param object $junimo_leaderboard Le tableau des scores de Junimo Kart.
+ * @return object Le tableau des scores de Junimo Kart.
+ */
+function get_verified_jk_leaderboard(object $junimo_leaderboard): object {
 	if(is_object_empty($junimo_leaderboard)) {
 		return get_junimo_kart_fake_leaderboard();
 	}
@@ -25,6 +36,11 @@ function get_junimo_leaderboard(object $junimo_leaderboard): object {
 	return $junimo_leaderboard;
 }
 
+/**
+ * Crée un tableau de scores de Junimo Kart fictif.
+ *
+ * @return object Le tableau des scores fictif de Junimo Kart.
+ */
 function get_junimo_kart_fake_leaderboard(): object {
     return (object) [
         "NetLeaderboardsEntry" => [

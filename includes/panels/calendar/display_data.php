@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML du panneau du calendrier.
+ * 
+ * @return string Le code HTML du panneau du calendrier.
+ */
 function display_calendar_panel(): string {
 	$player_id = get_current_player_id();
     $images_path = get_images_folder();

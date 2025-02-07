@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 define('SPACE_NONE', 0);
 define('SPACE_BEFORE', 1);
