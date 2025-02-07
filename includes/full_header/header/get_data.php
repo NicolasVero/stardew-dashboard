@@ -602,10 +602,10 @@ function get_pet_frienship_points(): int {
 	$npcs = find_xml_tags($data, 'locations.GameLocation.characters.NPC');
 
 	foreach($npcs as $npc) {
-		if(!isset($npc->petType)) {
+		if(!isset($npc->petType) && !isset($npc->whichBreed)) {
 			continue;
 		}
-
+		
 		return (int) $npc->friendshipTowardFarmer;
 	}
 	
