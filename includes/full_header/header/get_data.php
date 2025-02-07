@@ -598,16 +598,16 @@ function is_golden_clock_on_farm(): bool {
  * @return int Les points d'amitié de l'animal de compagnie.
  */
 function get_pet_frienship_points(): int {
-	$locations = $GLOBALS["untreated_all_players_data"]->locations->GameLocation;
-	foreach($locations as $location) {
-		if(isset($location->characters)) {
-            foreach($location->characters->NPC as $npc) {
-                if(isset($npc->petType)) {
-                    return (int) $npc->friendshipTowardFarmer;
-                }
-            }
-        }
-	}
+	$data = $GLOBALS["untreated_all_players_data"];
+	$npcs = find_xml_tags($data, 'locations.GameLocation.characters.NPC');
 
+	foreach($npcs as $npc) {
+		if(!isset($npc->petType)) {
+			continue;
+		}
+
+		return (int) $npc->friendshipTowardFarmer;
+	}
+	
 	return 0;
 }

@@ -63,19 +63,14 @@ function get_farmhands(): array {
     $all_farmhands = [];
 
     if(is_game_older_than_1_6()) {
-        foreach($data->locations->GameLocation as $game_location) {
-            if(!isset($game_location->buildings)) {
+        $farmhands = find_xml_tags($data, 'locations.GameLocation.buildings.Building.indoors.farmhand');
+
+        foreach($farmhands as $farmhand) {
+            if((string) $farmhand->name=== "") {
                 continue;
             }
 
-            foreach($game_location->buildings->Building as $building) {
-                if(!isset($building->indoors->farmhand) || (string) $building->indoors->farmhand->name === "") {
-                    continue;
-                }
-
-                $farmhand = $building->indoors->farmhand;
-                array_push($all_farmhands, $farmhand);
-            }
+            array_push($all_farmhands, $farmhand);
         }
     } else {
         if(empty($data->farmhands)) {
