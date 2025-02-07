@@ -116,16 +116,17 @@ function display_spouse(mixed $spouse, array $children): string {
     }
 
     $images_path = get_images_folder();
+
     return "
-        <span>
-            <span class='tooltip'>
-                <a href='" . get_wiki_link_by_name("children") . "' class='wiki_link' rel='noreferrer' target='_blank'>
-                    <img src='$images_path/characters/" . lcfirst($spouse) . ".png' alt='$spouse'/>
-                </a>
-                <span> " . get_child_tooltip($spouse, $children) . "</span>
+        <a href='" . get_wiki_link_by_name("children") . "' class='wiki_link' rel='noreferrer' target='_blank'>
+            <span>
+                <span class='tooltip'>
+                <img src='$images_path/characters/" . lcfirst($spouse) . ".png' alt='$spouse'/>
+                    <span>" . get_child_tooltip($spouse, $children) . "</span>
+                </span>
+                <span class='data data-family'>" . count($children) . "</span>
+                <span class='data-label'>" . ((count($children) > 1) ? __("children") : __("child")) . "</span>
             </span>
-            <span class='data data-family'>" . count($children) . "</span>
-            <span class='data-label'>" . ((count($children) > 1) ? __("children") : __("child")) . "</span>
-        </span>
+        </a>
     ";
 }
