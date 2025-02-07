@@ -38,7 +38,7 @@ function send_feedback_mail(array $user_details): bool {
 header("Content-Type: application/json");
 
 ob_start();
-extract($_POST);
+extract($_POST); //? $topic, $mail, $username, $message
 
 $response = [
 	"success" => false,

@@ -243,8 +243,7 @@ function display_error_page(Exception $exception): string {
         ]
 	];
 
-	//? $dialogue, $image
-    extract($exception_dialogues[$exception->getMessage()]);
+    extract($exception_dialogues[$exception->getMessage()]); //? $dialogue, $image
 
     return "
         <div class='error-wrapper'>

@@ -691,7 +691,7 @@ function get_tooltip_text(array $player_data, string $json_line_name, string $da
 	}
 	$data_array = $player_data[$json_line_name];
 
-    extract($data_array);
+    extract($data_array); //? ?$counter, ?$caught_counter, ?$killed_counter, ?$max_length, ?$description
 
     switch($data_type) {
 		case "shipped_items" :
