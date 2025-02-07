@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Génère le code HTML du panneau du musée.
+ *
+ * @return string Le code HTML du panneau du musée.
+ */
 function display_museum_panel(): string {
 	$player_id = get_current_player_id();
     $museum_data = $GLOBALS["shared_players_data"]["museum_coords"];

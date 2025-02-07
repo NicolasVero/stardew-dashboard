@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Génère la structure HTML pour les panneaux de données.
+ * 
+ * @return string La structure HTML des panneaux de données.
+ */
 function display_panels(): string {
 	$structure  = display_friendships();
 	$structure .= display_quest_panel();

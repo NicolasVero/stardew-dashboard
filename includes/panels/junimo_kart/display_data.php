@@ -1,16 +1,26 @@
 <?php
 
+/**
+ * Génère le code HTML pour afficher le bouton de Junimo Kart.
+ *
+ * @return string Le code HTML du bouton de Junimo Kart.
+ */
 function display_junimo_kart_button(): string {
 	return "<img src='" . get_images_folder() . "/icons/controller.png' class='controller-icon view-junimo-kart-leaderboard view-junimo-kart-leaderboard-" . get_current_player_id() . " button-elements modal-opener icon' alt='Controller icon'/>";
 }
 
+/**
+ * Génère le code HTML pour afficher le panneau de Junimo Kart.
+ *
+ * @return string Le code HTML du panneau de Junimo Kart.
+ */
 function display_junimo_kart_panel(): string {
     $untreated_data = $GLOBALS["untreated_all_players_data"];
     $player_id = get_current_player_id();
     $images_path = get_images_folder();
     $junimo_structure = "";
 
-    $untreated_scores = get_junimo_leaderboard($untreated_data->junimoKartLeaderboards->entries);
+    $untreated_scores = get_verified_jk_leaderboard($untreated_data->junimoKartLeaderboards->entries);
     $counter = 1;
 
     foreach($untreated_scores->NetLeaderboardsEntry as $untreated_score) {

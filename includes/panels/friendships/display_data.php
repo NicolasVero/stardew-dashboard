@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Génère le code HTML pour afficher les informations d'amitié d'un villageois.
+ *
+ * @param array $friendship_info Informations sur l'amitié.
+ * @return string Le code HTML pour afficher les informations d'amitié.
+ */
 function display_friendship_structure(array $friendship_info): string {
     $images_path = get_images_folder();
     $json_with_version = sanitize_json_with_version("villagers", true);
@@ -36,10 +42,22 @@ function display_friendship_structure(array $friendship_info): string {
     ";
 }
 
+/**
+ * Génère le code HTML pour afficher les relations d'amitié du joueur.
+ * 
+ * @param int $limit Le nombre maximal de relations à afficher.
+ * @return string Le code HTML des relations d'amitié affichées.
+ */
 function display_top_friendships(int $limit = 5): string {
     return display_friendships($limit);
 }
 
+/**
+ * Génère le code HTML pour afficher les relations d'amitié du joueur.
+ * 
+ * @param int $limit Le nombre maximal de relations à afficher. 
+ * @return string Le code HTML des relations d'amitié affichées.
+ */
 function display_friendships(int $limit = -1): string {
     $player_id = get_current_player_id();
     $friendship_data = get_friendships_data();

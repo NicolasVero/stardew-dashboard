@@ -1,9 +1,19 @@
 <?php
 
+/**
+ * Génère le code HTML du bouton pour ouvrir le panneau des quêtes.
+ *
+ * @return string Le code HTML du bouton pour ouvrir le panneau des quêtes.
+ */
 function display_quest_button(): string {
 	return "<img src='" . get_images_folder() . "/icons/quest_icon.png' class='quest-icon view-all-quests view-all-quests-" . get_current_player_id() . " button-elements modal-opener icon' alt='Quest icon'/>";
 }
 
+/**
+ * Génère le code HTML du panneau des quêtes.
+ *
+ * @return string Le code HTML du panneau des quêtes.
+ */
 function display_quest_panel(): string {
 	$player_id = get_current_player_id();
 	$this_player_data = get_quest_log_data();

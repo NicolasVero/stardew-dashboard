@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Renvoie le hash binaire du Centre communautaire de la sauvegarde.
+ * 
+ * @param array $player_bundles Les bundles du joueur.
+ * @return string Le hash binaire du Centre communautaire.
+ */
 function get_cc_binary_hash(array $player_bundles): string {
 	$bundles_json = sanitize_json_with_version("bundles", true);
 	$room_indexes = [];
@@ -44,6 +49,13 @@ function get_cc_binary_hash(array $player_bundles): string {
 	return $binary_result;
 }
 
+/**
+ * Renvoie les détails de la progression d'un bundle du joueur.
+ * 
+ * @param array $player_bundles Les bundles du joueur.
+ * @param object $bundle_data Les données du bundle.
+ * @return array Les détails du bundle.
+ */
 function get_player_bundle_progress(object $bundle_data, array $bundle_progress): array {
 	$bundle_details = get_player_bundle_details($bundle_data);
 	$bundle_details["is_complete"] = false;
@@ -72,6 +84,13 @@ function get_player_bundle_progress(object $bundle_data, array $bundle_progress)
 	return $bundle_details;
 }
 
+/**
+ * Vérifie si un bundle est complété.
+ * 
+ * @param string $room_name Le nom de la salle.
+ * @param array $progress La progression du bundle.
+ * @return bool Indique si le bundle est complété.
+ */
 function is_bundle_completed(string $room_name, array $progress): bool {
 	$cc_rooms = [
         "Boiler Room" => "ccBoilerRoom",
@@ -112,6 +131,12 @@ function is_bundle_completed(string $room_name, array $progress): bool {
 	return $is_bundle_completed;
 }
 
+/**
+ * Renvoie les détails d'un bundle.
+ * 
+ * @param object $bundle_data Les données du bundle.
+ * @return array Les détails du bundle.
+ */
 function get_player_bundle_details(object $bundle_data): array {
 	$formatted_bundle = explode("/", (string) $bundle_data->value->string);
 	$bundle_name = $formatted_bundle[0];
@@ -127,6 +152,12 @@ function get_player_bundle_details(object $bundle_data): array {
 	return $bundle_details;
 }
 
+/**
+ * Renvoie les objets requis d'un bundle.
+ * 
+ * @param string $requirements Les objets requis du bundle.
+ * @return array Les objets requis du bundle.
+ */
 function get_bundle_requirements(string $requirements): array {
 	$formatted_requirements = array_chunk(preg_split('/\s+/', $requirements), 3);
 	$bundle_requirements = [];
@@ -169,6 +200,13 @@ function get_bundle_requirements(string $requirements): array {
 	return $bundle_requirements;
 }
 
+/**
+ * Vérifie si un objet a été donné dans le bundle.
+ * 
+ * @param string $name Le nom de l'objet.
+ * @param array $donated_items Les objets donnés.
+ * @return bool Indique si l'objet a été donné dans le bundle.
+ */
 function has_been_donated_in_bundle(string $name, array $donated_items): bool {
 	$has_been_donated = false;
 
@@ -181,6 +219,11 @@ function has_been_donated_in_bundle(string $name, array $donated_items): bool {
 	return $has_been_donated;
 }
 
+/**
+ * Renvoie les bundles entiers du joueur.
+ * 
+ * @return array Les bundles entiers du joueur.
+ */
 function get_player_bundles(): array {
     $untreated_all_data = $GLOBALS["untreated_all_players_data"];
 	$bundles_index = get_gamelocation_index($untreated_all_data, "bundles");
