@@ -2,6 +2,7 @@
 .env
 
 # Folders
+.phpdoc/
 PHPMailer/
 vendor/
 node_modules/
