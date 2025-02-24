@@ -1021,3 +1021,32 @@ function get_museum_index(): int {
     $untreated_all_data = $GLOBALS["untreated_all_players_data"];
 	return get_gamelocation_index($untreated_all_data, "museumPieces");
 }
+
+/**
+ * Tries les personnages en fonction de leur niveau d'amitié de manière décroissante. Puis regarde si un personnage est marié au joueur, dans ce cas, monte le personnage en haut de la liste.
+ * 
+ * @param array $friendship_data L'array à trier.
+ * @return array L'array trié.
+ */
+function sort_by_friend_level(array $friendship_data): array {
+    uasort($friendship_data, function($a, $b) {
+        if($a['friend_level'] != $b['friend_level']) {
+            return $b['friend_level'] - $a['friend_level'];
+        }
+        
+        return $b['points'] - $a['points'];
+    });
+
+	$married = array();
+    $others = array();
+
+    foreach ($friendship_data as $name => $data) {
+        if($data['status'] === 'Married') {
+            $married[$name] = $data;
+        } else {
+            $others[$name] = $data;
+        }
+    }
+
+    return $married + $others;
+}

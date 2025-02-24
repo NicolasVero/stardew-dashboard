@@ -63,6 +63,7 @@ function prepare_all_friendship_info(array $friendship_info): array {
 	return [
 		"villager_name" => $villager_name,
 		"status" => $status,
+		"points" => $points,
 		"hearts_structure" => $hearts_structure,
 		"week_gifts" => $week_gifts,
 		"wiki_link" => $wiki_url,
