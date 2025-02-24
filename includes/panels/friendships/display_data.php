@@ -11,7 +11,7 @@ function display_friendship_structure(array $friendship_info): string {
     $json_with_version = sanitize_json_with_version("villagers", true);
     
     $friendship_info = prepare_all_friendship_info($friendship_info);
-    extract($friendship_info); //? $villager_name, $status, $hearts_structure, $week_gifts, $wiki_link, $birthday[]
+    extract($friendship_info); //? $villager_name, $status, $points, $hearts_structure, $week_gifts, $wiki_link, $birthday[]
     extract($birthday); //? $is_birthday, $birthdate
 
     $formatted_villager_name = strtolower($villager_name);
@@ -22,7 +22,10 @@ function display_friendship_structure(array $friendship_info): string {
     return "
         <span>
             <a href='$wiki_link' class='wiki_link' rel='noreferrer' target='_blank'>
-                <img src='$images_path/characters/$formatted_villager_name.png' class='character-icon $version_class $meet_class' alt='$villager_name icon'/>
+                <span class='tooltip'>
+                    <img src='$images_path/characters/$formatted_villager_name.png' class='character-icon $version_class $meet_class' alt='$villager_name icon'/>
+                    <span>$points " . __("friendship points") . "</span>
+                </span>
             </a>
             <span class='character-name $formatted_villager_name'>" . __($villager_name) . "</span>
             <span class='hearts-level'>$hearts_structure</span>
