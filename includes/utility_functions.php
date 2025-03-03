@@ -1050,3 +1050,12 @@ function sort_by_friend_level(array $friendship_data): array {
 
     return $married + $others;
 }
+
+/**
+ * Vérifie si la partie est en mode solo.
+ * 
+ * @return bool Indique si la partie est en mode solo.
+ */
+function is_game_singleplayer(): bool {
+	return get_number_of_player() === 1;
+}

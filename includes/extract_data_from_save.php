@@ -22,7 +22,6 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
     $GLOBALS["players_names"] = get_players_name();
     $pages["topbar"] = display_topbar();
 
-    
     for($player_count = 0; $player_count < count($players_data); $player_count++) {
         $GLOBALS["player_id"] = $player_count;
         $additional_class = ($player_count === 0) ? "host" : "farmhand";
