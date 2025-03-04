@@ -1,8 +1,5 @@
 RewriteEngine On
 RewriteBase /travail/stardew_dashboard/
 
-RewriteCond %{QUERY_STRING} ^i=[0-3]$
-RewriteRule (.*) https://stardew-dashboard.42web.io/$1? [R=301,L]
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
