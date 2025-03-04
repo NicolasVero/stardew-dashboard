@@ -32,9 +32,9 @@ function get_player_tools(): array {
 				$item_name = (string) $item->$name_object;
 				$last_item_word = explode(" ", $item_name);
 				$tool_category = end($last_item_word);
-				$tool_list = $tools_name_dictionary[$tool_category];
+				$tool_list = $tools_name_dictionary[$tool_category] ?? null;
 
-				if(!isset($tool_list)) {
+				if($tool_list === null) {
 					continue;
 				}
 
@@ -93,6 +93,7 @@ function get_tools_dictionary(): array {
 		],
 		"Rod" => [
 			"None",
+			"Training Rod",
 			"Bamboo Pole",
 			"Fiberglass Rod",
 			"Iridium Rod",
