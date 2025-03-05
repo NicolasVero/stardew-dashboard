@@ -14,12 +14,14 @@ function display_player_tools(): string {
     $images_path = get_images_folder();
     $tools = "";
 
-    foreach($player_tools as $player_tool) {
+    foreach($player_tools as $category => $player_tool) {
+        $formatted_category = explode("/", $category)[1];
 		$formatted_name = format_text_for_file($player_tool);
         $tools .= "
 			<span class='tool'>
+                <span class='tool-category'>$formatted_category</span>
 				<img src='$images_path/tools/$formatted_name.png' class='tool-icon' alt='$player_tool'/>
-				$player_tool
+				<span class='tool-name'>$player_tool</span>
 			</span>
 		";
     }
