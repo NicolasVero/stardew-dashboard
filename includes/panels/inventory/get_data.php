@@ -57,6 +57,17 @@ function get_player_tools(): array {
 		}
 	}
 
+	// Separate search for the player's trashcan
+	$trashcan_level = (int) $data->player->trashCanLevel;
+	$player_trashcan = [
+		"Trash Can",
+		"Copper Trash Can",
+		"Steel Trash Can",
+		"Gold Trash Can",
+		"Iridium Trash Can"
+	][$trashcan_level];
+	$player_items["Trash Can/Trash Cans"] = $player_trashcan;
+
 	return $player_items;
 }
 
@@ -74,6 +85,7 @@ function get_correct_categories(): array {
 		"Pan" => "Pan/Pans",
 		"Rod-Pole" => "Rod-Pole/Fishing Poles",
 		"Scythe" => "Scythe/Scythes",
+		"Trash Can" => "Trash Can/Trash Cans"
 	];
 }
 
@@ -149,6 +161,7 @@ function get_starting_tools(): array {
 		"Can/Watering Cans" => "Watering Can",
 		"Pan/Pans" => "None",
 		"Rod-Pole/Fishing Poles" => "None",
-		"Scythe/Scythes" => "Scythe"
+		"Scythe/Scythes" => "Scythe",
+		"Trash Can/Trash Cans" => "Trash Can"
 	];
 }
