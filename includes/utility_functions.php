@@ -532,12 +532,12 @@ function get_game_duration(): string {
 }
 
 /**
- * Récupère le nombre de joueurs dans le fichier JSON.
+ * Récupère le nombre de joueurs dans la partie.
  * 
  * @return int Le nombre de joueurs.
  */
 function get_number_of_player(): int {
-	return count($GLOBALS["all_players_data"]);
+    return $GLOBALS["number_of_players"];
 }
 
 /**
@@ -1049,4 +1049,13 @@ function sort_by_friend_level(array $friendship_data): array {
     }
 
     return $married + $others;
+}
+
+/**
+ * Vérifie si la partie est en mode solo.
+ * 
+ * @return bool Indique si la partie est en mode solo.
+ */
+function is_game_singleplayer(): bool {
+	return get_number_of_player() === 1;
 }

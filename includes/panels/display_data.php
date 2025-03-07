@@ -15,6 +15,7 @@ function display_panels(): string {
 	$structure .= display_junimo_kart_panel();
 	$structure .= display_museum_panel();
 	$structure .= display_community_center_panel();
+	$structure .= display_player_tools();
     
     return $structure;
 }

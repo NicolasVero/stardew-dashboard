@@ -29,6 +29,7 @@ $functions_files = [
         "eradication_goals",
         "farm_animals",
         "friendships",
+        "inventory",
         "junimo_kart",
         "museum",
         "quests",
