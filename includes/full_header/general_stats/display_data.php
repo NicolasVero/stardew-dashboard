@@ -7,11 +7,7 @@
  */
 function display_general_stats(): string {
 	$all_players_data = get_general_data();
-	$community_center_button = display_community_center_button();
-	$junimo_kart_button = display_junimo_kart_button();
-	$quest_button = display_quest_button();
-	$tools_button = display_player_tools_button();
-    $visited_locations_button = display_visited_locations_button();
+    $all_buttons = get_all_buttons();
 
     extract($all_players_data); //? all field "general" in extract_data_from_save.php
 
@@ -23,12 +19,10 @@ function display_general_stats(): string {
     return "
         <section class='info-section general-stats'>
         	<h2 class='section-title'>" . __("General stats") . "</h2>
-            $visited_locations_button
-			$tools_button
-            $community_center_button
-            $junimo_kart_button
-			$quest_button
-            <div>" .
+            <div class='panel-buttons'>
+                $all_buttons
+            </div>
+            <div class='stats'>" .
                 display_stat([
                     "icon" => "Energy", "label" => "max energy", "value" => $max_stamina, "wiki_link" => "Energy", "tooltip" => "$stardrops_found / 7 " . __("stardrops found") 
                 ])
@@ -56,6 +50,27 @@ function display_general_stats(): string {
                 ])
             . "</div>
         </section>
+    ";
+}
+
+/**
+ * Génère le code HTML pour afficher tous les boutons de panels.
+ * 
+ * @return string Le code HTML des boutons.
+ */
+function get_all_buttons(): string {
+    $visited_locations_button = display_visited_locations_button();
+	$tools_button = display_player_tools_button();
+	$community_center_button = display_community_center_button();
+	$junimo_kart_button = display_junimo_kart_button();
+	$quest_button = display_quest_button();
+
+    return "
+        $visited_locations_button
+        $tools_button
+        $community_center_button
+        $junimo_kart_button
+        $quest_button
     ";
 }
 

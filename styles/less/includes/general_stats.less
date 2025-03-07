@@ -4,11 +4,19 @@
 	flex-basis: 100%;
 	position: relative;
 
-	div {
+	div.stats {
 		display: flex;
 		flex-wrap: wrap;
 		gap: @md-gap @bigger-gap;
 		margin-top: @md-gap;
+	}
+
+	div.panel-buttons {
+		display: flex;
+		gap: (@small-gap + @xsmall-gap);
+		position: absolute;
+		right: 0;
+		top: 0;
 	}
 	
 	span {
@@ -22,29 +30,6 @@
 		
 		&.icon {
 			cursor: @pointer;
-			position: absolute;
-			top: 0;
-
-			&.quest-icon {
-				right: 0;
-			}
-
-			&.controller-icon {
-				right: (@big-icon + @small-gap);
-				top: -2px;
-			}
-
-			&.golden-scroll-icon {
-				right: (@big-icon + @small-gap) * 2;
-			}
-
-			&.tools-icon {
-				right: (@big-icon + @small-gap) * 3;
-			}
-
-			&.visited-locations-icon {
-				right: (@big-icon + @small-gap) * 4;
-			}
 		}
 	}
 }
