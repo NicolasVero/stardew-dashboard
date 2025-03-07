@@ -10,6 +10,7 @@ function display_general_stats(): string {
 	$community_center_button = display_community_center_button();
 	$junimo_kart_button = display_junimo_kart_button();
 	$quest_button = display_quest_button();
+	$tools_button = display_player_tools_button();
     $visited_locations_button = display_visited_locations_button();
 
     extract($all_players_data); //? all field "general" in extract_data_from_save.php
@@ -23,6 +24,7 @@ function display_general_stats(): string {
         <section class='info-section general-stats'>
         	<h2 class='section-title'>" . __("General stats") . "</h2>
             $visited_locations_button
+			$tools_button
             $community_center_button
             $junimo_kart_button
 			$quest_button

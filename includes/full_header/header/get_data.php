@@ -86,12 +86,14 @@ function get_children_amount(): array {
 	$data = $GLOBALS["untreated_all_players_data"];
 	$children_name = [];
 	$npc_locations =  [
-		find_xml_tags($data, 'locations.GameLocation.characters.NPC'),
-		find_xml_tags($data, 'locations.GameLocation.buildings.Building.indoors.characters.NPC')
+		"locations.GameLocation.characters.NPC",
+		"locations.GameLocation.buildings.Building.indoors.characters.NPC"
 	];
 
 	foreach($npc_locations as $npc_location) {
-		foreach($npc_location as $npc) {
+		$npcs = find_xml_tags($data, $npc_location);
+
+		foreach($npcs as $npc) {
 			if(!isset($npc->idOfParent)) {
 				continue;
 			}

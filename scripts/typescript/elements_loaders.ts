@@ -43,7 +43,8 @@ function load_buttons(): void {
     const dynamic_prefixes: string[] = [
         "all-friends", "all-quests", "monster-eradication-goals",
         "calendar", "all-animals", "junimo-kart-leaderboard",
-        "museum", "community-center", "visited-locations"
+        "museum", "community-center", "visited-locations",
+        "tools"
     ];
 	
     for(let i: number = 0; i < players_in_save; i++) {

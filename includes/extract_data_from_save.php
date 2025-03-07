@@ -22,7 +22,6 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
     $GLOBALS["players_names"] = get_players_name();
     $pages["topbar"] = display_topbar();
 
-    
     for($player_count = 0; $player_count < count($players_data); $player_count++) {
         $GLOBALS["player_id"] = $player_count;
         $additional_class = ($player_count === 0) ? "host" : "farmhand";
@@ -97,16 +96,19 @@ function get_farmhands(): array {
 function get_all_players_data(): array {
     $players_data = [];
     $data = $GLOBALS["untreated_all_players_data"];
+    $farmhands = get_farmhands();
+    $GLOBALS["number_of_players"] = 1 + count($farmhands);
+
     array_push($players_data, get_aggregated_data($data->player));
 	$GLOBALS["host_player_data"] = $players_data[0];
 
-    $farmhands = get_farmhands();
-
-    foreach($farmhands as $farmhand) {
-        array_push($players_data, get_aggregated_data($farmhand));
+    if(!empty($farmhands)) {
+        foreach($farmhands as $farmhand) {
+            array_push($players_data, get_aggregated_data($farmhand));
+        }
     }
 
-	$GLOBALS["all_players_data"] = $players_data;
+    $GLOBALS["all_players_data"] = $players_data;
     return $players_data;
 }
 
@@ -146,7 +148,8 @@ function get_aggregated_data(object $data): array {
             "qi_gems"               => (int) $data->qiGems,
             "casino_coins"          => (int) $data->clubCoins,
             "raccoons"              => (int) $general_data->timesFedRaccoons,
-            "stardrops_found"       => get_player_stardrops_found()
+            "stardrops_found"       => get_player_stardrops_found(),
+            "tools"                 => get_player_tools()
         ],
         "levels" => [
             "farming_level"  => (int) $data->farmingLevel,

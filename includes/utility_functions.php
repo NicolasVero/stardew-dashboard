@@ -533,12 +533,12 @@ function get_game_duration(): string {
 }
 
 /**
- * Récupère le nombre de joueurs dans le fichier JSON.
+ * Récupère le nombre de joueurs dans la partie.
  * 
  * @return int Le nombre de joueurs.
  */
 function get_number_of_player(): int {
-	return count($GLOBALS["all_players_data"]);
+    return $GLOBALS["number_of_players"];
 }
 
 /**
@@ -1021,4 +1021,42 @@ function get_gamelocation_index(object $general_data, string $searched_location)
 function get_museum_index(): int {
     $untreated_all_data = $GLOBALS["untreated_all_players_data"];
 	return get_gamelocation_index($untreated_all_data, "museumPieces");
+}
+
+/**
+ * Tries les personnages en fonction de leur niveau d'amitié de manière décroissante. Puis regarde si un personnage est marié au joueur, dans ce cas, monte le personnage en haut de la liste.
+ * 
+ * @param array $friendship_data L'array à trier.
+ * @return array L'array trié.
+ */
+function sort_by_friend_level(array $friendship_data): array {
+    uasort($friendship_data, function($a, $b) {
+        if($a['friend_level'] != $b['friend_level']) {
+            return $b['friend_level'] - $a['friend_level'];
+        }
+        
+        return $b['points'] - $a['points'];
+    });
+
+	$married = array();
+    $others = array();
+
+    foreach ($friendship_data as $name => $data) {
+        if($data['status'] === 'Married') {
+            $married[$name] = $data;
+        } else {
+            $others[$name] = $data;
+        }
+    }
+
+    return $married + $others;
+}
+
+/**
+ * Vérifie si la partie est en mode solo.
+ * 
+ * @return bool Indique si la partie est en mode solo.
+ */
+function is_game_singleplayer(): bool {
+	return get_number_of_player() === 1;
 }
