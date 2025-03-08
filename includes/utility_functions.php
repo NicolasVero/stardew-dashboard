@@ -606,6 +606,22 @@ function get_contributors(): array {
 				"codewars" => [
 					"url" => "https://www.codewars.com/users/BreadyBred",
 					"on_display" => true
+				],
+				"reddit" => [
+					"url" => "",
+					"on_display" => false
+				],
+				"pinterest" => [
+					"url" => "",
+					"on_display" => false
+				],
+				"instagram" => [
+					"url" => "",
+					"on_display" => false
+				],
+				"x" => [
+					"url" => "",
+					"on_display" => false
 				]
 			]
 		],
@@ -632,6 +648,22 @@ function get_contributors(): array {
 				"codewars" => [
 					"url" => "https://www.codewars.com/users/NicolasVero",
 					"on_display" => true
+				],
+				"reddit" => [
+					"url" => "",
+					"on_display" => false
+				],
+				"pinterest" => [
+					"url" => "",
+					"on_display" => false
+				],
+				"instagram" => [
+					"url" => "",
+					"on_display" => false
+				],
+				"x" => [
+					"url" => "",
+					"on_display" => false
 				]
 			]
 		]
