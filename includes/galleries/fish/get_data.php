@@ -10,7 +10,7 @@ function get_player_fish_caught(): array {
 	$fishes_data = [];
 
 	foreach($player_fishes->item as $fish) {
-		$fish_id = (is_game_older_than_1_6()) ? $fish->key->int : $fish->key->string;
+		$fish_id = (is_game_version_older_than_1_6()) ? $fish->key->int : $fish->key->string;
 		$fish_id = format_original_data_string($fish_id);
 		$fish_id = get_correct_id($fish_id);
 

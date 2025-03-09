@@ -24,7 +24,7 @@ function get_player_unlockables(): array {
 				$player_unlockables[$unlockable_name] = (int) in_array($event_id, (array) $player_data->eventsSeen->int);
 				break;
 			case "element_host" :
-				if(is_game_older_than_1_6()) {
+				if(is_game_version_older_than_1_6()) {
 					$player_unlockables[$unlockable_name] = has_element($player_data->$older_element);
 				} else {
 					$player_unlockables[$unlockable_name] = has_unlockable_element_based_on_host($unlockable_name, $newer_element);

@@ -6,7 +6,7 @@
  * @return array Les lieux visités par le joueur.
  */
 function get_player_visited_locations(): array {
-	if(is_game_older_than_1_6()) {
+	if(is_game_version_older_than_1_6()) {
 		return [];
 	}
 

@@ -14,7 +14,6 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
 
     $GLOBALS["untreated_all_players_data"] = $data;
     $GLOBALS["game_version"] = $data->gameVersion;
-	$GLOBALS["game_version_score"] = (int) get_game_version_score((string) $data->gameVersion);
     $GLOBALS["shared_players_data"] = get_shared_aggregated_data();
 
     $players_data = get_all_players_data();
@@ -66,7 +65,7 @@ function get_farmhands(): array {
     $data = $GLOBALS["untreated_all_players_data"];
     $all_farmhands = [];
 
-    if(is_game_older_than_1_6()) {
+    if(is_game_version_older_than_1_6()) {
         $farmhands = find_xml_tags($data, 'locations.GameLocation.buildings.Building.indoors.farmhand');
 
         foreach($farmhands as $farmhand) {

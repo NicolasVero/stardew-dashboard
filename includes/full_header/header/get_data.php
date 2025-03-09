@@ -519,7 +519,7 @@ function get_child_tooltip(string $spouse, array $children): string {
 function get_player_pet(): array {
 	$player_data = $GLOBALS["untreated_player_data"];
 	$breed = (int) $player_data->whichPetBreed;
-	$type = (is_game_older_than_1_6()) ?
+	$type = (is_game_version_older_than_1_6()) ?
 		(((string) $player_data->catPerson === "true") ? "cat" : "dog")
 		:
 		lcfirst((string) $player_data->whichPetType);
