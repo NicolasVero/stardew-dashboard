@@ -11,7 +11,7 @@ function get_player_tools(): array {
 	}
 
 	$data = $GLOBALS["untreated_all_players_data"];
-	$name_object = (is_game_older_than_1_6()) ? "Name" : "name";
+	$name_object = (is_game_version_older_than_1_6()) ? "Name" : "name";
 	$player_items = get_starting_tools();
 	$tools_name_dictionary = get_tools_dictionary();
 	$tools_categories = get_correct_categories();

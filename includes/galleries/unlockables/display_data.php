@@ -8,7 +8,7 @@
 function display_unlockables(): string {
     $player_unlockables = get_unlockables_data();
     $images_path = get_images_folder();
-	$version_score = $GLOBALS["game_version_score"];
+	$version_score = get_game_version_score($GLOBALS["game_version"]);
 	$decoded_unlockables = $GLOBALS["json"]["unlockables"];
     $unlockables_structure = "";
 

@@ -272,8 +272,8 @@ function is_on_localhost(): bool {
  * 
  * @return bool Indique si la sauvegarde est plus ancienne ou non.
  */
-function is_game_older_than_1_6(): bool {
-	return ($GLOBALS["game_version_score"] < get_game_version_score("1.6.0"));
+function is_game_version_older_than_1_6(): bool {
+	return get_game_version_score($GLOBALS["game_version"]) < get_game_version_score("1.6.0");
 }
 
 /**
@@ -372,7 +372,7 @@ function in_bytes_conversion(string $size, string $use = "local"): int {
  */
 function sanitize_json_with_version(string $json_name, bool $version_controller = false): array {
 	$original_json = $GLOBALS["json"][$json_name];
-	$game_version_score = $GLOBALS["game_version_score"] ?? "";
+	$game_version_score = get_game_version_score($GLOBALS["game_version"]);
 	$sanitize_json = [];
 
 	foreach($original_json as $key => $json_version) {
@@ -821,7 +821,7 @@ function has_element(object $element): int {
 function has_element_based_on_version(string $element_older_version, string $element_newer_version): int {
 	$player_data = $GLOBALS["untreated_player_data"];
 
-	if(is_game_older_than_1_6()) {
+	if(is_game_version_older_than_1_6()) {
 		return has_element($player_data->$element_older_version);
 	}
 
@@ -870,7 +870,7 @@ function is_this_the_same_day(string $date): bool {
  * @return array Les données des éléments possédés par un joueur.
  */
 function get_player_items_list(object $data, string $filename): array {
-	if(is_game_older_than_1_6()) {
+	if(is_game_version_older_than_1_6()) {
 		return [];
 	}
 
@@ -899,7 +899,7 @@ function get_player_items_list(object $data, string $filename): array {
  * @return string La classe de l'élément.
  */
 function get_version_class(string $version): string {
-	return ($GLOBALS["game_version_score"] < get_game_version_score($version)) ? "newer-version" : "older-version";
+	return get_game_version_score($GLOBALS["game_version"]) < get_game_version_score($version) ? "newer-version" : "older-version";
 }
 
 /**
