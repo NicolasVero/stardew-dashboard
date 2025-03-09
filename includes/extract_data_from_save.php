@@ -14,8 +14,7 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
 
     $GLOBALS["untreated_all_players_data"] = $data;
     $GLOBALS["game_version"] = $data->gameVersion;
-	$GLOBALS["game_version_score"] = (int) get_game_version_score((string) $data->gameVersion);;
-	$GLOBALS["should_spawn_monsters"] = (string) $data->shouldSpawnMonsters;
+	$GLOBALS["game_version_score"] = (int) get_game_version_score((string) $data->gameVersion);
     $GLOBALS["shared_players_data"] = get_shared_aggregated_data();
 
     $players_data = get_all_players_data();
@@ -32,24 +31,30 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
         ";
     }
 
-    if($use_ajax) {
-        return [
-            "players" => $GLOBALS["players_names"],
-            "html" => $pages,
-            "code" => "success"
-        ];
-    } else {
-        $structure = display_landing_page(false);
+    $pages = ($use_ajax) ? $pages : generate_dev_mode_page($pages);
 
-        foreach($pages as $page) {
-            $structure .= $page;
-        }
+    return [
+        "players" => $GLOBALS["players_names"],
+        "html" => $pages,
+        "code" => "success"
+    ];
+}
+
+/**
+ * Génère le code html de la page en mode développeur
+ *
+ * @param array Les pages non traitées pour le mode développeur
+ * @return string La page générée pour le mode développeur
+ */
+function generate_dev_mode_page(array $pages): string {
+    $dev_mode_page = display_landing_page(false);
         
-        $structure .= get_script_loader();
-        echo $structure;
+    foreach($pages as $page) {
+        $dev_mode_page .= $page;
     }
     
-    return true;
+    $dev_mode_page .= get_script_loader();
+    return $dev_mode_page;
 }
 
 /**
