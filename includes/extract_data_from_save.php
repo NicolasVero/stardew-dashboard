@@ -192,6 +192,7 @@ function get_shared_aggregated_data(): array {
         "weather"               => get_weather(),
         "jumino_kart"           => get_junimo_kart_leaderboard(),
         "museum_coords"         => get_museum_pieces_coords(),
-        "cc_bundles"            => get_player_bundles()
+        "cc_bundles"            => get_player_bundles(),
+        "farm_informations"     => get_farm_informations()
     ];
 }

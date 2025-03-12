@@ -28,6 +28,7 @@ $functions_files = [
         "community_center",
         "eradication_goals",
         "farm_animals",
+        "farm_informations",
         "friendships",
         "inventory",
         "junimo_kart",

@@ -28,7 +28,7 @@ function get_player_tools(): array {
 		"locations.GameLocation.buildings.Building.indoors.objects.item.value.Object.items",
 		"locations.GameLocation.buildings.Building.buildingChests.Chest.items",
 		"locations.GameLocation.fridge.items",
-		"locations.GameLocation.buildings.Building.indoors.fridge.items",
+		"locations.GameLocation.buildings.Building.indoors.fridge.items"
 	];
 
 	foreach($player_items_locations as $location) {
