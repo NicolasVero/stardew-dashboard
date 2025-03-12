@@ -16,7 +16,7 @@ function get_farm_informations(): array {
 		"Unwatered Crops" => 0,
 		"Open Tilled Soil" => 0,
 		"Forage Items" => 0,
-		"Machines Ready" => 0,
+		"Machines Ready" => $various_informations["machines_ready"],
 		"Farm Cave Ready" => $various_informations["farm_cave_ready"]
 	];
 
@@ -29,7 +29,7 @@ function get_farm_informations(): array {
 		"Unwatered Crops" => 0,
 		"Open Tilled Soil" => 0,
 		"Forage Items" => 0,
-		"Machines Ready" => 0,
+		"Machines Ready" => $various_informations["machines_ready"],
 		"Farm Cave Ready" => $various_informations["farm_cave_ready"]
 	];
 }
@@ -90,8 +90,6 @@ function get_max_hay_pieces(): int {
  */
 function get_various_farm_informations(): array {
 	$data = $GLOBALS["untreated_all_players_data"];
-	$crops_count = 0;
-	$crops_ready_count = 0;
 	$game_locations = find_xml_tags($data, "locations.GameLocation");
 
 	foreach($game_locations as $game_location) {
@@ -101,28 +99,66 @@ function get_various_farm_informations(): array {
 
 		$is_farm_cave_ready = ((string) $game_location->farmCaveReady === "true");
 
-		foreach($game_location->terrainFeatures->item as $crops_location) {
-			if(!isset($crops_location->value->TerrainFeature->crop)) {
-				continue;
-			}
+		$crops = get_crops_on_farm($game_location);
+		$machines = get_machines_ready_on_farm($game_location);
+	}
 
-			$crops_location = $crops_location->value->TerrainFeature->crop;
+	return [
+		"total_crops" => $crops["total_crops"],
+		"crops_ready" => $crops["crops_ready"],
+		"farm_cave_ready" => $is_farm_cave_ready,
+		"machines_ready" => $machines
+	];
+}
 
-			if((string) $crops_location->dead === "true") {
-				continue;
-			}
-			
-			$crops_count++;
-	
-			if((string) $crops_location->fullGrown === "true") {
-				$crops_ready_count++;
-			}
+function get_crops_on_farm(SimpleXMLElement $game_location): array {
+	$crops_count = 0;
+	$crops_ready_count = 0;
+
+	foreach($game_location->terrainFeatures->item as $crops_location) {
+		if(!isset($crops_location->value->TerrainFeature->crop)) {
+			continue;
+		}
+
+		$crops_location = $crops_location->value->TerrainFeature->crop;
+
+		if((string) $crops_location->dead === "true") {
+			continue;
+		}
+		
+		$crops_count++;
+
+		if((string) $crops_location->fullGrown === "true") {
+			$crops_ready_count++;
 		}
 	}
 
 	return [
 		"total_crops" => $crops_count,
-		"crops_ready" => $crops_ready_count,
-		"farm_cave_ready" => $is_farm_cave_ready
+		"crops_ready" => $crops_ready_count
 	];
+}
+
+function get_machines_ready_on_farm(SimpleXMLElement $game_location): int {
+	$machines_count = 0;
+
+	foreach($game_location->objects->item as $object) {
+		if(!isset($object->value->Object->readyForHarvest) || (string) $object->value->Object->readyForHarvest === "false") {
+			continue;
+		}
+
+		if((string) $object->value->Object->readyForHarvest === "true") {
+			$machines_count++;
+		}
+	}
+
+	foreach($game_location->buildings->Building as $building) {
+		if(!isset($building->output) || empty((array) $building->output) || count((array) $building->output) > 1) {
+			continue;
+		}
+
+		$machines_count++;
+	}
+
+	return $machines_count;
 }
