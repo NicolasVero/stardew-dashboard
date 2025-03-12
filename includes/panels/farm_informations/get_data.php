@@ -7,30 +7,30 @@
  * @return array Les informations de la ferme.
  */
 function get_farm_informations(): array {
-	$crops_count = get_crops_count();
+	$various_informations = get_various_farm_informations();
 
 	$farm_infos = [
 		"Pieces Hay" => get_hay_pieces_in_farm() . " / " . get_max_hay_pieces(),
-		"Total Crops" => $crops_count["total_crops"],
-		"Crops Ready" => $crops_count["crops_ready"],
+		"Total Crops" => $various_informations["total_crops"],
+		"Crops Ready" => $various_informations["crops_ready"],
 		"Unwatered Crops" => 0,
 		"Open Tilled Soil" => 0,
 		"Forage Items" => 0,
 		"Machines Ready" => 0,
-		"Farm Cave Ready" => false
+		"Farm Cave Ready" => $various_informations["farm_cave_ready"]
 	];
 
 	log_($farm_infos);
 
 	return [
 		"Pieces Hay" => get_hay_pieces_in_farm() . " / " . get_max_hay_pieces(),
-		"Total Crops" => $crops_count["total_crops"],
-		"Crops Ready" => $crops_count["crops_ready"],
+		"Total Crops" => $various_informations["total_crops"],
+		"Crops Ready" => $various_informations["crops_ready"],
 		"Unwatered Crops" => 0,
 		"Open Tilled Soil" => 0,
 		"Forage Items" => 0,
 		"Machines Ready" => 0,
-		"Farm Cave Ready" => false
+		"Farm Cave Ready" => $various_informations["farm_cave_ready"]
 	];
 }
 
@@ -84,11 +84,11 @@ function get_max_hay_pieces(): int {
 }
 
 /**
- * Récupère le nombre de récoltes dans la ferme.
+ * Récupère diverses informations sur la ferme comme le nombre de récoltes et l'état de la caverne de la ferme.
  * 
- * @return array Le nombre de récoltes.
+ * @return array Les informations de la ferme.
  */
-function get_crops_count(): array {
+function get_various_farm_informations(): array {
 	$data = $GLOBALS["untreated_all_players_data"];
 	$crops_count = 0;
 	$crops_ready_count = 0;
@@ -98,6 +98,8 @@ function get_crops_count(): array {
 		if((string) $game_location->name !== "Farm") {
 			continue;
 		}
+
+		$is_farm_cave_ready = ((string) $game_location->farmCaveReady === "true");
 
 		foreach($game_location->terrainFeatures->item as $crops_location) {
 			if(!isset($crops_location->value->TerrainFeature->crop)) {
@@ -120,6 +122,7 @@ function get_crops_count(): array {
 
 	return [
 		"total_crops" => $crops_count,
-		"crops_ready" => $crops_ready_count
+		"crops_ready" => $crops_ready_count,
+		"farm_cave_ready" => $is_farm_cave_ready
 	];
 }
