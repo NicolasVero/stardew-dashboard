@@ -143,12 +143,12 @@ function get_crops_on_farm(SimpleXMLElement $game_location): array {
 		
 		$crops_count++;
 
-		if((string) $crops_location->crop->fullGrown === "true") {
-			$crops_ready_count++;
-		}
-
 		if((int) $crops_location->state === 0) {
 			$unwatered_crops++;
+		}
+
+		if((string) $crops_location->crop->fullGrown === "true") {
+			$crops_ready_count++;
 		}
 	}
 
@@ -197,11 +197,7 @@ function get_tilled_soil_count(SimpleXMLElement $game_location): int {
 	$tilled_soil_count = 0;
 
 	foreach($game_location->terrainFeatures->item as $soil) {
-		if(!isset($soil->value->TerrainFeature->state)) {
-			continue;
-		}
-
-		if(!isset($soil->value->TerrainFeature->crop)) {
+		if(isset($soil->value->TerrainFeature->state) && !isset($soil->value->TerrainFeature->crop)) {
 			$tilled_soil_count++;
 		}
 	}
