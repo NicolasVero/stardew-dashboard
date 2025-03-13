@@ -9,6 +9,7 @@
 function get_farm_informations(): array {
 	$informations = get_complex_farm_informations();
 
+	//! For logs purposes.
 	$farm_infos = [
 		"Pieces Hay" => get_hay_pieces_in_farm() . " / " . get_max_hay_pieces(),
 		"Total Crops" => $informations["total_crops"],
