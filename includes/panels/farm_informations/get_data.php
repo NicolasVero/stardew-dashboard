@@ -7,30 +7,58 @@
  * @return array Les informations de la ferme.
  */
 function get_farm_informations(): array {
-	$various_informations = get_various_farm_informations();
+	$informations = get_complex_farm_informations();
 
 	$farm_infos = [
 		"Pieces Hay" => get_hay_pieces_in_farm() . " / " . get_max_hay_pieces(),
-		"Total Crops" => $various_informations["total_crops"],
-		"Crops Ready" => $various_informations["crops_ready"],
+		"Total Crops" => $informations["total_crops"],
+		"Crops Ready" => $informations["crops_ready"],
 		"Unwatered Crops" => 0,
 		"Open Tilled Soil" => 0,
 		"Forage Items" => 0,
-		"Machines Ready" => $various_informations["machines_ready"],
-		"Farm Cave Ready" => $various_informations["farm_cave_ready"]
+		"Machines Ready" => $informations["machines_ready"],
+		"Farm Cave Ready" => $informations["farm_cave_ready"]
 	];
 
 	log_($farm_infos);
 
 	return [
 		"Pieces Hay" => get_hay_pieces_in_farm() . " / " . get_max_hay_pieces(),
-		"Total Crops" => $various_informations["total_crops"],
-		"Crops Ready" => $various_informations["crops_ready"],
+		"Total Crops" => $informations["total_crops"],
+		"Crops Ready" => $informations["crops_ready"],
 		"Unwatered Crops" => 0,
 		"Open Tilled Soil" => 0,
 		"Forage Items" => 0,
-		"Machines Ready" => $various_informations["machines_ready"],
-		"Farm Cave Ready" => $various_informations["farm_cave_ready"]
+		"Machines Ready" => $informations["machines_ready"],
+		"Farm Cave Ready" => $informations["farm_cave_ready"]
+	];
+}
+
+/**
+ * Récupère diverses informations sur la ferme comme le nombre de récoltes et l'état de la caverne de la ferme.
+ * 
+ * @return array Les informations de la ferme.
+ */
+function get_complex_farm_informations(): array {
+	$data = $GLOBALS["untreated_all_players_data"];
+	$game_locations = find_xml_tags($data, "locations.GameLocation");
+
+	foreach($game_locations as $game_location) {
+		if((string) $game_location->name !== "Farm") {
+			continue;
+		}
+
+		$is_farm_cave_ready = ((string) $game_location->farmCaveReady === "true");
+
+		$crops = get_crops_on_farm($game_location);
+		$machines = get_machines_ready_on_farm($game_location);
+	}
+
+	return [
+		"total_crops" => $crops["total_crops"],
+		"crops_ready" => $crops["crops_ready"],
+		"farm_cave_ready" => $is_farm_cave_ready,
+		"machines_ready" => $machines
 	];
 }
 
@@ -84,33 +112,10 @@ function get_max_hay_pieces(): int {
 }
 
 /**
- * Récupère diverses informations sur la ferme comme le nombre de récoltes et l'état de la caverne de la ferme.
+ * Récupère des informations sur les récoltes dans la ferme.
  * 
- * @return array Les informations de la ferme.
+ * @return array Les informations sur les récoltes.
  */
-function get_various_farm_informations(): array {
-	$data = $GLOBALS["untreated_all_players_data"];
-	$game_locations = find_xml_tags($data, "locations.GameLocation");
-
-	foreach($game_locations as $game_location) {
-		if((string) $game_location->name !== "Farm") {
-			continue;
-		}
-
-		$is_farm_cave_ready = ((string) $game_location->farmCaveReady === "true");
-
-		$crops = get_crops_on_farm($game_location);
-		$machines = get_machines_ready_on_farm($game_location);
-	}
-
-	return [
-		"total_crops" => $crops["total_crops"],
-		"crops_ready" => $crops["crops_ready"],
-		"farm_cave_ready" => $is_farm_cave_ready,
-		"machines_ready" => $machines
-	];
-}
-
 function get_crops_on_farm(SimpleXMLElement $game_location): array {
 	$crops_count = 0;
 	$crops_ready_count = 0;
@@ -139,6 +144,11 @@ function get_crops_on_farm(SimpleXMLElement $game_location): array {
 	];
 }
 
+/**
+ * Récupère le nombre de machines prêtes dans la ferme.
+ * 
+ * @return int Le nombre de machines prêtes.
+ */
 function get_machines_ready_on_farm(SimpleXMLElement $game_location): int {
 	$machines_count = 0;
 
