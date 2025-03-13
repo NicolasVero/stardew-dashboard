@@ -14,8 +14,8 @@ function get_farm_informations(): array {
 		"Total Crops" => $informations["total_crops"],
 		"Crops Ready" => $informations["crops_ready"],
 		"Unwatered Crops" => 0,
+		"Crops Ready In Greenhouse" => $informations["greenhouse_crops"],
 		"Open Tilled Soil" => 0,
-		"Forage Items" => 0,
 		"Machines Ready" => $informations["machines_ready"],
 		"Farm Cave Ready" => $informations["farm_cave_ready"]
 	];
@@ -27,8 +27,8 @@ function get_farm_informations(): array {
 		"Total Crops" => $informations["total_crops"],
 		"Crops Ready" => $informations["crops_ready"],
 		"Unwatered Crops" => 0,
+		"Crops Ready In Greenhouse" => $informations["greenhouse_crops"],
 		"Open Tilled Soil" => 0,
-		"Forage Items" => 0,
 		"Machines Ready" => $informations["machines_ready"],
 		"Farm Cave Ready" => $informations["farm_cave_ready"]
 	];
@@ -44,21 +44,26 @@ function get_complex_farm_informations(): array {
 	$game_locations = find_xml_tags($data, "locations.GameLocation");
 
 	foreach($game_locations as $game_location) {
-		if((string) $game_location->name !== "Farm") {
-			continue;
+		if((string) $game_location->name === "Farm") {
+			$is_farm_cave_ready = ((string) $game_location->farmCaveReady === "true");
+	
+			$crops = get_crops_on_farm($game_location);
+			$machines = get_machines_ready_on_farm($game_location);
 		}
 
-		$is_farm_cave_ready = ((string) $game_location->farmCaveReady === "true");
+		if((string) $game_location->name === "Greenhouse") {
+			$greenhouse_crops = get_crops_on_farm($game_location);
+		}
 
-		$crops = get_crops_on_farm($game_location);
-		$machines = get_machines_ready_on_farm($game_location);
+		continue;
 	}
 
 	return [
 		"total_crops" => $crops["total_crops"],
 		"crops_ready" => $crops["crops_ready"],
-		"farm_cave_ready" => $is_farm_cave_ready,
-		"machines_ready" => $machines
+		"greenhouse_crops" => $greenhouse_crops["crops_ready"],
+		"machines_ready" => $machines,
+		"farm_cave_ready" => $is_farm_cave_ready
 	];
 }
 
