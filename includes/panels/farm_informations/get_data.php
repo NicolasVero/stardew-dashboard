@@ -13,7 +13,7 @@ function get_farm_informations(): array {
 		"Pieces Hay" => get_hay_pieces_in_farm() . " / " . get_max_hay_pieces(),
 		"Total Crops" => $informations["total_crops"],
 		"Crops Ready" => $informations["crops_ready"],
-		"Unwatered Crops" => 0,
+		"Unwatered Crops" => $informations["unwatered_crops"],
 		"Crops Ready In Greenhouse" => $informations["greenhouse_crops"],
 		"Open Tilled Soil" => $informations["tilled_soils"],
 		"Machines Ready" => $informations["machines_ready"],
@@ -26,7 +26,7 @@ function get_farm_informations(): array {
 		"Pieces Hay" => get_hay_pieces_in_farm() . " / " . get_max_hay_pieces(),
 		"Total Crops" => $informations["total_crops"],
 		"Crops Ready" => $informations["crops_ready"],
-		"Unwatered Crops" => 0,
+		"Unwatered Crops" => $informations["unwatered_crops"],
 		"Crops Ready In Greenhouse" => $informations["greenhouse_crops"],
 		"Open Tilled Soil" => $informations["tilled_soils"],
 		"Machines Ready" => $informations["machines_ready"],
@@ -62,6 +62,7 @@ function get_complex_farm_informations(): array {
 	return [
 		"total_crops" => $crops["total_crops"],
 		"crops_ready" => $crops["crops_ready"],
+		"unwatered_crops" => $crops["unwatered_crops"],
 		"greenhouse_crops" => $greenhouse_crops["crops_ready"],
 		"tilled_soils" => $tilled_soils,
 		"machines_ready" => $machines,
@@ -126,28 +127,34 @@ function get_max_hay_pieces(): int {
 function get_crops_on_farm(SimpleXMLElement $game_location): array {
 	$crops_count = 0;
 	$crops_ready_count = 0;
+	$unwatered_crops = 0;
 
 	foreach($game_location->terrainFeatures->item as $crops_location) {
 		if(!isset($crops_location->value->TerrainFeature->crop)) {
 			continue;
 		}
 
-		$crops_location = $crops_location->value->TerrainFeature->crop;
+		$crops_location = $crops_location->value->TerrainFeature;
 
-		if((string) $crops_location->dead === "true") {
+		if((string) $crops_location->crop->dead === "true") {
 			continue;
 		}
 		
 		$crops_count++;
 
-		if((string) $crops_location->fullGrown === "true") {
+		if((string) $crops_location->crop->fullGrown === "true") {
 			$crops_ready_count++;
+		}
+
+		if((int) $crops_location->state === 0) {
+			$unwatered_crops++;
 		}
 	}
 
 	return [
 		"total_crops" => $crops_count,
-		"crops_ready" => $crops_ready_count
+		"crops_ready" => $crops_ready_count,
+		"unwatered_crops" => $unwatered_crops
 	];
 }
 
