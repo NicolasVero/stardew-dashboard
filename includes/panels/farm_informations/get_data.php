@@ -15,7 +15,7 @@ function get_farm_informations(): array {
 		"Crops Ready" => $informations["crops_ready"],
 		"Unwatered Crops" => 0,
 		"Crops Ready In Greenhouse" => $informations["greenhouse_crops"],
-		"Open Tilled Soil" => 0,
+		"Open Tilled Soil" => $informations["tilled_soils"],
 		"Machines Ready" => $informations["machines_ready"],
 		"Farm Cave Ready" => $informations["farm_cave_ready"]
 	];
@@ -28,7 +28,7 @@ function get_farm_informations(): array {
 		"Crops Ready" => $informations["crops_ready"],
 		"Unwatered Crops" => 0,
 		"Crops Ready In Greenhouse" => $informations["greenhouse_crops"],
-		"Open Tilled Soil" => 0,
+		"Open Tilled Soil" => $informations["tilled_soils"],
 		"Machines Ready" => $informations["machines_ready"],
 		"Farm Cave Ready" => $informations["farm_cave_ready"]
 	];
@@ -49,6 +49,7 @@ function get_complex_farm_informations(): array {
 	
 			$crops = get_crops_on_farm($game_location);
 			$machines = get_machines_ready_on_farm($game_location);
+			$tilled_soils = get_tilled_soil_count($game_location);
 		}
 
 		if((string) $game_location->name === "Greenhouse") {
@@ -62,6 +63,7 @@ function get_complex_farm_informations(): array {
 		"total_crops" => $crops["total_crops"],
 		"crops_ready" => $crops["crops_ready"],
 		"greenhouse_crops" => $greenhouse_crops["crops_ready"],
+		"tilled_soils" => $tilled_soils,
 		"machines_ready" => $machines,
 		"farm_cave_ready" => $is_farm_cave_ready
 	];
@@ -176,4 +178,25 @@ function get_machines_ready_on_farm(SimpleXMLElement $game_location): int {
 	}
 
 	return $machines_count;
+}
+
+/**
+ * Récupère le nombre de sols labourés prêts dans la ferme.
+ * 
+ * @return int Le nombre de sols labourés prêts.
+ */
+function get_tilled_soil_count(SimpleXMLElement $game_location): int {
+	$tilled_soil_count = 0;
+
+	foreach($game_location->terrainFeatures->item as $soil) {
+		if(!isset($soil->value->TerrainFeature->state)) {
+			continue;
+		}
+
+		if(!isset($soil->value->TerrainFeature->crop)) {
+			$tilled_soil_count++;
+		}
+	}
+
+	return $tilled_soil_count;
 }
