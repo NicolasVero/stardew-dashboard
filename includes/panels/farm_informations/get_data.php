@@ -9,20 +9,6 @@
 function get_farm_informations(): array {
 	$informations = get_complex_farm_informations();
 
-	//! For logs purposes.
-	// $farm_infos = [
-	// 	"Pieces Hay" => get_hay_pieces_in_farm() . " / " . get_max_hay_pieces(),
-	// 	"Total Crops" => $informations["total_crops"],
-	// 	"Crops Ready" => $informations["crops_ready"],
-	// 	"Unwatered Crops" => $informations["unwatered_crops"],
-	// 	"Crops Ready In Greenhouse" => $informations["greenhouse_crops"],
-	// 	"Open Tilled Soil" => $informations["tilled_soils"],
-	// 	"Machines Ready" => $informations["machines_ready"],
-	// 	"Farm Cave Ready" => $informations["farm_cave_ready"]
-	// ];
-
-	// log_($farm_infos);
-
 	return [
 		"Pieces Hay" => get_hay_pieces_in_farm() . " / " . get_max_hay_pieces(),
 		"Total Crops" => $informations["total_crops"],
