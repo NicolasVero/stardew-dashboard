@@ -20,7 +20,6 @@ function feedback_form_creation(): void {
     const xml_upload: HTMLBodyElement = document.querySelector("body");
 
     fetch("./functions.php", {
-    // fetch("./functions.php/?lang=fr", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -62,7 +61,7 @@ function activate_feedback_form(): void {
             alert(alert_message);
         })
         .catch(error => {
-            console.error("Error:", error);
+            console.error("Error: ", error);
             alert("An error occurred while submitting the form.");
         });
     });

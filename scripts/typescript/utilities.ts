@@ -38,7 +38,7 @@ function get_current_player_id(): number | null {
     const visible_player: Element = Array.from(document.querySelectorAll(".player_container"))
         .find(player => window.getComputedStyle(player).display === "block");
 
-    if(visible_player !== null) {
+    if(visible_player !== null && visible_player !== undefined) {
         const match: RegExpMatchArray = visible_player.className.match(/player_(\d+)_container/);
         return match ? parseInt(match[1], 10) : null;
     }
@@ -62,7 +62,7 @@ function get_deletabled_settings_panels(): string[] {
 }
 
 function get_closabled_settings_panels(): string[] {
-    return [".upload-panel", ".settings-panel"];
+    return [".upload-panel", ".settings-panel", ".languages-panel"];
 }
 
 function get_settings_panels(): string[] {
@@ -71,11 +71,18 @@ function get_settings_panels(): string[] {
 
 function close_all_panels(panel_selectors: string[], include_setting_panels: boolean = false): void {
     const settings_panels: string[] = (include_setting_panels) ? get_settings_panels() : [];
-    panel_selectors.push(...settings_panels);
+    const player_id = get_current_player_id();
+
+    if(player_id === null) {
+        panel_selectors = settings_panels;
+    } else {
+        panel_selectors.push(...settings_panels);
+    }
     
     panel_selectors.forEach((panel_base: string) => {
-        const id: string = settings_panels.includes(panel_base) ? "" : "-" + get_current_player_id();
+        const id: string = settings_panels.includes(panel_base) ? "" : "-" + player_id;
         const panel_selector: string = panel_base + id;
+
         const panel: HTMLElement = document.querySelector(panel_selector);
 
         if(panel !== null) {
@@ -89,6 +96,10 @@ function close_all_panels(panel_selectors: string[], include_setting_panels: boo
 }
 
 function can_close_panel(event: Event): boolean {
+    if(document.querySelector(".feedback-panel") !== null) {
+        return true;
+    }
+
     return (
         current_section
         && event.target instanceof HTMLElement
