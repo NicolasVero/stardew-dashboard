@@ -205,7 +205,7 @@ function load_buttons() {
         "all-friends", "all-quests", "monster-eradication-goals",
         "calendar", "all-animals", "junimo-kart-leaderboard",
         "museum", "community-center", "visited-locations",
-        "tools"
+        "tools", "farm-informations"
     ];
     for (let i = 0; i < players_in_save; i++) {
         dynamic_prefixes.forEach((prefix) => {

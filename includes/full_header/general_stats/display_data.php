@@ -61,6 +61,7 @@ function display_general_stats(): string {
 function get_all_buttons(): string {
     $visited_locations_button = display_visited_locations_button();
 	$tools_button = display_player_tools_button();
+	$farm_informations_button = display_farm_informations_button();
 	$community_center_button = display_community_center_button();
 	$junimo_kart_button = display_junimo_kart_button();
 	$quest_button = display_quest_button();
@@ -68,6 +69,7 @@ function get_all_buttons(): string {
     return "
         $visited_locations_button
         $tools_button
+        $farm_informations_button
         $community_center_button
         $junimo_kart_button
         $quest_button
