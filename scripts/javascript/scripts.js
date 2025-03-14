@@ -332,6 +332,8 @@ const panels = {
     Digit7: ".all-animals",
     Digit8: ".museum",
     Digit9: ".community-center",
+    Digit0: ".farm-informations",
+    Minus: ".tools"
 };
 const all_panels = Object.values(panels);
 window.addEventListener("keydown", (event) => {
@@ -629,7 +631,6 @@ function update_display(target_classes) {
         if (class_name.split("-").pop() === "icon") {
             Array.from(elements).forEach((element) => {
                 if (element !== null) {
-                    console.log(element);
                     set_element_display(element, should_show_element(element, settings));
                 }
             });
@@ -680,7 +681,7 @@ function toggle_visibility(element, should_display) {
 function get_current_player_id() {
     const visible_player = Array.from(document.querySelectorAll(".player_container"))
         .find(player => window.getComputedStyle(player).display === "block");
-    if (visible_player !== null) {
+    if (visible_player !== null && visible_player !== undefined) {
         const match = visible_player.className.match(/player_(\d+)_container/);
         return match ? parseInt(match[1], 10) : null;
     }
@@ -698,16 +699,22 @@ function get_deletabled_settings_panels() {
     return [".feedback-panel"];
 }
 function get_closabled_settings_panels() {
-    return [".upload-panel", ".settings-panel"];
+    return [".upload-panel", ".settings-panel", ".languages-panel"];
 }
 function get_settings_panels() {
     return [...get_closabled_settings_panels(), ...get_deletabled_settings_panels()];
 }
 function close_all_panels(panel_selectors, include_setting_panels = false) {
     const settings_panels = (include_setting_panels) ? get_settings_panels() : [];
-    panel_selectors.push(...settings_panels);
+    const player_id = get_current_player_id();
+    if (player_id === null) {
+        panel_selectors = settings_panels;
+    }
+    else {
+        panel_selectors.push(...settings_panels);
+    }
     panel_selectors.forEach((panel_base) => {
-        const id = settings_panels.includes(panel_base) ? "" : "-" + get_current_player_id();
+        const id = settings_panels.includes(panel_base) ? "" : "-" + player_id;
         const panel_selector = panel_base + id;
         const panel = document.querySelector(panel_selector);
         if (panel !== null) {
@@ -719,6 +726,9 @@ function close_all_panels(panel_selectors, include_setting_panels = false) {
     });
 }
 function can_close_panel(event) {
+    if (document.querySelector(".feedback-panel") !== null) {
+        return true;
+    }
     return (current_section
         && event.target instanceof HTMLElement
         && event.target !== current_section

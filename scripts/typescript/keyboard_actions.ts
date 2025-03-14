@@ -8,6 +8,8 @@ const panels: Record<string, string> = {
     Digit7: ".all-animals",
     Digit8: ".museum",
     Digit9: ".community-center",
+    Digit0: ".farm-informations",
+    Minus : ".tools"
 };
 const all_panels: string[] = Object.values(panels); 
 
