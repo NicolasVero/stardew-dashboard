@@ -23,7 +23,7 @@ function display_farm_informations(): string {
     $informations = "";
 
 	foreach($farm_informations as $caption => $count) {
-		$informations .= "<span class='farm-info'>" . __($caption) . " : $count</span>";
+		$informations .= "<span class='farm-info'>" . __($caption) . " : " . __($count) . "</span>";
 	}
 
     return "
