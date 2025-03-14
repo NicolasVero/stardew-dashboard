@@ -129,6 +129,7 @@ function get_shipped_items_data(?int $player_id = null): array {
 function get_crafting_recipes_data(?int $player_id = null): array {
     return get_data("crafting_recipes", $player_id);
 }
+
 /**
  * Récupère la liste des animaux de la ferme des joueurs.
  *
@@ -217,4 +218,23 @@ function get_levels_data(?int $player_id = null): array {
  */
 function get_masteries_data(?int $player_id = null): array {
     return get_data("masteries", $player_id);
+}
+
+/**
+ * Récupère la liste des outils d'un joueur.
+ *
+ * @return array La liste des outils du joueur.
+ */
+function get_tools_data(): array {
+    return get_general_data()["tools"];
+}
+
+/**
+ * Récupère la liste des informations de la ferme.
+ *
+ * @return array La liste des informations de la ferme.
+ */
+
+function get_farm_informations_data(): array {
+    return $GLOBALS["shared_players_data"]["farm_informations"];
 }

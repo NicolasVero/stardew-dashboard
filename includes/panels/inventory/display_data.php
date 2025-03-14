@@ -18,7 +18,7 @@ function display_player_tools_button(): string {
  * @return string Le code HTML du panneau des outils du joueur.
  */
 function display_player_tools(): string {
-	if(empty($player_tools = get_player_tools())) {
+	if(empty($player_tools = get_tools_data())) {
 		return "";
 	}
 
@@ -42,7 +42,7 @@ function display_player_tools(): string {
         <section class='tools-$player_id panel tools modal-window'>
             <span class='panel-header'>
                 <h2 class='section-title panel-title'>" . __("Tools") . "</h2>
-                <img src='$images_path/icons/exit.png' class='exit-all-quests-$player_id exit' alt='Exit'/>
+                <img src='$images_path/icons/exit.png' class='exit-tools-$player_id exit' alt='Exit'/>
             </span>
             <span class='tools'>
                 $tools

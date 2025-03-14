@@ -16,6 +16,7 @@ function display_panels(): string {
 	$structure .= display_museum_panel();
 	$structure .= display_community_center_panel();
 	$structure .= display_player_tools();
+	$structure .= display_farm_informations();
     
     return $structure;
 }
