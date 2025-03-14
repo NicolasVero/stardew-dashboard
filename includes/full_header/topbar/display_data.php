@@ -1,5 +1,12 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML de la barre de navigation en haut de la page.
+ * 
+ * @param bool $is_landing_page Détermine si la page actuelle est la page d'accueil.
+ * @param bool $is_error_screen Détermine si la page actuelle est une page d'erreur.
+ * @return string Le code HTML de la barre de navigation.
+ */
 function display_topbar(bool $is_landing_page = false, bool $is_error_screen = false): string {
 	$menu_id = ($is_landing_page) ? "landing_menu" : (($is_error_screen) ? "error_menu" : "dashboard_menu");
 	$save_id = ($is_landing_page) ? "landing" : "file";
@@ -24,6 +31,11 @@ function display_topbar(bool $is_landing_page = false, bool $is_error_screen = f
     ";
 }
 
+/**
+ * Génère le code HTML du panneau de sauvegarde.
+ * 
+ * @return string Le code HTML du panneau de sauvegarde.
+ */
 function display_save_panel(): string {
     $images_path = get_images_folder();
     return "
@@ -43,6 +55,11 @@ function display_save_panel(): string {
     ";
 }
 
+/**
+ * Génère le code HTML du panneau de sélection de langue.
+ * 
+ * @return string Le code HTML du panneau de sélection de langue.
+ */
 function display_languages_panel(): string {
     $images_path = get_images_folder();
     return "
@@ -59,6 +76,11 @@ function display_languages_panel(): string {
     ";
 }
 
+/**
+ * Génère le code HTML du panneau d'options.
+ * 
+ * @return string Le code HTML du panneau d'options.
+ */
 function display_settings_panel(): string {
     $images_path = get_images_folder();
     return "
@@ -98,6 +120,11 @@ function display_settings_panel(): string {
     ";
 }
 
+/**
+ * Génère le code HTML du panneau de retour utilisateur.
+ * 
+ * @return string Le code HTML du panneau de retour utilisateur.
+ */
 function display_feedback_panel(): string {
     $images_path = get_images_folder();
     return "
@@ -156,6 +183,11 @@ function display_feedback_panel(): string {
     ";
 }
 
+/**
+ * Génère le code HTML de la sélection de joueur.
+ * 
+ * @return string Le code HTML de la sélection de joueur.
+ */
 function display_player_selection(): string {
     $players_names = $GLOBALS["players_names"];
     $players_name_structure = "";
@@ -173,10 +205,21 @@ function display_player_selection(): string {
     ";
 }
 
+/**
+ * Génère le code HTML de la version du jeu.
+ * 
+ * @return string Le code HTML de la version du jeu.
+ */
 function display_game_version(): string {
     return "<span class='game_version'>V " . $GLOBALS["game_version"] . "</span>";
 }
 
+/**
+ * Génère le code HTML du bouton d'options.
+ * 
+ * @param string $prefix Le préfixe des classes CSS.
+ * @return string Le code HTML du bouton d'options.
+ */
 function display_settings_button(string $prefix): string {
     return "
         <span class='$prefix-settings modal-opener'>
@@ -185,6 +228,12 @@ function display_settings_button(string $prefix): string {
     ";
 }
 
+/**
+ * Génère le code HTML du bouton de sélection de langue (panel).
+ * 
+ * @param string $prefix Le préfixe des classes CSS.
+ * @return string Le code HTML du bouton de sélection de langue.
+ */
 function display_languages_button(string $prefix): string {
     $language = get_site_language();
     return "
@@ -194,6 +243,12 @@ function display_languages_button(string $prefix): string {
     ";
 }
 
+/**
+ * Génère le code HTML du bouton de sauvegarde.
+ * 
+ * @param string $prefix Le préfixe des classes CSS.
+ * @return string Le code HTML du bouton de sauvegarde.
+ */
 function display_save_button(string $prefix): string {
     return "
         <span class='$prefix-upload modal-opener'>
@@ -202,6 +257,12 @@ function display_save_button(string $prefix): string {
     ";
 }
 
+/**
+ * Génère le code HTML du bouton de retour utilisateur.
+ * 
+ * @param string $prefix Le préfixe des classes CSS.
+ * @return string Le code HTML du bouton de retour utilisateur.
+ */
 function display_feedback_button(): string {
     return "
         <span class='feedback-opener modal-opener'>
@@ -210,6 +271,12 @@ function display_feedback_button(): string {
     ";
 }
 
+/**
+ * Génère le code HTML du bouton d'accueil.
+ * 
+ * @param string $prefix Le préfixe des classes CSS.
+ * @return string Le code HTML du bouton d'accueil.
+ */
 function display_home_button(): string {
     return "
         <span class='landing-page-opener'>
@@ -218,6 +285,12 @@ function display_home_button(): string {
     ";
 }
 
+/**
+ * Génère le code HTML du bouton de sélection de langue (header).
+ * 
+ * @param string $prefix Le préfixe des classes CSS.
+ * @return string Le code HTML du bouton de sélection de langue.
+ */
 function display_all_languages_button(): string {
     $languages = get_supported_languages();
     $structure = "";

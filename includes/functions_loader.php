@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $functions_files = [
     "full_header" => [
@@ -28,7 +28,9 @@ $functions_files = [
         "community_center",
         "eradication_goals",
         "farm_animals",
+        "farm_informations",
         "friendships",
+        "inventory",
         "junimo_kart",
         "museum",
         "quests",
@@ -48,6 +50,12 @@ foreach($functions_files as $folder => $subfolders) {
     }
 }
 
+/**
+ * Cherches et inclus un fichier s'il existe.
+ *
+ * @param string $path Le chemin du fichier à inclure.
+ * @return void
+ */
 function include_files_if_exists(string $path): void {
     $path = preg_replace("/\/\d+/", "", $path);
 

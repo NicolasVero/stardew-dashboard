@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Récupère les données des artéfacts trouvés par le joueur.
+ * 
+ * @return array Les données des artéfacts trouvés par le joueur.
+ */
 function get_player_artifacts(): array {
 	$player_artifacts = $GLOBALS["untreated_player_data"]->archaeologyFound;
     $general_data = $GLOBALS["untreated_all_players_data"];
@@ -7,12 +12,12 @@ function get_player_artifacts(): array {
 
 	foreach($player_artifacts->item as $artifact) {
 
-		$artifact_id = ((is_game_older_than_1_6())) ? $artifact->key->int : $artifact->key->string;
+		$artifact_id = ((is_game_version_older_than_1_6())) ? $artifact->key->int : $artifact->key->string;
 		$artifact_id = format_original_data_string((string) $artifact_id);
 		$artifact_id = get_correct_id($artifact_id);
 
 		$artifacts_reference = find_reference_in_json($artifact_id, "artifacts");
-		$museum_index = get_gamelocation_index($general_data, "museumPieces");
+		$museum_index = get_museum_index();
 
 		if(!empty($artifacts_reference)) {
 			$artifacts_data[$artifacts_reference] = [

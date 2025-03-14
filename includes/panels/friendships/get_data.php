@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Récupère les données de l'amitié du joueur.
+ * 
+ * @return array Les données de l'amitié du joueur.
+ */
 function get_player_friendship_data(): array {
 	$player_friendships = $GLOBALS["untreated_player_data"]->friendshipData;
 	$villagers_json = sanitize_json_with_version("villagers");
@@ -23,13 +28,19 @@ function get_player_friendship_data(): array {
 		];
 	}
 
-	uasort($friends_data, function ($a, $b) {
+	uasort($friends_data, function (array $a, array $b): bool {
 		return $b["points"] - $a["points"];
 	});
 
 	return $friends_data; 
 }
 
+/**
+ * Prépare et formate les données de l'amitié du joueur.
+ * 
+ * @param array $friendship_info Les données de l'amitié du joueur.
+ * @return array Les données de l'amitié du joueur formatées.
+ */
 function prepare_all_friendship_info(array $friendship_info): array {
     $marriables_npc = sanitize_json_with_version("marriables");
 
@@ -52,6 +63,7 @@ function prepare_all_friendship_info(array $friendship_info): array {
 	return [
 		"villager_name" => $villager_name,
 		"status" => $status,
+		"points" => $points,
 		"hearts_structure" => $hearts_structure,
 		"week_gifts" => $week_gifts,
 		"wiki_link" => $wiki_url,
@@ -62,6 +74,12 @@ function prepare_all_friendship_info(array $friendship_info): array {
 	];
 }
 
+/**
+ * Vérifie et complète les données d'amitié du joueur.
+ *
+ * @param array $friendship_info Les données brutes de l'amitié.
+ * @return array Les données vérifiées et complétées.
+ */
 function get_verified_friend_data(array $friendship_info): array {
     $birthday_json = sanitize_json_with_version("villagers_birthday");
 
@@ -87,6 +105,12 @@ function get_verified_friend_data(array $friendship_info): array {
     ];
 }
 
+/**
+ * Génère le code HTML des cœurs d'amitié d'un villageois.
+ *
+ * @param array $hearts_info Informations sur les cœurs (statut, niveau d'amitié, mariage possible).
+ * @return string Le code HTML des cœurs d'amitié.
+ */
 function get_hearts_structure(array $hearts_info): string {
     $images_path = get_images_folder();
 

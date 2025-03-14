@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Charge la sauvegarde puis affiche le contenu HTML de la page.
+ *
+ * @param string $save_file Le nom du fichier de sauvegarde à charger (local ou tmp).
+ * @param bool $use_ajax Indique s'il s'agit d'une utilisation AJAX ou non.
+ * @return mixed : Un tableau contenant les données des joueurs et le HTML de la page si l'utilisation est AJAX, true sinon.
+ */
 function load_save(string $save_file, bool $use_ajax = true): mixed {
     $uploaded_file = $save_file;
     $data = simplexml_load_file($uploaded_file);
@@ -7,15 +14,12 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
 
     $GLOBALS["untreated_all_players_data"] = $data;
     $GLOBALS["game_version"] = $data->gameVersion;
-	$GLOBALS["game_version_score"] = (int) get_game_version_score((string) $data->gameVersion);;
-	$GLOBALS["should_spawn_monsters"] = (string) $data->shouldSpawnMonsters;
     $GLOBALS["shared_players_data"] = get_shared_aggregated_data();
 
     $players_data = get_all_players_data();
     $GLOBALS["players_names"] = get_players_name();
     $pages["topbar"] = display_topbar();
 
-    
     for($player_count = 0; $player_count < count($players_data); $player_count++) {
         $GLOBALS["player_id"] = $player_count;
         $additional_class = ($player_count === 0) ? "host" : "farmhand";
@@ -26,44 +30,50 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
         ";
     }
 
-    if($use_ajax) {
-        return [
-            "players" => $GLOBALS["players_names"],
-            "html" => $pages,
-            "code" => "success"
-        ];
-    } else {
-        $structure = display_landing_page(false);
+    $pages = ($use_ajax) ? $pages : generate_dev_mode_page($pages);
 
-        foreach($pages as $page) {
-            $structure .= $page;
-        }
-        
-        $structure .= get_script_loader();
-        echo $structure;
-    }
-    
-    return true;
+    return [
+        "players" => $GLOBALS["players_names"],
+        "html" => $pages,
+        "code" => "success"
+    ];
 }
 
+/**
+ * Génère le code html de la page en mode développeur
+ *
+ * @param array Les pages non traitées pour le mode développeur
+ * @return string La page générée pour le mode développeur
+ */
+function generate_dev_mode_page(array $pages): string {
+    $dev_mode_page = display_landing_page(false);
+        
+    foreach($pages as $page) {
+        $dev_mode_page .= $page;
+    }
+    
+    $dev_mode_page .= get_script_loader();
+    return $dev_mode_page;
+}
+
+/**
+ * Cherche et renvoie les joueurs non-hôtes de la sauvegarde à charger.
+ *
+ * @return array Le nom des joueurs non-hôtes dans la sauvegarde.
+ */
 function get_farmhands(): array {
     $data = $GLOBALS["untreated_all_players_data"];
     $all_farmhands = [];
 
-    if(is_game_older_than_1_6()) {
-        foreach($data->locations->GameLocation as $game_location) {
-            if(!isset($game_location->buildings)) {
+    if(is_game_version_older_than_1_6()) {
+        $farmhands = find_xml_tags($data, 'locations.GameLocation.buildings.Building.indoors.farmhand');
+
+        foreach($farmhands as $farmhand) {
+            if((string) $farmhand->name=== "") {
                 continue;
             }
 
-            foreach($game_location->buildings->Building as $building) {
-                if(!isset($building->indoors->farmhand) || (string) $building->indoors->farmhand->name === "") {
-                    continue;
-                }
-
-                $farmhand = $building->indoors->farmhand;
-                array_push($all_farmhands, $farmhand);
-            }
+            array_push($all_farmhands, $farmhand);
         }
     } else {
         if(empty($data->farmhands)) {
@@ -82,22 +92,36 @@ function get_farmhands(): array {
     return $all_farmhands;
 }
 
+/**
+ * Récupère et agrège les données de tous les joueurs
+ *
+ * @return array Un tableau contenant les données agrégées des joueurs.
+ */
 function get_all_players_data(): array {
     $players_data = [];
     $data = $GLOBALS["untreated_all_players_data"];
+    $farmhands = get_farmhands();
+    $GLOBALS["number_of_players"] = 1 + count($farmhands);
+
     array_push($players_data, get_aggregated_data($data->player));
 	$GLOBALS["host_player_data"] = $players_data[0];
 
-    $farmhands = get_farmhands();
-
-    foreach($farmhands as $farmhand) {
-        array_push($players_data, get_aggregated_data($farmhand));
+    if(!empty($farmhands)) {
+        foreach($farmhands as $farmhand) {
+            array_push($players_data, get_aggregated_data($farmhand));
+        }
     }
 
-	$GLOBALS["all_players_data"] = $players_data;
+    $GLOBALS["all_players_data"] = $players_data;
     return $players_data;
 }
 
+/**
+ * Agrège les données d'un joueur.
+ *
+ * @param object $data Les données brutes du joueur issues de la sauvegarde.
+ * @return array Les données agrégées du joueur.
+ */
 function get_aggregated_data(object $data): array {
     $general_data = $GLOBALS["untreated_all_players_data"];
 	$GLOBALS["untreated_player_data"] = $data;
@@ -128,7 +152,8 @@ function get_aggregated_data(object $data): array {
             "qi_gems"               => (int) $data->qiGems,
             "casino_coins"          => (int) $data->clubCoins,
             "raccoons"              => (int) $general_data->timesFedRaccoons,
-            "stardrops_found"       => get_player_stardrops_found()
+            "stardrops_found"       => get_player_stardrops_found(),
+            "tools"                 => get_player_tools()
         ],
         "levels" => [
             "farming_level"  => (int) $data->farmingLevel,
@@ -156,12 +181,18 @@ function get_aggregated_data(object $data): array {
     ];
 }
 
+/**
+ * Agrège les données partagées des joueurs.
+ *
+ * @return array Les données agrégées partagées des joueurs.
+ */
 function get_shared_aggregated_data(): array {
     return [
         "farm_animals"          => get_player_farm_animals(),
         "weather"               => get_weather(),
         "jumino_kart"           => get_junimo_kart_leaderboard(),
         "museum_coords"         => get_museum_pieces_coords(),
-        "cc_bundles"            => get_player_bundles()
+        "cc_bundles"            => get_player_bundles(),
+        "farm_informations"     => get_farm_informations()
     ];
 }

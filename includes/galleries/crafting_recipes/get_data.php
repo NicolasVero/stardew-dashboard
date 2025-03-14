@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Récupère les données des recettes d'artisanat débloquées par le joueur.
+ * 
+ * @return array Les données des recettes d'artisanat débloquées par le joueur.
+ */
 function get_player_crafting_recipes(): array {
 	$player_crafting_recipes = $GLOBALS["untreated_player_data"]->craftingRecipes;
 	$crafting_recipes_json = sanitize_json_with_version("crafting_recipes");

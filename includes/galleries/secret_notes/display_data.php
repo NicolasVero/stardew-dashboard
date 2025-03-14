@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML de la galerie des notes secrètes.
+ * 
+ * @return string Le code HTML de la galerie des notes secrètes.
+ */
 function display_secret_notes(): string {
     $gallery_details = [
         "player_data" => get_secret_notes_data(),

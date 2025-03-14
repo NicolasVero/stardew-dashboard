@@ -1,7 +1,11 @@
+# Config
+.vscode/
+
 # Files
 .env
 
 # Folders
+.phpdoc/
 PHPMailer/
 vendor/
 node_modules/

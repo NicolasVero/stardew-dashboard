@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Récupère les données des notes secrètes débloquées par le joueur.
+ * 
+ * @return array Les données des notes secrètes débloquées par le joueur.
+ */
 function get_player_secret_notes(): array {
 	$player_secret_notes = $GLOBALS["untreated_player_data"]->secretNotesSeen;
 	$player_secret_notes = (array) $player_secret_notes->int;

@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML de la galerie des recettes de cuisine.
+ * 
+ * @return string Le code HTML de la galerie des recettes de cuisine.
+ */
 function display_cooking_recipes(): string {
     $gallery_details = [
         "player_data" => get_cooking_recipes_data(),

@@ -1,13 +1,17 @@
-<?php 
+<?php
 
-//& Voir a subdiviser en 2 fonctions
-//& arreter d'importer les 4000 des villageois pour chaque villageois 
+/**
+ * Génère le code HTML pour afficher les informations d'amitié d'un villageois.
+ *
+ * @param array $friendship_info Informations sur l'amitié.
+ * @return string Le code HTML pour afficher les informations d'amitié.
+ */
 function display_friendship_structure(array $friendship_info): string {
     $images_path = get_images_folder();
     $json_with_version = sanitize_json_with_version("villagers", true);
     
     $friendship_info = prepare_all_friendship_info($friendship_info);
-    extract($friendship_info); //? $villager_name, $status, $hearts_structure, $week_gifts, $wiki_link, $birthday[]
+    extract($friendship_info); //? $villager_name, $status, $points, $hearts_structure, $week_gifts, $wiki_link, $birthday[]
     extract($birthday); //? $is_birthday, $birthdate
 
     $formatted_villager_name = strtolower($villager_name);
@@ -18,7 +22,10 @@ function display_friendship_structure(array $friendship_info): string {
     return "
         <span>
             <a href='$wiki_link' class='wiki_link' rel='noreferrer' target='_blank'>
-                <img src='$images_path/characters/$formatted_villager_name.png' class='character-icon $version_class $meet_class' alt='$villager_name icon'/>
+                <span class='tooltip'>
+                    <img src='$images_path/characters/$formatted_villager_name.png' class='character-icon $version_class $meet_class' alt='$villager_name icon'/>
+                    <span>$points " . __("friendship points") . "</span>
+                </span>
             </a>
             <span class='character-name $formatted_villager_name'>" . __($villager_name) . "</span>
             <span class='hearts-level'>$hearts_structure</span>
@@ -38,13 +45,25 @@ function display_friendship_structure(array $friendship_info): string {
     ";
 }
 
+/**
+ * Génère le code HTML pour afficher les relations d'amitié du joueur.
+ * 
+ * @param int $limit Le nombre maximal de relations à afficher.
+ * @return string Le code HTML des relations d'amitié affichées.
+ */
 function display_top_friendships(int $limit = 5): string {
     return display_friendships($limit);
 }
 
+/**
+ * Génère le code HTML pour afficher les relations d'amitié du joueur.
+ * 
+ * @param int $limit Le nombre maximal de relations à afficher. 
+ * @return string Le code HTML des relations d'amitié affichées.
+ */
 function display_friendships(int $limit = -1): string {
     $player_id = get_current_player_id();
-    $friendship_data = get_friendships_data();
+    $friendship_data = sort_by_friend_level(get_friendships_data());
     $images_path = get_images_folder();
     $villagers_json = sanitize_json_with_version("villagers");
     

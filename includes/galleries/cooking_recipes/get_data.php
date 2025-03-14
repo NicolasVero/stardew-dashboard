@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Récupère les données des recettes de cuisine débloquées par le joueur.
+ * 
+ * @return array Les données des recettes de cuisine débloquées par le joueur.
+ */
 function get_player_cooking_recipes(): array {
 	$player_recipes = $GLOBALS["untreated_player_data"]->cookingRecipes;
 	$player_recipes_cooked = $GLOBALS["untreated_player_data"]->recipesCooked;
@@ -14,7 +19,7 @@ function get_player_cooking_recipes(): array {
 
 		if($has_ever_cooked) {
 			foreach($player_recipes_cooked->item as $recipe_cooked) {
-				$recipe_id = ((is_game_older_than_1_6())) ? (int) $recipe_cooked->key->int : $recipe_cooked->key->string;
+				$recipe_id = ((is_game_version_older_than_1_6())) ? (int) $recipe_cooked->key->int : $recipe_cooked->key->string;
 				$recipe_id = get_correct_id($recipe_id);
 
 				if($recipe_id === $index) {

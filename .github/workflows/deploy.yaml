@@ -28,6 +28,7 @@ jobs:
           --exclude .github/ \
           --exclude .git/ \
           --exclude bash/ \
+          --exclude docs/ \
           --exclude assets/images/achievements/ \
           --exclude assets/images/additionnal_items/ \
           --exclude assets/images/artifacts/ \
@@ -41,15 +42,19 @@ jobs:
           --exclude assets/images/farm_animals/ \
           --exclude assets/images/fish/ \
           --exclude assets/images/icons/ \
+          --exclude assets/images/languages/ \
           --exclude assets/images/minerals/ \
           --exclude assets/images/rewards/ \
           --exclude assets/images/shipped_items/ \
           --exclude assets/images/skills/ \
           --exclude assets/images/social/ \
           --exclude assets/images/steam_achievements/ \
+          --exclude assets/images/tools/ \
           --exclude assets/images/unlockables/ \
           --exclude styles/less/ \
+          --exclude data/saves/ \
           --exclude scripts/typescript/ \
+          --exclude vendor/composer/ \
           --exclude .gitignore \
           --exclude .htaccess \
           --exclude composer.json \
@@ -57,4 +62,5 @@ jobs:
           --exclude package.json \
           --exclude composer.lock \
           --exclude package.lock \
+          --exclude LICENSE.md
           --exclude README.md; quit"

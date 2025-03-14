@@ -1,12 +1,13 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML pour afficher les statistiques générales du joueur.
+ * 
+ * @return string Le code HTML des statistiques générales.
+ */
 function display_general_stats(): string {
-	$player_id = get_current_player_id();
 	$all_players_data = get_general_data();
-	$community_center_button = display_community_center_button();
-	$junimo_kart_button = display_junimo_kart_button();
-	$quest_button = display_quest_button();
-    $visited_locations_button = display_visited_locations_button();
+    $all_buttons = get_all_buttons();
 
     extract($all_players_data); //? all field "general" in extract_data_from_save.php
 
@@ -18,11 +19,10 @@ function display_general_stats(): string {
     return "
         <section class='info-section general-stats'>
         	<h2 class='section-title'>" . __("General stats") . "</h2>
-            $visited_locations_button
-            $community_center_button
-            $junimo_kart_button
-			$quest_button
-            <div>" .
+            <div class='panel-buttons'>
+                $all_buttons
+            </div>
+            <div class='stats'>" .
                 display_stat([
                     "icon" => "Energy", "label" => "max energy", "value" => $max_stamina, "wiki_link" => "Energy", "tooltip" => "$stardrops_found / 7 " . __("stardrops found") 
                 ])
@@ -53,6 +53,35 @@ function display_general_stats(): string {
     ";
 }
 
+/**
+ * Génère le code HTML pour afficher tous les boutons de panels.
+ * 
+ * @return string Le code HTML des boutons.
+ */
+function get_all_buttons(): string {
+    $visited_locations_button = display_visited_locations_button();
+	$tools_button = display_player_tools_button();
+	$farm_informations_button = display_farm_informations_button();
+	$community_center_button = display_community_center_button();
+	$junimo_kart_button = display_junimo_kart_button();
+	$quest_button = display_quest_button();
+
+    return "
+        $visited_locations_button
+        $tools_button
+        $farm_informations_button
+        $community_center_button
+        $junimo_kart_button
+        $quest_button
+    ";
+}
+
+/**
+ * Génère le code HTML pour afficher une statistique générale.
+ * 
+ * @param array $parameters Les paramètres de la statistique.
+ * @return string Le code HTML de la statistique.
+ */
 function display_stat(array $parameters): string {
     extract($parameters); //? $icon, $value, $tooltip, $alt, $label, $wiki_link
 
@@ -93,22 +122,30 @@ function display_stat(array $parameters): string {
     ";
 }
 
+/**
+ * Génère le code HTML pour afficher le conjoint du joueur.
+ * 
+ * @param mixed $spouse Le nom du conjoint.
+ * @param array $children Les enfants du joueur.
+ * @return string Le code HTML du conjoint.
+ */
 function display_spouse(mixed $spouse, array $children): string {
     if(empty($spouse)) {
         return "";
     }
 
     $images_path = get_images_folder();
+
     return "
-        <span>
-            <span class='tooltip'>
-                <a href='" . get_wiki_link_by_name("children") . "' class='wiki_link' rel='noreferrer' target='_blank'>
-                    <img src='$images_path/characters/" . lcfirst($spouse) . ".png' alt='$spouse'/>
-                </a>
-                <span> " . get_child_tooltip($spouse, $children) . "</span>
+        <a href='" . get_wiki_link_by_name("children") . "' class='wiki_link' rel='noreferrer' target='_blank'>
+            <span>
+                <span class='tooltip'>
+                <img src='$images_path/characters/" . lcfirst($spouse) . ".png' alt='$spouse'/>
+                    <span>" . get_child_tooltip($spouse, $children) . "</span>
+                </span>
+                <span class='data data-family'>" . count($children) . "</span>
+                <span class='data-label'>" . ((count($children) > 1) ? __("children") : __("child")) . "</span>
             </span>
-            <span class='data data-family'>" . count($children) . "</span>
-            <span class='data-label'>" . ((count($children) > 1) ? __("children") : __("child")) . "</span>
-        </span>
+        </a>
     ";
 }

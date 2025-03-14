@@ -1,5 +1,11 @@
-<?php 
+<?php
 
+/**
+ * Génère le texte de l'info-bulle de la météo.
+ * 
+ * @param string $weather Le type de météo.
+ * @return string Le texte de l'info-bulle.
+ */
 function get_weather_tooltip(string $weather): string {
 	return [
 		"sun"        => __("It's going to be clear and sunny all day"),
@@ -11,6 +17,11 @@ function get_weather_tooltip(string $weather): string {
 	][$weather] ?? "";
 }
 
+/**
+ * Renvoie le genre du joueur.
+ * 
+ * @return string Le genre du joueur.
+ */
 function get_player_gender(): string {
 	$player_data = $GLOBALS["untreated_player_data"];
 	$genders = [
@@ -36,53 +47,59 @@ function get_player_gender(): string {
 	return "Neutral";
 }
 
+/**
+ * Indique si le joueur est marié.
+ * 
+ * @return bool Indique si le joueur est marié.
+ */
 function get_is_married(): bool {
 	$data = $GLOBALS["untreated_player_data"];
 	return isset($data->spouse);
 }
 
+/**
+ * Renvoie le nom du conjoint du joueur.
+ * 
+ * @return mixed Le nom du conjoint du joueur, ou null s'il n'est pas marié.
+ */
 function get_spouse(): mixed {
 	$player_data = $GLOBALS["untreated_player_data"];
 	return (!empty($player_data->spouse)) ? $player_data->spouse : null;
 }
 
+/**
+ * Renvoie le niveau d'amélioration de la maison du joueur.
+ * 
+ * @return int Le niveau d'amélioration de la maison du joueur.
+ */
 function get_house_upgrade_level(): int {
 	return (int) $GLOBALS["untreated_player_data"]->houseUpgradeLevel;
 }
 
+/**
+ * Renvoie le nombre d'enfants du joueur.
+ * 
+ * @return array Le nombre d'enfants du joueur.
+ */
 function get_children_amount(): array {
 	$player_id = (int) $GLOBALS["untreated_player_data"]->UniqueMultiplayerID;
-	$locations = $GLOBALS["untreated_all_players_data"]->locations->GameLocation;
+	$data = $GLOBALS["untreated_all_players_data"];
 	$children_name = [];
+	$npc_locations =  [
+		"locations.GameLocation.characters.NPC",
+		"locations.GameLocation.buildings.Building.indoors.characters.NPC"
+	];
 
-	foreach($locations as $location) {
-		if(isset($location->characters)) {
-			foreach($location->characters->NPC as $npc) {
-				if(!isset($npc->idOfParent)) {
-                    continue;
-                }
+	foreach($npc_locations as $npc_location) {
+		$npcs = find_xml_tags($data, $npc_location);
 
-				if((int) $npc->idOfParent === $player_id) {
-                    array_push($children_name, $npc->name);
-                }
+		foreach($npcs as $npc) {
+			if(!isset($npc->idOfParent)) {
+				continue;
 			}
-		}
-	}
 
-	foreach($locations as $location) {
-		if(isset($location->buildings)) {
-			foreach($location->buildings->Building as $building) {
-				if(isset($building->indoors->characters)) {
-					foreach($building->indoors->characters->NPC as $npc) {
-						if(!isset($npc->idOfParent)) {
-                            continue;
-                        }
-
-						if((int) $npc->idOfParent === $player_id) {
-                            array_push($children_name, $npc->name);
-                        }
-                    }
-				}
+			if((int) $npc->idOfParent === $player_id) {
+				array_push($children_name, $npc->name);
 			}
 		}
 	}
@@ -90,6 +107,12 @@ function get_children_amount(): array {
 	return $children_name;
 }
 
+/**
+ * Renvoie le genre du conjoint du joueur.
+ * 
+ * @param string $spouse Le nom du conjoint du joueur.
+ * @return string Le genre du conjoint du joueur.
+ */
 function get_the_married_person_gender(string $spouse): string {
 	$wifes = ["abigail", "emily", "haley", "leah", "maru", "penny"];
 	$husbands = ["alex", "elliott", "harvey", "sam", "sebastian", "shane"];
@@ -105,39 +128,48 @@ function get_the_married_person_gender(string $spouse): string {
 	return "spouse";
 }
 
+/**
+ * Renvoie la météo actuelle.
+ * 
+ * @param string $weather_location L'emplacement de la météo.
+ * @return string La météo actuelle.
+ */
 function get_weather(string $weather_location = "Default"): string {
     $data = $GLOBALS["untreated_all_players_data"];
     $locations = $data->locationWeather;
+	$weather_conditions = [
+		'Festival' => 'Festival',
+		'isRaining' => 'rain',
+		'isSnowing' => 'snow', 
+		'isLightning' => 'storm',
+		'isGreenRain' => 'green_rain'
+	];
 
     foreach($locations as $complex_location) {
 		foreach($complex_location as $location) {
-			if($location->key->string === $weather_location) {
-				if($location->value->LocationWeather->weather->string !== "Festival") {
-					return format_text_for_file((string)$location->value->LocationWeather->weather->string);
-				}
+			if($location->key->string !== $weather_location) {
+				continue;
+			}
 
-				if($location->value->LocationWeather->isRaining->string === true) {
-					return "rain";
-				}
-
-				if($location->value->LocationWeather->isSnowing->string === true) {
-					return "snow";
-				}
-
-				if($location->value->LocationWeather->isLightning->string === true) {
-					return "storm";
-				}
-
-				if($location->value->LocationWeather->isGreenRain->string === true) {
-					return "green_rain";
+			$weather_data = $location->value->LocationWeather;
+			foreach($weather_conditions as $condition => $result) {
+				if((string) $weather_data->$condition->string === 'true') {
+					return $result;
 				}
 			}
+
+			return format_text_for_file((string)$weather_data->weather->string);
         }
     }
 
 	return "sun";
 }
 
+/**
+ * Renvoie le niveau du joueur.
+ * 
+ * @return string Le niveau du joueur.
+ */
 function get_farmer_level(): string {
 	$player_data = $GLOBALS["untreated_player_data"];
     $level = (get_total_skills_level() + $player_data->luckLevel) / 2;
@@ -163,6 +195,11 @@ function get_farmer_level(): string {
     return $level_names[floor($level / 2)];
 }
 
+/**
+ * Renvoie le score du grand-père du joueur.
+ * 
+ * @return int Le score du grand-père du joueur.
+ */
 function get_grandpa_score(): int {
     $data = $GLOBALS["untreated_player_data"];
     $grandpa_points = 0;
@@ -232,7 +269,7 @@ function get_grandpa_score(): int {
         $grandpa_points++;
     }
 
-    $cc_completed = array_reduce($cc_rooms, function($completed, $room) use ($data) {
+    $cc_completed = array_reduce($cc_rooms, function(bool $completed, string $room): bool {
         return $completed && has_element_in_mail($room);
     }, true);
 
@@ -256,6 +293,12 @@ function get_grandpa_score(): int {
     return $grandpa_points;
 }
 
+/**
+ * Renvoie le nombre de bougies allumées.
+ * 
+ * @param int $grandpa_score Le score du grand-père du joueur.
+ * @return int Le nombre de bougies allumées.
+ */
 function get_candles_lit(int $grandpa_score): int {
 	if($grandpa_score <= 3) {
         return 1;
@@ -272,6 +315,11 @@ function get_candles_lit(int $grandpa_score): int {
 	return 4;
 }
 
+/**
+ * Récupère les éléments de perfection pour la version du jeu spécifiée.
+ * 
+ * @return array Les éléments de perfection.
+ */
 function get_perfection_max_elements(): array {
 	$game_version = substr($GLOBALS["game_version"], 0, 3);
 	if((float) $game_version < 1.5) {
@@ -281,6 +329,11 @@ function get_perfection_max_elements(): array {
 	return $GLOBALS["json"]["perfection_elements"][$game_version];
 }
 
+/**
+ * Calcule le pourcentage de complétion d'un élément de perfection.
+ * 
+ * @return array Les éléments de perfection.
+ */
 function get_perfection_elements(): array {
 	$general_data = $GLOBALS["host_player_data"]["general"];
 	$perfection_elements = get_perfection_max_elements();
@@ -307,10 +360,15 @@ function get_perfection_elements(): array {
 	];
 }
 
+/**
+ * Calcule le pourcentage de complétion d'un élément de perfection.
+ * 
+ * @return string Le pourcentage de complétion.
+ */
 function get_perfection_percentage(): string {
 	$untreated_data = $GLOBALS["untreated_all_players_data"];
 	if((string) $untreated_data->farmPerfect === "true") {
-		return 100;
+		return "100";
 	}
 
 	$perfection_elements = get_perfection_elements();
@@ -319,9 +377,15 @@ function get_perfection_percentage(): string {
 		$percentage += $element_percent;
 	}
 
-	return round($percentage);
+	return (string) round($percentage);
 }
 
+/**
+ * Récupère le joueur ayant le plus grand nombre d'éléments pour une catégorie donnée.
+ * 
+ * @param string $category La catégorie à vérifier.
+ * @return array Les données du joueur ayant le plus grand nombre d'éléments.
+ */
 function get_highest_count_for_category(string $category): array {
 	$total_players = get_number_of_player();
 	$all_data = $GLOBALS["all_players_data"];
@@ -339,7 +403,7 @@ function get_highest_count_for_category(string $category): array {
 
 	for($current_player = 0; $current_player < $total_players; $current_player++) {
 		if(in_array($category, $exceptions_recipes)) {
-			$filtered_elements = array_filter($all_data[$current_player][$category], function($item) {
+			$filtered_elements = array_filter($all_data[$current_player][$category], function(mixed $item): bool {
 				return $item["counter"] > 0;
 			});
 			$amount_elements = count($filtered_elements);
@@ -369,6 +433,11 @@ function get_highest_count_for_category(string $category): array {
 	];
 }
 
+/**
+ * Récupère le joueur ayant le plus grand nombre d'amis.
+ * 
+ * @return array Les données du joueur ayant le plus grand nombre d'amis.
+ */
 function get_player_with_highest_friendships(): array {
 	$total_players = get_number_of_player();
     $marriables_npc = sanitize_json_with_version("marriables");
@@ -402,6 +471,11 @@ function get_player_with_highest_friendships(): array {
 	];
 }
 
+/**
+ * Vérifie si l'un des joueurs a trouvé toutes les stardrops.
+ * 
+ * @return bool Indique si l'un des joueurs a trouvé toutes les stardrops.
+ */
 function has_any_player_gotten_all_stardrops(): bool {
 	$total_players = get_number_of_player();
 	$all_data = $GLOBALS["all_players_data"];
@@ -417,6 +491,13 @@ function has_any_player_gotten_all_stardrops(): bool {
 	return false;
 }
 
+/**
+ * Renvoie le texte de l'info-bulle des enfants.
+ * 
+ * @param string $spouse Le nom du conjoint du joueur.
+ * @param array $children Les noms des enfants du joueur.
+ * @return string Le texte de l'info-bulle des enfants.
+ */
 function get_child_tooltip(string $spouse, array $children): string {
 	$gender = get_the_married_person_gender($spouse);
 	$children_count = count($children);
@@ -430,10 +511,15 @@ function get_child_tooltip(string $spouse, array $children): string {
 	return __("With your") . " " . __($gender) . " $spouse, " . __("you had") . " $children_count $nombre : $children_names";
 }
 
+/**
+ * Renvoie l'animal de compagnie du joueur.
+ * 
+ * @return array Les données de l'animal de compagnie du joueur.
+ */
 function get_player_pet(): array {
 	$player_data = $GLOBALS["untreated_player_data"];
 	$breed = (int) $player_data->whichPetBreed;
-	$type = (is_game_older_than_1_6()) ?
+	$type = (is_game_version_older_than_1_6()) ?
 		(((string) $player_data->catPerson === "true") ? "cat" : "dog")
 		:
 		lcfirst((string) $player_data->whichPetType);
@@ -444,6 +530,11 @@ function get_player_pet(): array {
 	];
 }
 
+/**
+ * Renvoie le nombre de stardrops trouvés par le joueur.
+ * 
+ * @return int Le nombre de stardrops trouvés par le joueur.
+ */
 function get_player_stardrops_found(): int {
 	$player_stamina = (int) $GLOBALS["untreated_player_data"]->maxStamina;
 	$min_stamina = 270;
@@ -451,55 +542,74 @@ function get_player_stardrops_found(): int {
 	return ($player_stamina - $min_stamina) / $stamina_per_stardrop;
 }
 
+/**
+ * Renvoie le nombre d'obélisques sur la carte.
+ * 
+ * @return int Le nombre d'obélisques sur la carte.
+ */
 function get_amount_obelisk_on_map(): int {
-	$locations = $GLOBALS["untreated_all_players_data"]->locations->GameLocation;
 	$obelisk_count = 0;
-	$obelisk_names = [
-		"Earth Obelisk",
-		"Water Obelisk",
-		"Island Obelisk",
-		"Desert Obelisk",
-	];
+	$obelisk_names = get_obelisk_names();
+	$data = $GLOBALS["untreated_all_players_data"];
+	$buildings = find_xml_tags($data, 'locations.GameLocation.buildings.Building');
 
-	foreach($locations as $location) {
-		if(isset($location->buildings->Building)) {
-			foreach($location->buildings->Building as $building) {
-				if(in_array((string) $building->buildingType, $obelisk_names)) {
-                    $obelisk_count++;
-                }
-			}
-		}
+	foreach($buildings as $building) {
+		if(in_array((string) $building->buildingType, $obelisk_names)) {
+            $obelisk_count++;
+        }
 	}
 
 	return $obelisk_count;
 }
 
-function is_golden_clock_on_farm(): bool {
-	$locations = $GLOBALS["untreated_all_players_data"]->locations->GameLocation;
-	foreach($locations as $location) {
-		if(isset($location->buildings->Building)) {
-			foreach($location->buildings->Building as $building) {
-				if((string) $building->buildingType === "Gold Clock") {
-                    return true;
-                }
-			}
-		}
+/**
+ * Renvoie les noms des obélisques.
+ * 
+ * @return array Les noms des obélisques.
+ */
+function get_obelisk_names() :array {
+	return [
+		"Earth Obelisk",
+		"Water Obelisk",
+		"Island Obelisk",
+		"Desert Obelisk",
+	];
+}
+
+/**
+ * Indique si l'horloge dorée est sur la ferme.
+ * 
+ * @return bool Indique si l'horloge dorée est sur la ferme.
+ */
+function is_golden_clock_on_farm(): bool {	
+	$data = $GLOBALS["untreated_all_players_data"];
+	$buildings = find_xml_tags($data, 'locations.GameLocation.buildings.Building');
+
+	foreach($buildings as $building) {
+		if((string) $building->buildingType === "Gold Clock") {
+            return true;
+        }
 	}
 
 	return false;
 }
 
+/**
+ * Renvoie les points d'amitié de l'animal de compagnie.
+ * 
+ * @return int Les points d'amitié de l'animal de compagnie.
+ */
 function get_pet_frienship_points(): int {
-	$locations = $GLOBALS["untreated_all_players_data"]->locations->GameLocation;
-	foreach($locations as $location) {
-		if(isset($location->characters)) {
-            foreach($location->characters->NPC as $npc) {
-                if(isset($npc->petType)) {
-                    return (int) $npc->friendshipTowardFarmer;
-                }
-            }
-        }
-	}
+	$data = $GLOBALS["untreated_all_players_data"];
+	$npcs = find_xml_tags($data, 'locations.GameLocation.characters.NPC');
 
+	foreach($npcs as $npc) {
+		if(!isset($npc->petType) && !isset($npc->whichBreed)) {
+			continue;
+		}
+		
+		return (int) $npc->friendshipTowardFarmer;
+	}
+	
 	return 0;
 }

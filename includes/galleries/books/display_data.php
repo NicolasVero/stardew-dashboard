@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML de la galerie des livres.
+ * 
+ * @return string Le code HTML de la galerie des livres.
+ */
 function display_books(): string {
     $gallery_details = [
         "player_data" => get_books_data(),

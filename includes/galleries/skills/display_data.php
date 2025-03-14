@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML des compétences du joueur.
+ * 
+ * @return string Le code HTML des compétences du joueur.
+ */
 function display_skills(): string {
     $images_path = get_images_folder();
 	$player_skills = get_skills_data();
@@ -13,7 +18,7 @@ function display_skills(): string {
         $level_icon_name = explode('_', $key)[0];
         $mastery_class   = (array_key_exists(ucfirst(explode('_', $key)[0]) . " Mastery", $player_masteries)) ? 'found' : 'not-found';
         $mastery_tooltip = ucfirst(explode('_', $key)[0]) . " mastery";
-        $is_newer_version_class = (is_game_older_than_1_6()) ? "newer-version" : "older-version";
+        $is_newer_version_class = (is_game_version_older_than_1_6()) ? "newer-version" : "older-version";
         $skill_wiki_link = get_wiki_link_by_name("skills") . "#" . str_replace(" ", "_", __(ucfirst($level_icon_name)));
 
         $skill_structure .= "

@@ -1,5 +1,10 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML de la galerie des succès.
+ * 
+ * @return string Le code HTML de la galerie des succès.
+ */
 function display_achievements(): string {
     $gallery_details = [
         "player_data" => get_achievements_data(),

@@ -1,5 +1,11 @@
-<?php 
+<?php
 
+/**
+ * Récupère les données d'une quête d'histoire.
+ *
+ * @param array $quest Les données raw de la quête.
+ * @return array Les données de la quête.
+ */
 function get_story_quest_data(array $quest): array {
 	return [
 		"time_limited"	=> false,
@@ -10,6 +16,13 @@ function get_story_quest_data(array $quest): array {
 	];
 }
 
+/**
+ * Récupère la référence d'un item dans un fichier JSON.
+ *
+ * @param string $reference_id L'ID de la référence.
+ * @param string $json Le nom du fichier JSON.
+ * @return string La référence.
+ */
 function find_reference(string $reference_id): string {
 	$reference_id = format_original_data_string($reference_id);
 	$json_list = [
@@ -17,7 +30,6 @@ function find_reference(string $reference_id): string {
 		"fish",
 		"minerals"
 	];
-
 
 	foreach($json_list as $json) {
 		if(isset($reference) && $reference !== null) {
@@ -30,48 +42,18 @@ function find_reference(string $reference_id): string {
 	return $reference;
 }
 
+/**
+ * Récupère les données d'une quête journalière.
+ *
+ * @param object $quest Les données raw de la quête.
+ * @return array|null Les données de la quête.
+ */
 function get_daily_quest_data(object $quest): array|null {
 	$quest_type = (int) $quest->questType;
 	$days_left = (int) $quest->daysLeft;
 	$rewards = [(int) $quest->reward];
 	$target = $quest->target;
-	$quest_configs = [
-		3 => [
-			"goal_name" => fn($quest) => find_reference($quest->item),
-			"keyword" => "Deliver",
-			"keyword_ing" => "Delivering",
-			"number_to_get" => fn($quest) => $quest->number,
-			"number_obtained" => 0,
-		],
-		4 => [
-			"goal_name" => fn($quest) => $quest->monsterName,
-			"keyword" => "Kill",
-			"keyword_ing" => "Killing",
-			"number_to_get" => fn($quest) => $quest->numberToKill,
-			"number_obtained" => fn($quest) => $quest->numberKilled,
-		],
-		5 => [
-			"goal_name" => "people",
-			"keyword" => "Talk to",
-			"keyword_ing" => "Socializing",
-			"number_to_get" => fn($quest) => $quest->total,
-			"number_obtained" => fn($quest) => $quest->whoToGreet,
-		],
-		7 => [
-			"goal_name" => fn($quest) => find_reference_in_json(format_original_data_string($quest->whichFish), "fish"),
-			"keyword" => "Fish",
-			"keyword_ing" => "Fishing",
-			"number_to_get" => fn($quest) => $quest->numberToFish,
-			"number_obtained" => 0,
-		],
-		10 => [
-			"goal_name" => fn($quest) => find_reference_in_json(format_original_data_string($quest->resource), "fish"),
-			"keyword" => "Fish",
-			"keyword_ing" => "Fishing",
-			"number_to_get" => fn($quest) => $quest->number,
-			"number_obtained" => 0,
-		],
-	];
+	$quest_configs = get_daily_quest_configs();
 
 	if(!isset($quest_configs[$quest_type])) {
 		return null;
@@ -99,6 +81,12 @@ function get_daily_quest_data(object $quest): array|null {
 	];
 }
 
+/**
+ * Récupère les données d'une quête spéciale.
+ *
+ * @param object $special_order Les données raw de la quête.
+ * @return array|null Les données de la quête.
+ */
 function get_special_order_data(object $special_order): array|null {
 	$special_orders_json = sanitize_json_with_version("special_orders", true);
 
@@ -139,6 +127,11 @@ function get_special_order_data(object $special_order): array|null {
 	];
 }
 
+/**
+ * Récupère le journal de quêtes d'un joueur.
+ *
+ * @return array Le journal de quêtes.
+ */
 function get_player_quest_log(): array {
 	$entire_data = $GLOBALS["untreated_all_players_data"];
 	$player_quest_log = $GLOBALS["untreated_player_data"]->questLog;
@@ -169,4 +162,49 @@ function get_player_quest_log(): array {
 	}
 
 	return $quests_data;
+}
+
+/**
+ * Récupère les configurations des quêtes journalières.
+ *
+ * @return array Les configurations des quêtes journalières.
+ */
+function get_daily_quest_configs(): array {
+	return [
+		3 => [
+			"goal_name" => fn($quest) => find_reference($quest->item),
+			"keyword" => "Deliver",
+			"keyword_ing" => "Delivering",
+			"number_to_get" => fn($quest) => $quest->number,
+			"number_obtained" => 0,
+		],
+		4 => [
+			"goal_name" => fn($quest) => $quest->monsterName,
+			"keyword" => "Kill",
+			"keyword_ing" => "Killing",
+			"number_to_get" => fn($quest) => $quest->numberToKill,
+			"number_obtained" => fn($quest) => $quest->numberKilled,
+		],
+		5 => [
+			"goal_name" => "people",
+			"keyword" => "Talk to",
+			"keyword_ing" => "Socializing",
+			"number_to_get" => fn($quest) => $quest->total,
+			"number_obtained" => fn($quest) => $quest->whoToGreet,
+		],
+		7 => [
+			"goal_name" => fn($quest) => find_reference_in_json(format_original_data_string($quest->whichFish), "fish"),
+			"keyword" => "Fish",
+			"keyword_ing" => "Fishing",
+			"number_to_get" => fn($quest) => $quest->numberToFish,
+			"number_obtained" => 0,
+		],
+		10 => [
+			"goal_name" => fn($quest) => find_reference_in_json(format_original_data_string($quest->resource), "fish"),
+			"keyword" => "Fish",
+			"keyword_ing" => "Fishing",
+			"number_to_get" => fn($quest) => $quest->number,
+			"number_obtained" => 0,
+		],
+	];
 }

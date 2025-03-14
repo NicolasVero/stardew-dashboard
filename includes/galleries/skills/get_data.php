@@ -1,5 +1,12 @@
-<?php 
+<?php
 
+/**
+ * Génère le code HTML d'une barre de progression du niveau de la compétence actuel du joueur.
+ * 
+ * @param int $level Niveau actuel de la compétence.
+ * @param int $max_level Niveau maximum de la compétence.
+ * @return string Code HTML de la barre de progression.
+ */
 function get_level_progress_bar(int $level, int $max_level = 10): string {
     $images_path = get_images_folder();
     $level_structure = "";
@@ -19,6 +26,13 @@ function get_level_progress_bar(int $level, int $max_level = 10): string {
     ";
 }
 
+/**
+ * Génère le code HTML des icônes des compétences du joueur.
+ * 
+ * @param array $skills Liste des compétences du joueur.
+ * @param string $current_skill Compétence actuelle du joueur.
+ * @return string Code HTML des icônes des compétences.
+ */
 function get_skills_icons(array $skills, string $current_skill): string {
     $images_path = get_images_folder();
     $skill_structure = "";
@@ -46,6 +60,11 @@ function get_skills_icons(array $skills, string $current_skill): string {
     ";
 }
 
+/**
+ * Renvoie les données des compétences du joueur.
+ * 
+ * @return array Données des compétences du joueur.
+ */
 function get_player_skills_data(): array {
 	$player_skills = (array) $GLOBALS["untreated_player_data"]->professions->int;
 	$json_skills = sanitize_json_with_version("skills");
@@ -62,11 +81,21 @@ function get_player_skills_data(): array {
 	return $skills_data;
 }
 
+/**
+ * Renvoie les données de maîtrise du joueur.
+ * 
+ * @return array Données de maîtrise du joueur.
+ */
 function get_player_masteries(): array {
 	$player_masteries = $GLOBALS["untreated_player_data"]->stats->Values;
 	return get_player_items_list($player_masteries, "masteries");
 }
 
+/**
+ * Renvoie le niveau total de compétences du joueur.
+ * 
+ * @return int Niveau total de compétences du joueur.
+ */
 function get_total_skills_level(): int {
     $player_data = $GLOBALS["untreated_player_data"];
 	$skill_types = [
