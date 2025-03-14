@@ -90,5 +90,15 @@
     "Copper Trash Can" : "Basurero de cobre",
     "Steel Trash Can" : "Basurero de acero",
     "Gold Trash Can" : "Basurero de oro",
-    "Iridium Trash Can" : "Basurero de iridio"
+    "Iridium Trash Can" : "Basurero de iridio",
+
+    "Farm informations" : "Información de la granja",
+    "Pieces Hay" : "Piezas de heno",
+    "Total Crops" : "Total de cultivos",
+    "Crops Ready" : "Cultivos listos",
+    "Unwatered Crops" : "Cultivos sin regar",
+    "Crops Ready In Greenhouse" : "Cultivos listos en el invernadero",
+    "Open Tilled Soil" : "Tierra arada abierta",
+    "Machines Ready" : "Máquinas listas",
+    "Farm Cave Ready" : "Barriles de la cueva listos"
 }

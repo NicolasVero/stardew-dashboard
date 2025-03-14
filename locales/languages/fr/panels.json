@@ -90,5 +90,15 @@
     "Copper Trash Can" : "Poubelle en cuivre",
     "Steel Trash Can" : "Poubelle en acier",
     "Gold Trash Can" : "Poubelle en or",
-    "Iridium Trash Can" : "Poubelle en iridium"
+    "Iridium Trash Can" : "Poubelle en iridium",
+
+    "Farm informations" : "Informations de la ferme",
+    "Pieces Hay" : "Pièces de foin",
+    "Total Crops" : "Total des récoltes",
+    "Crops Ready" : "Récoltes prêtes",
+    "Unwatered Crops" : "Récoltes non arrosées",
+    "Crops Ready In Greenhouse" : "Récoltes prêtes dans la serre",
+    "Open Tilled Soil" : "Terre labourée",
+    "Machines Ready" : "Machines prêtes",
+    "Farm Cave Ready" : "Tonneaux de la cave prêts"
 }
