@@ -39,7 +39,6 @@ function AJAX_send() {
         const form_data = new FormData();
         const xhr = new XMLHttpRequest();
         const url = get_site_root() + "/includes/get_xml_data.php";
-        // const url: string = get_site_root() + "/includes/get_xml_data.php?lang=fr";
         if (is_file_too_big) {
             form_data.append("save-upload", new File(["SizeException"], "Error_SizeException.xml"));
         }
