@@ -90,5 +90,15 @@
     "Copper Trash Can" : "Kupfer Mülleimer",
     "Steel Trash Can" : "Stahl Mülleimer",
     "Gold Trash Can" : "Gold Mülleimer",
-    "Iridium Trash Can" : "Iridium Mülleimer"
+    "Iridium Trash Can" : "Iridium Mülleimer",
+
+    "Farm informations" : "Farminformationen",
+    "Pieces Hay" : "Heuballen",
+    "Total Crops" : "Gesamte Ernte",
+    "Crops Ready" : "Ernte bereit",
+    "Unwatered Crops" : "Unbewässerte Pflanzen",
+    "Crops Ready In Greenhouse" : "Ernte im Gewächshaus bereit",
+    "Open Tilled Soil" : "Offener gepflügter Boden",
+    "Machines Ready" : "Maschinen bereit",
+    "Farm Cave Ready" : "Fässer in der Höhle bereit"
 }
