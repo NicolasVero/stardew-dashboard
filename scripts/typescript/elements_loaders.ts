@@ -44,7 +44,7 @@ function load_buttons(): void {
         "all-friends", "all-quests", "monster-eradication-goals",
         "calendar", "all-animals", "junimo-kart-leaderboard",
         "museum", "community-center", "visited-locations",
-        "tools"
+        "tools", "farm-informations"
     ];
 	
     for(let i: number = 0; i < players_in_save; i++) {

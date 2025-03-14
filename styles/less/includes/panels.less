@@ -995,4 +995,30 @@
 			}
 		}
 	}
+
+	&.farm-informations {
+		// .invisible-panel;
+		.limit-panel-width;
+		.panel-with-border;
+		.medium-panel-width;
+		color: @primary-fc;
+		font-family: @primary-ff;
+		font-size: @md-fs;
+		max-height: 80vh;
+		padding: @md-gap @big-gap;
+
+		& > .panel-header {
+			& > .section-title {
+				font-size: @big-fs;
+			}
+		}
+
+		& > .farm-infos {
+			display: flex;
+			flex-direction: column;
+			font-family: @dialogue-ff;
+			font-size: @big-fs;
+			gap: @big-gap;
+		}
+	}
 }

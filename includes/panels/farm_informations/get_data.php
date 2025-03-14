@@ -46,7 +46,7 @@ function get_complex_farm_informations(): array {
 
 	foreach($game_locations as $game_location) {
 		if((string) $game_location->name === "Farm") {
-			$is_farm_cave_ready = ((string) $game_location->farmCaveReady === "true");
+			$is_farm_cave_ready = ((string) $game_location->farmCaveReady === "true") ? "Yes" : "No";
 	
 			$crops = get_crops_on_farm($game_location);
 			$machines = get_machines_ready_on_farm($game_location);

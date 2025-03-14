@@ -23,7 +23,7 @@ function display_farm_informations(): string {
     $informations = "";
 
 	foreach($farm_informations as $caption => $count) {
-		$informations .= "<span class='farm-information'>$caption: $count</span>";
+		$informations .= "<span class='farm-info'>$caption: $count</span>";
 	}
 
     return "
@@ -32,7 +32,7 @@ function display_farm_informations(): string {
                 <h2 class='section-title panel-title'>" . __("Farm informations") . "</h2>
                 <img src='$images_path/icons/exit.png' class='exit-farm-informations-$player_id exit' alt='Exit'/>
             </span>
-            <span class='farm-informations'>
+            <span class='farm-infos'>
                 $informations
             </span>
         </section>
