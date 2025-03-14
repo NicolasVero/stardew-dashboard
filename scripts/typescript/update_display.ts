@@ -45,7 +45,6 @@ function update_display(target_classes: string[]): void {
         if(class_name.split("-").pop() === "icon") {
             Array.from(elements).forEach((element: HTMLElement) => {
                 if(element !== null) {
-                    console.log(element);
                     set_element_display(element, should_show_element(element, settings));
                 }
             });
