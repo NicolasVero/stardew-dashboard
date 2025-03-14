@@ -94,7 +94,7 @@ function is_a_supported_language(string $language): bool {
  */
 function get_supported_languages(): array {
 	return [
-		"en", "fr", "de", "es"
+		"en", "fr", "de", "es", "it"
 	];
 }
 
