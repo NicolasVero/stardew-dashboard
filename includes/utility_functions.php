@@ -42,7 +42,8 @@ function get_translated_wiki_link(string $wiki_link, string $lang): string {
 	$wiki_base_url = [
 		"fr" => "https://fr.stardewvalleywiki.com/",
 		"de" => "https://de.stardewvalleywiki.com/",
-		"es" => "https://es.stardewvalleywiki.com/"
+		"es" => "https://es.stardewvalleywiki.com/",
+		"it" => "https://it.stardewvalleywiki.com/"
 	][$lang];
 
     if(isset($wiki_url["path"])) {
