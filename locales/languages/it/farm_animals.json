@@ -9,7 +9,7 @@
     "looks fine today!" : "sembra contento oggi!",
     "looks sad today :(" : "sembra triste oggi :(",
     "Chicken" : "Gallina",
-    "Void Chicken" : "Pollo del Vuoto",
+    "Void Chicken" : "Gallina del vuoto",
     "Rabbit" : "Coniglio",
     "Duck" : "Anatra",
     "Cow" : "Mucca",
@@ -17,6 +17,6 @@
     "Sheep" : "Pecora",
     "Pig" : "Maiale",
     "Dinosaur" : "Dinosauro",
-    "Golden Chicken" : "Pollo dorato",
+    "Golden Chicken" : "Gallina dorata",
     "Ostrich" : "Struzzo"
 }
