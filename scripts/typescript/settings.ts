@@ -45,12 +45,12 @@ function handle_spoil_mode(): void {
 };
 
 function handle_steam_mode(): void {
-    const images_folder: string[] = ["steam_achievements", "achievements"];
+    const images_folder: string[] = ["star_achievements", "achievements"];
     const images: NodeListOf<Element> = document.querySelectorAll(".achievements-section img");
 
     images.forEach((image: Element) => {
         const src: string = image.getAttribute("src");
-        const [old_folder, new_folder]: string[] = (src.includes('steam')) ? images_folder : [...images_folder].reverse();
+        const [old_folder, new_folder]: string[] = (src.includes("star_")) ? images_folder : [...images_folder].reverse();
         image.setAttribute("src", src.replace(old_folder, new_folder));
     });
 }

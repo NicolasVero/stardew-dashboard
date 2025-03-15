@@ -101,14 +101,14 @@ function display_settings_panel(): string {
                     <label for='no_spoil_mode' id='no-spoil-label'>" . __("Hide undiscovered items") . "</label>
                 </span>
                 <span class='checkbox'>
-                    <input type='checkbox' id='steam_achievements'>
-                    <span class='checkmark'><img src='$images_path/icons/checked.png' alt=''/></span>
-                    <label for='steam_achievements' id='steam_achievements-label'>" . __("Show Steam achievements icons") . "</label>
-                </span>
-                <span class='checkbox'>
                     <input type='checkbox' id='toggle_versions_items_mode' checked>
                     <span class='checkmark'><img src='$images_path/icons/checked.png' alt=''/></span>
                     <label for='toggle_versions_items_mode' id='toggle-versions-items-label'>" . __("Hide items from newer versions") . "</label>
+                </span>
+                <span class='checkbox'>
+                    <input type='checkbox' id='steam_achievements' checked>
+                    <span class='checkmark'><img src='$images_path/icons/checked.png' alt=''/></span>
+                    <label for='steam_achievements' id='steam_achievements-label'>" . __("Show Steam achievements icons") . "</label>
                 </span>
                 <span class='checkbox'>
                     <input type='checkbox' id='wiki_redirections' checked>
