@@ -249,7 +249,7 @@
 <dd>Vérifie si le site est en localhost ou non.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_is_game_older_than_1_6">is_game_older_than_1_6()</a>
+    <a class="" href="namespaces/default.html#function_is_game_version_older_than_1_6">is_game_version_older_than_1_6()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
@@ -379,7 +379,7 @@
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd>Récupère le nombre de joueurs dans le fichier JSON.</dd>
+<dd>Récupère le nombre de joueurs dans la partie.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/default.html#function_get_number_of_days_ingame">get_number_of_days_ingame()</a>
@@ -549,6 +549,20 @@
 </dt>
 <dd>Récupère l&#039;index de la balise XML correspondant au musée.</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_sort_by_friend_level">sort_by_friend_level()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Tries les personnages en fonction de leur niveau d&#039;amitié de manière décroissante. Puis regarde si un personnage est marié au joueur, dans ce cas, monte le personnage en haut de la liste.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_is_game_singleplayer">is_game_singleplayer()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Vérifie si la partie est en mode solo.</dd>
+
     </dl>
 
 
@@ -680,7 +694,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">61</span>
+    <span class="phpdocumentor-element-found-in__line">64</span>
 
     </aside>
 
@@ -727,7 +741,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">75</span>
+    <span class="phpdocumentor-element-found-in__line">78</span>
 
     </aside>
 
@@ -773,7 +787,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">85</span>
+    <span class="phpdocumentor-element-found-in__line">88</span>
 
     </aside>
 
@@ -819,7 +833,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">94</span>
+    <span class="phpdocumentor-element-found-in__line">97</span>
 
     </aside>
 
@@ -853,7 +867,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">105</span>
+    <span class="phpdocumentor-element-found-in__line">108</span>
 
     </aside>
 
@@ -887,7 +901,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">114</span>
+    <span class="phpdocumentor-element-found-in__line">117</span>
 
     </aside>
 
@@ -921,7 +935,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">123</span>
+    <span class="phpdocumentor-element-found-in__line">126</span>
 
     </aside>
 
@@ -947,7 +961,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">137</span>
+    <span class="phpdocumentor-element-found-in__line">140</span>
 
     </aside>
 
@@ -973,7 +987,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">181</span>
+    <span class="phpdocumentor-element-found-in__line">184</span>
 
     </aside>
 
@@ -1007,7 +1021,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">195</span>
+    <span class="phpdocumentor-element-found-in__line">198</span>
 
     </aside>
 
@@ -1041,7 +1055,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">204</span>
+    <span class="phpdocumentor-element-found-in__line">207</span>
 
     </aside>
 
@@ -1075,7 +1089,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">213</span>
+    <span class="phpdocumentor-element-found-in__line">216</span>
 
     </aside>
 
@@ -1109,7 +1123,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">223</span>
+    <span class="phpdocumentor-element-found-in__line">226</span>
 
     </aside>
 
@@ -1155,7 +1169,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">237</span>
+    <span class="phpdocumentor-element-found-in__line">240</span>
 
     </aside>
 
@@ -1201,7 +1215,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">247</span>
+    <span class="phpdocumentor-element-found-in__line">250</span>
 
     </aside>
 
@@ -1247,7 +1261,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">256</span>
+    <span class="phpdocumentor-element-found-in__line">259</span>
 
     </aside>
 
@@ -1281,7 +1295,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">265</span>
+    <span class="phpdocumentor-element-found-in__line">268</span>
 
     </aside>
 
@@ -1307,15 +1321,15 @@
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_is_game_older_than_1_6">
-        is_game_older_than_1_6()
-        <a href="namespaces/default.html#function_is_game_older_than_1_6" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_is_game_version_older_than_1_6">
+        is_game_version_older_than_1_6()
+        <a href="namespaces/default.html#function_is_game_version_older_than_1_6" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">274</span>
+    <span class="phpdocumentor-element-found-in__line">277</span>
 
     </aside>
 
@@ -1324,7 +1338,7 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">is_game_older_than_1_6</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+                    <span class="phpdocumentor-signature__name">is_game_version_older_than_1_6</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
     
     
@@ -1349,7 +1363,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">284</span>
+    <span class="phpdocumentor-element-found-in__line">287</span>
 
     </aside>
 
@@ -1395,7 +1409,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">308</span>
+    <span class="phpdocumentor-element-found-in__line">311</span>
 
     </aside>
 
@@ -1450,7 +1464,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">322</span>
+    <span class="phpdocumentor-element-found-in__line">325</span>
 
     </aside>
 
@@ -1496,7 +1510,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">341</span>
+    <span class="phpdocumentor-element-found-in__line">344</span>
 
     </aside>
 
@@ -1542,7 +1556,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">352</span>
+    <span class="phpdocumentor-element-found-in__line">355</span>
 
     </aside>
 
@@ -1597,7 +1611,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">372</span>
+    <span class="phpdocumentor-element-found-in__line">375</span>
 
     </aside>
 
@@ -1652,7 +1666,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">393</span>
+    <span class="phpdocumentor-element-found-in__line">396</span>
 
     </aside>
 
@@ -1707,7 +1721,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">404</span>
+    <span class="phpdocumentor-element-found-in__line">407</span>
 
     </aside>
 
@@ -1753,7 +1767,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">418</span>
+    <span class="phpdocumentor-element-found-in__line">421</span>
 
     </aside>
 
@@ -1799,7 +1813,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">428</span>
+    <span class="phpdocumentor-element-found-in__line">431</span>
 
     </aside>
 
@@ -1845,7 +1859,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">438</span>
+    <span class="phpdocumentor-element-found-in__line">441</span>
 
     </aside>
 
@@ -1891,7 +1905,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">448</span>
+    <span class="phpdocumentor-element-found-in__line">451</span>
 
     </aside>
 
@@ -1937,7 +1951,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">460</span>
+    <span class="phpdocumentor-element-found-in__line">463</span>
 
     </aside>
 
@@ -1983,7 +1997,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">481</span>
+    <span class="phpdocumentor-element-found-in__line">484</span>
 
     </aside>
 
@@ -2038,7 +2052,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">491</span>
+    <span class="phpdocumentor-element-found-in__line">494</span>
 
     </aside>
 
@@ -2084,7 +2098,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">502</span>
+    <span class="phpdocumentor-element-found-in__line">505</span>
 
     </aside>
 
@@ -2139,7 +2153,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">523</span>
+    <span class="phpdocumentor-element-found-in__line">526</span>
 
     </aside>
 
@@ -2173,11 +2187,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">539</span>
+    <span class="phpdocumentor-element-found-in__line">542</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Récupère le nombre de joueurs dans le fichier JSON.</p>
+        <p class="phpdocumentor-summary">Récupère le nombre de joueurs dans la partie.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -2207,7 +2221,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">548</span>
+    <span class="phpdocumentor-element-found-in__line">551</span>
 
     </aside>
 
@@ -2241,7 +2255,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">558</span>
+    <span class="phpdocumentor-element-found-in__line">561</span>
 
     </aside>
 
@@ -2275,7 +2289,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">570</span>
+    <span class="phpdocumentor-element-found-in__line">573</span>
 
     </aside>
 
@@ -2309,7 +2323,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">583</span>
+    <span class="phpdocumentor-element-found-in__line">586</span>
 
     </aside>
 
@@ -2343,7 +2357,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">645</span>
+    <span class="phpdocumentor-element-found-in__line">680</span>
 
     </aside>
 
@@ -2377,7 +2391,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">661</span>
+    <span class="phpdocumentor-element-found-in__line">696</span>
 
     </aside>
 
@@ -2411,7 +2425,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">676</span>
+    <span class="phpdocumentor-element-found-in__line">711</span>
 
     </aside>
 
@@ -2445,7 +2459,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">688</span>
+    <span class="phpdocumentor-element-found-in__line">723</span>
 
     </aside>
 
@@ -2509,7 +2523,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">745</span>
+    <span class="phpdocumentor-element-found-in__line">780</span>
 
     </aside>
 
@@ -2564,7 +2578,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">756</span>
+    <span class="phpdocumentor-element-found-in__line">791</span>
 
     </aside>
 
@@ -2619,7 +2633,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">766</span>
+    <span class="phpdocumentor-element-found-in__line">801</span>
 
     </aside>
 
@@ -2665,7 +2679,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">777</span>
+    <span class="phpdocumentor-element-found-in__line">812</span>
 
     </aside>
 
@@ -2711,7 +2725,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">788</span>
+    <span class="phpdocumentor-element-found-in__line">823</span>
 
     </aside>
 
@@ -2766,7 +2780,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">804</span>
+    <span class="phpdocumentor-element-found-in__line">839</span>
 
     </aside>
 
@@ -2812,7 +2826,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">827</span>
+    <span class="phpdocumentor-element-found-in__line">862</span>
 
     </aside>
 
@@ -2858,7 +2872,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">839</span>
+    <span class="phpdocumentor-element-found-in__line">874</span>
 
     </aside>
 
@@ -2913,7 +2927,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">868</span>
+    <span class="phpdocumentor-element-found-in__line">903</span>
 
     </aside>
 
@@ -2959,7 +2973,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">881</span>
+    <span class="phpdocumentor-element-found-in__line">916</span>
 
     </aside>
 
@@ -3032,7 +3046,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">898</span>
+    <span class="phpdocumentor-element-found-in__line">933</span>
 
     </aside>
 
@@ -3078,7 +3092,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">937</span>
+    <span class="phpdocumentor-element-found-in__line">972</span>
 
     </aside>
 
@@ -3112,7 +3126,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">950</span>
+    <span class="phpdocumentor-element-found-in__line">985</span>
 
     </aside>
 
@@ -3167,7 +3181,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">962</span>
+    <span class="phpdocumentor-element-found-in__line">997</span>
 
     </aside>
 
@@ -3222,7 +3236,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1000</span>
+    <span class="phpdocumentor-element-found-in__line">1035</span>
 
     </aside>
 
@@ -3277,7 +3291,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1020</span>
+    <span class="phpdocumentor-element-found-in__line">1055</span>
 
     </aside>
 
@@ -3297,6 +3311,86 @@
         <span class="phpdocumentor-signature__response_type">int</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>L'index de la balise XML GameLocation du musée.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_sort_by_friend_level">
+        sort_by_friend_level()
+        <a href="namespaces/default.html#function_sort_by_friend_level" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">1066</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Tries les personnages en fonction de leur niveau d&#039;amitié de manière décroissante. Puis regarde si un personnage est marié au joueur, dans ce cas, monte le personnage en haut de la liste.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">sort_by_friend_level</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$friendship_data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$friendship_data</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>L'array à trier.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>L'array trié.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_is_game_singleplayer">
+        is_game_singleplayer()
+        <a href="namespaces/default.html#function_is_game_singleplayer" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/utility_functions.php"><a href="files/includes-utility-functions.html"><abbr title="includes/utility_functions.php">utility_functions.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">1094</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Vérifie si la partie est en mode solo.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">is_game_singleplayer</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Indique si la partie est en mode solo.</p>
 </section>
 
             </section>
@@ -3466,7 +3560,8 @@
                                                     <li class=""><a href="namespaces/default.html#function_in_bytes_conversion">in_bytes_conversion()</a></li>
                                                     <li class=""><a href="namespaces/default.html#function_is_a_mobile_device">is_a_mobile_device()</a></li>
                                                     <li class=""><a href="namespaces/default.html#function_is_a_supported_language">is_a_supported_language()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_is_game_older_than_1_6">is_game_older_than_1_6()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_is_game_singleplayer">is_game_singleplayer()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_is_game_version_older_than_1_6">is_game_version_older_than_1_6()</a></li>
                                                     <li class=""><a href="namespaces/default.html#function_is_object_empty">is_object_empty()</a></li>
                                                     <li class=""><a href="namespaces/default.html#function_is_objective_completed">is_objective_completed()</a></li>
                                                     <li class=""><a href="namespaces/default.html#function_is_on_localhost">is_on_localhost()</a></li>
@@ -3477,6 +3572,7 @@
                                                     <li class=""><a href="namespaces/default.html#function_no_items_placeholder">no_items_placeholder()</a></li>
                                                     <li class=""><a href="namespaces/default.html#function_recursive_xml_search">recursive_xml_search()</a></li>
                                                     <li class=""><a href="namespaces/default.html#function_sanitize_json_with_version">sanitize_json_with_version()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_sort_by_friend_level">sort_by_friend_level()</a></li>
                                             </ul>
                 </li>
                     </ul>

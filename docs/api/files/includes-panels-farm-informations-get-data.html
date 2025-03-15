@@ -95,7 +95,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="files/includes-panels-friendships-get-data.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/includes-panels-farm-informations-get-data.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -111,37 +111,58 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/includes-panels-friendships-get-data.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/includes-panels-farm-informations-get-data.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_player_friendship_data">get_player_friendship_data()</a>
+    <a class="" href="namespaces/default.html#function_get_farm_informations">get_farm_informations()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Récupère les données de l&#039;amitié du joueur.</dd>
+<dd>Récupère les informations de la ferme comme l&#039;ordinateur de ferme.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_prepare_all_friendship_info">prepare_all_friendship_info()</a>
+    <a class="" href="namespaces/default.html#function_get_complex_farm_informations">get_complex_farm_informations()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Prépare et formate les données de l&#039;amitié du joueur.</dd>
+<dd>Récupère diverses informations sur la ferme comme le nombre de récoltes et l&#039;état de la caverne de la ferme.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_verified_friend_data">get_verified_friend_data()</a>
+    <a class="" href="namespaces/default.html#function_get_hay_pieces_in_farm">get_hay_pieces_in_farm()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Récupère le nombre de pièces de foin dans la ferme.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_get_max_hay_pieces">get_max_hay_pieces()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Récupère le nombre de pièces maximum de foin dans la ferme.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_get_crops_on_farm">get_crops_on_farm()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Vérifie et complète les données d&#039;amitié du joueur.</dd>
+<dd>Récupère des informations sur les récoltes dans la ferme.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_hearts_structure">get_hearts_structure()</a>
+    <a class="" href="namespaces/default.html#function_get_machines_ready_on_farm">get_machines_ready_on_farm()</a>
     <span>
-                                &nbsp;: string    </span>
+                                &nbsp;: int    </span>
 </dt>
-<dd>Génère le code HTML des cœurs d&#039;amitié d&#039;un villageois.</dd>
+<dd>Récupère le nombre de machines prêtes dans la ferme.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_get_tilled_soil_count">get_tilled_soil_count()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Récupère le nombre de sols labourés prêts dans la ferme.</dd>
 
     </dl>
 
@@ -152,28 +173,28 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/includes-panels-friendships-get-data.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/includes-panels-farm-informations-get-data.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_player_friendship_data">
-        get_player_friendship_data()
-        <a href="namespaces/default.html#function_get_player_friendship_data" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_get_farm_informations">
+        get_farm_informations()
+        <a href="namespaces/default.html#function_get_farm_informations" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/panels/friendships/get_data.php"><a href="files/includes-panels-friendships-get-data.html"><abbr title="includes/panels/friendships/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/panels/farm_informations/get_data.php"><a href="files/includes-panels-farm-informations-get-data.html"><abbr title="includes/panels/farm_informations/get_data.php">get_data.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">8</span>
+    <span class="phpdocumentor-element-found-in__line">9</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Récupère les données de l&#039;amitié du joueur.</p>
+        <p class="phpdocumentor-summary">Récupère les informations de la ferme comme l&#039;ordinateur de ferme.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_player_friendship_data</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">get_farm_informations</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     
     
@@ -183,135 +204,143 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Les données de l'amitié du joueur.</p>
+                <section class="phpdocumentor-description"><p>Les informations de la ferme.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_prepare_all_friendship_info">
-        prepare_all_friendship_info()
-        <a href="namespaces/default.html#function_prepare_all_friendship_info" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_get_complex_farm_informations">
+        get_complex_farm_informations()
+        <a href="namespaces/default.html#function_get_complex_farm_informations" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/panels/friendships/get_data.php"><a href="files/includes-panels-friendships-get-data.html"><abbr title="includes/panels/friendships/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/panels/farm_informations/get_data.php"><a href="files/includes-panels-farm-informations-get-data.html"><abbr title="includes/panels/farm_informations/get_data.php">get_data.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">44</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Prépare et formate les données de l&#039;amitié du joueur.</p>
+        <p class="phpdocumentor-summary">Récupère diverses informations sur la ferme comme le nombre de récoltes et l&#039;état de la caverne de la ferme.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">prepare_all_friendship_info</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$friendship_info</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">get_complex_farm_informations</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$friendship_info</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Les données de l'amitié du joueur.</p>
-</section>
-
-            </dd>
-            </dl>
-
+    
     
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Les données de l'amitié du joueur formatées.</p>
+                <section class="phpdocumentor-description"><p>Les informations de la ferme.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_verified_friend_data">
-        get_verified_friend_data()
-        <a href="namespaces/default.html#function_get_verified_friend_data" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_get_hay_pieces_in_farm">
+        get_hay_pieces_in_farm()
+        <a href="namespaces/default.html#function_get_hay_pieces_in_farm" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/panels/friendships/get_data.php"><a href="files/includes-panels-friendships-get-data.html"><abbr title="includes/panels/friendships/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/panels/farm_informations/get_data.php"><a href="files/includes-panels-farm-informations-get-data.html"><abbr title="includes/panels/farm_informations/get_data.php">get_data.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">83</span>
+    <span class="phpdocumentor-element-found-in__line">65</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Vérifie et complète les données d&#039;amitié du joueur.</p>
+        <p class="phpdocumentor-summary">Récupère le nombre de pièces de foin dans la ferme.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_verified_friend_data</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$friendship_info</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">get_hay_pieces_in_farm</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
     
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$friendship_info</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Les données brutes de l'amitié.</p>
-</section>
-
-            </dd>
-            </dl>
-
+    
     
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">int</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Les données vérifiées et complétées.</p>
+                <section class="phpdocumentor-description"><p>Le nombre de pièces de foin.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_hearts_structure">
-        get_hearts_structure()
-        <a href="namespaces/default.html#function_get_hearts_structure" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_get_max_hay_pieces">
+        get_max_hay_pieces()
+        <a href="namespaces/default.html#function_get_max_hay_pieces" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/panels/friendships/get_data.php"><a href="files/includes-panels-friendships-get-data.html"><abbr title="includes/panels/friendships/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/panels/farm_informations/get_data.php"><a href="files/includes-panels-farm-informations-get-data.html"><abbr title="includes/panels/farm_informations/get_data.php">get_data.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">93</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Récupère le nombre de pièces maximum de foin dans la ferme.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">get_max_hay_pieces</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Le nombre de pièces maximum de foin.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_get_crops_on_farm">
+        get_crops_on_farm()
+        <a href="namespaces/default.html#function_get_crops_on_farm" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/panels/farm_informations/get_data.php"><a href="files/includes-panels-farm-informations-get-data.html"><abbr title="includes/panels/farm_informations/get_data.php">get_data.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">114</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Génère le code HTML des cœurs d&#039;amitié d&#039;un villageois.</p>
+        <p class="phpdocumentor-summary">Récupère des informations sur les récoltes dans la ferme.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_hearts_structure</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$hearts_info</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">get_crops_on_farm</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\SimpleXMLElement">SimpleXMLElement</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$game_location</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$hearts_info</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                <span class="phpdocumentor-signature__argument__name">$game_location</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\SimpleXMLElement">SimpleXMLElement</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Informations sur les cœurs (statut, niveau d'amitié, mariage possible).</p>
-</section>
-
+                
             </dd>
             </dl>
 
@@ -319,9 +348,97 @@
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Le code HTML des cœurs d'amitié.</p>
+                <section class="phpdocumentor-description"><p>Les informations sur les récoltes.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_get_machines_ready_on_farm">
+        get_machines_ready_on_farm()
+        <a href="namespaces/default.html#function_get_machines_ready_on_farm" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/panels/farm_informations/get_data.php"><a href="files/includes-panels-farm-informations-get-data.html"><abbr title="includes/panels/farm_informations/get_data.php">get_data.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">153</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Récupère le nombre de machines prêtes dans la ferme.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">get_machines_ready_on_farm</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\SimpleXMLElement">SimpleXMLElement</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$game_location</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$game_location</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\SimpleXMLElement">SimpleXMLElement</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Le nombre de machines prêtes.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_get_tilled_soil_count">
+        get_tilled_soil_count()
+        <a href="namespaces/default.html#function_get_tilled_soil_count" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/panels/farm_informations/get_data.php"><a href="files/includes-panels-farm-informations-get-data.html"><abbr title="includes/panels/farm_informations/get_data.php">get_data.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">182</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Récupère le nombre de sols labourés prêts dans la ferme.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">get_tilled_soil_count</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\SimpleXMLElement">SimpleXMLElement</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$game_location</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$game_location</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\SimpleXMLElement">SimpleXMLElement</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Le nombre de sols labourés prêts.</p>
 </section>
 
             </section>
@@ -333,7 +450,7 @@
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/includes/panels/friendships/get_data.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/includes/panels/farm_informations/get_data.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -432,7 +549,7 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/includes-panels-friendships-get-data.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/includes-panels-farm-informations-get-data.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -440,10 +557,13 @@
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/default.html#function_get_hearts_structure">get_hearts_structure()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_player_friendship_data">get_player_friendship_data()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_verified_friend_data">get_verified_friend_data()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_prepare_all_friendship_info">prepare_all_friendship_info()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_complex_farm_informations">get_complex_farm_informations()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_crops_on_farm">get_crops_on_farm()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_farm_informations">get_farm_informations()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_hay_pieces_in_farm">get_hay_pieces_in_farm()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_machines_ready_on_farm">get_machines_ready_on_farm()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_max_hay_pieces">get_max_hay_pieces()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_tilled_soil_count">get_tilled_soil_count()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -463,7 +583,7 @@
     </section>
 </section>
         </div>
-        <a href="files/includes-panels-friendships-get-data.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/includes-panels-farm-informations-get-data.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

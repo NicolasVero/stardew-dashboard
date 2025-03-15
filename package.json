@@ -5,9 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "tsc",
-		"postbuild": "bash ./bash/js_minifier.sh ; ./bash/js_minifier.sh",
+		"postbuild": "bash ./bash/js_minifier.sh",
 		"watch": "tsc --watch",
-		"deploy": "bash ./bash/deploy_to_website.sh ; ./bash/deploy_to_website.sh",
+		"deploy": "bash ./bash/deploy_to_website.sh",
 		"phpdoc": "php vendor/bin/phpdoc run --directory includes/,locales/ --extensions php --target docs/api"
 	},
 	"keywords": [],

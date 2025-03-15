@@ -46,6 +46,11 @@ Search.appendIndex(
             "summary": "Charge\u0020la\u0020sauvegarde\u0020puis\u0020affiche\u0020le\u0020contenu\u0020HTML\u0020de\u0020la\u0020page.",
             "url": "namespaces/default.html#function_load_save"
         },                {
+            "fqsen": "\\generate_dev_mode_page\u0028\u0029",
+            "name": "generate_dev_mode_page",
+            "summary": "G\u00E9n\u00E8re\u0020le\u0020code\u0020html\u0020de\u0020la\u0020page\u0020en\u0020mode\u0020d\u00E9veloppeur",
+            "url": "namespaces/default.html#function_generate_dev_mode_page"
+        },                {
             "fqsen": "\\get_farmhands\u0028\u0029",
             "name": "get_farmhands",
             "summary": "Cherche\u0020et\u0020renvoie\u0020les\u0020joueurs\u0020non\u002Dh\u00F4tes\u0020de\u0020la\u0020sauvegarde\u0020\u00E0\u0020charger.",
@@ -70,6 +75,11 @@ Search.appendIndex(
             "name": "display_general_stats",
             "summary": "G\u00E9n\u00E8re\u0020le\u0020code\u0020HTML\u0020pour\u0020afficher\u0020les\u0020statistiques\u0020g\u00E9n\u00E9rales\u0020du\u0020joueur.",
             "url": "namespaces/default.html#function_display_general_stats"
+        },                {
+            "fqsen": "\\get_all_buttons\u0028\u0029",
+            "name": "get_all_buttons",
+            "summary": "G\u00E9n\u00E8re\u0020le\u0020code\u0020HTML\u0020pour\u0020afficher\u0020tous\u0020les\u0020boutons\u0020de\u0020panels.",
+            "url": "namespaces/default.html#function_get_all_buttons"
         },                {
             "fqsen": "\\display_stat\u0028\u0029",
             "name": "display_stat",
@@ -601,6 +611,16 @@ Search.appendIndex(
             "summary": "R\u00E9cup\u00E8re\u0020la\u0020liste\u0020des\u0020ma\u00EEtrises\u0020obtenues\u0020d\u0027un\u0020joueur.",
             "url": "namespaces/default.html#function_get_masteries_data"
         },                {
+            "fqsen": "\\get_tools_data\u0028\u0029",
+            "name": "get_tools_data",
+            "summary": "R\u00E9cup\u00E8re\u0020la\u0020liste\u0020des\u0020outils\u0020d\u0027un\u0020joueur.",
+            "url": "namespaces/default.html#function_get_tools_data"
+        },                {
+            "fqsen": "\\get_farm_informations_data\u0028\u0029",
+            "name": "get_farm_informations_data",
+            "summary": "R\u00E9cup\u00E8re\u0020la\u0020liste\u0020des\u0020informations\u0020de\u0020la\u0020ferme.",
+            "url": "namespaces/default.html#function_get_farm_informations_data"
+        },                {
             "fqsen": "\\display_calendar_panel\u0028\u0029",
             "name": "display_calendar_panel",
             "summary": "G\u00E9n\u00E8re\u0020le\u0020code\u0020HTML\u0020du\u0020panneau\u0020du\u0020calendrier.",
@@ -696,6 +716,51 @@ Search.appendIndex(
             "summary": "R\u00E9cup\u00E8re\u0020toutes\u0020les\u0020cat\u00E9gories\u0020de\u0020l\u0027objectif\u0020\u0022Monster\u0020Slayer\u0020Hero\u0022.",
             "url": "namespaces/default.html#function_get_all_adventurers_guild_categories"
         },                {
+            "fqsen": "\\display_farm_informations_button\u0028\u0029",
+            "name": "display_farm_informations_button",
+            "summary": "G\u00E9n\u00E8re\u0020le\u0020code\u0020HTML\u0020pour\u0020afficher\u0020le\u0020bouton\u0020des\u0020informations\u0020de\u0020la\u0020ferme.",
+            "url": "namespaces/default.html#function_display_farm_informations_button"
+        },                {
+            "fqsen": "\\display_farm_informations\u0028\u0029",
+            "name": "display_farm_informations",
+            "summary": "G\u00E9n\u00E8re\u0020le\u0020code\u0020HTML\u0020du\u0020panneau\u0020des\u0020outils\u0020du\u0020joueur.",
+            "url": "namespaces/default.html#function_display_farm_informations"
+        },                {
+            "fqsen": "\\get_farm_informations\u0028\u0029",
+            "name": "get_farm_informations",
+            "summary": "R\u00E9cup\u00E8re\u0020les\u0020informations\u0020de\u0020la\u0020ferme\u0020comme\u0020l\u0027ordinateur\u0020de\u0020ferme.",
+            "url": "namespaces/default.html#function_get_farm_informations"
+        },                {
+            "fqsen": "\\get_complex_farm_informations\u0028\u0029",
+            "name": "get_complex_farm_informations",
+            "summary": "R\u00E9cup\u00E8re\u0020diverses\u0020informations\u0020sur\u0020la\u0020ferme\u0020comme\u0020le\u0020nombre\u0020de\u0020r\u00E9coltes\u0020et\u0020l\u0027\u00E9tat\u0020de\u0020la\u0020caverne\u0020de\u0020la\u0020ferme.",
+            "url": "namespaces/default.html#function_get_complex_farm_informations"
+        },                {
+            "fqsen": "\\get_hay_pieces_in_farm\u0028\u0029",
+            "name": "get_hay_pieces_in_farm",
+            "summary": "R\u00E9cup\u00E8re\u0020le\u0020nombre\u0020de\u0020pi\u00E8ces\u0020de\u0020foin\u0020dans\u0020la\u0020ferme.",
+            "url": "namespaces/default.html#function_get_hay_pieces_in_farm"
+        },                {
+            "fqsen": "\\get_max_hay_pieces\u0028\u0029",
+            "name": "get_max_hay_pieces",
+            "summary": "R\u00E9cup\u00E8re\u0020le\u0020nombre\u0020de\u0020pi\u00E8ces\u0020maximum\u0020de\u0020foin\u0020dans\u0020la\u0020ferme.",
+            "url": "namespaces/default.html#function_get_max_hay_pieces"
+        },                {
+            "fqsen": "\\get_crops_on_farm\u0028\u0029",
+            "name": "get_crops_on_farm",
+            "summary": "R\u00E9cup\u00E8re\u0020des\u0020informations\u0020sur\u0020les\u0020r\u00E9coltes\u0020dans\u0020la\u0020ferme.",
+            "url": "namespaces/default.html#function_get_crops_on_farm"
+        },                {
+            "fqsen": "\\get_machines_ready_on_farm\u0028\u0029",
+            "name": "get_machines_ready_on_farm",
+            "summary": "R\u00E9cup\u00E8re\u0020le\u0020nombre\u0020de\u0020machines\u0020pr\u00EAtes\u0020dans\u0020la\u0020ferme.",
+            "url": "namespaces/default.html#function_get_machines_ready_on_farm"
+        },                {
+            "fqsen": "\\get_tilled_soil_count\u0028\u0029",
+            "name": "get_tilled_soil_count",
+            "summary": "R\u00E9cup\u00E8re\u0020le\u0020nombre\u0020de\u0020sols\u0020labour\u00E9s\u0020pr\u00EAts\u0020dans\u0020la\u0020ferme.",
+            "url": "namespaces/default.html#function_get_tilled_soil_count"
+        },                {
             "fqsen": "\\display_friendship_structure\u0028\u0029",
             "name": "display_friendship_structure",
             "summary": "G\u00E9n\u00E8re\u0020le\u0020code\u0020HTML\u0020pour\u0020afficher\u0020les\u0020informations\u0020d\u0027amiti\u00E9\u0020d\u0027un\u0020villageois.",
@@ -730,6 +795,36 @@ Search.appendIndex(
             "name": "get_hearts_structure",
             "summary": "G\u00E9n\u00E8re\u0020le\u0020code\u0020HTML\u0020des\u0020c\u0153urs\u0020d\u0027amiti\u00E9\u0020d\u0027un\u0020villageois.",
             "url": "namespaces/default.html#function_get_hearts_structure"
+        },                {
+            "fqsen": "\\display_player_tools_button\u0028\u0029",
+            "name": "display_player_tools_button",
+            "summary": "G\u00E9n\u00E8re\u0020le\u0020code\u0020HTML\u0020pour\u0020afficher\u0020le\u0020bouton\u0020des\u0020outils.",
+            "url": "namespaces/default.html#function_display_player_tools_button"
+        },                {
+            "fqsen": "\\display_player_tools\u0028\u0029",
+            "name": "display_player_tools",
+            "summary": "G\u00E9n\u00E8re\u0020le\u0020code\u0020HTML\u0020du\u0020panneau\u0020des\u0020outils\u0020du\u0020joueur.",
+            "url": "namespaces/default.html#function_display_player_tools"
+        },                {
+            "fqsen": "\\get_player_tools\u0028\u0029",
+            "name": "get_player_tools",
+            "summary": "R\u00E9cup\u00E8re\u0020les\u0020outils\u0020du\u0020joueur\u0020uniquement\u0020si\u0020la\u0020partie\u0020est\u0020en\u0020singleplayer.",
+            "url": "namespaces/default.html#function_get_player_tools"
+        },                {
+            "fqsen": "\\get_correct_categories\u0028\u0029",
+            "name": "get_correct_categories",
+            "summary": "R\u00E9cup\u00E8re\u0020les\u0020noms\u0020corrects\u0020des\u0020cat\u00E9gories\u0020d\u0027outil.",
+            "url": "namespaces/default.html#function_get_correct_categories"
+        },                {
+            "fqsen": "\\get_tools_dictionary\u0028\u0029",
+            "name": "get_tools_dictionary",
+            "summary": "R\u00E9cup\u00E8re\u0020le\u0020dictionnaire\u0020des\u0020noms\u0020d\u0027outils.",
+            "url": "namespaces/default.html#function_get_tools_dictionary"
+        },                {
+            "fqsen": "\\get_starting_tools\u0028\u0029",
+            "name": "get_starting_tools",
+            "summary": "R\u00E9cup\u00E8re\u0020les\u0020outils\u0020de\u0020d\u00E9part\u0020d\u0027une\u0020partie.",
+            "url": "namespaces/default.html#function_get_starting_tools"
         },                {
             "fqsen": "\\display_junimo_kart_button\u0028\u0029",
             "name": "display_junimo_kart_button",
@@ -936,10 +1031,10 @@ Search.appendIndex(
             "summary": "V\u00E9rifie\u0020si\u0020le\u0020site\u0020est\u0020en\u0020localhost\u0020ou\u0020non.",
             "url": "namespaces/default.html#function_is_on_localhost"
         },                {
-            "fqsen": "\\is_game_older_than_1_6\u0028\u0029",
-            "name": "is_game_older_than_1_6",
+            "fqsen": "\\is_game_version_older_than_1_6\u0028\u0029",
+            "name": "is_game_version_older_than_1_6",
             "summary": "V\u00E9rifie\u0020si\u0020la\u0020sauvegarde\u0020est\u0020plus\u0020ancienne\u0020que\u00201.6.0.",
-            "url": "namespaces/default.html#function_is_game_older_than_1_6"
+            "url": "namespaces/default.html#function_is_game_version_older_than_1_6"
         },                {
             "fqsen": "\\get_formatted_date\u0028\u0029",
             "name": "get_formatted_date",
@@ -1028,7 +1123,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\get_number_of_player\u0028\u0029",
             "name": "get_number_of_player",
-            "summary": "R\u00E9cup\u00E8re\u0020le\u0020nombre\u0020de\u0020joueurs\u0020dans\u0020le\u0020fichier\u0020JSON.",
+            "summary": "R\u00E9cup\u00E8re\u0020le\u0020nombre\u0020de\u0020joueurs\u0020dans\u0020la\u0020partie.",
             "url": "namespaces/default.html#function_get_number_of_player"
         },                {
             "fqsen": "\\get_number_of_days_ingame\u0028\u0029",
@@ -1150,6 +1245,16 @@ Search.appendIndex(
             "name": "get_museum_index",
             "summary": "R\u00E9cup\u00E8re\u0020l\u0027index\u0020de\u0020la\u0020balise\u0020XML\u0020correspondant\u0020au\u0020mus\u00E9e.",
             "url": "namespaces/default.html#function_get_museum_index"
+        },                {
+            "fqsen": "\\sort_by_friend_level\u0028\u0029",
+            "name": "sort_by_friend_level",
+            "summary": "Tries\u0020les\u0020personnages\u0020en\u0020fonction\u0020de\u0020leur\u0020niveau\u0020d\u0027amiti\u00E9\u0020de\u0020mani\u00E8re\u0020d\u00E9croissante.\u0020Puis\u0020regarde\u0020si\u0020un\u0020personnage\u0020est\u0020mari\u00E9\u0020au\u0020joueur,\u0020dans\u0020ce\u0020cas,\u0020monte\u0020le\u0020personnage\u0020en\u0020haut\u0020de\u0020la\u0020liste.",
+            "url": "namespaces/default.html#function_sort_by_friend_level"
+        },                {
+            "fqsen": "\\is_game_singleplayer\u0028\u0029",
+            "name": "is_game_singleplayer",
+            "summary": "V\u00E9rifie\u0020si\u0020la\u0020partie\u0020est\u0020en\u0020mode\u0020solo.",
+            "url": "namespaces/default.html#function_is_game_singleplayer"
         },                {
             "fqsen": "\\locale_file_loader\u0028\u0029",
             "name": "locale_file_loader",
