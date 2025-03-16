@@ -48,6 +48,7 @@ jobs:
           --exclude assets/images/shipped_items/ \
           --exclude assets/images/skills/ \
           --exclude assets/images/social/ \
+          --exclude assets/images/star_achievements/ \
           --exclude assets/images/steam_achievements/ \
           --exclude assets/images/tools/ \
           --exclude assets/images/unlockables/ \
