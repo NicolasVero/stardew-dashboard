@@ -39,6 +39,7 @@ jobs:
           --exclude assets/images/crafting_recipes/ \
           --exclude assets/images/dialogue_boxes/ \
           --exclude assets/images/enemies/ \
+          --exclude assets/images/easter_eggs/ \
           --exclude assets/images/farm_animals/ \
           --exclude assets/images/fish/ \
           --exclude assets/images/icons/ \
