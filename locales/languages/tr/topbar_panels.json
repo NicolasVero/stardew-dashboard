@@ -1,0 +1,22 @@
+{
+    "Upload a save" : "Carregar uma gravação",
+    "Browse" : "Parcourir",
+    "Choose a file" : "Escolher um ficheiro",
+
+    "Settings" : "Configurações",
+    "Hide discovered items" : "Ocultar itens descobertos",
+    "Hide undiscovered items" : "Ocultar elementos não descobertos",
+    "Show Steam achievements icons" : "Mostrar ícones de sucesso do Steam",
+    "Hide items from newer versions" : "Ocultar itens de versões mais recentes",
+    "Activate wiki redirections" : "Ativar os redireccionamentos para o wiki",
+
+    "Your feedback" : "A sua opinião",
+    "Username" : "Nome de utilizador",
+    "Email address" : "Endereço de correio eletrónico",
+    "Topic" : "Tópico",
+    "Feature request" : "Pedido de funcionalidade",
+    "Bug report" : "Relatório de erros",
+    "Other" : "Outros",
+    "Message" : "Mensagem",
+    "Send feedback" : "Enviar comentários"
+}

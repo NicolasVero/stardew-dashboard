@@ -1,0 +1,170 @@
+{
+    "Quests in progress": "Missões em andamento",
+    "Fishing Quest": "Missão de pesca",
+    "Socializing Quest": "Missão de socialização",
+    "Killing Quest": "Missão de eliminação",
+    "Delivering Quest": "Missão de entrega",
+    "Fishing": "Pesca",
+    "Socializing": "Socialização",
+    "Killing": "Eliminação",
+    "Delivering": "Entrega",
+    "Deliver": "Entregar",
+    "Kill": "Matar",
+    "Talk to": "Falar com",
+    "Fish": "Pescar",
+    "Weekly Special Order": "Pedido especial semanal",
+    "Friendship points": "Pontos de amizade",
+
+    "Ship 100 tropical crops": "Enviar 100 culturas tropicais",
+    "Defeat 50 cave creatures": "Derrotar 50 criaturas da caverna",
+    "Catch 10 ocean fish": "Pegar 10 peixes do oceano",
+    "Catch 20 river fish": "Pegar 20 peixes de rio",
+    "Deliver one's favourite jewelry": "Entregar suas joias favoritas",
+    "Deliver 12 Leeks": "Entregar 12 alhos-porós",
+    "Deliver 100 bones": "Entregar 100 ossos",
+    "Collect 24 eggs": "Coletar 24 ovos",
+    "Ship 100 of a specific crop": "Enviar 100 de uma cultura específica",
+    "Gather 20 pieces of trash": "Recolher 20 pedaços de lixo",
+    "Deliver 12 bottles of juice": "Entregar 12 garrafas de suco",
+    "Deliver 25 gold-quality vegetables": "Entregar 25 vegetais de qualidade ouro",
+    "Collect 80 pieces of hardwood": "Coletar 80 pedaços de madeira nobre",
+    "Collect 1,000 pieces of wood or stone": "Coletar 1.000 pedaços de madeira ou pedra",
+    "Deliver 100 pieces of bug meat": "Entregar 100 pedaços de carne de inseto",
+    "Fish exotic creatures": "Pegar criaturas exóticas",
+    "Collect 1 prismatic jelly": "Coletar 1 geleia prismática",
+    "Collect 1 ectoplasm": "Coletar 1 ectoplasma",
+    "Ship 500 QI Beans": "Enviar 500 feijões QI",
+    "Score 50,000 points in Junimo Kart endless mode": "Marcar 50.000 pontos no modo infinito do Junimo Kart",
+    "Collect and Deliver 4 Prismatic Shards": "Coletar e entregar 4 fragmentos prismáticos",
+    "Reach floor 100 of the Skull Cavern without consuming any food or drink items": "Chegar ao andar 100 da Caverna do Crânio sem consumir comida ou bebida",
+    "Ship 100,000g worth of freshly cooked items": "Enviar 100.000g em itens recém-cozidos",
+    "Give 50 loved gifts in one week": "Dar 50 presentes amados em uma semana",
+    "Catch the legendary fishes' descendants": "Pegar os descendentes dos peixes lendários",
+    "Reach the bottom of the Mines in the Mountains": "Chegar ao fundo das Minas nas montanhas",
+    "Make it to floor 100 of the Skull Cavern": "Chegar ao andar 100 da Caverna do Crânio",
+    "Deliver 100 items of each of the following colors (red/orange/yellow/green/blue/purple)": "Entregar 100 itens de cada uma das seguintes cores (vermelho/laranja/amarelo/verde/azul/roxo)",
+    
+    "Meet The Wizard": "Conheça o Feiticeiro",
+    "Enter the wizard's tower.": "Entre na torre do feiticeiro.",
+    "You received a letter from the local wizard. He claims to have information regarding the old community center.": "Você recebeu uma carta do feiticeiro local. Ele afirma ter informações sobre o antigo centro comunitário.",
+
+    "The Mysterious Qi": "O Misterioso Qi",
+    "Leave a rainbow shell in the box at the train platform.": "Deixe uma concha arco-íris na caixa na plataforma do trem.",
+    "Within a secret lock-box, you found a note with peculiar instructions. It's signed by a 'Mr. Qi'.": "Dentro de uma caixa secreta, você encontrou uma nota com instruções peculiares. Está assinada por 'Sr. Qi'.",
+    "Place 10 beets inside Mayor Lewis' fridge.": "Coloque 10 beterrabas na geladeira do Prefeito Lewis.",
+    "You've found another note written by 'Mr. Qi'. The request is even more unusual this time.": "Você encontrou outra nota escrita por 'Sr. Qi'. O pedido é ainda mais incomum desta vez.",
+    "Give the sand dragon his final meal.": "Dê ao dragão de areia sua última refeição.",
+    "You've found yet another strange note within the Mayor's fridge. This time, the instructions are more cryptic.": "Você encontrou mais uma nota estranha dentro da geladeira do Prefeito. Desta vez, as instruções são mais enigmáticas.",
+    "Inspect the lumber pile beside your house.": "Inspecione a pilha de madeira ao lado da sua casa.",
+    "You found another note in the sand dragon's eye. It seems Mr. Qi's strange scavenger hunt has come to an end.": "Você encontrou outra nota no olho do dragão de areia. Parece que a estranha caça ao tesouro do Sr. Qi chegou ao fim.",
+
+    "Getting Started": "Começando",
+    "Cultivate and harvest a parsnip.": "Cultive e colha uma pastinaca.",
+    "If you want to become a farmer, you have to start with the basics. Use your hoe to till the soil, then use a seed packet on the tilled soil to sow a crop. Water every day until the crop is ready for harvest.": "Se você quer se tornar um fazendeiro, precisa começar pelo básico. Use sua enxada para arar o solo, depois use um pacote de sementes no solo arado para semear uma cultura. Regue todos os dias até que a colheita esteja pronta.",
+
+    "Raising Animals": "Criando Animais",
+    "Build a Coop.": "Construa um galinheiro.",
+    "Robin, the local carpenter, lives north of town. In exchange for raw materials and money, she'll construct new buildings on your farm. You'll need her to build a coop or barn so that you can raise animals.": "Robin, a carpinteira local, mora ao norte da cidade. Em troca de materiais brutos e dinheiro, ela construirá novos edifícios na sua fazenda. Você precisará dela para construir um galinheiro ou um celeiro para criar animais.",
+
+    "Advancement": "Progresso",
+    "Reach Farming level 1 and craft a scarecrow.": "Alcance o nível 1 de Agricultura e construa um espantalho.",
+    "As you gain experience, you'll discover new crafting recipes to increase profit and make life easier. A scarecrow, for example, will prevent crows from snacking on your precious crops.": "À medida que ganha experiência, você descobrirá novas receitas de criação para aumentar os lucros e facilitar a vida. Um espantalho, por exemplo, impedirá que os corvos devorem suas preciosas plantações.",
+
+    "Introductions": "Apresentações",
+    "Go talk to every villagers in town": "Vá falar com todos os aldeões da cidade",
+    "It would be a nice gesture to introduce yourself around town. Some people might be anxious to meet the new farmer.": "Seria um gesto gentil se apresentar à cidade. Algumas pessoas podem estar ansiosas para conhecer o novo fazendeiro.",
+
+    "100 Friendship points": "100 pontos de amizade",
+
+    "Copper Ore": "Minério de Cobre",
+    "Bring a piece of copper ore to Clint's blacksmith shop.": "Leve um pedaço de minério de cobre para a ferraria do Clint.",
+    "You found a piece of copper ore. You're not sure what you can use it for, but the local blacksmith ought to know.": "Você encontrou um pedaço de minério de cobre. Você não tem certeza para que pode usá-lo, mas o ferreiro local deve saber.",
+
+    "Forging ahead": "Avançando na Forja",
+    "Craft a Furnace.": "Construa uma Fornalha.",
+    "If you're going to keep mining, you should build a furnace.": "Se você pretende continuar minerando, deve construir uma fornalha.",
+
+    "Smelting": "Fundição",
+    "Use your furnace to smelt a Copper Bar.": "Use sua fornalha para fundir uma Barra de Cobre.",
+    "Now that you've built a furnace, you can smelt some metal. According to Clint's instructions, if you place 5 copper ore and 1 piece of coal in the furnace, it should produce a copper bar.": "Agora que você construiu uma fornalha, pode fundir alguns metais. Segundo as instruções do Clint, se você colocar 5 minérios de cobre e 1 pedaço de carvão na fornalha, ela produzirá uma barra de cobre.",
+
+    "To The Beach": "Para a Praia",
+    "Someone named Willy invited you to visit the beach south of town. He says he has something to give you.": "Alguém chamado Willy o convidou para visitar a praia ao sul da cidade. Ele diz que tem algo para lhe dar.",
+    "Visit the beach south of town before 5:00 pm.": "Visite a praia ao sul da cidade antes das 17:00.",
+    
+    "Bamboo pole": "Vara de bambu",
+    "Explore The Mine": "Explorar a Mina",
+    "There's an old mine shaft in the mountains north of town. There could be valuable minerals inside, but Marlon hinted that it might be dangerous.": "Há um antigo poço de mina nas montanhas ao norte da cidade. Pode haver minerais valiosos dentro, mas Marlon sugeriu que pode ser perigoso.",
+    "Reach level 5 in the mines.": "Alcance o nível 5 na mina.",
+
+    "Mayor's Need": "Necessidade do Prefeito",
+    "Mayor Lewis wants truffle oil. He won't explain what it's for. Maybe it's none of your business.": "O Prefeito Lewis quer óleo de trufa. Ele não explica para que serve. Talvez não seja da sua conta.",
+    "Bring Lewis a bottle of Truffle Oil.": "Leve uma garrafa de óleo de trufa para Lewis.",
+    "1 Friendship heart": "1 coração de amizade",
+
+    "Wanted: Lobster": "Procurado: Lagosta",
+    "Gus put out a notice requesting a fresh lobster.": "Gus publicou um aviso pedindo uma lagosta fresca.",
+    "Bring Gus a Lobster.": "Leve uma lagosta para Gus.",
+
+    "Pam Needs Juice": "Pam Precisa de Suco",
+    "Pam's TV Remote is dead. She's having a tough time going back and forth between the couch and the TV dial.": "O controle remoto da TV da Pam quebrou. Ela está tendo dificuldades para ir e voltar entre o sofá e a TV.",
+    "Bring Pam a Battery Pack.": "Leve um pacote de bateria para Pam.",
+
+    "Staff Of Power": "Cajado do Poder",
+    "The Wizard is creating a staff of phenomenal power. Who knows what it's for. He needs an iridium bar to finish it.": "O Feiticeiro está criando um cajado de poder fenomenal. Quem sabe para que serve? Ele precisa de uma barra de irídio para finalizá-lo.",
+    "Bring Wizard an Iridium Bar.": "Leve uma barra de irídio para o Feiticeiro.",
+
+    "Catch a Lingcod": "Pesque um Lingcod",
+    "Willy is challenging you to catch a Lingcod.": "Willy te desafiou a pescar um Lingcod.",
+    "Bring Willy a Lingcod.": "Leve um Lingcod para Willy.",
+
+    "Exotic Spirits": "Espíritos Exóticos",
+    "Gus wants to make a Coco-no-no, but he's missing the main ingredient.": "Gus quer fazer um Coco-no-no, mas está faltando o ingrediente principal.",
+    "Bring Gus a Coconut.": "Leve um coco para Gus.",
+
+    "Errand for your Wife": "Encomenda para sua Esposa",
+    "Your wife asked you to bring her 200 pieces of fiber for a secret project.": "Sua esposa pediu para você levar 200 fibras para um projeto secreto.",
+    "Bring Emily 200 fiber.": "Leve 200 fibras para Emily.",
+
+    "Haley's Cake-Walk": "Caminhada dos Bolos de Haley",
+    "Your wife is organizing a charity cake-walk in the town square. She asked you to bring a chocolate cake.": "Sua esposa está organizando uma caminhada beneficente com bolos na praça da cidade. Ela pediu para você levar um bolo de chocolate.",
+    "Enter Town on a sunny morning with a chocolate cake.": "Entre na cidade em uma manhã ensolarada com um bolo de chocolate.",
+
+    "Willy's Challenge": "Desafio de Willy",
+    "Willy has challenged you to catch 3 Sandfish.": "Willy te desafiou a pescar 3 Peixes-da-areia.",
+    "Catch 3 Sandfish.": "Pesque 3 Peixes-da-areia.",
+
+    "Feeding Animals": "Alimentando os Animais",
+    "Robin, the local carpenter, lives north of town. In exchange for raw materials and money, she'll construct new buildings on your farm. If you build a silo, you can start harvesting your own grass with the scythe, and store it to feed your animals.": "Robin, a carpinteira local, mora ao norte da cidade. Em troca de materiais e dinheiro, ela construirá novos edifícios em sua fazenda. Se você construir um silo, poderá começar a colher sua própria grama com a foice e armazená-la para alimentar seus animais.",
+    "Build a Silo.": "Construa um silo.",
+
+    "Strange Note": "Nota Estranha",
+    "You found a note, barely legible, asking you to bring *may-pal serrup* to the *seecrit wuds*./Bring *may-pal serrup* to the *seecrit wuds*.": "Você encontrou uma nota, quase ilegível, pedindo para levar *may-pal serrup* para os *seecrit wuds*./Leve *may-pal serrup* para os *seecrit wuds*.",
+    "Bring maple syrup to the Secret Woods": "Leve xarope de bordo para a Floresta Secreta.",
+
+    "Cryptic Note": "Nota Críptica",
+    "You found a note that reads, *Someone is waiting for you on level 100 in the Skull Cavern*": "Você encontrou uma nota que diz, *Alguém está esperando por você no nível 100 da Caverna do Crânio*.",
+    "Reach level 100 in the Skull Cavern": "Alcance o nível 100 na Caverna do Crânio.",
+
+    "A Winter Mystery": "Um Mistério de Inverno",
+    "You encountered a suspicious looking figure by the bus stop. When it saw you, it fled toward town. Could there be a clue to its whereabouts?": "Você encontrou uma figura suspeita perto do ponto de ônibus. Quando ela te viu, fugiu em direção à cidade. Será que há alguma pista sobre seu paradeiro?",
+    "Find the shadowy figure.": "Encontre a figura sombria.",
+
+    "The Pirate's Wife": "A Esposa do Pirata",
+    "An old lady living on Ginger Island is asking you to find a keepsake of her husband's. She gave you an old photograph of a soldier that washed up on shore, hoping it would help in some way.": "Uma senhora idosa que vive na Ilha do Gengibre está pedindo para você encontrar uma lembrança do marido dela. Ela te deu uma fotografia antiga de um soldado que apareceu na praia, esperando que isso possa ajudar de alguma forma.",
+    "Find a keepsake that belonged to Birdie's husband.": "Encontre uma lembrança que pertenceu ao marido de Birdie.",
+
+    "Fairy Dust recipe": "Receita de Pó de Fada",
+    "5 Golden Walnuts": "5 Nozes Douradas",
+
+    "Harvest an egg from your chickens.": "Colha um ovo de suas galinhas.",
+    "If you want to become a farmer, you have to start with the basics. Feed your chickens each day by letting them eat grass outside, or by placing hay into their troughs. Once they are mature, harvest an egg!": "Se você quer se tornar um fazendeiro, precisa começar pelo básico. Alimente suas galinhas todos os dias deixando-as comer grama fora ou colocando feno nos cochos. Quando estiverem maduras, colha um ovo!",
+
+    "The Giant Stump": "O Toco Gigante",
+    "The big tree to the south of my farm blew down. With 100 hardwood, I could turn the stump into something interesting...": "A grande árvore ao sul da minha fazenda caiu. Com 100 madeiras nobres, eu poderia transformar o toco em algo interessante...",
+    "Fix up the giant stump.": "Repare o toco gigante.",
+
+    "Access to Raccoon Quests": "Acesso às Missões do Guaxinim",
+    "Iridium snake milk": "Leite de cobra de irídio",
+    "Magnifying Glass": "Lupa"
+}
