@@ -9,4 +9,5 @@
 PHPMailer/
 vendor/
 node_modules/
-data/saves/
+data/saves/*
+!data/saves/example
