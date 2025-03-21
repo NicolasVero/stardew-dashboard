@@ -25,44 +25,18 @@ jobs:
           echo "Script beginning..."
           echo "Connection to $FTP_HOST with username $FTP_USER"
           /usr/bin/lftp -u $FTP_USER,$FTP_PASS $FTP_HOST -e "mirror -R ./ /htdocs/ \
-          --exclude .github/ \
-          --exclude .git/ \
-          --exclude bash/ \
-          --exclude docs/ \
-          --exclude assets/images/achievements/ \
-          --exclude assets/images/additionnal_items/ \
-          --exclude assets/images/artifacts/ \
-          --exclude assets/images/books/ \
-          --exclude assets/images/bundles/ \
-          --exclude assets/images/characters/ \
-          --exclude assets/images/cooking_recipes/ \
-          --exclude assets/images/crafting_recipes/ \
-          --exclude assets/images/dialogue_boxes/ \
-          --exclude assets/images/enemies/ \
-          --exclude assets/images/easter_eggs/ \
-          --exclude assets/images/farm_animals/ \
-          --exclude assets/images/fish/ \
-          --exclude assets/images/icons/ \
-          --exclude assets/images/languages/ \
-          --exclude assets/images/minerals/ \
-          --exclude assets/images/rewards/ \
-          --exclude assets/images/shipped_items/ \
-          --exclude assets/images/skills/ \
-          --exclude assets/images/social/ \
-          --exclude assets/images/star_achievements/ \
-          --exclude assets/images/steam_achievements/ \
-          --exclude assets/images/tools/ \
-          --exclude assets/images/unlockables/ \
-          --exclude styles/less/ \
-          --exclude data/saves/ \
-          --exclude scripts/typescript/ \
-          --exclude vendor/composer/ \
-          --exclude .gitignore \
-          --exclude .htaccess \
-          --exclude composer.json \
-          --exclude tsconfig.json \
-          --exclude package.json \
-          --exclude composer.lock \
-          --exclude package.lock \
-          --exclude LICENSE.md
-          --exclude README.md; quit"
+          --include index.php \
+          --include functions.php \
+          --include assets/audio/** \
+          --include assets/fonts/** \
+          --include assets/images/content/** \
+          --include assets/images/cursors/** \
+          --include components/** \
+          --include data/json/** \
+          --include data/saves/example \
+          --include includes/** \
+          --include locales/** \
+          --include scripts/javascript/** \
+          --include styles/css/** \
+          --reverse-include; quit"
+          echo "Script finished."
