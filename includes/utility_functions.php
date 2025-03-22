@@ -44,7 +44,8 @@ function get_translated_wiki_link(string $wiki_link, string $lang): string {
 		"de" => "https://de.stardewvalleywiki.com/",
 		"es" => "https://es.stardewvalleywiki.com/",
 		"it" => "https://it.stardewvalleywiki.com/",
-		"pt" => "https://pt.stardewvalleywiki.com/"
+		"pt" => "https://pt.stardewvalleywiki.com/",
+		"tr" => "https://tr.stardewvalleywiki.com/"
 	][$lang];
 
     if(isset($wiki_url["path"])) {
@@ -96,7 +97,7 @@ function is_a_supported_language(string $language): bool {
  */
 function get_supported_languages(): array {
 	return [
-		"en", "fr", "de", "es", "it", "pt"
+		"en", "fr", "de", "es", "it", "pt", "tr"
 	];
 }
 
