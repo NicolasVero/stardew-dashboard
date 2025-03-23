@@ -1,0 +1,142 @@
+{
+    "Quests in progress": "Devam eden görevler",
+    "Fishing Quest": "Balıkçılık Görevi",
+    "Socializing Quest": "Sosyalleşme Görevi",
+    "Killing Quest": "Avlama Görevi",
+    "Delivering Quest": "Teslimat Görevi",
+    "Fishing": "Balıkçılık",
+    "Socializing": "Sosyalleşme",
+    "Killing": "Avlama",
+    "Delivering": "Teslimat",
+    "Deliver": "Teslim et",
+    "Kill": "Öldür",
+    "Talk to": "Konuş",
+    "Fish": "Balık tut",
+    "Weekly Special Order": "Haftalık Özel Sipariş",
+    "Friendship points": "Dostluk puanları",
+    
+    "Ship 100 tropical crops": "100 tropikal mahsul gönder",
+    "Defeat 50 cave creatures": "50 mağara yaratığını yen",
+    "Catch 10 ocean fish": "10 okyanus balığı yakala",
+    "Catch 20 river fish": "20 nehir balığı yakala",
+    "Deliver one's favourite jewelry": "Birinin en sevdiğimücevheri teslim et",
+    "Deliver 12 Leeks": "12 pırasa teslim et",
+    "Deliver 100 bones": "100 kemik teslim et",
+    "Collect 24 eggs": "24 yumurta topla",
+    "Ship 100 of a specific crop": "Belirli bir mahsulden 100adet gönder",
+    "Gather 20 pieces of trash": "20 çöp parçası topla",
+    "Deliver 12 bottles of juice": "12 şişe meyve suyu teslimet",
+    "Deliver 25 gold-quality vegetables": "25 altın kalitesindesebze teslim et",
+    "Collect 80 pieces of hardwood": "80 sert ağaç parçasıtopla",
+    "Collect 1,000 pieces of wood or stone": "1.000 tahta veyataş topla",
+    "Deliver 100 pieces of bug meat": "100 böcek eti teslim et",
+    "Fish exotic creatures": "Egzotik yaratıkları yakala",
+    "Collect 1 prismatic jelly": "1 prizmatik jöle topla",
+    "Collect 1 ectoplasm": "1 ektoplazma topla",
+    "Ship 500 QI Beans": "500 QI Fasulyesi gönder",
+    "Score 50,000 points in Junimo Kart endless mode": "JunimoKart sonsuz modunda 50.000 puan kazan",
+    "Collect and Deliver 4 Prismatic Shards": "4 prizmatikparça topla ve teslim et",
+    "Reach floor 100 of the Skull Cavern without consuming anyfood or drink items": "Kafatası Mağarası'nın 100. katınayiyecek veya içecek tüketmeden ulaş",
+    "Ship 100,000g worth of freshly cooked items": "100.000gdeğerinde taze pişirilmiş ürün gönder",
+    "Give 50 loved gifts in one week": "Bir hafta içinde 50sevilen hediye ver",
+    "Catch the legendary fishes' descendants": "Efsanevibalıkların soyundan gelenleri yakala",
+    "Reach the bottom of the Mines in the Mountains":"Dağlardaki Madenlerin en altına ulaş",
+    "Make it to floor 100 of the Skull Cavern": "KafatasıMağarası'nın 100. katına ulaş",
+    "Deliver 100 items of each of the following colors (redorange/yellow/green/blue/purple)": "Aşağıdaki renklerin herbirinden 100 eşya teslim et (kırmızı/turuncu/sarı/yeşilmavi/mor)",
+
+    "Meet The Wizard": "Büyücüyle Tanış",
+    "Enter the wizard's tower.": "Büyücünün kulesine gir.",
+    "You received a letter from the local wizard. He claims tohave information regarding the old community center.":"Yerel büyücüden bir mektup aldın. Eski topluluk merkezihakkında bilgiye sahip olduğunu söylüyor.",
+
+    "The Mysterious Qi": "Gizemli Qi",
+    "Leave a rainbow shell in the box at the train platform.":"Tren platformundaki kutuya bir gökkuşağı kabuğu bırak.",
+    "Within a secret lock-box, you found a note with peculiarinstructions. It's signed by a 'Mr. Qi'.": "Gizli birkutuda, içinde garip talimatlar olan bir not buldun. Not,'Bay Qi' tarafından imzalanmış.",
+    
+    "Getting Started": "Başlangıç",
+    "Cultivate and harvest a parsnip.": "Bir yabanturpu ek vehasat et.",
+    "If you want to become a farmer, you have to start with thebasics.": "Çiftçi olmak istiyorsan, temelden başlamalısın.",
+    
+    "Raising Animals": "Hayvan Yetiştirme",
+    "Build a Coop.": "Bir kümes inşa et.",
+    
+    "Advancement": "İlerleme",
+    "Reach Farming level 1 and craft a scarecrow.": "Çiftçilikseviyeni 1 yap ve bir korkuluk yap.",
+    
+    "Introductions": "Tanışma",
+    "Go talk to every villagers in town": "Kasabadaki herkeslekonuş",
+    
+    "100 Friendship points": "100 Dostluk puanı",
+    
+    "Copper Ore": "Bakır Cevheri",
+    "Bring a piece of copper ore to Clint's blacksmith shop.":"Bir parça bakır cevherini Clint'in demirci dükkânına götür",
+    
+    "Forging ahead": "İlerleyen Madencilik",
+    "Craft a Furnace.": "Bir fırın yap.",
+    
+    "Smelting": "Eritme",
+    "Use your furnace to smelt a Copper Bar.": "Fırınınıkullanarak bir Bakır Çubuk erit.",
+    
+    "To The Beach": "Plaja Git",
+    "Someone named Willy invited you to visit the beach southof town.": "Willy adında biri seni kasabanın güneyindekiplaja davet etti.",
+    
+    "Bamboo pole": "Bambu olta",
+    "Explore The Mine": "Madeni Keşfet",
+    "Reach level 5 in the mines.": "Madende 5. seviyeye ulaş.",
+
+    "Mayor's Need": "Belediye Başkanının İhtiyacı",
+    "Bring Lewis a bottle of Truffle Oil.": "Lewis'e bir şişeTrüf Yağı götür.",
+    
+    "Wanted: Lobster": "Aranıyor: Istakoz",
+    "Bring Gus a Lobster.": "Gus'a bir istakoz götür.",
+    
+    "Pam Needs Juice": "Pam'in Meyve Suyuna İhtiyacı Var",
+    "Bring Pam a Battery Pack.": "Pam'e bir pil paketi götür.",
+    
+    "Staff Of Power": "Güç Asası",
+    "Bring Wizard an Iridium Bar.": "Büyücüye bir İridyum Çubukgötür.",
+    
+    "Catch a Lingcod": "Bir Lingcod Yakala",
+    "Bring Willy a Lingcod.": "Willy'ye bir Lingcod götür.",
+    
+    "Exotic Spirits": "Egzotik Ruhlar",
+    "Bring Gus a Coconut.": "Gus'a bir Hindistan cevizi götür.",
+    
+    "Errand for your Wife": "Eşin İçin Görev",
+    "Bring Emily 200 fiber.": "Emily'ye 200 elyaf götür.",
+    
+    "Willy's Challenge": "Willy'nin Meydan Okuması",
+    "Catch 3 Sandfish.": "3 Kum Balığı yakala.",
+
+    "Feeding Animals": "Hayvanları Besleme",
+    "Build a Silo.": "Bir Silo inşa et.",
+
+    "Strange Note": "Garip Not",
+    "You found a note, barely legible, asking you to bring*may-pal serrup* to the *seecrit wuds*./Bring *may-palserrup* to the *seecrit wuds*.": "Zar zor okunabilen birnot buldunuz, *may-pal serrup*'u *seecrit wuds*'agetirmenizi istiyor./*May-pal serrup*'u *seecrit wuds*'agötürün.",
+    "Bring maple syrup to the Secret Woods": "Akçaağaç şurubunuGizli Orman’a götür.",
+
+    "Cryptic Note": "Gizemli Not",
+    "You found a note that reads, *Someone is waiting for youon level 100 in the Skull Cavern*": "Bir not buldunuz,üzerinde şu yazıyor: *Biri, Kafatası Mağarası'nın 100.katında seni bekliyor*.",
+    "Reach level 100 in the Skull Cavern": "KafatasıMağarası'nın 100. katına ulaş.",
+
+    "A Winter Mystery": "Bir Kış Gizemi",
+    "You encountered a suspicious looking figure by the busstop. When it saw you, it fled toward town. Could there bea clue to its whereabouts?": "Otobüs durağında şüpheligörünümlü bir figürle karşılaştınız. Sizi gördüğündekasabaya doğru kaçtı. Acaba nerede olduğuna dair bir ipucuvar mı?",
+    "Find the shadowy figure.": "Gizemli figürü bul.",
+
+    "The Pirate's Wife": "Korsanın Karısı",
+    "An old lady living on Ginger Island is asking you to finda keepsake of her husband's. She gave you an old photographof a soldier that washed up on shore, hoping it would helpin some way.": "Zencefil Adası'nda yaşayan yaşlı bir kadın,kocasına ait bir hatıra bulmanızı istiyor. Yardımcıolabileceğini umarak sahile vuran bir askerin eski birfotoğrafını size verdi.",
+    "Find a keepsake that belonged to Birdie's husband.":"Birdie’nin kocasına ait bir hatırayı bul.",
+
+    "Fairy Dust recipe": "Peri Tozu tarifi",
+    "5 Golden Walnuts": "5 Altın Ceviz",
+
+    "Harvest an egg from your chickens.": "Tavuklarından biryumurta topla.",
+    "If you want to become a farmer, you have to start with thebasics. Feed your chickens each day by letting them eatgrass outside, or by placing hay into their troughs. Oncethey are mature, harvest an egg!": "Çiftçi olmak istiyorsantemelden başlamalısın. Tavuklarını her gün dışarıda otyemelerine izin vererek ya da yemliklerine saman koyarakbesle. Büyüdüklerinde, bir yumurta topla!",
+
+    "The Giant Stump": "Dev Ağaç Kütüğü",
+    "The big tree to the south of my farm blew down. With 100hardwood, I could turn the stump into somethinginteresting...": "Çiftliğimin güneyindeki büyük ağaçdevrildi. 100 sert ağaç ile kütüğü ilginç bir şeyedönüştürebilirim...",
+    "Fix up the giant stump.": "Dev kütüğü onar.",
+
+    "Access to Raccoon Quests": "Rakun Görevlerine Erişim",
+    "Iridium snake milk": "İridyum yılan sütü",
+    "Magnifying Glass": "Büyüteç"
+}

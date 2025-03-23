@@ -1,0 +1,40 @@
+{
+    "Welcome to Stardew Dashboard": "Stardew Dashboard'a Hoş Geldiniz",
+    "What is Stardew Dashboard?": "Stardew Dashboard Nedir?",
+    "Are you an avid farmer in Stardew Valley looking to optimize your gameplay experience? Look no further! Stardew Dashboard is your ultimate companion to manage your farm and track your progress.": "Stardew Valley'de deneyiminizi en iyi hale getirmek isteyen tutkulu bir çiftçi misiniz? Daha fazla aramayın! Stardew Dashboard, çiftliğinizi yönetmek ve ilerlemenizi takip etmek için en iyi yardımcınızdır.",
+    "Upload your game save file effortlessly and gain access to a wealth of information about your farm, from tracking your progress in mastering recipes to discovering new elements of the game world. With our intuitive interface, staying on top of your farm's needs and exploring everything that Stardew Valley has to offer has never been easier.": "Oyun kayıt dosyanızı kolayca yükleyin ve tarifleri öğrenme ilerlemenizden oyun dünyasındaki yeni unsurları keşfetmeye kadar çiftliğiniz hakkında birçok bilgiye erişin. Kullanıcı dostu arayüzümüzle, çiftliğinizin ihtiyaçlarını takip etmek ve Stardew Valley’nin sunduğu her şeyi keşfetmek hiç bu kadar kolay olmamıştı.",
+    "Whether you're a seasoned veteran or just starting out, Stardew Dashboard is here to enhance your Stardew Valley experience. Join our community today and take your farming to the next level!": "İster deneyimli bir oyuncu olun, ister yeni başlıyor olun, Stardew Dashboard Stardew Valley deneyiminizi geliştirmek için burada. Bugün topluluğumuza katılın ve çiftçiliğinizi bir üst seviyeye taşıyın!",
+    "Our tool only works on versions higher than 1.4.": "Araç yalnızca 1.4 ve üzeri sürümlerde çalışır.",
+
+    "How to use it": "Nasıl Kullanılır?",
+    "To start using Stardew Dashboard, retrieve your save": "Stardew Dashboard'u kullanmaya başlamak için kayıt dosyanızı alın.",
+    "The save file is the one with the same name as your folder.": "Kayıt dosyanız, klasörünüzle aynı ada sahip olan dosyadır.",
+    "Well done! The hardest part is behind us! Now you just have to upload your save": "Tebrikler! En zor kısmı geçtik! Şimdi sadece kayıt dosyanızı yüklemeniz gerekiyor",
+    "directly to our website and let the magic happen.": "doğrudan web sitemize yükleyin ve sihrin gerçekleşmesine izin verin.",
+    "There's also a range of settings": "Ayrıca çeşitli ayarlar da mevcut",
+    "to customize your experience!": "deneyiminizi kişiselleştirmek için!",
+
+    "You don't have a backup of Stardew Valley? Try our dashboard with this one!": "Stardew Valley için bir kayıt dosyanız yok mu? Panomuzu bununla deneyin!",
+    "Stardew_Dashboard_default_save": "Stardew_Dashboard_test_kaydı",
+    "Download the save.": "Kaydı indir.",
+
+    "We value your feedback": "Geri Bildiriminiz Bizim İçin Önemli",
+    "Your experience with Stardew Dashboard is important to us.": "Stardew Dashboard deneyiminiz bizim için önemlidir.",
+    "We continuously strive to improve and would love to hear your thoughts and suggestions. Whether it's a feature request, a bug report, or general feedback, your input helps us make Stardew Dashboard even better.": "Sürekli olarak geliştirmeye çalışıyoruz ve düşüncelerinizi, önerilerinizi duymaktan memnun oluruz. İster yeni bir özellik isteği, ister hata bildirimi ya da genel bir geri bildirim olsun, görüşleriniz Stardew Dashboard'u daha da iyileştirmemize yardımcı oluyor.",
+    "Click": "Tıklayın",
+    "to open the feedback form and share your thoughts with us.": "geri bildirim formunu açmak ve düşüncelerinizi bizimle paylaşmak için.",
+    "Thank you for being a part of our community and helping us grow!": "Topluluğumuzun bir parçası olduğunuz ve büyümemize yardımcı olduğunuz için teşekkür ederiz!",
+
+    "About us": "Hakkımızda",
+    "Stardew Dashboard is a project created by two French graduates with a bachelor's degree in web development.": "Stardew Dashboard, web geliştirme alanında lisans derecesine sahip iki Fransız mezunu tarafından oluşturulmuş bir projedir.",
+    "Created during our spare time, this website serves as a tool for us to conveniently track our progress in Stardew Valley.": "Boş zamanlarımızda oluşturduğumuz bu web sitesi, Stardew Valley'deki ilerlememizi kolayca takip etmemize olanak tanıyan bir araç olarak hizmet vermektedir.",
+    "Romain is a hard-working web developer. He loves taking on challenges and always going the extra mile.": "Romain çalışkan bir web geliştiricidir. Zorluklarla mücadele etmeyi sever ve her zaman fazladan çaba harcar.",
+    "He took care of the Front-End, and helped Nicolas with the Back-End.": "Ön uç geliştirmeyle ilgilendi ve arka uçta Nicolas'a yardımcı oldu.",
+    "Nicolas is passionate about sleep and web development. He works as a web developer at Neoma Business School.": "Nicolas, uykuya ve web geliştirmeye tutkuyla bağlıdır. Neoma Business School'da web geliştirici olarak çalışıyor.",
+    "He took care of the Back-End of the website, as well as the UX / UI design.": "Web sitesinin arka ucu ile birlikte UX / UI tasarımını da üstlendi.",
+
+    "Oh no!": "Ah hayır!",
+    "Unfortunately, the tool is not available on smartphone. Go and try it on a computer!": "Maalesef, bu araç akıllı telefonlarda mevcut değil. Bir bilgisayarda deneyin!",
+
+    "loading": "yukleniyor"
+}

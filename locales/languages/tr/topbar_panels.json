@@ -1,0 +1,22 @@
+{
+    "Upload a save" : "Bir kayıt yükle",
+    "Browse" : "Göz at",
+    "Choose a file" : "Bir dosya seç",
+
+    "Settings" : "Ayarlar",
+    "Hide discovered items" : "Keşfedilen öğeleri gizle",
+    "Hide undiscovered items" : "Keşfedilmemiş öğeleri gizle",
+    "Show Steam achievements icons" : "Steam başarı simgelerini göster",
+    "Hide items from newer versions" : "Yeni sürümlerdeki öğeleri gizle",
+    "Activate wiki redirections" : "Wiki yönlendirmelerini etkinleştir",
+
+    "Your feedback" : "Geri bildiriminiz",
+    "Username" : "Kullanıcı adı",
+    "Email address" : "E-posta adresi",
+    "Topic" : "Konu",
+    "Feature request" : "Özellik isteği",
+    "Bug report" : "Hata raporu",
+    "Other" : "Diğer",
+    "Message" : "Mesaj",
+    "Send feedback" : "Geri bildirim gönder"
+}
