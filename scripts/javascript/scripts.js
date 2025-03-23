@@ -440,6 +440,23 @@ galleries_items_containers.forEach((container) => {
         item.style.order = items_names.indexOf(image_alt).toString();
     });
 });
+galleries_items_containers.forEach((container) => {
+    const tooltips_list = container.querySelectorAll(".tooltip");
+    // console.log(tooltips_list)
+    tooltips_list.forEach((item) => {
+        const item_state = item.querySelector("img.gallery-item").className;
+        console.log(item_state);
+        if (item_state.includes("found")) {
+            item.style.order = "0";
+        }
+        if (item_state.includes("unused")) {
+            item.style.order = "1";
+        }
+        if (item_state.includes("not-found")) {
+            item.style.order = "2";
+        }
+    });
+});
 const panels = {
     Digit1: ".visited-locations",
     Digit2: ".monster-eradication-goals",
