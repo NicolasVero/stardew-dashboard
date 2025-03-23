@@ -36,7 +36,7 @@
 	align-items: center;
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: @big-gap;
+	margin-bottom: @md-gap;
 }
 
 .panel-title {
@@ -159,6 +159,11 @@
 			flex-direction: column;
 			gap: @md-gap;
 			justify-content: center;
+			
+			&::after {
+				content: "";
+				border-top: 1px solid @checkboxes-bc;
+			}
 
 			.checkbox {
 				align-items: flex-end;
@@ -168,6 +173,25 @@
 				input {
 					.checkbox-elements;
 				}
+			}
+		}
+
+		.selects {
+			display: block;
+			margin-top: @md-gap;
+
+			label {
+				display: block;
+				margin-bottom: @small-gap;
+			}
+
+			select {
+				background: transparent;
+				border: solid 3px @filled-element-bc;
+				border-radius: 5px;
+				font-family: @primary-ff;
+				padding: 3px @xsmall-gap;
+				width: 100%;
 			}
 		}
 	}

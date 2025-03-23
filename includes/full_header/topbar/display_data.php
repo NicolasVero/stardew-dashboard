@@ -116,6 +116,14 @@ function display_settings_panel(): string {
                     <label for='wiki_redirections' id='wiki_redirections-label'>" . __("Activate wiki redirections") . "</label>
                 </span>
             </span>
+            <span class='selects'>
+                <label>" . __("Gallery order") . "</label>
+                <select class='gallery-order'>
+                    <option value='version'>" . __("Version") . "</option>
+                    <option value='alphabetical-order'>" . __("Alphabetical order") . "</option>
+                    <option value='discovery-level'>" . __("Discovery level") . "</option>
+                </select>
+            </span>
         </section>
     ";
 }
