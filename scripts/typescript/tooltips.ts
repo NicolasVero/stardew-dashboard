@@ -4,8 +4,8 @@ function update_tooltips_after_ajax(): void {
     });
 }
 
-function initialize_tooltips(section: string = null): void {
-    let tooltips : NodeListOf<HTMLElement>;
+function initialize_tooltips(section: string = null, is_overload: boolean = false): void {
+    let tooltips: NodeListOf<HTMLElement>;
     
     if(section === null || section === '') {
         tooltips = document.querySelectorAll(".tooltip");
@@ -17,12 +17,20 @@ function initialize_tooltips(section: string = null): void {
         const rect: DOMRect = tooltip.getBoundingClientRect();
         const span: HTMLElement = tooltip.querySelector("span");
 
-        if(span && !["left", "right"].some(className => span.classList.contains(className))) {
+        console.log(tooltip)
+
+        if(span && (!["left", "right"].some(className => span.classList.contains(className)) || is_overload)) {
             if(rect.left === 0) {
                 return;
             }
 
             const tooltip_position: string = (rect.left < window.innerWidth / 2) ? "right" : "left";
+            
+            if(is_overload) {
+                span.classList.remove("left");
+                span.classList.remove("right");
+            }
+
             span.classList.add(tooltip_position);
         }
     });

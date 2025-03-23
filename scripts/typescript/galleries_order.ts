@@ -14,6 +14,8 @@ gallery_option.addEventListener("change", (event) => {
     if(target.value === "version") {
         gallery_reset_order();
     }
+
+    initialize_tooltips(null, true);
 });
 
 function gallery_reset_order() {

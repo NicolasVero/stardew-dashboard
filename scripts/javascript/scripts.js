@@ -442,6 +442,7 @@ gallery_option.addEventListener("change", (event) => {
     if (target.value === "version") {
         gallery_reset_order();
     }
+    initialize_tooltips(null, true);
 });
 function gallery_reset_order() {
     const galleries_items_containers = document.querySelectorAll(".gallery-items-container");
@@ -709,7 +710,7 @@ function update_tooltips_after_ajax() {
         initialize_tooltips();
     });
 }
-function initialize_tooltips(section = null) {
+function initialize_tooltips(section = null, is_overload = false) {
     let tooltips;
     if (section === null || section === '') {
         tooltips = document.querySelectorAll(".tooltip");
@@ -720,11 +721,16 @@ function initialize_tooltips(section = null) {
     tooltips.forEach((tooltip) => {
         const rect = tooltip.getBoundingClientRect();
         const span = tooltip.querySelector("span");
-        if (span && !["left", "right"].some(className => span.classList.contains(className))) {
+        console.log(tooltip);
+        if (span && (!["left", "right"].some(className => span.classList.contains(className)) || is_overload)) {
             if (rect.left === 0) {
                 return;
             }
             const tooltip_position = (rect.left < window.innerWidth / 2) ? "right" : "left";
+            if (is_overload) {
+                span.classList.remove("left");
+                span.classList.remove("right");
+            }
             span.classList.add(tooltip_position);
         }
     });
