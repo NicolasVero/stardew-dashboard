@@ -39,7 +39,7 @@ function display_unlockables(): string {
     return "
         <section class='gallery unlockables-section _50'>
             <h2 class='section-title'>" . __("Unlockables") . "</h2>
-            <span>
+            <span class='gallery-items-container'>
 				<h3 class='no-spoil-title'>" . no_items_placeholder() . "</h3>
                 $unlockables_structure
 			</span>

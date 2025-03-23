@@ -62,7 +62,7 @@ function display_detailled_gallery(array $gallery_details, string $width_class =
     return "
         <section class='gallery $json_filename-section $width_class'>
             $title
-            <span>
+            <span class='gallery-items-container'>
 				<h3 class='no-spoil-title'>" . no_items_placeholder() . "</h3>
                 $item_structure
             </span>
