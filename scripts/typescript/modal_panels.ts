@@ -75,3 +75,37 @@ function prevent_panel_scroll(): void {
         );
     });
 }
+
+function unlock_loading_exception(): void {
+    toggle_loading(false);
+    hide_all_sections();
+}
+
+function error_popup(): string {
+    const section: HTMLElement = document.createElement("section");
+    section.classList.add("error-popup", "panel", "modal-window", "to-destroy", "medium-panel-width", "limit-panel-height", "panel-with-border");
+    
+    const header: HTMLDivElement = document.createElement("div");
+    header.classList.add("panel-header");
+
+    const title: HTMLHeadingElement = document.createElement("h2");
+    title.classList.add("section-title", "panel-title");
+    title.innerText = "Error";
+
+    const closeImg: HTMLImageElement = document.createElement("img");
+    closeImg.src = get_site_root() + "/assets/images/icons/exit.png";
+    closeImg.classList.add("exit-error-popup", "exit");
+    closeImg.alt = "Exit";
+
+    header.appendChild(title);
+    header.appendChild(closeImg);
+
+    const span: HTMLSpanElement = document.createElement("span");
+    span.classList.add("error-message");
+    span.innerText = "An unknown error occurred. Please try again later or with another save.";
+    
+    section.appendChild(header);
+    section.appendChild(span);
+
+    return section.outerHTML;
+}

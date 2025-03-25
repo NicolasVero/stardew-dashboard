@@ -4,6 +4,12 @@ window.addEventListener("load", () => {
     const os_path: string = get_os_path(detect_os());
     const tag: HTMLElement = document.getElementById("save_os_path");
     
+    if (localStorage.getItem("error_popup") === "true") {
+        localStorage.removeItem("error_popup");
+        document.body.innerHTML += error_popup();
+        activate_buttons(".error", ".exit-error-popup", ".error-popup");
+    }
+    
     if(tag !== null) {
         tag.innerHTML = os_path;
     }
@@ -36,9 +42,7 @@ window.addEventListener("load", () => {
 
     save_landing_topbar();
     prevent_panel_scroll();
-    activate_buttons(".landing-upload", ".exit-upload", ".upload-panel");
-    activate_buttons(".landing-languages", ".exit-languages", ".languages-panel");
-    activate_buttons(".landing-settings", ".exit-settings", ".settings");
+    load_landing_elements();
     toggle_custom_checkboxes(".checkmark");
     activate_feedback_ajax_trigger();
 });

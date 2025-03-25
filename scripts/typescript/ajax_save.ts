@@ -59,26 +59,31 @@ async function AJAX_send(): Promise<void> {
 
     xhr.onreadystatechange = function () {
         if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-            const data: AjaxResponse = JSON.parse(xhr.responseText);
-            const html: Record<string, string> = data.html;
+            try {
+                const data: AjaxResponse = JSON.parse(xhr.responseText);
+                const html: Record<string, string> = data.html;
 
-            page_display.innerHTML = html["topbar"];
-            
-            if(data.code === "success") {
-                page_display.innerHTML += landing_page;
-                const players_count: number = data.players.length;
-
-                for(let i = 0; i < players_count; i++) {
-                    page_display.innerHTML += html["player_" + i];
+                page_display.innerHTML = html["topbar"];
+                
+                if(data.code === "success") {
+                    page_display.innerHTML += landing_page;
+                    const players_count: number = data.players.length;
+    
+                    for(let i = 0; i < players_count; i++) {
+                        page_display.innerHTML += html["player_" + i];
+                    }
+    
+                    load_dashboard_elements();
+                } else {
+                    page_display.innerHTML += html["error_message"];
+                    load_error_page_elements();
                 }
-
-                load_dashboard_elements();
-            } else {
-                page_display.innerHTML += html["error_message"];
-                load_error_page_elements();
+    
+                load_final_elements();
+            } catch(error) {
+                localStorage.setItem("error_popup", "true");
+                location.reload();
             }
-
-            load_final_elements();
         }
     };
 
