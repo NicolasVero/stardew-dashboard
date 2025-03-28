@@ -34,7 +34,7 @@ function display_farm_animals_panel(): string {
             <section class='all-animals-$player_id panel all-animals-panel modal-window'>
                 <div class='panel-header'>
                     <h2 class='section-title panel-title'>" . __("Farm animals friendships") . "</h2>
-                    <img src='$images_path/icons/exit.png' class='exit-all-animals-$player_id exit' alt='Exit'/>
+                    <img src='$images_path/icons/exit.png' class='exit-all-animals-$player_id exit' alt='Exit'>
                 </div>
                 <span class='friendlist'>
 			        <h3>" . no_items_placeholder() . "</h3>
@@ -66,23 +66,23 @@ function display_farm_animals_panel(): string {
                     "heart.png" :
                         (($friendship_level === ($i - 0.5)) ?
                             "half_heart.png" : "empty_heart.png"));
-                $hearts_html .= "<img src='$images_path/icons/$heart_icon' class='hearts' alt=''/>";
+                $hearts_html .= "<img src='$images_path/icons/$heart_icon' class='hearts' alt=''>";
             }
 
             $farm_animals_structure .= "
                 <span>
                     <a href='$wiki_url' class='wiki_link' rel='noreferrer' target='_blank'>
-                        <img src='$animal_icon' class='animal-icon' alt='$type icon'/>
+                        <img src='$animal_icon' class='animal-icon' alt='$type icon'>
                     </a>
                     <span class='animal-name'>$name</span>
                     <span class='hearts-level'>$hearts_html</span>
                     <span class='interactions'>
                         <span class='tooltip'>
-                            <img src='$images_path/icons/pet.png' class='interaction $pet_class' alt=''/>
+                            <img src='$images_path/icons/pet.png' class='interaction $pet_class' alt=''>
                             <span>$pet_tooltip</span>
                         </span>
                         <span class='tooltip'>
-                            <img src='$status_icon' class='status' alt='$status'/>
+                            <img src='$status_icon' class='status' alt='$status'>
                             <span>" . get_animal_status_tooltip($status, $name) . "</span>
                         </span>
                     </span>
@@ -95,7 +95,7 @@ function display_farm_animals_panel(): string {
         <section class='all-animals-$player_id panel all-animals-panel modal-window'>
             <div class='panel-header'>
                 <h2 class='section-title panel-title'>" . __("Farm animals friendships") . "</h2>
-                <img src='$images_path/icons/exit.png' class='exit-all-animals-$player_id exit' alt='Exit'/>
+                <img src='$images_path/icons/exit.png' class='exit-all-animals-$player_id exit' alt='Exit'>
             </div>
             <span class='friendlist'>
                 $farm_animals_structure

@@ -16,7 +16,7 @@ function get_level_progress_bar(int $level, int $max_level = 10): string {
         $icon_type = ($i % ($max_level / 2) === 0) ? "big_level" : "level";
         $level_bar = $images_path . "/icons/{$icon_type}{$state}.png";
         
-        $level_structure .= "<img src='$level_bar' alt=''/>";
+        $level_structure .= "<img src='$level_bar' alt=''>";
     }
     
     return "
@@ -46,7 +46,7 @@ function get_skills_icons(array $skills, string $current_skill): string {
 
             $skill_structure .= "
                 <span class='tooltip'>
-                    <img src='$skill_icon_path' alt='" . __($skill_description) . "'/>
+                    <img src='$skill_icon_path' alt='" . __($skill_description) . "'>
                     <span>" . __($skill_description) . "</span>
                 </span>
 			";

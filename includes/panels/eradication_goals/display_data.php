@@ -22,11 +22,11 @@ function display_monster_eradication_goals_panel(): string {
         $wiki_link = get_wiki_link(get_item_id_by_name($alt));
         $is_found = ($counter < $limit) ? "not-found" : "found";
         $total = ($is_completed) ? $counter : "$counter/$limit";
-        $is_completed_icon = ($is_completed) ? "<img src='$images_path/content/goal_star.png' class='star' alt=''/>" : "";
+        $is_completed_icon = ($is_completed) ? "<img src='$images_path/content/goal_star.png' class='star' alt=''>" : "";
         $reward_icon = "
             <span class='tooltip' style='display: flex;'>
                 <a href='$wiki_link' class='wiki_link' rel='noreferrer' target='_blank'>
-                    <img src='$images_path/rewards/$src.png' class='reward $is_found always-on-display' alt='$alt'/>
+                    <img src='$images_path/rewards/$src.png' class='reward $is_found always-on-display' alt='$alt'>
                 </a>
                 <span>" . __($alt) . "</span>
             </span>
@@ -42,8 +42,8 @@ function display_monster_eradication_goals_panel(): string {
                     <span>" . __("Monster Eradication Goals") . "</span>
                     <span>" . __("Help us keep the valley safe") . "</span>
                 </span>
-                <img src='$images_path/content/dashes.png' class='dashes' alt=''/>
-                <img src='$images_path/icons/exit.png' class='exit-monster-eradication-goals exit-monster-eradication-goals-$player_id exit' alt='Exit'/>
+                <img src='$images_path/content/dashes.png' class='dashes' alt=''>
+                <img src='$images_path/icons/exit.png' class='exit-monster-eradication-goals exit-monster-eradication-goals-$player_id exit' alt='Exit'>
             </span>
             <span class='goals'>
                 $goals

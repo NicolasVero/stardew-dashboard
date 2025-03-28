@@ -121,7 +121,7 @@ function get_hearts_structure(array $hearts_info): string {
 	$hearts_structure = "";
     for($i = 1; $i <= $max_heart; $i++) {
         $heart_icon = "$images_path/icons/" . (($i > 8 && $can_be_married) ? "locked_heart.png" : (($friend_level >= $i) ? "heart.png" : "empty_heart.png"));
-        $hearts_structure .= "<img src='$heart_icon' class='hearts' alt=''/>";
+        $hearts_structure .= "<img src='$heart_icon' class='hearts' alt=''>";
     }
 
 	return $hearts_structure;

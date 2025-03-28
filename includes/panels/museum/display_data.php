@@ -44,7 +44,7 @@ function display_museum_panel(): string {
                     $piece_type = $piece_details["type"];
                     $museum_tooltip = "
                         <span class='museum-tooltip tooltip'>
-                            <img src='$images_path/$piece_type/$piece_filename.png' class='museum-piece' alt='$piece_name'/>
+                            <img src='$images_path/$piece_type/$piece_filename.png' class='museum-piece' alt='$piece_name'>
                             <span>" . __($piece_name) . "</span>
                         </span>
                     ";
@@ -66,7 +66,7 @@ function display_museum_panel(): string {
     return "
         <section class='museum-$player_id panel museum-panel modal-window'>
             <span class='museum-block'>
-                <img src='$images_path/icons/exit.png' class='absolute-exit exit exit-museum-$player_id' alt='Exit'/>
+                <img src='$images_path/icons/exit.png' class='absolute-exit exit exit-museum-$player_id' alt='Exit'>
                 <table>
                     <tbody>
                         $table_structure

@@ -51,7 +51,7 @@ function display_detailled_gallery(array $gallery_details, string $width_class =
 			$item_structure .= "
 				<span class='tooltip'>
 					<a href='$wiki_url' class='wiki_link' rel='noreferrer' target='_blank'>
-                        <img src='$element_image' class='gallery-item $json_filename $element_class $version_class' alt='" . __($json_line_name) . "'/>
+                        <img src='$element_image' class='gallery-item $json_filename $element_class $version_class' alt='" . __($json_line_name) . "'>
                     </a>
                     <span>" . __($element_tooltip) . "</span>
                 </span>

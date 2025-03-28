@@ -8,7 +8,7 @@
 function display_visited_locations_button(): string {
     $version_class = get_version_class("1.6.0");
 
-	return "<img src='" . get_images_folder() . "/icons/location_icon.png' class='$version_class-icon visited-locations-icon view-visited-locations view-visited-locations-" . get_current_player_id() . " button-elements modal-opener icon' alt='Visited locations icon'/>";
+	return "<img src='" . get_images_folder() . "/icons/location_icon.png' class='$version_class-icon visited-locations-icon view-visited-locations view-visited-locations-" . get_current_player_id() . " button-elements modal-opener icon' alt='Visited locations icon'>";
 }
 
 /**
@@ -54,8 +54,8 @@ function display_visited_locations_panel(): string {
             <span class='title'>
                 <span>" . __("Visited Locations") . "</span>
             </span>
-            <img src='$images_path/content/white_dashes.png' class='dashes' alt=''/>
-            <img src='$images_path/icons/exit.png' class='exit-visited-locations exit-visited-locations-$player_id exit' alt='Exit'/>
+            <img src='$images_path/content/white_dashes.png' class='dashes' alt=''>
+            <img src='$images_path/icons/exit.png' class='exit-visited-locations exit-visited-locations-$player_id exit' alt='Exit'>
             <span class='locations'>
                 $locations
             </span>

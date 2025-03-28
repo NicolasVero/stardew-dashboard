@@ -62,14 +62,14 @@ function display_landing_page(bool $with_topbar = true): string {
 							<span>
 								" . __("Well done! The hardest part is behind us! Now you just have to upload your save") . "
 								<span class='img-embed landing-upload'>
-									<img src='$images_path/icons/file.png' class='modal-opener' alt='File upload icon'/>
+									<img src='$images_path/icons/file.png' class='modal-opener' alt='File upload icon'>
 								</span>
 								" . __("directly to our website and let the magic happen.") . "
 							</span>
 							<span>
 								" . __("There's also a range of settings") . "
 								<span class='img-embed landing-settings'>
-									<img src='$images_path/icons/settings.png' class='modal-opener' alt='Settings icon'/>
+									<img src='$images_path/icons/settings.png' class='modal-opener' alt='Settings icon'>
 								</span>
 								" . __("to customize your experience!") . "
 							</span>
@@ -92,7 +92,7 @@ function display_landing_page(bool $with_topbar = true): string {
 							<span>
 								" . __("Click") . "
 								<span class='img-embed feedback-opener'>
-									<img src='$images_path/icons/feedback.png' class='modal-opener' alt='Feedback icon'/>
+									<img src='$images_path/icons/feedback.png' class='modal-opener' alt='Feedback icon'>
 								</span>
 								" . __("to open the feedback form and share your thoughts with us.") . "
 								" . __("Thank you for being a part of our community and helping us grow!") . "
@@ -248,7 +248,7 @@ function display_error_page(Exception $exception): string {
     return "
         <div class='error-wrapper'>
             <div class='dialogue-box-error-container'>
-                <img src='$images_path/dialogue_boxes/$image.png' alt='" . $exception->getMessage() . "'/>
+                <img src='$images_path/dialogue_boxes/$image.png' alt='" . $exception->getMessage() . "'>
                 <span>$dialogue</span>
             </div>
         </div>

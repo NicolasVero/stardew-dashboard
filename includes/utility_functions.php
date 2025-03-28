@@ -946,13 +946,13 @@ function display_project_contributor(array $options): string {
     foreach($socials as $social_name => $social) {
         extract($social); //? $url, $on_display
         if($on_display) {
-            $socials_links .= "<a href='$url' rel='noreferrer' target='_blank'><img src='$images_path/social/$social_name.png' alt='$social_name'/></a>";
+            $socials_links .= "<a href='$url' rel='noreferrer' target='_blank'><img src='$images_path/social/$social_name.png' alt='$social_name'></a>";
         }
     }
 
     return "
         <span>
-            <img src='$portrait' class='character-image $icon' alt='$name'/>
+            <img src='$portrait' class='character-image $icon' alt='$name'>
             <span>
                 <span class='character-presentation'>
                     $presentation
@@ -973,7 +973,7 @@ function display_project_contributor(array $options): string {
 function display_loading_strip(): string {
 	$images_path = get_images_folder();
 	$loading_translation = __("loading");
-	return "<img src='$images_path/content/strip_$loading_translation.gif' id='loading-strip' class='loading' alt=''/>";
+	return "<img src='$images_path/content/strip_$loading_translation.gif' id='loading-strip' class='loading' alt=''>";
 }
 
 /**

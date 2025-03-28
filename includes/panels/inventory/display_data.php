@@ -9,7 +9,7 @@ function display_player_tools_button(): string {
     if(!is_game_singleplayer()) {
         return "";
     }
-	return "<img src='" . get_images_folder() . "/icons/tools.png' class='tools-icon view-tools view-tools-" . get_current_player_id() . " button-elements modal-opener icon' alt='Tools icon'/>";
+	return "<img src='" . get_images_folder() . "/icons/tools.png' class='tools-icon view-tools view-tools-" . get_current_player_id() . " button-elements modal-opener icon' alt='Tools icon'>";
 }
 
 /**
@@ -32,7 +32,7 @@ function display_player_tools(): string {
         $tools .= "
 			<span class='tool'>
                 <span class='tool-category'>" . __($formatted_category) . "</span>
-				<img src='$images_path/tools/$formatted_name.png' class='tool-icon' alt='$player_tool'/>
+				<img src='$images_path/tools/$formatted_name.png' class='tool-icon' alt='$player_tool'>
 				<span class='tool-name'> " . __($player_tool) . "</span>
 			</span>
 		";
@@ -42,7 +42,7 @@ function display_player_tools(): string {
         <section class='tools-$player_id panel tools modal-window'>
             <span class='panel-header'>
                 <h2 class='section-title panel-title'>" . __("Tools") . "</h2>
-                <img src='$images_path/icons/exit.png' class='exit-tools-$player_id exit' alt='Exit'/>
+                <img src='$images_path/icons/exit.png' class='exit-tools-$player_id exit' alt='Exit'>
             </span>
             <span class='tools'>
                 $tools

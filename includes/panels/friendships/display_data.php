@@ -23,20 +23,20 @@ function display_friendship_structure(array $friendship_info): string {
         <span>
             <a href='$wiki_link' class='wiki_link' rel='noreferrer' target='_blank'>
                 <span class='tooltip'>
-                    <img src='$images_path/characters/$formatted_villager_name.png' class='character-icon $version_class $meet_class' alt='$villager_name icon'/>
+                    <img src='$images_path/characters/$formatted_villager_name.png' class='character-icon $version_class $meet_class' alt='$villager_name icon'>
                     <span>$points " . __("friendship points") . "</span>
                 </span>
             </a>
             <span class='character-name $formatted_villager_name'>" . __($villager_name) . "</span>
             <span class='hearts-level'>$hearts_structure</span>
             <span class='tooltip'> 
-                <img src='$images_path/icons/birthday_icon.png' class='birthday_icon $birthday_class' alt=''/>
+                <img src='$images_path/icons/birthday_icon.png' class='birthday_icon $birthday_class' alt=''>
                 <span>$birthdate</span>
             </span>
             <span class='interactions'>
                 <span class='tooltip'>
-                    <img src='$images_path/icons/gift.png' class='interaction {$week_gifts[0]}' alt=''/>
-                    <img src='$images_path/icons/gift.png' class='interaction {$week_gifts[1]}' alt=''/>
+                    <img src='$images_path/icons/gift.png' class='interaction {$week_gifts[0]}' alt=''>
+                    <img src='$images_path/icons/gift.png' class='interaction {$week_gifts[1]}' alt=''>
                     <span>" . __("Gifts made in the last week") . "</span>
                 </span>
             </span>
@@ -74,7 +74,7 @@ function display_friendships(int $limit = -1): string {
         <section class='info-section friends-section $section_class $section_class-$player_id modal-window'>
             <div class='panel-header'>
                 <h2 class='section-title panel-title'>" . __("Friendship progression") . "</h2>
-                <img src='$images_path/icons/exit.png' class='exit-all-friends-$player_id exit' alt='Exit'/>
+                <img src='$images_path/icons/exit.png' class='exit-all-friends-$player_id exit' alt='Exit'>
             </div>
             <span class='friendlist'>
         "

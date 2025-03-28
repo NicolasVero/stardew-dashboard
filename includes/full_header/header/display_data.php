@@ -21,8 +21,8 @@ function display_header(): string {
         <header>
             <div class='header'>
                 <span class='player'>
-                    <img src='$images_path/icons/$pet_icon.png' alt='Pet type'/>
-                    <img src='$images_path/icons/" . strtolower($gender) . ".png' class='player-gender-logo' alt='Gender logo: $gender'/>
+                    <img src='$images_path/icons/$pet_icon.png' alt='Pet type'>
+                    <img src='$images_path/icons/" . strtolower($gender) . ".png' class='player-gender-logo' alt='Gender logo: $gender'>
                     <span class='data player-name'>$name<span class='data-label farmer-level'> " . __("$farmer_level") . " " . __("at") . " $farm_name</span></span>
                 </span>
 
@@ -84,7 +84,7 @@ function display_weather_icon(): string {
     return "
         <span class='tooltip'>
             <a href='" . __("https://stardewvalleywiki.com/Weather") . "' class='wiki_link' rel='noreferrer' target='_blank'>
-                <img src='$images_path/icons/$weather.png' class='weather_icon' alt='Weather icon'/>
+                <img src='$images_path/icons/$weather.png' class='weather_icon' alt='Weather icon'>
             </a>
             <span class='left'>" . get_weather_tooltip($weather) . "</span>
         </span>
@@ -117,14 +117,14 @@ function display_festival_icon(): string {
     ? 
 	"<span class='tooltip'>
 		<a href='$wiki_url' class='wiki_link' rel='noreferrer' target='_blank'>
-			<img src='$images_path/icons/festival_icon.gif' class='festival_icon $festival_class' alt='Festival icon'/>
+			<img src='$images_path/icons/festival_icon.gif' class='festival_icon $festival_class' alt='Festival icon'>
 		</a>
 		<span class='right'>" . __($festival_name) . "</span>
 	</span>"
 	:
 	"<span class='tooltip'>
         <a href='" . get_wiki_link_by_name("festival") . "' class='wiki_link' rel='noreferrer' target='_blank'>
-		    <img src='$images_path/icons/festival_icon.png' class='festival_icon $festival_class' alt='Festival icon'/>
+		    <img src='$images_path/icons/festival_icon.png' class='festival_icon $festival_class' alt='Festival icon'>
 		</a>
         <span class='right'>" . __($festival_name) . "</span>
 	</span>";

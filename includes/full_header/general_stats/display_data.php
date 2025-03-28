@@ -90,7 +90,7 @@ function display_stat(array $parameters): string {
     $formatted_value = filter_var($value, FILTER_VALIDATE_INT) ? format_number($value, $GLOBALS["site_language"]) : $value;
     $alt = $alt ?? $icon;
     $label = $label ?? $icon;
-    $image = "<img src='$images_path/icons/$formatted_icon.png' alt='$alt'/>";
+    $image = "<img src='$images_path/icons/$formatted_icon.png' alt='$alt'>";
 
     if(isset($tooltip)) {
         $image = "
@@ -140,7 +140,7 @@ function display_spouse(mixed $spouse, array $children): string {
         <a href='" . get_wiki_link_by_name("children") . "' class='wiki_link' rel='noreferrer' target='_blank'>
             <span>
                 <span class='tooltip'>
-                <img src='$images_path/characters/" . lcfirst($spouse) . ".png' alt='$spouse'/>
+                <img src='$images_path/characters/" . lcfirst($spouse) . ".png' alt='$spouse'>
                     <span>" . get_child_tooltip($spouse, $children) . "</span>
                 </span>
                 <span class='data data-family'>" . count($children) . "</span>

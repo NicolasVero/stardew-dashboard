@@ -25,14 +25,14 @@ function display_skills(): string {
             <span class='skill $key'>
                 <span class='tooltip'>
                     <a href='" . get_wiki_link_by_name("mastery_cave") . "' class='wiki_link' rel='noreferrer' target='_blank'>
-                        <img src='$images_path/skills/mastery.png' class='level-icon $mastery_class $mastery_visible_class $is_newer_version_class' alt='$key'/>
+                        <img src='$images_path/skills/mastery.png' class='level-icon $mastery_class $mastery_visible_class $is_newer_version_class' alt='$key'>
                     </a>
                     <span>" . __($mastery_tooltip) . "</span>
                 </span>
         
                 <span class='tooltip'>
                     <a href='$skill_wiki_link' class='wiki_link' rel='noreferrer' target='_blank'>
-                        <img src='$images_path/skills/$level_icon_name.png' class='level-icon' alt='$key'/>
+                        <img src='$images_path/skills/$level_icon_name.png' class='level-icon' alt='$key'>
                     </a>
                     <span>" . __(ucfirst($level_icon_name)) . "</span>
                 </span>
