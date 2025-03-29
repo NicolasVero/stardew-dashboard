@@ -566,7 +566,7 @@ function get_amount_obelisk_on_map(): int {
  * 
  * @return array Les noms des obélisques.
  */
-function get_obelisk_names() :array {
+function get_obelisk_names(): array {
 	return [
 		"Earth Obelisk",
 		"Water Obelisk",

@@ -20,7 +20,6 @@ function display_detailled_gallery_title(string $section_title, array $panel_det
             <span class='view-$panel_alt view-$panel_alt-$player_id modal-opener'>- " . __("View $panel_name") . "</span>
         </span>
     ";
-
 }
 
 /**
