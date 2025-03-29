@@ -6,7 +6,7 @@
  * @return string Le code HTML du bouton pour afficher le panneau des lieux visités.
  */
 function display_visited_locations_button(): string {
-	if(is_game_version_older_than_1_6()) {
+	if (is_game_version_older_than_1_6()) {
 		return "";
 	}
 
@@ -19,7 +19,7 @@ function display_visited_locations_button(): string {
  * @return string Le code HTML du panneau des lieux visités.
  */
 function display_visited_locations_panel(): string {
-	if(is_game_version_older_than_1_6()) {
+	if (is_game_version_older_than_1_6()) {
 		return "";
 	}
     
