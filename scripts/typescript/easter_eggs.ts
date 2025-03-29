@@ -178,27 +178,9 @@ function easter_egg_monarchy_mayhem(): void {
 						window.open("https://monarchymayhem.itch.io/monarchymayhem", "_blank");
 					});
 
-					const style: HTMLStyleElement = document.createElement("style");
-					style.innerHTML = `
-						@keyframes colorChange {
-							0% { color: red; }
-							25% { color: green; }
-							50% { color: blue; }
-							75% { color: violet; }
-							100% { color: red; }
-						}
-						
-						@keyframes rotateText {
-							0% { transform: translateX(-50%) rotate(0deg); }
-							100% { transform: translateX(-50%) rotate(360deg); }
-						}
-					`;
-					document.head.appendChild(style);
-
 					setTimeout(() => {
 						images.forEach(img => img.remove());
 						title.remove();
-						style.remove();
 						html.style.background = "#0a0523 url(" + get_site_root() + "/assets/images/content/bg.png) no-repeat fixed center center / cover";
 					}, 15500);
 				}, 1600);

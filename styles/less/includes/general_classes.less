@@ -74,7 +74,11 @@ pre {
 	user-select: none;
 }
 
-.modal-window, .modal-opener, .socials, img, .tooltip {
+img,
+.modal-window,
+.modal-opener,
+.socials,
+.tooltip {
 	.cant_select;
 }
 
@@ -94,8 +98,8 @@ pre {
 }
 
 .filled-element {	
-	background-color: @stardew-bg;
 	background-clip: padding-box;
+	background-color: @stardew-bg;
 	border: solid 2px @filled-element-bc;
 	border-image: url("../../assets/images/content/border_image.png") 15 stretch;
 	border-image-outset: 2px;
@@ -168,4 +172,17 @@ pre {
 	82% { color: violet; }
 	90% { color: purple; }
 	100% { color: red; }
+}
+
+@keyframes colorChange {
+	0% { color: red; }
+	25% { color: green; }
+	50% { color: blue; }
+	75% { color: violet; }
+	100% { color: red; }
+}
+
+@keyframes rotateText {
+	0% { transform: translateX(-50%) rotate(0deg); }
+	100% { transform: translateX(-50%) rotate(360deg); }
 }
