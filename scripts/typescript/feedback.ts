@@ -1,7 +1,7 @@
 function activate_feedback_ajax_trigger(): void {
     const triggers: NodeListOf<Element> = document.querySelectorAll(".feedback-opener");
 
-    triggers.forEach((trigger) => {
+    triggers.forEach((trigger: Element) => {
         trigger.addEventListener("click", (): void => {
             const existing_window: Element = document.querySelector(".feedback-panel");
             hide_all_sections();
@@ -28,8 +28,8 @@ function feedback_form_creation(): void {
             "action": "display_feedback_panel"
         })
     })
-    .then(response => response.text())
-    .then(data => {
+    .then((response: Response) => response.text())
+    .then((data: string) => {
         const temp_container : HTMLDivElement = document.createElement("div");
         current_section = document.querySelector(".feedback-panel");
         temp_container.innerHTML = data;
@@ -42,25 +42,25 @@ function feedback_form_creation(): void {
         activate_feedback_form();
         activate_close_buttons(".exit-feedback", ".feedback-panel");
     })
-    .catch(error => console.error("Error:", error));
+    .catch((error: any) => console.error("Error:", error));
 }
 
 function activate_feedback_form(): void {
     const form = document.getElementById("feedback_form") as HTMLFormElement;
-    form?.addEventListener("submit", (event) => {
+    form?.addEventListener("submit", (event: SubmitEvent) => {
         event.preventDefault();
-        const formData = new FormData(form);
+        const form_data: FormData = new FormData(form);
 
         fetch("./includes/sendmail.php", {
             method: "POST",
-            body: formData
+            body: form_data
         })
-        .then(response => response.json())
+        .then((response: Response) => response.json())
         .then((data: FeedbackResponse) => {
             const alert_message: string = data.success ? data.message : "Error submitting form: " + data.message;
             alert(alert_message);
         })
-        .catch(error => {
+        .catch((error: any) => {
             console.error("Error: ", error);
             alert("An error occurred while submitting the form.");
         });

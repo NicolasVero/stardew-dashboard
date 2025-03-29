@@ -17,10 +17,8 @@ function initialize_tooltips(section: string = null, is_overload: boolean = fals
         const rect: DOMRect = tooltip.getBoundingClientRect();
         const span: HTMLElement = tooltip.querySelector("span");
 
-        console.log(tooltip)
-
-        if (span && (!["left", "right"].some(className => span.classList.contains(className)) || is_overload)) {
-            if (rect.left === 0) {
+        if (span && (!["left", "right"].some((className: string) => span.classList.contains(className)) || is_overload)) {
+            if(rect.left === 0) {
                 return;
             }
 

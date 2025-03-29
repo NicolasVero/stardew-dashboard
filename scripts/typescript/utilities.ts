@@ -9,11 +9,10 @@ function get_site_root(): string {
 
 async function get_max_upload_size(): Promise<number> {
     return fetch("./functions.php?action=get_max_upload_size")
-        .then(response => response.json()) 
-        .then((data: { post_max_size: number }) => {
-            return data.post_max_size;
-        }
-    );
+    .then((response: Response) => response.json()) 
+    .then((data: { post_max_size: number }) => {
+        return data.post_max_size;
+    });
 }
 
 function in_bytes_conversion(size: string): number {
@@ -36,7 +35,7 @@ function toggle_visibility(element: HTMLElement, should_display: boolean): void 
 
 function get_current_player_id(): number | null {
     const visible_player: Element = Array.from(document.querySelectorAll(".player_container"))
-        .find(player => window.getComputedStyle(player).display === "block");
+        .find((player: Element) => window.getComputedStyle(player).display === "block");
 
     if (visible_player !== null && visible_player !== undefined) {
         const match: RegExpMatchArray = visible_player.className.match(/player_(\d+)_container/);
@@ -71,7 +70,7 @@ function get_settings_panels(): string[] {
 
 function close_all_panels(panel_selectors: string[], include_setting_panels: boolean = false): void {
     const settings_panels: string[] = (include_setting_panels) ? get_settings_panels() : [];
-    const player_id = get_current_player_id();
+    const player_id: number | null = get_current_player_id();
 
     if (player_id === null) {
         panel_selectors = settings_panels;
@@ -118,7 +117,7 @@ function toggle_loading(shown: boolean): void {
     }
 }
 
-function get_parent_element(element: HTMLElement): HTMLElement | null {
+function get_parent_element(element: HTMLElement | null): HTMLElement | null {
     if (element === null) {
         return null;
     }
@@ -128,7 +127,7 @@ function get_parent_element(element: HTMLElement): HTMLElement | null {
 };
 
 function set_element_display(element: HTMLElement, show: boolean): void {
-    if (element !== null && element.className !== "locations") {
+    if(element !== null && element.className !== "locations") {
         element.style.display = (show) ? "flex" : "none";
     }
 };
@@ -139,7 +138,7 @@ function has_class(element: HTMLElement, class_name: string): boolean {
 
 function is_section_empty(section: HTMLElement): boolean {
     const spans: NodeListOf<HTMLElement> = section.querySelectorAll(".tooltip");
-    return Array.from(spans).every(span => span.style.display === "none");
+    return Array.from(spans).every((span: HTMLElement) => span.style.display === "none");
 };
 
 function has_section_older_version_items(section: HTMLElement): boolean {
@@ -174,7 +173,7 @@ function toggle_landing_page(display: boolean): void {
 function save_landing_topbar(): void {
 	const landing_menu: HTMLElement = document.getElementById("landing_menu");
 
-	if (landing_menu !== null) {
+	if(landing_menu !== null) {
 		const topbar = landing_menu.innerHTML;
 	}
 }

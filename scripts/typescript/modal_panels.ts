@@ -44,6 +44,7 @@ function activate_close_buttons(hide: string, sections_to_hide: string): void {
 
 function hide_all_sections(section_destroy: boolean = false): void {
 	const sections: NodeListOf<HTMLElement> = document.querySelectorAll(".modal-window");
+
 	sections.forEach((section: HTMLElement) => {
 		if (section.classList.contains("to-destroy") && section_destroy) {
 			section.remove();

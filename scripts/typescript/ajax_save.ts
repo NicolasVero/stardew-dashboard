@@ -68,7 +68,7 @@ async function AJAX_send(): Promise<void> {
                 page_display.innerHTML += landing_page;
                 const players_count: number = data.players.length;
 
-                for (let i = 0; i < players_count; i++) {
+                for (let i: number = 0; i < players_count; i++) {
                     page_display.innerHTML += html["player_" + i];
                 }
 

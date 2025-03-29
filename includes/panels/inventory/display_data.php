@@ -9,6 +9,7 @@ function display_player_tools_button(): string {
     if(!is_game_singleplayer()) {
         return "";
     }
+    
 	return "<img src='" . get_images_folder() . "/icons/tools.png' class='tools-icon view-tools view-tools-" . get_current_player_id() . " button-elements modal-opener icon' alt='Tools icon'>";
 }
 

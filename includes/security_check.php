@@ -7,10 +7,10 @@
  * @param string $external_error L'erreur externe communiquée manuellement.
  * @return bool Indique si le fichier est sécurisé ou non.
  */
-function is_file_secure(mixed $file, string $external_error = null): bool {
+function is_file_secure(mixed $file, ?string $external_error = null): bool {
 	$finfo = finfo_open(FILEINFO_MIME_TYPE);
 
-    if($external_error) {
+    if($external_error !== null) {
 		switch($external_error) {
 			case "SizeException" :
 				throw new Exception("Invalid file size.");
