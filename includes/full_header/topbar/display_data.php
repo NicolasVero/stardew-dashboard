@@ -306,7 +306,7 @@ function display_all_languages_button(): string {
     foreach($languages as $language) {
         $url = get_site_root() . (is_the_original_language($language) ? "" : "/$language");
         $structure .= "
-            <a href='$url' class='language-selection buttons' value='$language' rel='noreferrer'>
+            <a href='$url' class='language-selection buttons' rel='noreferrer' value='$language'>
                 <img src='" . get_images_folder() . "/languages/$language.png' alt='$language'>
             </a>
         ";
