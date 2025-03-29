@@ -8,11 +8,11 @@ function activate_buttons(show: string, hide: string, sections_to_show: string):
     show_button.forEach((button: HTMLElement) => {
         button.addEventListener("click", () => {
             hide_all_sections(true);
-            if(sections !== null) {
+            if (sections !== null) {
                 current_section = sections;
                 toggle_visibility(sections, true);
 
-                if(!sections.hasAttribute('data-tooltips-initialized')) {
+                if (!sections.hasAttribute('data-tooltips-initialized')) {
                     initialize_tooltips(sections.classList[0]);
                     sections.setAttribute('data-tooltips-initialized', 'true');
                 }
@@ -34,7 +34,7 @@ function activate_close_buttons(hide: string, sections_to_hide: string): void {
 
     hide_button.forEach((button: HTMLElement) => {
         button.addEventListener("click", () => {
-            if(sections !== null) {
+            if (sections !== null) {
                 sections.remove();
                 current_section = null;
             }
@@ -45,7 +45,7 @@ function activate_close_buttons(hide: string, sections_to_hide: string): void {
 function hide_all_sections(section_destroy: boolean = false): void {
 	const sections: NodeListOf<HTMLElement> = document.querySelectorAll(".modal-window");
 	sections.forEach((section: HTMLElement) => {
-		if(section.classList.contains("to-destroy") && section_destroy) {
+		if (section.classList.contains("to-destroy") && section_destroy) {
 			section.remove();
 		}
 
@@ -67,7 +67,7 @@ function prevent_panel_scroll(): void {
                 const is_at_top: boolean = scroll_top === 0 && event.deltaY < 0;
                 const is_at_bottom: boolean = scroll_top + client_height >= scroll_height && event.deltaY > 0;
     
-                if(is_at_top || is_at_bottom) {
+                if (is_at_top || is_at_bottom) {
                     event.preventDefault();
                 }
             },

@@ -10,23 +10,23 @@ function update_section_visibility(section: HTMLElement, settings: Settings): vo
     const is_empty: boolean = is_section_empty(section);
     const has_older_items: boolean = has_section_older_version_items(section);
 
-    if(settings.toggle_versions && is_empty && !has_older_items) {
+    if (settings.toggle_versions && is_empty && !has_older_items) {
         section.classList.add("hidden");
         return;
     }
 
     section.classList.remove("hidden");
 
-    if(title !== null) {
+    if (title !== null) {
         title.style.display = "block";
     }
 
-    if(smaller_title !== null) {
+    if (smaller_title !== null) {
         let should_show_smaller_title: boolean = false;
 
-        if(settings.no_spoil) {
+        if (settings.no_spoil) {
             should_show_smaller_title = is_empty;
-        } else if(settings.toggle_versions) {
+        } else if (settings.toggle_versions) {
             should_show_smaller_title = is_empty && has_older_items;
         } else {
             should_show_smaller_title = is_empty;
@@ -42,9 +42,9 @@ function update_display(target_classes: string[]): void {
     const update_elements = (class_name: string) => {
         const elements: HTMLCollectionOf<Element> = document.getElementsByClassName(class_name);
 
-        if(class_name.split("-").pop() === "icon") {
+        if (class_name.split("-").pop() === "icon") {
             Array.from(elements).forEach((element: HTMLElement) => {
-                if(element !== null) {
+                if (element !== null) {
                     set_element_display(element, should_show_element(element, settings));
                 }
             });
@@ -52,7 +52,7 @@ function update_display(target_classes: string[]): void {
             Array.from(elements).forEach((element: HTMLElement) => {
                 const parent: HTMLElement = get_parent_element(element);
     
-                if(parent !== null) {
+                if (parent !== null) {
                     set_element_display(parent, should_show_element(element, settings));
                 }
             });

@@ -6,7 +6,7 @@ function activate_feedback_ajax_trigger(): void {
             const existing_window: Element = document.querySelector(".feedback-panel");
             hide_all_sections();
             
-            if(existing_window) {
+            if (existing_window !== null) {
                 toggle_visibility(existing_window as HTMLElement, true);
             } else {
                 feedback_form_creation();
@@ -77,7 +77,7 @@ function feedback_custom_radio(): void {
         span_topic.addEventListener("click", () => {
             const real_radio = fake_radio.previousElementSibling as HTMLInputElement;
 
-            if(real_radio !== null && real_radio.type === "radio") {
+            if (real_radio !== null && real_radio.type === "radio") {
                 real_radio.checked = true;
                 real_radio.dispatchEvent(new Event("change"));
             }
@@ -92,8 +92,8 @@ function feedback_custom_radio(): void {
 
             const fake_radio = real_radio.nextElementSibling as HTMLElement;
             
-            if(fake_radio !== null && fake_radio.tagName === "IMG") {
-                if((real_radio as HTMLInputElement).checked) {
+            if (fake_radio !== null && fake_radio.tagName === "IMG") {
+                if ((real_radio as HTMLInputElement).checked) {
                     fake_radio.classList.remove("topic_not_selected");
                 } else {
                     fake_radio.classList.add("topic_not_selected");

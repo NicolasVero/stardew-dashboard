@@ -47,7 +47,7 @@ function load_buttons(): void {
         "tools", "farm-informations"
     ];
 	
-    for(let i: number = 0; i < players_in_save; i++) {
+    for (let i: number = 0; i < players_in_save; i++) {
         dynamic_prefixes.forEach((prefix: string) => {
             dynamic_buttons.push({
                 open_button: `.view-${prefix}-${i}`,

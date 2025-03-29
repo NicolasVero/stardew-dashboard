@@ -16,7 +16,7 @@ function handle_no_spoil_mode(): void {
     const spoil_checkbox = document.getElementById("spoil_mode") as HTMLInputElement;
     const no_spoil_checkbox = document.getElementById("no_spoil_mode") as HTMLInputElement;
 
-    if(no_spoil_checkbox !== null && spoil_checkbox !== null && no_spoil_checkbox.checked && spoil_checkbox.checked) {
+    if (no_spoil_checkbox !== null && spoil_checkbox !== null && no_spoil_checkbox.checked && spoil_checkbox.checked) {
         spoil_checkbox.checked = false;
     }
 
@@ -32,11 +32,11 @@ function handle_spoil_mode(): void {
     const no_spoil_checkbox = document.getElementById("no_spoil_mode") as HTMLInputElement;
     const spoil_checkbox = document.getElementById("spoil_mode") as HTMLInputElement;
 
-    if(no_spoil_checkbox === null || spoil_checkbox === null) {
+    if (no_spoil_checkbox === null || spoil_checkbox === null) {
         return;
     }
 
-    if(spoil_checkbox.checked && no_spoil_checkbox.checked) {
+    if (spoil_checkbox.checked && no_spoil_checkbox.checked) {
         no_spoil_checkbox.checked = false;
         update_display(["not-found", "found"]);
     } else {
@@ -62,7 +62,7 @@ function wiki_redirections(): void {
         link.addEventListener("click", (event: MouseEvent) => {
             const wiki_redirections_checkbox = document.getElementById("wiki_redirections") as HTMLInputElement;
 
-            if(!wiki_redirections_checkbox.checked) {
+            if (!wiki_redirections_checkbox.checked) {
                 event.preventDefault();
                 event.stopImmediatePropagation();
             }
@@ -76,7 +76,7 @@ function toggle_custom_checkboxes(checkmark_class: string): void {
     checkmarks.forEach((checkbox) => {
         checkbox.addEventListener("click", () => {
             const adjacent_checkbox: HTMLInputElement = checkbox.previousElementSibling as HTMLInputElement;
-            if(adjacent_checkbox !== null && adjacent_checkbox.type === "checkbox") {
+            if (adjacent_checkbox !== null && adjacent_checkbox.type === "checkbox") {
                 adjacent_checkbox.checked = !adjacent_checkbox.checked;
                 adjacent_checkbox.dispatchEvent(new Event("change"));
             }
@@ -90,7 +90,7 @@ function toggle_checkboxes_actions(): void {
         const function_name: string = input.id;
         const is_checked: boolean = input.checked;
 
-        if(is_checked && typeof window[function_name] === "function") {
+        if (is_checked && typeof window[function_name] === "function") {
             (window[function_name] as Function)();
         }
     });

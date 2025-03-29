@@ -3,15 +3,15 @@ const gallery_option: Element = document.querySelector(".settings-panel .gallery
 gallery_option.addEventListener("change", (event) => {
     const target: HTMLSelectElement = event.target as HTMLSelectElement;
 
-    if(target.value === "alphabetical-order") {
+    if (target.value === "alphabetical-order") {
         gallery_alphabetic_order_display();
     }
 
-    if(target.value === "discovery-level") {
+    if (target.value === "discovery-level") {
         gallery_discovery_order_display();
     }
 
-    if(target.value === "version") {
+    if (target.value === "version") {
         gallery_reset_order();
     }
 
@@ -54,15 +54,15 @@ function gallery_discovery_order_display() {
         tooltips_list.forEach((item: HTMLElement) => {
             const item_state: string = item.querySelector("img.gallery-item").className;
 
-            if(item_state.includes("found")) {
+            if (item_state.includes("found")) {
                 item.style.order = "0";
             }
 
-            if(item_state.includes("unused")) {
+            if (item_state.includes("unused")) {
                 item.style.order = "1";
             }
 
-            if(item_state.includes("not-found")) {
+            if (item_state.includes("not-found")) {
                 item.style.order = "2";
             }
         });
