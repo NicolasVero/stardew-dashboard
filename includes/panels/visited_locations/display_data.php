@@ -6,9 +6,11 @@
  * @return string Le code HTML du bouton pour afficher le panneau des lieux visités.
  */
 function display_visited_locations_button(): string {
-    $version_class = get_version_class("1.6.0");
+	if(is_game_version_older_than_1_6()) {
+		return "";
+	}
 
-	return "<img src='" . get_images_folder() . "/icons/location_icon.png' class='$version_class-icon visited-locations-icon view-visited-locations view-visited-locations-" . get_current_player_id() . " button-elements modal-opener icon' alt='Visited locations icon'/>";
+	return "<img src='" . get_images_folder() . "/icons/location_icon.png' class='visited-locations-icon view-visited-locations view-visited-locations-" . get_current_player_id() . " button-elements modal-opener icon' alt='Visited locations icon'/>";
 }
 
 /**
@@ -17,6 +19,10 @@ function display_visited_locations_button(): string {
  * @return string Le code HTML du panneau des lieux visités.
  */
 function display_visited_locations_panel(): string {
+	if(is_game_version_older_than_1_6()) {
+		return "";
+	}
+    
     $player_id = get_current_player_id();
     $visited_locations = get_locations_visited_data();
     $images_path = get_images_folder();
