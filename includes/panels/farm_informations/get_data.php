@@ -1,12 +1,14 @@
 <?php
-//! ONLY WORKS FOR 1.6.0+ RIGHT NOW
-
 /**
  * Récupère les informations de la ferme comme l'ordinateur de ferme.
  * 
  * @return array Les informations de la ferme.
  */
 function get_farm_informations(): array {
+	if (is_game_version_older_than_1_6()) {
+		return [];
+	}
+
 	$informations = get_complex_farm_informations();
 
 	return [

@@ -6,9 +6,11 @@
  * @return string Le code HTML du bouton des informations de la ferme.
  */
 function display_farm_informations_button(): string {
-    $version_class = get_version_class("1.6.0");
+	if (is_game_version_older_than_1_6()) {
+		return "";
+	}
 
-	return "<img src='" . get_images_folder() . "/icons/farm_computer.png' class='$version_class-icon farm-informations-icon view-farm-informations view-farm-informations-" . get_current_player_id() . " button-elements modal-opener icon' alt='Farm informations icon'/>";
+	return "<img src='" . get_images_folder() . "/icons/farm_computer.png' class='farm-informations-icon view-farm-informations view-farm-informations-" . get_current_player_id() . " button-elements modal-opener icon' alt='Farm informations icon'/>";
 }
 
 /**
@@ -17,6 +19,10 @@ function display_farm_informations_button(): string {
  * @return string Le code HTML du panneau des outils du joueur.
  */
 function display_farm_informations(): string {
+	if (is_game_version_older_than_1_6()) {
+		return "";
+	}
+
 	$farm_informations = get_farm_informations_data();
 	$player_id = get_current_player_id();
     $images_path = get_images_folder();
