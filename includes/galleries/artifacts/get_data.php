@@ -11,7 +11,6 @@ function get_player_artifacts(): array {
 	$artifacts_data = [];
 
 	foreach($player_artifacts->item as $artifact) {
-
 		$artifact_id = ((is_game_version_older_than_1_6())) ? $artifact->key->int : $artifact->key->string;
 		$artifact_id = format_original_data_string((string) $artifact_id);
 		$artifact_id = get_correct_id($artifact_id);

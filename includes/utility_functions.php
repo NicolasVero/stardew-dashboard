@@ -62,7 +62,7 @@ function get_translated_wiki_link(string $wiki_link, string $lang): string {
  * @param string $title Le titre de l'élément.
  * @return void
  */
-function log_(mixed $element, string $title = null): void {
+function log_(mixed $element, ?string $title = null): void {
     if($title !== null) {
 		echo "<h2>$title</h2>";
 	}
@@ -174,7 +174,6 @@ function load_all_json(): void {
 	foreach($all_json as $json_file) {
 		$GLOBALS["json"][$json_file] = decode($json_file);
 	}
-
 }
 
 /**
@@ -503,7 +502,7 @@ function is_object_empty(object $object): bool {
  * @param string $path Le chemin du fichier JSON.
  * @return array Le fichier JSON décodé.
  */
-function decode(string $filename, string $path = null): array {
+function decode(string $filename, ?string $path = null): array {
 	$path = $path ?? get_json_folder();
 	$url = "$path/$filename.json";
 
@@ -526,11 +525,13 @@ function decode(string $filename, string $path = null): array {
  */
 function get_game_duration(): string {
 	$player_game_duration = (int) $GLOBALS["untreated_player_data"]->millisecondsPlayed;
+
     $total_seconds = intdiv($player_game_duration, 1000);
-    $seconds      = $total_seconds % 60;
     $total_minutes = intdiv($total_seconds, 60);
-    $minutes      = $total_minutes % 60;
-    $hours        = intdiv($total_minutes, 60);
+
+    $seconds = $total_seconds % 60;
+    $minutes = $total_minutes % 60;
+    $hours = intdiv($total_minutes, 60);
 	
     return sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
 }
@@ -590,8 +591,8 @@ function get_contributors(): array {
 			"name" => "Romain",
 			"icon" => "romain",
 			"texts" => [
-				__("Romain is a hard-working web developer. He loves taking on challenges and always going the extra mile."),
-				__("He took care of the Front-End, and helped Nicolas with the Back-End.")
+				__("Romain is a passionate web developer currently pursuing a master's degree at USTC, China."),
+				__("He played a major role in both the Front-End and Back-End development of the project.")
 			],
 			"socials" => [
 				"github" => [

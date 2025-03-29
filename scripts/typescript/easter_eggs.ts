@@ -205,7 +205,6 @@ function easter_egg_monarchy_mayhem(): void {
 
 				current_input = "";
 			}
-            
         }
     });
 }

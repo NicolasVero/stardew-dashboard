@@ -76,6 +76,7 @@ function toggle_custom_checkboxes(checkmark_class: string): void {
     checkmarks.forEach((checkbox) => {
         checkbox.addEventListener("click", () => {
             const adjacent_checkbox: HTMLInputElement = checkbox.previousElementSibling as HTMLInputElement;
+            
             if(adjacent_checkbox !== null && adjacent_checkbox.type === "checkbox") {
                 adjacent_checkbox.checked = !adjacent_checkbox.checked;
                 adjacent_checkbox.dispatchEvent(new Event("change"));

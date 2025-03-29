@@ -37,11 +37,7 @@ function get_player_gender(): string {
 		$gender = (string) $gender[0];
 
 		// $gender: (0 / 1) || ("true" / "false") || ("Male" / "Female")
-		if(is_numeric($gender)) {
-			return ($gender === 0) ? "Male" : "Female";
-		} else {
-			return ($gender === "true" || $gender === "Male") ? "Male" : "Female";
-		}
+		return ($gender === 0 || $gender === "true" || $gender === "Male") ? "Male" : "Female";
 	}
 
 	return "Neutral";
@@ -406,6 +402,7 @@ function get_highest_count_for_category(string $category): array {
 			$filtered_elements = array_filter($all_data[$current_player][$category], function(mixed $item): bool {
 				return $item["counter"] > 0;
 			});
+
 			$amount_elements = count($filtered_elements);
 		} else if(in_array($category, $exceptions_level)) {
 			$level_category = $all_data[$current_player]["levels"];
@@ -459,7 +456,9 @@ function get_player_with_highest_friendships(): array {
 			}
 		}
 
-		if($friend_counter > $max_elements) $max_elements = $friend_counter;
+		if($friend_counter > $max_elements) {
+			$max_elements = $friend_counter;
+		}
 	}
 
 	$perfection_max = get_perfection_max_elements()["friendship"];
@@ -586,9 +585,11 @@ function is_golden_clock_on_farm(): bool {
 	$buildings = find_xml_tags($data, 'locations.GameLocation.buildings.Building');
 
 	foreach($buildings as $building) {
-		if((string) $building->buildingType === "Gold Clock") {
-            return true;
-        }
+		if((string) $building->buildingType !== "Gold Clock") {
+			continue;
+		}
+		
+		return true;
 	}
 
 	return false;

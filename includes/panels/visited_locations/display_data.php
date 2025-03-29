@@ -7,7 +7,6 @@
  */
 function display_visited_locations_button(): string {
     $version_class = get_version_class("1.6.0");
-
 	return "<img src='" . get_images_folder() . "/icons/location_icon.png' class='$version_class-icon visited-locations-icon view-visited-locations view-visited-locations-" . get_current_player_id() . " button-elements modal-opener icon' alt='Visited locations icon'>";
 }
 

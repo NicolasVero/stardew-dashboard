@@ -49,11 +49,11 @@ function activate_feedback_form(): void {
     const form = document.getElementById("feedback_form") as HTMLFormElement;
     form?.addEventListener("submit", (event) => {
         event.preventDefault();
-        const formData = new FormData(form);
+        const form_data = new FormData(form);
 
         fetch("./includes/sendmail.php", {
             method: "POST",
-            body: formData
+            body: form_data
         })
         .then(response => response.json())
         .then((data: FeedbackResponse) => {

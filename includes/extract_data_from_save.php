@@ -69,7 +69,7 @@ function get_farmhands(): array {
         $farmhands = find_xml_tags($data, 'locations.GameLocation.buildings.Building.indoors.farmhand');
 
         foreach($farmhands as $farmhand) {
-            if((string) $farmhand->name=== "") {
+            if((string) $farmhand->name === "") {
                 continue;
             }
 

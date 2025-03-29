@@ -43,11 +43,13 @@ function get_player_visited_locations(): array {
 	];
 
 	foreach($additional_locations as $additional_location => $location_real_name) {
-		if(has_element_in_mail($additional_location)) {
-			$player_visited_locations[$location_real_name] = [
-				"id" => get_item_id_by_name($location_real_name)
-			];
+		if(!has_element_in_mail($additional_location)) {
+			continue;
 		}
+
+		$player_visited_locations[$location_real_name] = [
+			"id" => get_item_id_by_name($location_real_name)
+		];
 	}
 
 	return $player_visited_locations;
