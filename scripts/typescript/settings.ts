@@ -73,7 +73,7 @@ function wiki_redirections(): void {
 function toggle_custom_checkboxes(checkmark_class: string): void {
     const checkmarks: NodeListOf<HTMLElement> = document.querySelectorAll(checkmark_class);
 
-    checkmarks.forEach((checkbox) => {
+    checkmarks.forEach((checkbox: HTMLElement) => {
         checkbox.addEventListener("click", () => {
             const adjacent_checkbox: HTMLInputElement = checkbox.previousElementSibling as HTMLInputElement;
             

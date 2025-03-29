@@ -698,7 +698,7 @@ function get_players_name(): array {
 function get_script_loader(): string {
 	return "
 		<script>
-			document.addEventListener('DOMContentLoaded', function() {
+			document.addEventListener('DOMContentLoaded', function(): void {
 				load_dashboard_elements();
 			});
 		</script>
@@ -1066,7 +1066,7 @@ function get_museum_index(): int {
  * @return array L'array trié.
  */
 function sort_by_friend_level(array $friendship_data): array {
-    uasort($friendship_data, function($a, $b) {
+    uasort($friendship_data, function(array $a, array $b): int {
         if($a['friend_level'] != $b['friend_level']) {
             return $b['friend_level'] - $a['friend_level'];
         }
