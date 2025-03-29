@@ -142,7 +142,7 @@ function easter_egg_monarchy_mayhem(): void {
 					];
 
 					const images: HTMLImageElement[] = [];
-					positions.forEach((position, index) => {
+					positions.forEach((position: Position, index: number) => {
 						const img: HTMLImageElement = document.createElement("img");
 						img.src = get_site_root() + `/assets/images/easter_eggs/monarchy_mayhem_${index + 1}.gif`;
 						

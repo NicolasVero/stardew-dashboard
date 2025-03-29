@@ -1,7 +1,7 @@
 function initialize_player_swapper(players_count: number): void {
 	const players_selection: HTMLCollectionOf<HTMLElement> = document.getElementsByClassName("player_selection") as HTMLCollectionOf<HTMLElement>;
 
-	for(let i = 0; i < players_selection.length; i++) {
+	for(let i: number = 0; i < players_selection.length; i++) {
 		players_selection[i].addEventListener("click", () => {
 			swap_displayed_player(i % players_count);
 		});
@@ -18,7 +18,7 @@ function swap_displayed_player(player_id: number): void {
 	
 	players_display[player_id].style.display = "block";
 
-	for(let i = 0; i < players_display.length; i++) {
+	for(let i: number = 0; i < players_display.length; i++) {
 		if(player_id !== i) {
 			players_display[i].style.display = "none";
 		}
