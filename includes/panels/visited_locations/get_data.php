@@ -6,7 +6,7 @@
  * @return array Les lieux visités par le joueur.
  */
 function get_player_visited_locations(): array {
-	if(is_game_version_older_than_1_6()) {
+	if (is_game_version_older_than_1_6()) {
 		return [];
 	}
 
@@ -31,7 +31,7 @@ function get_player_visited_locations(): array {
 		$location_name = (string) $location_visited;
 		$location_real_name = $locations_real_name[$location_name] ?? "";
 
-		if(in_array($location_real_name, $locations_to_visit)) {
+		if (in_array($location_real_name, $locations_to_visit)) {
 			$player_visited_locations[$location_real_name] = [
 				"id" => get_item_id_by_name($location_real_name)
 			];
@@ -43,7 +43,7 @@ function get_player_visited_locations(): array {
 	];
 
 	foreach($additional_locations as $additional_location => $location_real_name) {
-		if(!has_element_in_mail($additional_location)) {
+		if (!has_element_in_mail($additional_location)) {
 			continue;
 		}
 

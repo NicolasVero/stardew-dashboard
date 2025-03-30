@@ -127,7 +127,7 @@ function get_parent_element(element: HTMLElement | null): HTMLElement | null {
 };
 
 function set_element_display(element: HTMLElement, show: boolean): void {
-    if(element !== null && element.className !== "locations") {
+    if (element !== null && element.className !== "locations") {
         element.style.display = (show) ? "flex" : "none";
     }
 };
@@ -173,7 +173,7 @@ function toggle_landing_page(display: boolean): void {
 function save_landing_topbar(): void {
 	const landing_menu: HTMLElement = document.getElementById("landing_menu");
 
-	if(landing_menu !== null) {
+	if (landing_menu !== null) {
 		const topbar = landing_menu.innerHTML;
 	}
 }

@@ -8,8 +8,8 @@
  * @return string Le texte traduit.
  */
 function __(string $text, int $option = SPACE_NONE): string {
-    if($GLOBALS["is_site_translated"]) {
-		if(str_contains($text, "stardewvalleywiki")) {
+    if ($GLOBALS["is_site_translated"]) {
+		if (str_contains($text, "stardewvalleywiki")) {
 			return get_translated_wiki_link($text, $GLOBALS["site_language"]);
 		}
 		
@@ -35,7 +35,7 @@ function get_translated_wiki_link(string $wiki_link, string $lang): string {
 	$wiki_url = parse_url($wiki_link);
 	$wiki_page = basename($wiki_url["path"]);
 
-	if(isset($GLOBALS["wiki_link_overload"][$wiki_page])) {
+	if (isset($GLOBALS["wiki_link_overload"][$wiki_page])) {
 		return $GLOBALS["wiki_link_overload"][$wiki_page];
 	}
 
@@ -48,7 +48,7 @@ function get_translated_wiki_link(string $wiki_link, string $lang): string {
 		"tr" => "https://tr.stardewvalleywiki.com/"
 	][$lang];
 
-    if(isset($wiki_url["path"])) {
+    if (isset($wiki_url["path"])) {
         return $wiki_base_url . __(str_replace("_", " ", $wiki_page));
     }
 
@@ -63,7 +63,7 @@ function get_translated_wiki_link(string $wiki_link, string $lang): string {
  * @return void
  */
 function log_(mixed $element, ?string $title = null): void {
-    if($title !== null) {
+    if ($title !== null) {
 		echo "<h2>$title</h2>";
 	}
     
@@ -182,7 +182,7 @@ function load_all_json(): void {
  * @return string La racine du site.
  */
 function get_site_root(): string {
-	if(is_on_localhost()) {
+	if (is_on_localhost()) {
 		return "http://localhost/travail/stardew_dashboard";
 	}
 	
@@ -224,7 +224,7 @@ function get_languages_folder(): string {
  * @return string Le répertoire des sauvegardes.
  */
 function get_saves_folder(bool $use_directory = false): string {
-    if($use_directory) {
+    if ($use_directory) {
 		return get_site_directory() . "/data/saves";
 	}
 
@@ -290,7 +290,7 @@ function get_formatted_date(bool $display_date = true): mixed {
     $season = ["spring", "summer", "fall", "winter"][$data->seasonForSaveGame % 4];
     $year   = $data->yearForSaveGame;
 
-    if($display_date) {
+    if ($display_date) {
 		return __("Day") . " $day " . __("of $season") . ", " . __("Year") . " $year";
 	}
 
@@ -309,7 +309,7 @@ function get_formatted_date(bool $display_date = true): mixed {
  * @return string Le nombre formaté.
  */
 function format_number(int $number, string $lang = "en"): string {
-	if($lang === "fr") {
+	if ($lang === "fr") {
 		return number_format($number, 0, ",", " ");
 	}
 
@@ -328,7 +328,7 @@ function format_text_for_file(string $string): string {
     $string = str_replace($search, $replace, $string);
     $string = strtolower($string);
 
-    if(substr($string, -1) === "_") {
+    if (substr($string, -1) === "_") {
         $string = substr($string, 0, -1);
     }
 
@@ -378,7 +378,7 @@ function sanitize_json_with_version(string $json_name, bool $version_controller 
 	$sanitize_json = [];
 
 	foreach($original_json as $key => $json_version) {
-		if($game_version_score > get_game_version_score($key) || !$version_controller) {
+		if ($game_version_score > get_game_version_score($key) || !$version_controller) {
 			$sanitize_json += $json_version;
 		}
 	}
@@ -405,7 +405,7 @@ function find_reference_in_json(mixed $id, string $file): mixed {
  * @return int L'identifiant correct.
  */
 function get_correct_id(mixed &$id): int {
-	if(!filter_var((int) $id, FILTER_VALIDATE_INT)) {
+	if (!filter_var((int) $id, FILTER_VALIDATE_INT)) {
 		return get_custom_id($id);
 	}
 
@@ -683,7 +683,7 @@ function get_players_name(): array {
 	$players_data = $GLOBALS["all_players_data"];
 	$players_names = [];
 
-	for($i = 0; $i < count($players_data); $i++) {
+	for ($i = 0; $i < count($players_data); $i++) {
 		array_push($players_names, $players_data[$i]["general"]["name"]);
 	}
 
@@ -723,14 +723,14 @@ function no_items_placeholder(): string {
  * @return string Le texte de l'infobulle.
  */
 function get_tooltip_text(array $player_data, string $json_line_name, string $data_type): string {
-	if(!array_key_exists($json_line_name, $player_data) || !isset($player_data[$json_line_name])) {
+	if (!array_key_exists($json_line_name, $player_data) || !isset($player_data[$json_line_name])) {
 		return __($json_line_name);
 	}
 	$data_array = $player_data[$json_line_name];
 
     extract($data_array); //? ?$counter, ?$caught_counter, ?$killed_counter, ?$max_length, ?$description
 
-    switch($data_type) {
+    switch ($data_type) {
 		case "shipped_items" :
 			$tooltip_end_text = $counter . __("shipped", SPACE_BEFORE);
 			break;
@@ -825,7 +825,7 @@ function has_element(object $element): int {
 function has_element_based_on_version(string $element_older_version, string $element_newer_version): int {
 	$player_data = $GLOBALS["untreated_player_data"];
 
-	if(is_game_version_older_than_1_6()) {
+	if (is_game_version_older_than_1_6()) {
 		return has_element($player_data->$element_older_version);
 	}
 
@@ -841,14 +841,14 @@ function has_element_based_on_version(string $element_older_version, string $ele
 function get_game_version_score(string $version): int {
 	$version_numbers = explode(".", $version);
 
-	while(count($version_numbers) < 3) {
+	while (count($version_numbers) < 3) {
         $version_numbers[] = 0;
     }
 
 	$version_numbers = array_reverse($version_numbers);
 	$score = 0;
 
-	for($i = 0; $i < count($version_numbers); $i++) {
+	for ($i = 0; $i < count($version_numbers); $i++) {
         $score += $version_numbers[$i] * pow(1000, $i); 
     }
 
@@ -874,7 +874,7 @@ function is_this_the_same_day(string $date): bool {
  * @return array Les données des éléments possédés par un joueur.
  */
 function get_player_items_list(object $data, string $filename): array {
-	if(is_game_version_older_than_1_6()) {
+	if (is_game_version_older_than_1_6()) {
 		return [];
 	}
 
@@ -886,7 +886,7 @@ function get_player_items_list(object $data, string $filename): array {
 
 		$item_reference = find_reference_in_json($item_id, $filename);
 
-		if(empty($item_reference)) {
+		if (empty($item_reference)) {
 			continue;
 		}
 
@@ -918,8 +918,8 @@ function get_version_class(string $version): string {
 function get_found_classes(array $player_data, string $json_filename, string $json_line_name, bool $is_found): string {
 	$classes = ($is_found) ? "found" : "not-found";
 	
-	if(in_array($json_filename, ["cooking_recipes", "crafting_recipes", "artifacts", "minerals"])) {
-		if($is_found && $player_data[$json_line_name]["counter"] === 0) {
+	if (in_array($json_filename, ["cooking_recipes", "crafting_recipes", "artifacts", "minerals"])) {
+		if ($is_found && $player_data[$json_line_name]["counter"] === 0) {
 			$classes .= " unused";
 		}
 	}
@@ -946,7 +946,7 @@ function display_project_contributor(array $options): string {
 
     foreach($socials as $social_name => $social) {
         extract($social); //? $url, $on_display
-        if($on_display) {
+        if ($on_display) {
             $socials_links .= "<a href='$url' rel='noreferrer' target='_blank'><img src='$images_path/social/$social_name.png' alt='$social_name'></a>";
         }
     }
@@ -999,17 +999,17 @@ function find_xml_tags(object $xml_object, string $tag_path): array {
 function recursive_xml_search(object $current_level, array $remaining_path): array {
     $results = [];
 
-    if(empty($remaining_path)) {
+    if (empty($remaining_path)) {
         return is_array($current_level) ? $current_level : [$current_level];
     }
 
     $current_tag = $remaining_path[0];
 
-    if(!isset($current_level->$current_tag)) {
+    if (!isset($current_level->$current_tag)) {
         return $results;
     }
 
-    if(count($remaining_path) == 1) {
+    if (count($remaining_path) == 1) {
         foreach($current_level->$current_tag as $item) {
             $results[] = $item;
         }
@@ -1039,7 +1039,7 @@ function get_gamelocation_index(object $general_data, string $searched_location)
 	$locations = $general_data->locations->GameLocation;
 
 	foreach($locations as $location) {
-		if(isset($location->$searched_location)) {
+		if (isset($location->$searched_location)) {
 			break;
 		}
 		
@@ -1067,7 +1067,7 @@ function get_museum_index(): int {
  */
 function sort_by_friend_level(array $friendship_data): array {
     uasort($friendship_data, function(array $a, array $b): int {
-        if($a['friend_level'] != $b['friend_level']) {
+        if ($a['friend_level'] != $b['friend_level']) {
             return $b['friend_level'] - $a['friend_level'];
         }
         
@@ -1078,7 +1078,7 @@ function sort_by_friend_level(array $friendship_data): array {
     $others = array();
 
     foreach ($friendship_data as $name => $data) {
-        if($data['status'] === 'Married') {
+        if ($data['status'] === 'Married') {
             $married[$name] = $data;
         } else {
             $others[$name] = $data;

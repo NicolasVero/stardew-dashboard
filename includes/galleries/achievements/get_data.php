@@ -26,7 +26,7 @@ function get_player_achievements(): array {
  */
 function does_player_have_achievement(object $achievements, int $achievement_id): bool {
 	foreach($achievements->int as $achievement) {
-		if($achievement_id !== $achievement) {
+		if ($achievement_id !== $achievement) {
 			continue;
 		}
 

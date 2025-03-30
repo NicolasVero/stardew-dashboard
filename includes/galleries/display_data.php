@@ -9,7 +9,7 @@
  */
 function display_detailled_gallery_title(string $section_title, array $panel_details): string {
     $player_id = get_current_player_id();
-    if(empty($panel_details)) {
+    if (empty($panel_details)) {
         return "<h2 class='section-title'>" . __($section_title) . "</h2>";
     }
 
@@ -80,7 +80,7 @@ function get_detailled_gallery_image(string $json_filename, string $json_line_na
 	
 	$images_path = get_images_folder();
 
-	if(!in_array($json_filename, ["secret_notes"])) {
+	if (!in_array($json_filename, ["secret_notes"])) {
 		return "$images_path/$json_filename/" . format_text_for_file($json_line_name). ".png";
 	}
 
@@ -97,11 +97,11 @@ function get_detailled_gallery_image(string $json_filename, string $json_line_na
  * @return string Le lien de la page wiki.
  */
 function get_detailled_gallery_wiki_link(string $json_filename, string $json_line_name): string {
-	if($json_filename === "achievements") {
+	if ($json_filename === "achievements") {
 		return get_wiki_link_by_name("achievements");
 	}
 	
-	if($json_filename === "secret_notes") {
+	if ($json_filename === "secret_notes") {
 		// Renvoie secret_notes || journal_scraps 
 		$json_line_name = implode(" ", array_slice(explode(" ", $json_line_name), 0, 2)) . "s";
 		$formatted_name = format_text_for_file($json_line_name);

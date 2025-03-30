@@ -17,7 +17,7 @@ function get_player_fish_caught(): array {
 		$values_array = (array) $fish->value->ArrayOfInt->int;
 		$fish_reference = find_reference_in_json($fish_id, "fish");
 
-		if(empty($fish_reference) || $fish_reference === "") {
+		if (empty($fish_reference) || $fish_reference === "") {
 			continue;
 		}
 		

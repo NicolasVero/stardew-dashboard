@@ -20,7 +20,7 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
     $GLOBALS["players_names"] = get_players_name();
     $pages["topbar"] = display_topbar();
 
-    for($player_count = 0; $player_count < count($players_data); $player_count++) {
+    for ($player_count = 0; $player_count < count($players_data); $player_count++) {
         $GLOBALS["player_id"] = $player_count;
         $additional_class = ($player_count === 0) ? "host" : "farmhand";
         $pages["player_" . $player_count] = "
@@ -65,23 +65,23 @@ function get_farmhands(): array {
     $data = $GLOBALS["untreated_all_players_data"];
     $all_farmhands = [];
 
-    if(is_game_version_older_than_1_6()) {
+    if (is_game_version_older_than_1_6()) {
         $farmhands = find_xml_tags($data, 'locations.GameLocation.buildings.Building.indoors.farmhand');
 
         foreach($farmhands as $farmhand) {
-            if((string) $farmhand->name === "") {
+            if ((string) $farmhand->name === "") {
                 continue;
             }
 
             array_push($all_farmhands, $farmhand);
         }
     } else {
-        if(empty($data->farmhands)) {
+        if (empty($data->farmhands)) {
             return [];
         }
 
         foreach($data->farmhands->Farmer as $farmhand) {
-            if((string) $farmhand->name === "") {
+            if ((string) $farmhand->name === "") {
                 continue;
             }
 
@@ -106,7 +106,7 @@ function get_all_players_data(): array {
     array_push($players_data, get_aggregated_data($data->player));
 	$GLOBALS["host_player_data"] = $players_data[0];
 
-    if(!empty($farmhands)) {
+    if (!empty($farmhands)) {
         foreach($farmhands as $farmhand) {
             array_push($players_data, get_aggregated_data($farmhand));
         }

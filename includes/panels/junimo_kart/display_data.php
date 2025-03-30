@@ -24,7 +24,7 @@ function display_junimo_kart_panel(): string {
     $counter = 1;
 
     foreach($untreated_scores->NetLeaderboardsEntry as $untreated_score) {
-        if($counter > 5) {
+        if ($counter > 5) {
             break;
         }
 

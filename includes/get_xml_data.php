@@ -10,7 +10,7 @@ try {
 	$name_check = explode("_", $_FILES["save-upload"]["name"]);	
     $external_error = ($name_check[0] === "Error") ? explode(".", ($name_check[1]))[0] : null;
 
-    if(is_file_secure($_FILES["save-upload"], $external_error)) {
+    if (is_file_secure($_FILES["save-upload"], $external_error)) {
         $responses = load_save($_FILES["save-upload"]["tmp_name"]);
 
         $response["players"] = $responses["players"];

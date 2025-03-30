@@ -11,7 +11,7 @@ function get_level_progress_bar(int $level, int $max_level = 10): string {
     $images_path = get_images_folder();
     $level_structure = "";
     
-    for($i = 1; $i <= $max_level; $i++) {
+    for ($i = 1; $i <= $max_level; $i++) {
         $state = ($level >= $i) ? "" : "_empty";
         $icon_type = ($i % ($max_level / 2) === 0) ? "big_level" : "level";
         $level_bar = $images_path . "/icons/{$icon_type}{$state}.png";
@@ -38,7 +38,7 @@ function get_skills_icons(array $skills, string $current_skill): string {
     $skill_structure = "";
 
     foreach($skills as $skill) {
-        if($current_skill === strtolower($skill["source"])) {
+        if ($current_skill === strtolower($skill["source"])) {
 
             $skill_icon = strtolower($skill["skill"]);
             $skill_icon_path = "$images_path/skills/$skill_icon.png";
@@ -71,7 +71,7 @@ function get_player_skills_data(): array {
 	$skills_data = [];
 
 	foreach($json_skills as $key => $skill) {
-		if(!in_array($key, $player_skills)) {
+		if (!in_array($key, $player_skills)) {
 			continue;
 		}
 

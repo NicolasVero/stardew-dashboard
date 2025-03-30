@@ -18,12 +18,12 @@ function get_cc_binary_hash(array $player_bundles): string {
 	}
 
 	foreach($player_bundles as $bundle_id => $player_bundle) {
-		if(empty($player_bundle["is_complete"]) || $player_bundle["is_complete"] === false) {
+		if (empty($player_bundle["is_complete"]) || $player_bundle["is_complete"] === false) {
 			continue;
 		}
 
 		foreach($room_indexes[$player_bundle["room_name"]] as &$bundle) {
-			if(!isset($bundle[$bundle_id])) {
+			if (!isset($bundle[$bundle_id])) {
 				continue;
 			}
 			
@@ -36,7 +36,7 @@ function get_cc_binary_hash(array $player_bundles): string {
 		$all_complete = true;
 
 		foreach($bundles as $bundle) {
-			if(in_array(false, $bundle)) {
+			if (in_array(false, $bundle)) {
 				$all_complete = false;
 				break;
 			}
@@ -65,18 +65,18 @@ function get_player_bundle_progress(object $bundle_data, array $bundle_progress)
 		"room_name" => $bundle_progress["room_name"]
 	] + $bundle_details;
 
-	if(empty($bundle_details["limit"])) {
+	if (empty($bundle_details["limit"])) {
 		$bundle_details["limit"] = count($bundle_details["requirements"]);
 	}
 
 	$is_bundle_completed = is_bundle_completed($bundle_progress["room_name"], $bundle_progress["progress"]);
-	if($is_bundle_completed) {
+	if ($is_bundle_completed) {
 		$bundle_details["is_complete"] = true;
 		return $bundle_details;
 	}
 
-	for($item_in_bundle = 0; $item_in_bundle < count($bundle_details["requirements"]); $item_in_bundle++) {
-		if($bundle_progress["progress"][$item_in_bundle] === "true") {
+	for ($item_in_bundle = 0; $item_in_bundle < count($bundle_details["requirements"]); $item_in_bundle++) {
+		if ($bundle_progress["progress"][$item_in_bundle] === "true") {
 			array_push($bundle_details["items_added"], $bundle_details["requirements"][$item_in_bundle]);
 		}
 	}
@@ -175,13 +175,13 @@ function get_bundle_requirements(string $requirements): array {
 		$item[0] = abs($item[0]);
 		$item_name = ($item[0] === 1) ? "Gold Coins" : get_item_name_by_id($item[0]);
 
-		if($item_name === "None") {
+		if ($item_name === "None") {
 			continue;
 		}
 
 		$item_type = "additionnal_items";
 		foreach($item_types as $category => $values) {
-			if(in_array($item_name, $values)) {
+			if (in_array($item_name, $values)) {
 				$item_type = $category;
 			}
 		}
@@ -211,7 +211,7 @@ function has_been_donated_in_bundle(string $name, array $donated_items): bool {
 	$has_been_donated = false;
 
 	foreach($donated_items as $donated_item) {
-		if($name === $donated_item["name"]) {
+		if ($name === $donated_item["name"]) {
 			$has_been_donated = true;
 		}
 	}
@@ -236,14 +236,14 @@ function get_player_bundles(): array {
 		$bundle_booleans = (array) $bundle_array->value->ArrayOfBoolean->boolean;
 
 		foreach($bundles_json as $bundle_room_name => $bundle_room_details) {
-			if(!in_array($bundle_id, $bundle_room_details["bundle_ids"])) {
+			if (!in_array($bundle_id, $bundle_room_details["bundle_ids"])) {
 				continue;
 			}
 
 			$bundle_room = $bundle_room_name;
 		}
 		
-		if(empty($bundle_room)) {
+		if (empty($bundle_room)) {
 			continue;
 		}
 
@@ -255,7 +255,7 @@ function get_player_bundles(): array {
 		];
 
 		foreach($bundles_data->item as $bundle_data) {
-			if((string) $bundle_data->key->string !== $bundle_data_name) {
+			if ((string) $bundle_data->key->string !== $bundle_data_name) {
 				continue;
 			}
 

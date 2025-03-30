@@ -16,14 +16,14 @@ function display_calendar_panel(): string {
 
     $table_structure = "";
 
-    for($lines = 0; $lines < $week_count; $lines++) {
+    for ($lines = 0; $lines < $week_count; $lines++) {
         $table_structure .= "<tr>";
 
-        for($columns = 1; $columns <= $day_count; $columns++) {
+        for ($columns = 1; $columns <= $day_count; $columns++) {
             $day_digit = ($lines * $day_count) + $columns;
             $date = "$day_digit/$season";
 
-            if(!array_key_exists($date, $all_dates)) {
+            if (!array_key_exists($date, $all_dates)) {
                 $table_structure .= "
                 <td class='simple-event not-filled'>
                     <span></span>
@@ -32,7 +32,7 @@ function display_calendar_panel(): string {
                 continue;
             }
 
-            if(!is_array($all_dates[$date])) {
+            if (!is_array($all_dates[$date])) {
                 $wiki_link = get_wiki_link(get_custom_id($all_dates[$date]));
                 $calendar_tooltip = (in_array($all_dates[$date], $villagers)) ? $all_dates[$date] . "'s Birthday" : $all_dates[$date];
                 $table_structure .= "

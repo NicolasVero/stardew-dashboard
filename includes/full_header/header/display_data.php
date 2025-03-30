@@ -103,8 +103,8 @@ function display_festival_icon(): string {
 	$festival_class = "isnt_festival";
 
 	foreach($festivals as $key => $festival) {
-		for($i = 0; $i < count($festival["date"]); $i++) {
-			if(is_this_the_same_day($festival["date"][$i])) {
+		for ($i = 0; $i < count($festival["date"]); $i++) {
+			if (is_this_the_same_day($festival["date"][$i])) {
 				$festival_class = "is_festival";
 				$festival_name = $festival["name"];
 				$wiki_url = get_wiki_link($key);

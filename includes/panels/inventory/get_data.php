@@ -6,7 +6,7 @@
  * @return array Les outils du joueur.
  */
 function get_player_tools(): array {
-	if(!is_game_singleplayer()) {
+	if (!is_game_singleplayer()) {
 		return [];
 	}
 
@@ -40,17 +40,17 @@ function get_player_tools(): array {
 				$last_item_word = explode(" ", $item_name);
 				$tool_category = end($last_item_word);
 
-				if($tool_category === "Rod" || $tool_category === "Pole") {
+				if ($tool_category === "Rod" || $tool_category === "Pole") {
 					$tool_category = "Rod-Pole";
 				}
 
 				$tool_list = $normalized_tools_dictionary[$tool_category] ?? null;
 
-				if($tool_list === null) {
+				if ($tool_list === null) {
 					continue;
 				}
 
-				if(array_search($item_name, $tool_list) > array_search($player_items[$tools_categories[$tool_category]], $tool_list)) {
+				if (array_search($item_name, $tool_list) > array_search($player_items[$tools_categories[$tool_category]], $tool_list)) {
 					$player_items[$tools_categories[$tool_category]] = $item_name;
 				}
 			}

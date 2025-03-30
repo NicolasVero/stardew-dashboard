@@ -46,13 +46,13 @@ function get_player_farm_animals(): array {
 	    	"was_pet" => $was_pet
 	    ];
 
-        if(!isset($all_animals[$full_animal_type])) {
+        if (!isset($all_animals[$full_animal_type])) {
             continue;
         }
 
         $animal_type = $all_animals[$full_animal_type];
 
-        if(!isset($animals_data[$animal_type])) {
+        if (!isset($animals_data[$animal_type])) {
             $animals_data[$animal_type] = [
                 "id" => get_custom_id($animal_type),
 	    		"animals_data" => [],

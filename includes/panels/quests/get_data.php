@@ -32,7 +32,7 @@ function find_reference(string $reference_id): string {
 	];
 
 	foreach($json_list as $json) {
-		if(isset($reference) && $reference !== null) {
+		if (isset($reference) && $reference !== null) {
 			continue;
 		}
 
@@ -55,7 +55,7 @@ function get_daily_quest_data(object $quest): array|null {
 	$target = $quest->target;
 	$quest_configs = get_daily_quest_configs();
 
-	if(!isset($quest_configs[$quest_type])) {
+	if (!isset($quest_configs[$quest_type])) {
 		return null;
 	}
 	
@@ -90,7 +90,7 @@ function get_daily_quest_data(object $quest): array|null {
 function get_special_order_data(object $special_order): array|null {
 	$special_orders_json = sanitize_json_with_version("special_orders", true);
 
-	if(((string) $special_order->questState) !== "InProgress") {
+	if (((string) $special_order->questState) !== "InProgress") {
 		return null;
 	}
 
@@ -106,11 +106,11 @@ function get_special_order_data(object $special_order): array|null {
 
 	$rewards = [];
 	foreach($special_order->rewards as $reward) {
-		if(!isset($reward->amount)) {
+		if (!isset($reward->amount)) {
 			continue;
 		}
 
-		if($is_qi_order) {
+		if ($is_qi_order) {
 			$rewards[] = (int) $reward->amount->int . "_q";
 		} else {
 			$rewards[] = ((int) $reward->amount->int) * ((int) $reward->multiplier->float);
@@ -145,10 +145,10 @@ function get_player_quest_log(): array {
 		);
 
 		// if -> Quête histoire // else -> Quête daily
-		if(!empty($quest_reference)){
+		if (!empty($quest_reference)){
 			$quests_data[] = get_story_quest_data($quest_reference);
 		} else {
-			if(($quest_data = get_daily_quest_data($quest)) !== null) {
+			if (($quest_data = get_daily_quest_data($quest)) !== null) {
 				$quests_data[] = $quest_data;
 			}
 		}
@@ -156,7 +156,7 @@ function get_player_quest_log(): array {
 
 	// Special Orders (Weekly)
 	foreach($entire_data->specialOrders->SpecialOrder as $special_order) {
-		if(($special_order_data = get_special_order_data($special_order)) !== null) {
+		if (($special_order_data = get_special_order_data($special_order)) !== null) {
 			$quests_data[] = $special_order_data;
 		}
 	}

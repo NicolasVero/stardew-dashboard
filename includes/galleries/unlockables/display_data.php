@@ -17,7 +17,7 @@ function display_unlockables(): string {
         
 		foreach($unlockables as $unlockable) {
 			$formatted_name = format_text_for_file($unlockable);
-			if(!isset($player_unlockables[$formatted_name]["is_found"])) {
+			if (!isset($player_unlockables[$formatted_name]["is_found"])) {
 				continue;
             }
 	

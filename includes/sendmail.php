@@ -45,7 +45,7 @@ $response = [
 	"message" => "Error while sending the email. Please try again"
 ];
 
-if($_SERVER["REQUEST_METHOD"] !== "POST") {
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 	echo json_encode($response);
 	exit;
 }
@@ -57,7 +57,7 @@ $user_details = [
 	"message" => $message,
 ];
 
-if(send_feedback_mail($user_details)) {
+if (send_feedback_mail($user_details)) {
 	$response["success"] = true;
 	$response["message"] = "Your mail has been delivered successfully";
 }

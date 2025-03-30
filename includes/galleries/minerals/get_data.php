@@ -18,7 +18,7 @@ function get_player_minerals(): array {
 		$minerals_reference = find_reference_in_json($mineral_id, "minerals");
 		$museum_index = get_museum_index();
 
-		if(!empty($minerals_reference)) {
+		if (!empty($minerals_reference)) {
 			$minerals_data[$minerals_reference] = [
 				"id"      => $mineral_id,
 				"counter" => is_given_to_museum($mineral_id, $general_data, $museum_index)

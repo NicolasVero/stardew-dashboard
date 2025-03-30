@@ -17,7 +17,7 @@ function get_player_shipped_items(): array {
 
 		$shipped_items_reference = find_reference_in_json($item_id, "shipped_items");
 
-		if(empty($shipped_items_reference)) {
+		if (empty($shipped_items_reference)) {
 			continue;
 		}
 

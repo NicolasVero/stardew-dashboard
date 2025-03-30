@@ -14,7 +14,7 @@ function get_player_friendship_data(): array {
 	foreach($player_friendships->item as $friend) {
 		$friend_name = (string) $friend->key->string;
 
-		if(!in_array($friend_name, $villagers_json)) {
+		if (!in_array($friend_name, $villagers_json)) {
 			continue;
 		}
 
@@ -119,7 +119,7 @@ function get_hearts_structure(array $hearts_info): string {
     $max_heart = ($status) === "Married" ? 14 : 10;
 
 	$hearts_structure = "";
-    for($i = 1; $i <= $max_heart; $i++) {
+    for ($i = 1; $i <= $max_heart; $i++) {
         $heart_icon = "$images_path/icons/" . (($i > 8 && $can_be_married) ? "locked_heart.png" : (($friend_level >= $i) ? "heart.png" : "empty_heart.png"));
         $hearts_structure .= "<img src='$heart_icon' class='hearts' alt=''>";
     }

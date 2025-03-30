@@ -26,7 +26,7 @@ function display_visited_locations_panel(): string {
     $counter = 0;
     
     foreach($json_data as $json_line_name) {
-        if($counter % $batch_size === 0) {
+        if ($counter % $batch_size === 0) {
             $locations .= "<span class='locations-batch'>";
         }
 
@@ -42,7 +42,7 @@ function display_visited_locations_panel(): string {
 
         $counter++;
 
-        if($counter % $batch_size === 0 || $counter === count($json_data)) {
+        if ($counter % $batch_size === 0 || $counter === count($json_data)) {
             $locations .= "</span>";
         }
     }

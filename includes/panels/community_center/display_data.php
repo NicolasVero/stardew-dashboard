@@ -23,7 +23,7 @@ function display_community_center_panel(): string {
     $cc_structure = "";
     
     foreach($bundles_json as $room_name => $room_details) {
-        if($room_name === "Bulletin Board" && has_element_in_mail("JojaMember")) {
+        if ($room_name === "Bulletin Board" && has_element_in_mail("JojaMember")) {
             continue;
         }
 
@@ -38,7 +38,7 @@ function display_community_center_panel(): string {
             $bundle_name = $bundle_details["bundle_name"];
             $formatted_bundle_name = format_text_for_file($bundle_name);
 
-            if($bundle_details["is_complete"]) {
+            if ($bundle_details["is_complete"]) {
                 $is_complete_class = "complete";
                 $bundle_tooltip_class = "";
                 $bundle_tooltip = "";
@@ -136,10 +136,10 @@ function display_bundle_added_items(array $added_items, int $limit): string {
     $structure = "";
     $images_path = get_images_folder();
     
-    for($i = 0; $i < $limit; $i++) {
+    for ($i = 0; $i < $limit; $i++) {
         $added_item = "";
 
-        if(isset($added_items[$i])) {
+        if (isset($added_items[$i])) {
             $item_name = $added_items[$i]["name"];
             $formatted_item_name = format_text_for_file($item_name);
             $type = $added_items[$i]["type"];

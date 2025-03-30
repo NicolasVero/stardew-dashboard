@@ -57,7 +57,7 @@ function is_given_to_museum(int $item_id, object $general_data, int $museum_inde
 	foreach($museum_items->item as $museum_item) {
 		$museum_item_id = (is_game_version_older_than_1_6()) ? (int) $museum_item->value->int : (int) $museum_item->value->string;
 
-		if($item_id === $museum_item_id) {
+		if ($item_id === $museum_item_id) {
 			return 1;
 		}
 	}

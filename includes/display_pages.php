@@ -7,7 +7,7 @@
  * @return string Le contenu HTML de la page d'accueil.
  */
 function display_landing_page(bool $with_topbar = true): string {
-	if(is_a_mobile_device()) {
+	if (is_a_mobile_device()) {
 		return display_mobile_landing_page();
 	}
 

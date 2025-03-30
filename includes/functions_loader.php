@@ -59,7 +59,7 @@ foreach($functions_files as $folder => $subfolders) {
 function include_files_if_exists(string $path): void {
     $path = preg_replace("/\/\d+/", "", $path);
 
-    if(file_exists($path)) {
+    if (file_exists($path)) {
         require_once $path;
     }
 }

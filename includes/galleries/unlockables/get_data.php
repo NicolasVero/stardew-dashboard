@@ -13,7 +13,7 @@ function get_player_unlockables(): array {
 	foreach($unlockables_details as $unlockable_name => $unlockable_details) {
 		extract($unlockable_details); //? $type, $element_name
 
-		switch($type) {
+		switch ($type) {
 			case "mail" :
 				$player_unlockables[$unlockable_name] = has_element_in_mail($element_name);
 				break;
@@ -24,7 +24,7 @@ function get_player_unlockables(): array {
 				$player_unlockables[$unlockable_name] = (int) in_array($event_id, (array) $player_data->eventsSeen->int);
 				break;
 			case "element_host" :
-				if(is_game_version_older_than_1_6()) {
+				if (is_game_version_older_than_1_6()) {
 					$player_unlockables[$unlockable_name] = has_element($player_data->$older_element);
 				} else {
 					$player_unlockables[$unlockable_name] = has_unlockable_element_based_on_host($unlockable_name, $newer_element);
@@ -111,7 +111,7 @@ function get_unlockables_details(): array {
  * @return int Indique si le joueur hôte a l'élément ou non.
  */
 function has_unlockable_element_based_on_host(string $element, string $element_newer_version): int {
-	if(isset($GLOBALS["host_player_data"])) {
+	if (isset($GLOBALS["host_player_data"])) {
 		return does_host_has_unlockable_element($element);
 	}
 	

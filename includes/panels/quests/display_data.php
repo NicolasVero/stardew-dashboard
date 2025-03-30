@@ -20,7 +20,7 @@ function display_quest_panel(): string {
     $images_path = get_images_folder();
     $quest_structure = "";
 
-    if(empty($this_player_data)) {
+    if (empty($this_player_data)) {
         $quest_structure = no_items_placeholder();
     }
 
@@ -35,19 +35,19 @@ function display_quest_panel(): string {
                 </span>
         ";
 
-        if(empty($rewards)) {
+        if (empty($rewards)) {
 			$quest_structure .= "</span>";
 			continue;
 		}
         
-		if(isset($daysLeft)) {
+		if (isset($daysLeft)) {
 			$day_text = ($daysLeft > 1) ? "days" : "day";
 			$quest_structure .= " <span class='days-left'><img src='$images_path/icons/timer.png' alt='Time left'>$daysLeft " . __($day_text) . "</span>";
 		}
 
 		$quest_structure .= "<span class='quest-rewards'>";
 		
-        for($i = 0; $i<count($rewards); $i++) {
+        for ($i = 0; $i<count($rewards); $i++) {
 			// Reward tooltip (pas besoin pourgold and qi gems)
             $quest_structure .= ((is_numeric($rewards[$i]) || $rewards[$i] === null || str_ends_with($rewards[$i], 'q'))) ? "<span class='quest-reward'>" : "<span class='quest-reward tooltip'>";
             
@@ -58,15 +58,15 @@ function display_quest_panel(): string {
 			Qi Gems
 			Objects (string)
             */
-            if(strstr($rewards[$i], "Friendship")) {
+            if (strstr($rewards[$i], "Friendship")) {
                 $reward_number = explode(" ", $rewards[$i])[0];
                 $quest_structure .= "<img src='$images_path/rewards/heart_$reward_number.png' alt='Friendship reward'>";
-            } elseif(is_numeric($rewards[$i])) {
+            } elseif (is_numeric($rewards[$i])) {
                 $quest_structure .= format_number($rewards[$i], $GLOBALS["site_language"]) . "<img src='$images_path/rewards/gold.png' alt='Gold coins reward'>";
-            } elseif(str_ends_with($rewards[$i], 'q')) {
+            } elseif (str_ends_with($rewards[$i], 'q')) {
                 $quest_structure .= explode('_', $rewards[$i])[0] . "<img src='$images_path/rewards/qi_gem.png' alt='Qi gems reward'>";
             } else {
-                if($rewards[$i] === null) {
+                if ($rewards[$i] === null) {
                     continue;
                 }
                 

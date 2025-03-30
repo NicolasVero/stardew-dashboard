@@ -200,8 +200,8 @@ function display_player_selection(): string {
     $players_names = $GLOBALS["players_names"];
     $players_name_structure = "";
 
-    if(count($players_names) > 1) {
-        for($i = 0; $i < count($players_names); $i++) {
+    if (count($players_names) > 1) {
+        for ($i = 0; $i < count($players_names); $i++) {
             $players_name_structure .= "<li class='player_selection' value='player_$i'>" . $players_names[$i] . "</option>";
         }
     }

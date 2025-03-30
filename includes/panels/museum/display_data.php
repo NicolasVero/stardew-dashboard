@@ -24,11 +24,11 @@ function display_museum_panel(): string {
 
     $table_structure = "";
 
-    for($row_count = $row_start; $row_count < $row_end; $row_count++) {
+    for ($row_count = $row_start; $row_count < $row_end; $row_count++) {
         $table_structure .= "<tr>";
 
-        for($column_count = $column_start; $column_count < $column_end; $column_count++) {
-            if(in_array($row_count, $row_breakpoints) || in_array($column_count, $column_breakpoints)) {
+        for ($column_count = $column_start; $column_count < $column_end; $column_count++) {
+            if (in_array($row_count, $row_breakpoints) || in_array($column_count, $column_breakpoints)) {
                 $table_structure .= "<td class='non-fillable-space'></td>";
                 continue;
             }
@@ -38,7 +38,7 @@ function display_museum_panel(): string {
 
             $museum_tooltip = "";
             foreach($museum_data as $piece_index => $piece_details) {
-                if($piece_details["coords"]["X"] === $column_count && $piece_details["coords"]["Y"] === $row_count) {
+                if ($piece_details["coords"]["X"] === $column_count && $piece_details["coords"]["Y"] === $row_count) {
                     $piece_name = ucfirst(get_item_name_by_id($piece_details["id"]));
                     $piece_filename = format_text_for_file($piece_name);
                     $piece_type = $piece_details["type"];

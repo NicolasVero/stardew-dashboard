@@ -1,1 +1,948 @@
-var OS,__awaiter=this&&this.__awaiter||function(e,i,s,r){return new(s=s||Promise)(function(n,t){function l(e){try{o(r.next(e))}catch(e){t(e)}}function a(e){try{o(r.throw(e))}catch(e){t(e)}}function o(e){var t;e.done?n(e.value):((t=e.value)instanceof s?t:new s(function(e){e(t)})).then(l,a)}o((r=r.apply(e,i||[])).next())})};function file_choice(e){var e=e.target,e=e.files?e.files[0].name.substring(0,12):"",t=document.getElementById("new-filename");null!==t&&(t.innerHTML=e),toggle_loading(!0),AJAX_send()}function AJAX_send(){return __awaiter(this,void 0,void 0,function*(){var e=document.getElementById("save-upload"),e=null==(e=null==e?void 0:e.files)?void 0:e[0];if(null===e)alert("An error occurred while uploading the file. Please try again.");else{var t=yield get_max_upload_size(),t=e.size>t;let l=document.getElementById("display");var n=document.getElementById("landing_menu");let a=null!=(i=null==(i=document.getElementById("landing_page"))?void 0:i.outerHTML)?i:"";null!==n&&(n.outerHTML=""),l.innerHTML="";var i=new FormData;let o=new XMLHttpRequest;n=get_site_root()+"/includes/get_xml_data.php";t?i.append("save-upload",new File(["SizeException"],"Error_SizeException.xml")):i.append("save-upload",e),o.open("POST",n,!0),o.onreadystatechange=function(){if(o.readyState===XMLHttpRequest.DONE&&200===o.status){var e=JSON.parse(o.responseText),t=e.html;if(l.innerHTML=t.topbar,"success"===e.code){l.innerHTML+=a;var n=e.players.length;for(let e=0;e<n;e++)l.innerHTML+=t["player_"+e];load_dashboard_elements()}else l.innerHTML+=t.error_message,load_error_page_elements();load_final_elements()}},o.send(i)}})}let topbar;function load_easter_eggs(){easter_egg_characters(),easter_egg_kaaris(),easter_egg_monarchy_mayhem()}function easter_egg_characters(){var e=["abigail","alex","caroline","clint","demetrius","elliott","emily","evelyn","george","gus","haley","harvey","jas","jodi","kent","leah","lewis","linus","marnie","maru","pam","penny","pierre","robin","sam","sandy","sebastian","shane","vincent","willy","wizard"],a=new Date;let o=e[[new Date(a.getFullYear(),0,1).getTime(),a.getUTCMonth(),a.getUTCDate()].reduce((e,t)=>e*t,1)%e.length];a=document.querySelectorAll(".character-name."+o);if(0!==a.length){let t=new Audio(get_site_root()+"/assets/audio/trigger.mp3"),n=!1,l=()=>{if(!n){n=!0;let e=document.createElement("img");e.src=`https://raw.githubusercontent.com/NicolasVero/stardew-dashboard/refs/heads/master/assets/images/characters/${o}.png`,e.classList.add("fullscreen-image"),document.body.appendChild(e),e.classList.add("show"),t.play().finally(()=>{n=!1}),setTimeout(()=>{e.classList.remove("show"),e.addEventListener("transitionend",()=>{e.remove()})},1e3)}};a.forEach(e=>{e.addEventListener("dblclick",l)})}}function easter_egg_kaaris(){var n=null==(n=null==(n=document.querySelector(".house"))?void 0:n.previousElementSibling)?void 0:n.querySelector("img");if(null!==n){n.classList.add("easter_egg_kaaris");let e=new Audio(get_site_root()+"/assets/audio/kaaris_maison-citrouille.mp3"),t=!1;n.addEventListener("dblclick",()=>{t||(t=!0,e.play().finally(()=>t=!1))})}}function easter_egg_monarchy_mayhem(){let t=new Audio(get_site_root()+"/assets/audio/monarchy_mayhem.mp3"),n="monarchymayhem",l="",a=!1;document.addEventListener("keydown",e=>{if((l=(l+=e.key.toLowerCase()).length>n.length?l.slice(-n.length):l)===n&&!a){a=!0,t.play().finally(()=>a=!1);let n=document.createElement("h2");n.innerText="Call",Object.assign(n.style,{position:"fixed",top:"10%",left:"35%",color:"white",fontSize:"11rem",textShadow:"2px 2px 4px rgba(0, 0, 0, 0.8)"}),document.body.appendChild(n),setTimeout(()=>{n.innerText="Call 911"},250),setTimeout(()=>{n.innerText="NOW !!!!",n.style.rotate="336deg",n.style.fontSize="20rem",n.style.left="20%",n.style.top="0"},1e3),setTimeout(()=>{n.remove();let e=document.querySelector("html");e.style.background="#0a0523 url("+get_site_root()+"/assets/images/easter_eggs/monarchy_mayhem_background.png) no-repeat fixed center center / cover";let l=[],t=([{left:"15%",top:"40%"},{left:"74%",top:"46%"},{left:"45%",top:"45%"},{left:"22%",top:"00%"},{left:"70%",top:"50%"},{left:"75%",top:"-5%"},{left:"45%",top:"-5%"},{left:"00%",top:"70%"},{left:"00%",top:"20%"}].forEach((e,t)=>{var n=document.createElement("img");n.src=get_site_root()+`/assets/images/easter_eggs/monarchy_mayhem_${t+1}.gif`,Object.assign(n.style,{position:"fixed",left:e.left,top:e.top}),document.body.appendChild(n),l.push(n)}),document.createElement("h1"));t.innerText="Monarchy Mayhem",Object.assign(t.style,{position:"fixed",top:"35%",left:"50%",transform:"translateX(-50%)",color:"white",fontSize:"6rem",fontFamily:"Arial, sans-serif",textShadow:"2px 2px 4px rgba(0, 0, 0, 0.8)",whiteSpace:"nowrap",animation:"colorChange 0.8s infinite alternate, rotateText 5s linear infinite"}),document.body.appendChild(t),t.addEventListener("click",()=>{window.open("https://monarchymayhem.itch.io/monarchymayhem","_blank")}),setTimeout(()=>{l.forEach(e=>e.remove()),t.remove(),e.style.background="#0a0523 url("+get_site_root()+"/assets/images/content/bg.png) no-repeat fixed center center / cover"},15500)},1600),l=""}})}function load_error_page_elements(){[{open_button:".main-settings",exit_button:".exit-settings",modal_panel:".settings"},{open_button:".main-languages",exit_button:".exit-languages",modal_panel:".languages-panel"},{open_button:".file-upload",exit_button:".exit-upload",modal_panel:".upload-panel"}].forEach(({open_button:e,exit_button:t,modal_panel:n})=>{activate_buttons(e,t,n)})}function load_dashboard_elements(){toggle_landing_page(!1),load_buttons(),load_easter_eggs(),initialize_settings(),toggle_checkboxes_actions(),update_tooltips_after_ajax(),prevent_panel_scroll(),initialize_player_swapper(get_players_number()),swap_displayed_player(0)}function load_buttons(){var e,n=get_players_number();let l=[];var a=["all-friends","all-quests","monster-eradication-goals","calendar","all-animals","junimo-kart-leaderboard","museum","community-center","visited-locations","tools","farm-informations"];for(let t=0;t<n;t++)a.forEach(e=>{l.push({open_button:`.view-${e}-`+t,exit_button:`.exit-${e}-`+t,modal_panel:`.${e}-`+t})});[{open_button:".landing-settings",exit_button:".exit-settings",modal_panel:".settings"},{open_button:".landing-languages",exit_button:".exit-languages",modal_panel:".languages"},{open_button:".landing-upload",exit_button:".exit-upload",modal_panel:".upload-panel"},{open_button:".main-settings",exit_button:".exit-settings",modal_panel:".settings"},{open_button:".file-upload",exit_button:".exit-upload",modal_panel:".upload-panel"},{open_button:".main-languages",exit_button:".exit-languages",modal_panel:".languages-panel"},...l].forEach(({open_button:e,exit_button:t,modal_panel:n})=>{activate_buttons(e,t,n)}),null!=(e=document.getElementById("home-icon"))&&e.addEventListener("click",()=>{var e;toggle_landing_page(!("none"!==(null==(e=document.getElementById("landing_page"))?void 0:e.style.display)))})}function load_final_elements(){activate_feedback_ajax_trigger(),toggle_visibility(current_section,!1),toggle_loading(!1)}function activate_feedback_ajax_trigger(){document.querySelectorAll(".feedback-opener").forEach(e=>{e.addEventListener("click",()=>{var e=document.querySelector(".feedback-panel");hide_all_sections(),e?toggle_visibility(e,!0):feedback_form_creation()})})}function feedback_form_creation(){let n=document.querySelector("body");fetch("./functions.php",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams({action:"display_feedback_panel"})}).then(e=>e.text()).then(e=>{var t=document.createElement("div");for(current_section=document.querySelector(".feedback-panel"),t.innerHTML=e;t.firstChild;)null!=n&&n.appendChild(t.firstChild);feedback_custom_radio(),activate_feedback_form(),activate_close_buttons(".exit-feedback",".feedback-panel")}).catch(e=>console.error("Error:",e))}function activate_feedback_form(){let t=document.getElementById("feedback_form");null!=t&&t.addEventListener("submit",e=>{e.preventDefault();e=new FormData(t);fetch("./includes/sendmail.php",{method:"POST",body:e}).then(e=>e.json()).then(e=>{e=e.success?e.message:"Error submitting form: "+e.message;alert(e)}).catch(e=>{console.error("Error: ",e),alert("An error occurred while submitting the form.")})})}function feedback_custom_radio(){let n=document.querySelectorAll(".feedback_custom_radio");var e=document.querySelectorAll(".feedback_real_radio");n.forEach(t=>{t.parentElement.addEventListener("click",()=>{var e=t.previousElementSibling;null!==e&&"radio"===e.type&&(e.checked=!0,e.dispatchEvent(new Event("change")))})}),e.forEach(t=>{t.addEventListener("change",()=>{n.forEach(e=>{e.classList.add("topic_not_selected")});var e=t.nextElementSibling;null!==e&&"IMG"===e.tagName&&(t.checked?e.classList.remove("topic_not_selected"):e.classList.add("topic_not_selected"))})})}window.addEventListener("load",()=>{var e=get_os_path(detect_os()),t=document.getElementById("save_os_path"),t=(null!==t&&(t.innerHTML=e),document.getElementById("toggle_versions_items_mode")),e=document.getElementById("no_spoil_mode"),n=document.getElementById("spoil_mode"),l=document.getElementById("steam_achievements"),t=(null!==t&&t.addEventListener("change",handle_toggle_versions_mode),null!==e&&e.addEventListener("change",handle_no_spoil_mode),null!==n&&n.addEventListener("change",handle_spoil_mode),null!==l&&l.addEventListener("change",handle_steam_mode),document.getElementById("save-upload"));null!==t&&t.addEventListener("change",file_choice),save_landing_topbar(),prevent_panel_scroll(),activate_buttons(".landing-upload",".exit-upload",".upload-panel"),activate_buttons(".landing-languages",".exit-languages",".languages-panel"),activate_buttons(".landing-settings",".exit-settings",".settings"),toggle_custom_checkboxes(".checkmark"),activate_feedback_ajax_trigger()});let gallery_option=document.querySelector(".settings-panel .gallery-order");function gallery_reset_order(){document.querySelectorAll(".gallery-items-container").forEach(e=>{e.querySelectorAll(".tooltip").forEach(e=>{e.style.removeProperty("order")})})}function gallery_alphabetic_order_display(){document.querySelectorAll(".gallery-items-container").forEach(e=>{var t=e.querySelectorAll(".tooltip"),e=e.querySelectorAll(".tooltip img.gallery-item");let n=Array.from(e).map(e=>e.getAttribute("alt")).sort();t.forEach(e=>{var t=e.querySelector("img.gallery-item").getAttribute("alt");e.style.order=n.indexOf(t).toString()})})}function gallery_discovery_order_display(){document.querySelectorAll(".gallery-items-container").forEach(e=>{e.querySelectorAll(".tooltip").forEach(e=>{var t=e.querySelector("img.gallery-item").className;t.includes("found")&&(e.style.order="0"),t.includes("unused")&&(e.style.order="1"),t.includes("not-found")&&(e.style.order="2")})})}gallery_option.addEventListener("change",e=>{e=e.target;"alphabetical-order"===e.value&&gallery_alphabetic_order_display(),"discovery-level"===e.value&&gallery_discovery_order_display(),"version"===e.value&&gallery_reset_order(),initialize_tooltips(null,!0)});let panels={Digit1:".visited-locations",Digit2:".monster-eradication-goals",Digit3:".junimo-kart-leaderboard",Digit4:".all-quests",Digit5:".all-friends",Digit6:".calendar",Digit7:".all-animals",Digit8:".museum",Digit9:".community-center",Digit0:".farm-informations",Minus:".tools"},all_panels=Object.values(panels),current_section=(window.addEventListener("keydown",e=>{var t;"Escape"===e.code&&close_all_panels(all_panels,!0),panels[e.code]&&(e=panels[e.code]+"-"+get_current_player_id(),t="block"===(null==(e=document.querySelector(e))?void 0:e.style.display)?"none":"block",close_all_panels(all_panels),e.style.display=t)}),window.addEventListener("click",e=>{can_close_panel(e)&&close_all_panels(all_panels,!0)}),null);function activate_buttons(e,t,n){e=document.querySelectorAll(e),t=document.querySelectorAll(t);let l=document.querySelector(n);e.forEach(e=>{e.addEventListener("click",()=>{hide_all_sections(!0),null!==l&&(toggle_visibility(current_section=l,!0),l.hasAttribute("data-tooltips-initialized")||(initialize_tooltips(l.classList[0]),l.setAttribute("data-tooltips-initialized","true")))})}),t.forEach(e=>{e.addEventListener("click",()=>{hide_all_sections(!0),current_section=null})})}function activate_close_buttons(e,t){e=document.querySelectorAll(e);let n=document.querySelector(t);e.forEach(e=>{e.addEventListener("click",()=>{null!==n&&(n.remove(),current_section=null)})})}function hide_all_sections(t=!1){document.querySelectorAll(".modal-window").forEach(e=>{e.classList.contains("to-destroy")&&t&&e.remove(),e.style.display="none"})}function prevent_panel_scroll(){document.querySelectorAll(".modal-window").forEach(l=>{l.addEventListener("wheel",e=>{var t=l.scrollTop,n=0===t&&e.deltaY<0,t=l.scrollHeight<=t+l.clientHeight&&0<e.deltaY;(n||t)&&e.preventDefault()},{passive:!1})})}(e=>{e.mac="mac",e.linux="linux",e.windows="windows"})(OS=OS||{});let os_paths=new Map([[OS.mac,"(~/.config/StardewValley/Saves/)."],[OS.linux,"(~/.steam/debian-installation/steamapps/compatdata/413150/pfx/drive_c/users/steamuser/AppData/Roaming/StardewValley/Saves/)."],[OS.windows,"(%AppData%/StardewValley/Saves/SaveName)."]]);function detect_os(){var e=window.navigator.userAgent.toLowerCase();return e.includes("mac")?OS.mac:e.includes("linux")?OS.linux:OS.windows}function get_os_path(e=OS.windows){return os_paths.get(e)||""}function initialize_player_swapper(t){var n=document.getElementsByClassName("player_selection");for(let e=0;e<n.length;e++)n[e].addEventListener("click",()=>{swap_displayed_player(e%t)})}function swap_displayed_player(t){var n=document.getElementsByClassName("player_container");n[t].hasAttribute("data-tooltips-initialized")||(initialize_tooltips(n[t].classList[0]),n[t].setAttribute("data-tooltips-initialized","true")),n[t].style.display="block";for(let e=0;e<n.length;e++)t!==e&&(n[e].style.display="none")}function get_settings(){return{no_spoil:document.getElementById("no_spoil_mode").checked,toggle_versions:document.getElementById("toggle_versions_items_mode").checked,spoil:document.getElementById("spoil_mode").checked}}function initialize_settings(){handle_toggle_versions_mode(),handle_no_spoil_mode(),handle_spoil_mode()}function handle_no_spoil_mode(){var e=document.getElementById("spoil_mode"),t=document.getElementById("no_spoil_mode");null!==t&&null!==e&&t.checked&&e.checked&&(e.checked=!1),update_display(["not-found","found"])}function handle_toggle_versions_mode(){update_display(["newer-version"]),update_display(["newer-version-icon"])}function handle_spoil_mode(){var e=document.getElementById("no_spoil_mode"),t=document.getElementById("spoil_mode");null!==e&&null!==t&&(t.checked&&e.checked?(e.checked=!1,update_display(["not-found","found"])):update_display(["found"]))}function handle_steam_mode(){let a=["star_achievements","achievements"];document.querySelectorAll(".achievements-section img").forEach(e=>{var t=e.getAttribute("src"),[n,l]=t.includes("star_")?a:[...a].reverse();e.setAttribute("src",t.replace(n,l))})}function wiki_redirections(){document.querySelectorAll("a").forEach(e=>{e.addEventListener("click",e=>{document.getElementById("wiki_redirections").checked||(e.preventDefault(),e.stopImmediatePropagation())})})}function toggle_custom_checkboxes(e){document.querySelectorAll(e).forEach(t=>{t.addEventListener("click",()=>{var e=t.previousElementSibling;null!==e&&"checkbox"===e.type&&(e.checked=!e.checked,e.dispatchEvent(new Event("change")))})})}function toggle_checkboxes_actions(){document.querySelectorAll(".checkbox input[type='checkbox']").forEach(e=>{var t=e.id;e.checked&&"function"==typeof window[t]&&window[t]()})}function update_tooltips_after_ajax(){on_images_loaded(()=>{initialize_tooltips()})}function initialize_tooltips(e=null,l=!1){let t;(t=(null===e||""===e?document:document.querySelector("."+e)).querySelectorAll(".tooltip")).forEach(e=>{var t=e.getBoundingClientRect();let n=e.querySelector("span");!n||["left","right"].some(e=>n.classList.contains(e))&&!l||0!==t.left&&(e=t.left<window.innerWidth/2?"right":"left",l&&(n.classList.remove("left"),n.classList.remove("right")),n.classList.add(e))})}function on_images_loaded(e){let n=0;var l=document.querySelectorAll("img");let a=l.length;if(0===a)e();else{let t=()=>{++n===a&&e()};l.forEach(e=>{e.complete?t():(e.addEventListener("load",t),e.addEventListener("error",t))}),n===a&&e()}}function update_section_visibility(e,t){var n=e.querySelector("h2"),l=null==(l=e.children[1])?void 0:l.querySelector("span .no-spoil-title"),a=is_section_empty(e),o=has_section_older_version_items(e);if(t.toggle_versions&&a&&!o)e.classList.add("hidden");else if(e.classList.remove("hidden"),null!==n&&(n.style.display="block"),null!==l){let e=!1;e=!t.no_spoil&&t.toggle_versions?a&&o:a,l.style.display=e?"block":"none"}}function update_display(e){let n=get_settings();e.forEach(e=>{var t=document.getElementsByClassName(e);"icon"===e.split("-").pop()?Array.from(t).forEach(e=>{null!==e&&set_element_display(e,should_show_element(e,n))}):Array.from(t).forEach(e=>{var t=get_parent_element(e);null!==t&&set_element_display(t,should_show_element(e,n))})});e=document.getElementsByClassName("gallery");Array.from(e).forEach(e=>update_section_visibility(e,n))}function get_site_root(){var e=window.location.protocol;return"localhost"===window.location.host?e+"//localhost/travail/stardew_dashboard":e+"//stardew-dashboard.42web.io"}function get_max_upload_size(){return __awaiter(this,void 0,void 0,function*(){return fetch("./functions.php?action=get_max_upload_size").then(e=>e.json()).then(e=>e.post_max_size)})}function in_bytes_conversion(e){var t,e=e.match(/(\d+)([a-zA-Z]+)/);if(e)return t=parseInt(e[1],10),e=e[2],t*Math.pow(1024,{o:0,Ko:1,Mo:2,Go:3}[e]);throw new Error("Invalid size format")}function toggle_visibility(e,t){e.style.display=t?"block":"none"}function get_current_player_id(){var e=Array.from(document.querySelectorAll(".player_container")).find(e=>"block"===window.getComputedStyle(e).display);return null!=e&&(e=e.className.match(/player_(\d+)_container/))?parseInt(e[1],10):null}function get_players_number(){var e=document.querySelector("#players_selection");return null!==e?0===(e=e.getElementsByTagName("li").length)?1:e:null}function get_deletabled_settings_panels(){return[".feedback-panel"]}function get_closabled_settings_panels(){return[".upload-panel",".settings-panel",".languages-panel"]}function get_settings_panels(){return[...get_closabled_settings_panels(),...get_deletabled_settings_panels()]}function close_all_panels(e,t=!1){let n=t?get_settings_panels():[],l=get_current_player_id();null===l?e=n:e.push(...n),e.forEach(e=>{var e=e+(n.includes(e)?"":"-"+l),t=document.querySelector(e);null!==t&&(t.style.display="none",get_deletabled_settings_panels().includes(e))&&t.remove()})}function can_close_panel(e){return null!==document.querySelector(".feedback-panel")||current_section&&e.target instanceof HTMLElement&&e.target!==current_section&&!current_section.contains(e.target)&&!e.target.classList.contains("modal-opener")&&!current_section.classList.contains("to-keep-open")}function toggle_loading(e){var t=document.querySelector("#loading-strip");null!==t&&(t.style.display=e?"block":"none")}function get_parent_element(e){return null===e?null:null!=(e=e.parentElement)&&e.classList.contains("wiki_link")?e.parentElement:e}function set_element_display(e,t){null!==e&&"locations"!==e.className&&(e.style.display=t?"flex":"none")}function has_class(e,t){return e.classList.contains(t)}function is_section_empty(e){e=e.querySelectorAll(".tooltip");return Array.from(e).every(e=>"none"===e.style.display)}function has_section_older_version_items(e){return Array.from(e.querySelectorAll("img")).some(e=>has_class(e,"older-version"))}function should_show_element(e,t){var n=has_class(e,"newer-version")||has_class(e,"newer-version-icon"),l=has_class(e,"not-found"),a=has_class(e,"always-on-display"),o=has_class(e,"found");return!!has_class(e,"not-hide")||!(t.toggle_versions&&n||t.no_spoil&&l&&!a||t.spoil&&o)}function toggle_landing_page(e){var t=document.getElementById("landing_page");null!==t&&(t.style.display=e?"block":"none")}function save_landing_topbar(){var e=document.getElementById("landing_menu");null!==e&&e.innerHTML}
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+function file_choice(event) {
+    const input = event.target;
+    const new_filename = input.files ? input.files[0].name.substring(0, 12) : "";
+    const filename_element = document.getElementById("new-filename");
+    if (filename_element !== null) {
+        filename_element.innerHTML = new_filename;
+    }
+    toggle_loading(true);
+    AJAX_send();
+}
+// Upload File AJAX
+function AJAX_send() {
+    return __awaiter(this, void 0, void 0, function* () {
+        var _a, _b, _c;
+        const xml_upload = document.getElementById("save-upload");
+        const file = (_a = xml_upload === null || xml_upload === void 0 ? void 0 : xml_upload.files) === null || _a === void 0 ? void 0 : _a[0];
+        if (file === null) {
+            alert("An error occurred while uploading the file. Please try again.");
+            return;
+        }
+        const max_upload_size = yield get_max_upload_size();
+        const is_file_too_big = file.size > max_upload_size;
+        const page_display = document.getElementById("display");
+        const landing_menu = document.getElementById("landing_menu");
+        const landing_page = (_c = (_b = document.getElementById("landing_page")) === null || _b === void 0 ? void 0 : _b.outerHTML) !== null && _c !== void 0 ? _c : "";
+        if (landing_menu !== null) {
+            landing_menu.outerHTML = "";
+        }
+        page_display.innerHTML = "";
+        const form_data = new FormData();
+        const xhr = new XMLHttpRequest();
+        const url = get_site_root() + "/includes/get_xml_data.php";
+        if (is_file_too_big) {
+            form_data.append("save-upload", new File(["SizeException"], "Error_SizeException.xml"));
+        }
+        else {
+            form_data.append("save-upload", file);
+        }
+        xhr.open("POST", url, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                const data = JSON.parse(xhr.responseText);
+                const html = data.html;
+                page_display.innerHTML = html["topbar"];
+                if (data.code === "success") {
+                    page_display.innerHTML += landing_page;
+                    const players_count = data.players.length;
+                    for (let i = 0; i < players_count; i++) {
+                        page_display.innerHTML += html["player_" + i];
+                    }
+                    load_dashboard_elements();
+                }
+                else {
+                    page_display.innerHTML += html["error_message"];
+                    load_error_page_elements();
+                }
+                load_final_elements();
+            }
+        };
+        xhr.send(form_data);
+    });
+}
+let topbar;
+window.addEventListener("load", () => {
+    const os_path = get_os_path(detect_os());
+    const tag = document.getElementById("save_os_path");
+    if (tag !== null) {
+        tag.innerHTML = os_path;
+    }
+    const toggle_versions_items_mode = document.getElementById("toggle_versions_items_mode");
+    const no_spoil_mode = document.getElementById("no_spoil_mode");
+    const spoil_mode = document.getElementById("spoil_mode");
+    const steam_achievements = document.getElementById("steam_achievements");
+    if (toggle_versions_items_mode !== null) {
+        toggle_versions_items_mode.addEventListener("change", handle_toggle_versions_mode);
+    }
+    if (no_spoil_mode !== null) {
+        no_spoil_mode.addEventListener("change", handle_no_spoil_mode);
+    }
+    if (spoil_mode !== null) {
+        spoil_mode.addEventListener("change", handle_spoil_mode);
+    }
+    if (steam_achievements !== null) {
+        steam_achievements.addEventListener("change", handle_steam_mode);
+    }
+    const save_upload = document.getElementById("save-upload");
+    if (save_upload !== null) {
+        save_upload.addEventListener("change", file_choice);
+    }
+    save_landing_topbar();
+    prevent_panel_scroll();
+    activate_buttons(".landing-upload", ".exit-upload", ".upload-panel");
+    activate_buttons(".landing-languages", ".exit-languages", ".languages-panel");
+    activate_buttons(".landing-settings", ".exit-settings", ".settings");
+    toggle_custom_checkboxes(".checkmark");
+    activate_feedback_ajax_trigger();
+});
+function load_easter_eggs() {
+    easter_egg_characters();
+    easter_egg_kaaris();
+    easter_egg_monarchy_mayhem();
+}
+function easter_egg_characters() {
+    const characters = [
+        "abigail", "alex", "caroline", "clint", "demetrius", "elliott", "emily",
+        "evelyn", "george", "gus", "haley", "harvey", "jas", "jodi", "kent", "leah",
+        "lewis", "linus", "marnie", "maru", "pam", "penny", "pierre", "robin",
+        "sam", "sandy", "sebastian", "shane", "vincent", "willy", "wizard"
+    ];
+    const date = new Date();
+    const index_picker = [
+        new Date(date.getFullYear(), 0, 1).getTime(),
+        date.getUTCMonth(),
+        date.getUTCDate()
+    ].reduce((acc, val) => acc * val, 1) % characters.length;
+    const character = characters[index_picker];
+    const elements = document.querySelectorAll(".character-name." + character);
+    if (elements.length === 0) {
+        return;
+    }
+    const audio = new Audio(get_site_root() + "/assets/audio/trigger.mp3");
+    let is_playing = false;
+    const play_once = () => {
+        if (!is_playing) {
+            is_playing = true;
+            const fullscreen_image = document.createElement("img");
+            fullscreen_image.src = `https://raw.githubusercontent.com/NicolasVero/stardew-dashboard/refs/heads/master/assets/images/characters/${character}.png`;
+            fullscreen_image.classList.add("fullscreen-image");
+            document.body.appendChild(fullscreen_image);
+            fullscreen_image.classList.add("show");
+            audio.play().finally(() => {
+                is_playing = false;
+            });
+            setTimeout(() => {
+                fullscreen_image.classList.remove("show");
+                fullscreen_image.addEventListener("transitionend", () => {
+                    fullscreen_image.remove();
+                });
+            }, 1000);
+        }
+    };
+    elements.forEach((element) => {
+        element.addEventListener("dblclick", play_once);
+    });
+}
+function easter_egg_kaaris() {
+    var _a, _b;
+    const element = (_b = (_a = document.querySelector(".house")) === null || _a === void 0 ? void 0 : _a.previousElementSibling) === null || _b === void 0 ? void 0 : _b.querySelector("img");
+    if (element === null) {
+        return;
+    }
+    element.classList.add("easter_egg_kaaris");
+    const audio = new Audio(get_site_root() + "/assets/audio/kaaris_maison-citrouille.mp3");
+    let is_playing = false;
+    element.addEventListener("dblclick", () => {
+        if (!is_playing) {
+            is_playing = true;
+            audio.play().finally(() => is_playing = false);
+        }
+    });
+}
+function easter_egg_monarchy_mayhem() {
+    const audio = new Audio(get_site_root() + "/assets/audio/monarchy_mayhem.mp3");
+    const target_sequence = "monarchymayhem";
+    let current_input = "";
+    let is_playing = false;
+    document.addEventListener("keydown", (event) => {
+        current_input += event.key.toLowerCase();
+        if (current_input.length > target_sequence.length) {
+            current_input = current_input.slice(-target_sequence.length);
+        }
+        if (current_input === target_sequence) {
+            if (!is_playing) {
+                is_playing = true;
+                audio.play().finally(() => is_playing = false);
+                const text = document.createElement("h2");
+                text.innerText = "Call";
+                Object.assign(text.style, {
+                    position: "fixed",
+                    top: "10%",
+                    left: "35%",
+                    color: "white",
+                    fontSize: "11rem",
+                    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)"
+                });
+                document.body.appendChild(text);
+                setTimeout(() => {
+                    text.innerText = "Call 911";
+                }, 250);
+                setTimeout(() => {
+                    text.innerText = "NOW !!!!";
+                    text.style.rotate = "336deg";
+                    text.style.fontSize = "20rem";
+                    text.style.left = "20%";
+                    text.style.top = "0";
+                }, 1000);
+                setTimeout(() => {
+                    text.remove();
+                    const html = document.querySelector("html");
+                    html.style.background = "#0a0523 url(" + get_site_root() + "/assets/images/easter_eggs/monarchy_mayhem_background.png) no-repeat fixed center center / cover";
+                    const positions = [
+                        { left: "15%", top: "40%" },
+                        { left: "74%", top: "46%" },
+                        { left: "45%", top: "45%" },
+                        { left: "22%", top: "00%" },
+                        { left: "70%", top: "50%" },
+                        { left: "75%", top: "-5%" },
+                        { left: "45%", top: "-5%" },
+                        { left: "00%", top: "70%" },
+                        { left: "00%", top: "20%" }
+                    ];
+                    const images = [];
+                    positions.forEach((position, index) => {
+                        const img = document.createElement("img");
+                        img.src = get_site_root() + `/assets/images/easter_eggs/monarchy_mayhem_${index + 1}.gif`;
+                        Object.assign(img.style, {
+                            position: "fixed",
+                            left: position.left,
+                            top: position.top
+                        });
+                        document.body.appendChild(img);
+                        images.push(img);
+                    });
+                    const title = document.createElement("h1");
+                    title.innerText = "Monarchy Mayhem";
+                    Object.assign(title.style, {
+                        position: "fixed",
+                        top: "35%",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        color: "white",
+                        fontSize: "6rem",
+                        fontFamily: "Arial, sans-serif",
+                        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
+                        whiteSpace: "nowrap",
+                        animation: "colorChange 0.8s infinite alternate, rotateText 5s linear infinite"
+                    });
+                    document.body.appendChild(title);
+                    title.addEventListener("click", () => {
+                        window.open("https://monarchymayhem.itch.io/monarchymayhem", "_blank");
+                    });
+                    setTimeout(() => {
+                        images.forEach(img => img.remove());
+                        title.remove();
+                        html.style.background = "#0a0523 url(" + get_site_root() + "/assets/images/content/bg.png) no-repeat fixed center center / cover";
+                    }, 15500);
+                }, 1600);
+                current_input = "";
+            }
+        }
+    });
+}
+function load_error_page_elements() {
+    const button_configurations = [
+        { open_button: ".main-settings", exit_button: ".exit-settings", modal_panel: ".settings" },
+        { open_button: ".main-languages", exit_button: ".exit-languages", modal_panel: ".languages-panel" },
+        { open_button: ".file-upload", exit_button: ".exit-upload", modal_panel: ".upload-panel" }
+    ];
+    button_configurations.forEach(({ open_button, exit_button, modal_panel }) => {
+        activate_buttons(open_button, exit_button, modal_panel);
+    });
+}
+function load_dashboard_elements() {
+    toggle_landing_page(false);
+    load_buttons();
+    load_easter_eggs();
+    initialize_settings();
+    toggle_checkboxes_actions();
+    update_tooltips_after_ajax();
+    prevent_panel_scroll();
+    initialize_player_swapper(get_players_number());
+    swap_displayed_player(0);
+}
+function load_buttons() {
+    var _a;
+    const players_in_save = get_players_number();
+    const common_buttons = [
+        { open_button: ".landing-settings", exit_button: ".exit-settings", modal_panel: ".settings" },
+        { open_button: ".landing-languages", exit_button: ".exit-languages", modal_panel: ".languages" },
+        { open_button: ".landing-upload", exit_button: ".exit-upload", modal_panel: ".upload-panel" },
+        { open_button: ".main-settings", exit_button: ".exit-settings", modal_panel: ".settings" },
+        { open_button: ".file-upload", exit_button: ".exit-upload", modal_panel: ".upload-panel" },
+        { open_button: ".main-languages", exit_button: ".exit-languages", modal_panel: ".languages-panel" },
+    ];
+    const dynamic_buttons = [];
+    const dynamic_prefixes = [
+        "all-friends", "all-quests", "monster-eradication-goals",
+        "calendar", "all-animals", "junimo-kart-leaderboard",
+        "museum", "community-center", "visited-locations",
+        "tools", "farm-informations"
+    ];
+    for (let i = 0; i < players_in_save; i++) {
+        dynamic_prefixes.forEach((prefix) => {
+            dynamic_buttons.push({
+                open_button: `.view-${prefix}-${i}`,
+                exit_button: `.exit-${prefix}-${i}`,
+                modal_panel: `.${prefix}-${i}`
+            });
+        });
+    }
+    const all_buttons = [...common_buttons, ...dynamic_buttons];
+    all_buttons.forEach(({ open_button, exit_button, modal_panel }) => {
+        activate_buttons(open_button, exit_button, modal_panel);
+    });
+    (_a = document.getElementById("home-icon")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
+        var _a;
+        const display = ((_a = document.getElementById("landing_page")) === null || _a === void 0 ? void 0 : _a.style.display) !== "none";
+        toggle_landing_page(!display);
+    });
+}
+function load_final_elements() {
+    activate_feedback_ajax_trigger();
+    toggle_visibility(current_section, false);
+    toggle_loading(false);
+}
+function activate_feedback_ajax_trigger() {
+    const triggers = document.querySelectorAll(".feedback-opener");
+    triggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+            const existing_window = document.querySelector(".feedback-panel");
+            hide_all_sections();
+            if (existing_window !== null) {
+                toggle_visibility(existing_window, true);
+            }
+            else {
+                feedback_form_creation();
+            }
+        });
+    });
+}
+// Create feedback form
+function feedback_form_creation() {
+    const xml_upload = document.querySelector("body");
+    fetch("./functions.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({
+            "action": "display_feedback_panel"
+        })
+    })
+        .then((response) => response.text())
+        .then((data) => {
+        const temp_container = document.createElement("div");
+        current_section = document.querySelector(".feedback-panel");
+        temp_container.innerHTML = data;
+        while (temp_container.firstChild) {
+            xml_upload === null || xml_upload === void 0 ? void 0 : xml_upload.appendChild(temp_container.firstChild);
+        }
+        feedback_custom_radio();
+        activate_feedback_form();
+        activate_close_buttons(".exit-feedback", ".feedback-panel");
+    })
+        .catch((error) => console.error("Error:", error));
+}
+function activate_feedback_form() {
+    const form = document.getElementById("feedback_form");
+    form === null || form === void 0 ? void 0 : form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const form_data = new FormData(form);
+        fetch("./includes/sendmail.php", {
+            method: "POST",
+            body: form_data
+        })
+            .then((response) => response.json())
+            .then((data) => {
+            const alert_message = data.success ? data.message : "Error submitting form: " + data.message;
+            alert(alert_message);
+        })
+            .catch((error) => {
+            console.error("Error: ", error);
+            alert("An error occurred while submitting the form.");
+        });
+    });
+}
+function feedback_custom_radio() {
+    const feedback_fake_radios = document.querySelectorAll(".feedback_custom_radio");
+    const feedback_real_radios = document.querySelectorAll(".feedback_real_radio");
+    feedback_fake_radios.forEach((fake_radio) => {
+        const span_topic = fake_radio.parentElement;
+        span_topic.addEventListener("click", () => {
+            const real_radio = fake_radio.previousElementSibling;
+            if (real_radio !== null && real_radio.type === "radio") {
+                real_radio.checked = true;
+                real_radio.dispatchEvent(new Event("change"));
+            }
+        });
+    });
+    feedback_real_radios.forEach((real_radio) => {
+        real_radio.addEventListener("change", () => {
+            feedback_fake_radios.forEach((fake_radio) => {
+                fake_radio.classList.add("topic_not_selected");
+            });
+            const fake_radio = real_radio.nextElementSibling;
+            if (fake_radio !== null && fake_radio.tagName === "IMG") {
+                if (real_radio.checked) {
+                    fake_radio.classList.remove("topic_not_selected");
+                }
+                else {
+                    fake_radio.classList.add("topic_not_selected");
+                }
+            }
+        });
+    });
+}
+const gallery_option = document.querySelector(".settings-panel .gallery-order");
+gallery_option.addEventListener("change", (event) => {
+    const target = event.target;
+    if (target.value === "alphabetical-order") {
+        gallery_alphabetic_order_display();
+    }
+    if (target.value === "discovery-level") {
+        gallery_discovery_order_display();
+    }
+    if (target.value === "version") {
+        gallery_reset_order();
+    }
+    initialize_tooltips(null, true);
+});
+function gallery_reset_order() {
+    const galleries_items_containers = document.querySelectorAll(".gallery-items-container");
+    galleries_items_containers.forEach((container) => {
+        const tooltips_list = container.querySelectorAll(".tooltip");
+        tooltips_list.forEach((item) => {
+            item.style.removeProperty("order");
+        });
+    });
+}
+function gallery_alphabetic_order_display() {
+    const galleries_items_containers = document.querySelectorAll(".gallery-items-container");
+    galleries_items_containers.forEach((container) => {
+        const tooltips_list = container.querySelectorAll(".tooltip");
+        const items_list = container.querySelectorAll(".tooltip img.gallery-item");
+        const items_names = Array.from(items_list).map((element) => element.getAttribute("alt")).sort();
+        tooltips_list.forEach((item) => {
+            const image_alt = item.querySelector("img.gallery-item").getAttribute("alt");
+            item.style.order = items_names.indexOf(image_alt).toString();
+        });
+    });
+}
+function gallery_discovery_order_display() {
+    const galleries_items_containers = document.querySelectorAll(".gallery-items-container");
+    galleries_items_containers.forEach((container) => {
+        const tooltips_list = container.querySelectorAll(".tooltip");
+        tooltips_list.forEach((item) => {
+            const item_state = item.querySelector("img.gallery-item").className;
+            if (item_state.includes("found")) {
+                item.style.order = "0";
+            }
+            if (item_state.includes("unused")) {
+                item.style.order = "1";
+            }
+            if (item_state.includes("not-found")) {
+                item.style.order = "2";
+            }
+        });
+    });
+}
+const panels = {
+    Digit1: ".visited-locations",
+    Digit2: ".monster-eradication-goals",
+    Digit3: ".junimo-kart-leaderboard",
+    Digit4: ".all-quests",
+    Digit5: ".all-friends",
+    Digit6: ".calendar",
+    Digit7: ".all-animals",
+    Digit8: ".museum",
+    Digit9: ".community-center",
+    Digit0: ".farm-informations",
+    Minus: ".tools"
+};
+const all_panels = Object.values(panels);
+window.addEventListener("keydown", (event) => {
+    if (event.code === "Escape") {
+        close_all_panels(all_panels, true);
+    }
+    if (panels[event.code]) {
+        const panel_selector = panels[event.code] + "-" + get_current_player_id();
+        const panel = document.querySelector(panel_selector);
+        const panel_display = ((panel === null || panel === void 0 ? void 0 : panel.style.display) === "block") ? "none" : "block";
+        close_all_panels(all_panels);
+        panel.style.display = panel_display;
+    }
+});
+window.addEventListener("click", (event) => {
+    if (can_close_panel(event)) {
+        close_all_panels(all_panels, true);
+    }
+});
+let current_section = null;
+function activate_buttons(show, hide, sections_to_show) {
+    const show_button = document.querySelectorAll(show);
+    const hide_button = document.querySelectorAll(hide);
+    const sections = document.querySelector(sections_to_show);
+    show_button.forEach((button) => {
+        button.addEventListener("click", () => {
+            hide_all_sections(true);
+            if (sections !== null) {
+                current_section = sections;
+                toggle_visibility(sections, true);
+                if (!sections.hasAttribute('data-tooltips-initialized')) {
+                    initialize_tooltips(sections.classList[0]);
+                    sections.setAttribute('data-tooltips-initialized', 'true');
+                }
+            }
+        });
+    });
+    hide_button.forEach((button) => {
+        button.addEventListener("click", () => {
+            hide_all_sections(true);
+            current_section = null;
+        });
+    });
+}
+function activate_close_buttons(hide, sections_to_hide) {
+    const hide_button = document.querySelectorAll(hide);
+    const sections = document.querySelector(sections_to_hide);
+    hide_button.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (sections !== null) {
+                sections.remove();
+                current_section = null;
+            }
+        });
+    });
+}
+function hide_all_sections(section_destroy = false) {
+    const sections = document.querySelectorAll(".modal-window");
+    sections.forEach((section) => {
+        if (section.classList.contains("to-destroy") && section_destroy) {
+            section.remove();
+        }
+        section.style.display = "none";
+    });
+}
+function prevent_panel_scroll() {
+    const modals = document.querySelectorAll(".modal-window");
+    modals.forEach((modal) => {
+        modal.addEventListener("wheel", (event) => {
+            const scroll_top = modal.scrollTop;
+            const scroll_height = modal.scrollHeight;
+            const client_height = modal.clientHeight;
+            const is_at_top = scroll_top === 0 && event.deltaY < 0;
+            const is_at_bottom = scroll_top + client_height >= scroll_height && event.deltaY > 0;
+            if (is_at_top || is_at_bottom) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+    });
+}
+var OS;
+(function (OS) {
+    OS["mac"] = "mac";
+    OS["linux"] = "linux";
+    OS["windows"] = "windows";
+})(OS || (OS = {}));
+const os_paths = new Map([
+    [OS.mac, "(~/.config/StardewValley/Saves/)."],
+    [OS.linux, "(~/.steam/debian-installation/steamapps/compatdata/413150/pfx/drive_c/users/steamuser/AppData/Roaming/StardewValley/Saves/)."],
+    [OS.windows, "(%AppData%/StardewValley/Saves/SaveName)."]
+]);
+function detect_os() {
+    const user_agent = window.navigator.userAgent.toLowerCase();
+    if (user_agent.includes("mac")) {
+        return OS.mac;
+    }
+    if (user_agent.includes("linux")) {
+        return OS.linux;
+    }
+    return OS.windows;
+}
+function get_os_path(os = OS.windows) {
+    return os_paths.get(os) || "";
+}
+function initialize_player_swapper(players_count) {
+    const players_selection = document.getElementsByClassName("player_selection");
+    for (let i = 0; i < players_selection.length; i++) {
+        players_selection[i].addEventListener("click", () => {
+            swap_displayed_player(i % players_count);
+        });
+    }
+}
+function swap_displayed_player(player_id) {
+    const players_display = document.getElementsByClassName("player_container");
+    if (!players_display[player_id].hasAttribute('data-tooltips-initialized')) {
+        initialize_tooltips(players_display[player_id].classList[0]);
+        players_display[player_id].setAttribute('data-tooltips-initialized', 'true');
+    }
+    players_display[player_id].style.display = "block";
+    for (let i = 0; i < players_display.length; i++) {
+        if (player_id !== i) {
+            players_display[i].style.display = "none";
+        }
+    }
+}
+function get_settings() {
+    return {
+        no_spoil: document.getElementById("no_spoil_mode").checked,
+        toggle_versions: document.getElementById("toggle_versions_items_mode").checked,
+        spoil: document.getElementById("spoil_mode").checked
+    };
+}
+function initialize_settings() {
+    handle_toggle_versions_mode();
+    handle_no_spoil_mode();
+    handle_spoil_mode();
+}
+;
+function handle_no_spoil_mode() {
+    const spoil_checkbox = document.getElementById("spoil_mode");
+    const no_spoil_checkbox = document.getElementById("no_spoil_mode");
+    if (no_spoil_checkbox !== null && spoil_checkbox !== null && no_spoil_checkbox.checked && spoil_checkbox.checked) {
+        spoil_checkbox.checked = false;
+    }
+    update_display(["not-found", "found"]);
+}
+;
+function handle_toggle_versions_mode() {
+    update_display(["newer-version"]);
+    update_display(["newer-version-icon"]);
+}
+;
+function handle_spoil_mode() {
+    const no_spoil_checkbox = document.getElementById("no_spoil_mode");
+    const spoil_checkbox = document.getElementById("spoil_mode");
+    if (no_spoil_checkbox === null || spoil_checkbox === null) {
+        return;
+    }
+    if (spoil_checkbox.checked && no_spoil_checkbox.checked) {
+        no_spoil_checkbox.checked = false;
+        update_display(["not-found", "found"]);
+    }
+    else {
+        update_display(["found"]);
+    }
+}
+;
+function handle_steam_mode() {
+    const images_folder = ["star_achievements", "achievements"];
+    const images = document.querySelectorAll(".achievements-section img");
+    images.forEach((image) => {
+        const src = image.getAttribute("src");
+        const [old_folder, new_folder] = (src.includes("star_")) ? images_folder : [...images_folder].reverse();
+        image.setAttribute("src", src.replace(old_folder, new_folder));
+    });
+}
+function wiki_redirections() {
+    const links = document.querySelectorAll("a");
+    links.forEach((link) => {
+        link.addEventListener("click", (event) => {
+            const wiki_redirections_checkbox = document.getElementById("wiki_redirections");
+            if (!wiki_redirections_checkbox.checked) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+            }
+        });
+    });
+}
+function toggle_custom_checkboxes(checkmark_class) {
+    const checkmarks = document.querySelectorAll(checkmark_class);
+    checkmarks.forEach((checkbox) => {
+        checkbox.addEventListener("click", () => {
+            const adjacent_checkbox = checkbox.previousElementSibling;
+            if (adjacent_checkbox !== null && adjacent_checkbox.type === "checkbox") {
+                adjacent_checkbox.checked = !adjacent_checkbox.checked;
+                adjacent_checkbox.dispatchEvent(new Event("change"));
+            }
+        });
+    });
+}
+function toggle_checkboxes_actions() {
+    document.querySelectorAll(".checkbox input[type='checkbox']").forEach((checkbox_input) => {
+        const input = checkbox_input;
+        const function_name = input.id;
+        const is_checked = input.checked;
+        if (is_checked && typeof window[function_name] === "function") {
+            window[function_name]();
+        }
+    });
+}
+function update_tooltips_after_ajax() {
+    on_images_loaded(() => {
+        initialize_tooltips();
+    });
+}
+function initialize_tooltips(section = null, is_overload = false) {
+    let tooltips;
+    if (section === null || section === '') {
+        tooltips = document.querySelectorAll(".tooltip");
+    }
+    else {
+        tooltips = document.querySelector("." + section).querySelectorAll(".tooltip");
+    }
+    tooltips.forEach((tooltip) => {
+        const rect = tooltip.getBoundingClientRect();
+        const span = tooltip.querySelector("span");
+        if (span && (!["left", "right"].some((className) => span.classList.contains(className)) || is_overload)) {
+            if (rect.left === 0) {
+                return;
+            }
+            const tooltip_position = (rect.left < window.innerWidth / 2) ? "right" : "left";
+            if (is_overload) {
+                span.classList.remove("left");
+                span.classList.remove("right");
+            }
+            span.classList.add(tooltip_position);
+        }
+    });
+}
+function on_images_loaded(callback) {
+    let images_loaded = 0;
+    const images = document.querySelectorAll("img");
+    const total_images = images.length;
+    if (total_images === 0) {
+        callback();
+        return;
+    }
+    const increment_and_check = () => {
+        images_loaded++;
+        if (images_loaded === total_images) {
+            callback();
+        }
+    };
+    images.forEach((image) => {
+        if (image.complete) {
+            increment_and_check();
+        }
+        else {
+            image.addEventListener("load", increment_and_check);
+            image.addEventListener("error", increment_and_check);
+        }
+    });
+    if (images_loaded === total_images) {
+        callback();
+    }
+}
+function update_section_visibility(section, settings) {
+    var _a;
+    const title = section.querySelector("h2");
+    const smaller_title = (_a = section.children[1]) === null || _a === void 0 ? void 0 : _a.querySelector("span .no-spoil-title");
+    const is_empty = is_section_empty(section);
+    const has_older_items = has_section_older_version_items(section);
+    if (settings.toggle_versions && is_empty && !has_older_items) {
+        section.classList.add("hidden");
+        return;
+    }
+    section.classList.remove("hidden");
+    if (title !== null) {
+        title.style.display = "block";
+    }
+    if (smaller_title !== null) {
+        let should_show_smaller_title = false;
+        if (settings.no_spoil) {
+            should_show_smaller_title = is_empty;
+        }
+        else if (settings.toggle_versions) {
+            should_show_smaller_title = is_empty && has_older_items;
+        }
+        else {
+            should_show_smaller_title = is_empty;
+        }
+        smaller_title.style.display = should_show_smaller_title ? "block" : "none";
+    }
+}
+function update_display(target_classes) {
+    const settings = get_settings();
+    const update_elements = (class_name) => {
+        const elements = document.getElementsByClassName(class_name);
+        if (class_name.split("-").pop() === "icon") {
+            Array.from(elements).forEach((element) => {
+                if (element !== null) {
+                    set_element_display(element, should_show_element(element, settings));
+                }
+            });
+        }
+        else {
+            Array.from(elements).forEach((element) => {
+                const parent = get_parent_element(element);
+                if (parent !== null) {
+                    set_element_display(parent, should_show_element(element, settings));
+                }
+            });
+        }
+    };
+    target_classes.forEach(update_elements);
+    const sections = document.getElementsByClassName("gallery");
+    Array.from(sections).forEach((section) => update_section_visibility(section, settings));
+}
+;
+function get_site_root() {
+    const protocol = window.location.protocol;
+    const host = window.location.host;
+    return (host === "localhost")
+        ? `${protocol}//localhost/travail/stardew_dashboard`
+        : `${protocol}//stardew-dashboard.42web.io`;
+}
+function get_max_upload_size() {
+    return __awaiter(this, void 0, void 0, function* () {
+        return fetch("./functions.php?action=get_max_upload_size")
+            .then((response) => response.json())
+            .then((data) => {
+            return data.post_max_size;
+        });
+    });
+}
+function in_bytes_conversion(size) {
+    const unit_to_power = { "o": 0, "Ko": 1, "Mo": 2, "Go": 3 };
+    const matches = size.match(/(\d+)([a-zA-Z]+)/);
+    if (!matches) {
+        throw new Error("Invalid size format");
+    }
+    const value = parseInt(matches[1], 10);
+    const unit = matches[2];
+    return value * Math.pow(1024, unit_to_power[unit]);
+}
+function toggle_visibility(element, should_display) {
+    element.style.display = (should_display) ? "block" : "none";
+}
+function get_current_player_id() {
+    const visible_player = Array.from(document.querySelectorAll(".player_container"))
+        .find((player) => window.getComputedStyle(player).display === "block");
+    if (visible_player !== null && visible_player !== undefined) {
+        const match = visible_player.className.match(/player_(\d+)_container/);
+        return match ? parseInt(match[1], 10) : null;
+    }
+    return null;
+}
+function get_players_number() {
+    const players_container = document.querySelector('#players_selection');
+    if (players_container !== null) {
+        const players_number = players_container.getElementsByTagName('li').length;
+        return (players_number === 0) ? 1 : players_number;
+    }
+    return null;
+}
+function get_deletabled_settings_panels() {
+    return [".feedback-panel"];
+}
+function get_closabled_settings_panels() {
+    return [".upload-panel", ".settings-panel", ".languages-panel"];
+}
+function get_settings_panels() {
+    return [...get_closabled_settings_panels(), ...get_deletabled_settings_panels()];
+}
+function close_all_panels(panel_selectors, include_setting_panels = false) {
+    const settings_panels = (include_setting_panels) ? get_settings_panels() : [];
+    const player_id = get_current_player_id();
+    if (player_id === null) {
+        panel_selectors = settings_panels;
+    }
+    else {
+        panel_selectors.push(...settings_panels);
+    }
+    panel_selectors.forEach((panel_base) => {
+        const id = settings_panels.includes(panel_base) ? "" : "-" + player_id;
+        const panel_selector = panel_base + id;
+        const panel = document.querySelector(panel_selector);
+        if (panel !== null) {
+            panel.style.display = "none";
+            if (get_deletabled_settings_panels().includes(panel_selector)) {
+                panel.remove();
+            }
+        }
+    });
+}
+function can_close_panel(event) {
+    if (document.querySelector(".feedback-panel") !== null) {
+        return true;
+    }
+    return (current_section
+        && event.target instanceof HTMLElement
+        && event.target !== current_section
+        && !current_section.contains(event.target)
+        && !event.target.classList.contains("modal-opener")
+        && !current_section.classList.contains("to-keep-open"));
+}
+function toggle_loading(shown) {
+    const loading_strip = document.querySelector("#loading-strip");
+    if (loading_strip !== null) {
+        loading_strip.style.display = (shown) ? "block" : "none";
+    }
+}
+function get_parent_element(element) {
+    if (element === null) {
+        return null;
+    }
+    const parent = element.parentElement;
+    return (parent === null || parent === void 0 ? void 0 : parent.classList.contains("wiki_link")) ? parent.parentElement : parent;
+}
+;
+function set_element_display(element, show) {
+    if (element !== null && element.className !== "locations") {
+        element.style.display = (show) ? "flex" : "none";
+    }
+}
+;
+function has_class(element, class_name) {
+    return element.classList.contains(class_name);
+}
+;
+function is_section_empty(section) {
+    const spans = section.querySelectorAll(".tooltip");
+    return Array.from(spans).every((span) => span.style.display === "none");
+}
+;
+function has_section_older_version_items(section) {
+    return Array.from(section.querySelectorAll("img")).some((img) => has_class(img, "older-version"));
+}
+;
+function should_show_element(element, settings) {
+    const is_newer = has_class(element, "newer-version") || has_class(element, "newer-version-icon");
+    const is_not_found = has_class(element, "not-found");
+    const should_keep_on_display = has_class(element, "always-on-display");
+    const is_found = has_class(element, "found");
+    const is_not_hide = has_class(element, "not-hide");
+    if (is_not_hide)
+        return true;
+    if (settings.toggle_versions && is_newer)
+        return false;
+    if (settings.no_spoil && is_not_found && !should_keep_on_display)
+        return false;
+    if (settings.spoil && is_found)
+        return false;
+    return true;
+}
+;
+function toggle_landing_page(display) {
+    const landing_page = document.getElementById("landing_page");
+    if (landing_page !== null) {
+        landing_page.style.display = (display) ? "block" : "none";
+    }
+}
+function save_landing_topbar() {
+    const landing_menu = document.getElementById("landing_menu");
+    if (landing_menu !== null) {
+        const topbar = landing_menu.innerHTML;
+    }
+}

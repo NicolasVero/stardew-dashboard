@@ -29,7 +29,7 @@ function get_junimo_kart_leaderboard(): array {
  * @return object Le tableau des scores de Junimo Kart.
  */
 function get_verified_jk_leaderboard(object $junimo_leaderboard): object {
-	if(is_object_empty($junimo_leaderboard)) {
+	if (is_object_empty($junimo_leaderboard)) {
 		return get_junimo_kart_fake_leaderboard();
 	}
 

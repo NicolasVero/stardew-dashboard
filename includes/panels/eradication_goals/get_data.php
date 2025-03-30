@@ -8,8 +8,8 @@
 function has_players_done_monster_slayer_hero(): bool {
 	$total_players = get_number_of_player();
 	
-	for($current_player = 0; $current_player < $total_players; $current_player++) {
-		if(get_player_adventurers_guild_data($current_player)["is_all_completed"]) {
+	for ($current_player = 0; $current_player < $total_players; $current_player++) {
+		if (get_player_adventurers_guild_data($current_player)["is_all_completed"]) {
 			return true;
 		}
 	}
@@ -33,7 +33,7 @@ function get_player_adventurers_guild_data(int $player_id): array {
 		extract($monster_data); //? $target_name, $ids, $limit, $reward
 
 		foreach($enemies_killed as $enemy_killed) {
-			if(in_array($enemy_killed["id"], $ids)) {
+			if (in_array($enemy_killed["id"], $ids)) {
 				$counter += $enemy_killed["killed_counter"];
 			}
 		}
@@ -61,7 +61,7 @@ function get_player_adventurers_guild_data(int $player_id): array {
 function are_all_adventurers_guild_categories_completed(array $adventurers_guild_data): bool {
     $counter = 0;
     foreach($adventurers_guild_data as $data) {
-        if($data["is_completed"]) {	
+        if ($data["is_completed"]) {	
 			$counter++;
 		}
     }

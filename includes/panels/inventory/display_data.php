@@ -6,7 +6,7 @@
  * @return string Le code HTML du bouton des outils.
  */
 function display_player_tools_button(): string {
-    if(!is_game_singleplayer()) {
+    if (!is_game_singleplayer()) {
         return "";
     }
     
@@ -19,7 +19,7 @@ function display_player_tools_button(): string {
  * @return string Le code HTML du panneau des outils du joueur.
  */
 function display_player_tools(): string {
-	if(empty($player_tools = get_tools_data())) {
+	if (empty($player_tools = get_tools_data())) {
 		return "";
 	}
 

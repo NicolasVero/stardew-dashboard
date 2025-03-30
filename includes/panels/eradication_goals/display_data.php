@@ -12,7 +12,7 @@ function display_monster_eradication_goals_panel(): string {
     $goals = "";
 
     foreach($goals_data as $goal_data) {
-        if(is_bool($goal_data)) {
+        if (is_bool($goal_data)) {
             continue;
         }
 

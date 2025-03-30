@@ -92,7 +92,7 @@ function display_stat(array $parameters): string {
     $label = $label ?? $icon;
     $image = "<img src='$images_path/icons/$formatted_icon.png' alt='$alt'>";
 
-    if(isset($tooltip)) {
+    if (isset($tooltip)) {
         $image = "
             <span class='tooltip'>
                 $image
@@ -101,7 +101,7 @@ function display_stat(array $parameters): string {
         ";
     }
 
-    if(isset($wiki_link)) {
+    if (isset($wiki_link)) {
         return "
             <a href='" . __("https://stardewvalleywiki.com/$wiki_link") . "' class='wiki_link' rel='noreferrer' target='_blank'>
                 <span>
@@ -130,7 +130,7 @@ function display_stat(array $parameters): string {
  * @return string Le code HTML du conjoint.
  */
 function display_spouse(mixed $spouse, array $children): string {
-    if(empty($spouse)) {
+    if (empty($spouse)) {
         return "";
     }
 

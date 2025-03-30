@@ -18,7 +18,7 @@ function get_player_artifacts(): array {
 		$artifacts_reference = find_reference_in_json($artifact_id, "artifacts");
 		$museum_index = get_museum_index();
 
-		if(!empty($artifacts_reference)) {
+		if (!empty($artifacts_reference)) {
 			$artifacts_data[$artifacts_reference] = [
 				"id"      => $artifact_id,
 				"counter" => is_given_to_museum($artifact_id, $general_data, $museum_index)

@@ -31,7 +31,7 @@ function display_farm_animals_panel(): string {
     $images_path = get_images_folder();
     $farm_animals_structure = "";
 
-    if(empty($animals_friendship)) {
+    if (empty($animals_friendship)) {
         return "
             <section class='all-animals-$player_id panel all-animals-panel modal-window'>
                 <div class='panel-header'>
@@ -62,7 +62,7 @@ function display_farm_animals_panel(): string {
 
             $hearts_html = "";
             $max_heart = 5;
-            for($i = 1; $i <= $max_heart; $i++) {
+            for ($i = 1; $i <= $max_heart; $i++) {
                 $heart_icon = 
                 (($friendship_level >= $i) ?
                     "heart.png" :

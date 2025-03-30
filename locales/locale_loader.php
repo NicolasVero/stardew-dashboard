@@ -8,7 +8,7 @@
 function locale_file_loader(): bool {
     $site_language = $GLOBALS["site_language"];
     
-    if(!is_a_supported_language($site_language) || is_the_original_language($site_language)) {
+    if (!is_a_supported_language($site_language) || is_the_original_language($site_language)) {
         $GLOBALS["is_site_translated"] = false;
         return false;
     }
@@ -37,11 +37,11 @@ function expand_dynamic_keys(array $translations): array {
     $expanded_translations = [];
 
     foreach($translations as $key => $value) {
-        if(preg_match('/\|(\d+)-(\d+)\|/', $key, $matches)) {
+        if (preg_match('/\|(\d+)-(\d+)\|/', $key, $matches)) {
             $start = (int)$matches[1];
             $end = (int)$matches[2];
 
-            for($i = $start; $i <= $end; $i++) {
+            for ($i = $start; $i <= $end; $i++) {
                 $expanded_key = str_replace("|$matches[1]-$matches[2]|", $i, $key);
                 $expanded_value = str_replace("|$matches[1]-$matches[2]|", $i, $value);
                 $expanded_translations[$expanded_key] = $expanded_value;

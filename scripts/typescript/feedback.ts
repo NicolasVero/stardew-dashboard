@@ -34,7 +34,7 @@ function feedback_form_creation(): void {
         current_section = document.querySelector(".feedback-panel");
         temp_container.innerHTML = data;
 
-        while(temp_container.firstChild) {
+        while (temp_container.firstChild) {
             xml_upload?.appendChild(temp_container.firstChild);
         }
 
