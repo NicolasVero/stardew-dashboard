@@ -8,7 +8,7 @@
 function get_script_loader(): string {
 	return "
 		<script>
-			document.addEventListener('DOMContentLoaded', function(): void {
+			document.addEventListener('DOMContentLoaded', function() {
 				load_dashboard_elements();
 			});
 		</script>

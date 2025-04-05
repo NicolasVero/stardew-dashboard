@@ -105,27 +105,26 @@ function display_festival_icon(): string {
 	foreach($festivals as $key => $festival) {
 		for ($i = 0; $i < count($festival["date"]); $i++) {
 			if (is_this_the_same_day($festival["date"][$i])) {
-				$festival_class = "is_festival";
 				$festival_name = $festival["name"];
+				$festival_class = "is_festival";
 				$wiki_url = get_wiki_link($key);
+                $festival_icon = "$images_path/icons/festival_icon.gif";
 				break;
 			}
 		}
 	}
+    
+    if (!isset($wiki_url)) {
+        $wiki_url = get_wiki_link_by_name("festival");
+        $festival_icon = "$images_path/icons/festival_icon.png";
+    }
 
-	return (isset($wiki_url)) 
-    ? 
-	"<span class='tooltip'>
-		<a href='$wiki_url' class='wiki_link' rel='noreferrer' target='_blank'>
-			<img src='$images_path/icons/festival_icon.gif' class='festival_icon $festival_class' alt='Festival icon'>
-		</a>
-		<span class='right'>" . __($festival_name) . "</span>
-	</span>"
-	:
-	"<span class='tooltip'>
-        <a href='" . get_wiki_link_by_name("festival") . "' class='wiki_link' rel='noreferrer' target='_blank'>
-		    <img src='$images_path/icons/festival_icon.png' class='festival_icon $festival_class' alt='Festival icon'>
-		</a>
-        <span class='right'>" . __($festival_name) . "</span>
-	</span>";
+    return "
+        <span class='tooltip'>
+            <a href='$wiki_url' class='wiki_link' rel='noreferrer' target='_blank'>
+                <img src='$festival_icon' class='festival_icon $festival_class' alt='Festival icon'>
+            </a>
+            <span class='right'>" . __($festival_name) . "</span>
+        </span>
+    ";
 }

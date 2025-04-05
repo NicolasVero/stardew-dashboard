@@ -38,6 +38,7 @@ function display_topbar(bool $is_landing_page = false, bool $is_error_screen = f
  */
 function display_save_panel(): string {
     $images_path = get_images_folder();
+
     return "
         <section class='upload-panel panel to-keep-open modal-window'>
             <div class='panel-header'>
@@ -62,6 +63,7 @@ function display_save_panel(): string {
  */
 function display_languages_panel(): string {
     $images_path = get_images_folder();
+
     return "
         <section class='languages-panel panel modal-window'>
             <div class='panel-header'>
@@ -135,6 +137,7 @@ function display_settings_panel(): string {
  */
 function display_feedback_panel(): string {
     $images_path = get_images_folder();
+
     return "
         <section class='feedback-panel panel modal-window to-destroy'>
             <div class='panel-header'>
@@ -244,6 +247,7 @@ function display_settings_button(string $prefix): string {
  */
 function display_languages_button(string $prefix): string {
     $language = get_site_language();
+
     return "
         <span class='$prefix-languages modal-opener'>
             <img src='" . get_images_folder() . "/languages/$language.png' class='modal-opener' alt='Language= icon'>
