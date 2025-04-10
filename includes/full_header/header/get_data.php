@@ -200,6 +200,7 @@ function get_grandpa_score(): int {
     $data = $GLOBALS["untreated_player_data"];
     $grandpa_points = 0;
 
+    // 1. Points basés sur l'argent gagné
     $money_earned_goals = [
         ["goal" => 50000, "points" => 1],
         ["goal" => 100000, "points" => 1],
@@ -208,90 +209,79 @@ function get_grandpa_score(): int {
         ["goal" => 500000, "points" => 1],
         ["goal" => 1000000, "points" => 2]
     ];
+    $total_money_earned = $data->totalMoneyEarned;
+    foreach ($money_earned_goals as $goal_data) {
+        if ($total_money_earned > $goal_data["goal"]) {
+            $grandpa_points += $goal_data["points"];
+        }
+    }
 
+    // 2. Points basés sur les niveaux de compétence
     $skill_goals = [
         ["goal" => 30, "points" => 1],
         ["goal" => 50, "points" => 1]
     ];
-
-    $achievement_ids = [5, 26, 34];
-    $friendship_goals = [5, 10];
-    $cc_rooms = [
-        "ccBoilerRoom", "ccCraftsRoom", "ccPantry", 
-        "ccFishTank", "ccVault", "ccBulletin"
-    ];
-
-    $total_money_earned = $data->totalMoneyEarned;
-    foreach ($money_earned_goals as $goal_data) {
-        if ($total_money_earned <= $goal_data["goal"]) {
-			continue;
-		}
-
-		$grandpa_points += $goal_data["points"];
-    }
-
     $total_skills_level = get_total_skills_level();
     foreach ($skill_goals as $goal_data) {
-        if ($total_skills_level <= $goal_data["goal"]) {
-			continue;
+        if ($total_skills_level > $goal_data["goal"]) {
+            $grandpa_points += $goal_data["points"];
         }
-
-		$grandpa_points += $goal_data["points"];
     }
 
+    // 3. Points pour les succès spécifiques
+    $achievement_ids = [5, 26, 34];
     foreach ($achievement_ids as $achievement_id) {
-        if (!does_player_have_achievement($data->achievements, $achievement_id)) {
-			continue;
+        if (does_player_have_achievement($data->achievements, $achievement_id)) {
+            $grandpa_points++;
         }
-		
-		$grandpa_points++;
     }
 
+    // 4. Point pour maison niveau 2+ et être marié
     $house_level = get_house_upgrade_level($data);
     $is_married = get_is_married();
     if ($house_level >= 2 && $is_married) {
         $grandpa_points++;
     }
 
+    // 5. Points basés sur les amitiés de + de 8 coeurs
     $friendships = get_player_friendship_data($data->friendshipData);
-    $friendship_count = 0;
-    foreach ($friendships as $friendship) {
-        if ($friendship["friend_level"] < 8) {
-			continue;
-		}
-
-		$friendship_count++;
-    }
-
+    $friendship_count = count(array_filter($friendships, fn($f) => $f["friend_level"] >= 8));
+    
+    $friendship_goals = [5, 10];
     foreach ($friendship_goals as $goal) {
-        if ($friendship_count < $goal) {
-			continue;
+        if ($friendship_count >= $goal) {
+            $grandpa_points++;
         }
-
-		$grandpa_points++;
     }
 
+    // 6. Point pour l'amitié maximale avec l'animal de compagnie
     if (get_pet_frienship_points() >= 999) {
         $grandpa_points++;
     }
 
-    $cc_completed = array_reduce($cc_rooms, function(bool $completed, string $room): bool {
-        return $completed && has_element_in_mail($room);
-    }, true);
-
+    // 7. Point pour l'achèvement du centre communautaire
+    $cc_rooms = ["ccBoilerRoom", "ccCraftsRoom", "ccPantry", "ccFishTank", "ccVault", "ccBulletin"];
+    $cc_completed = true;
+    foreach ($cc_rooms as $room) {
+        if (!has_element_in_mail($room)) {
+            $cc_completed = false;
+            break;
+        }
+    }
     if ($cc_completed) {
         $grandpa_points++;
     }
 
+    // 8. Points pour avoir vu un évènement spécifique (Complétion du CC)
     if (in_array(191393, (array)$data->eventsSeen->int)) {
         $grandpa_points += 2;
     }
 
-	$player_unlockables = get_player_unlockables();
+    // 9. Points pour les clés débloquées
+    $player_unlockables = get_player_unlockables();
     if ($player_unlockables["skull_key"]) {
         $grandpa_points++;
     }
-
     if ($player_unlockables["rusty_key"]) {
         $grandpa_points++;
     }
