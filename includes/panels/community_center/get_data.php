@@ -268,7 +268,7 @@ function get_player_bundles(): array {
 			if ((string) $bundle_data->key->string !== $bundle_data_name) {
 				continue;
 			}
-			
+
 			$player_bundles[$bundle_id] = get_player_bundle_progress($bundle_data, $bundle_progress);
 		}
 	}

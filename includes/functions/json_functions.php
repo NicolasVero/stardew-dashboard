@@ -79,7 +79,7 @@ function sanitize_json_with_version(string $json_name, bool $version_controller 
 	$sanitize_json = [];
 
 	foreach ($original_json as $key => $json_version) {
-		if ($game_version_score <= get_game_version_score($key) || $version_controller) {
+		if ($game_version_score <= get_game_version_score($key) && $version_controller) {
 			continue;
 		}
 		

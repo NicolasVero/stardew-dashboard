@@ -204,7 +204,10 @@ function display_player_selection(): string {
     $players_name_structure = "";
 
     if (count($players_names) <= 1) {
-        return "";
+        return "
+            <ul id='players_selection'>
+            </ul>
+        ";
     }
 
     
