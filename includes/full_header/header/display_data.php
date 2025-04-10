@@ -102,15 +102,17 @@ function display_festival_icon(): string {
 	$festival_name = __("Not a festival day");
 	$festival_class = "isnt_festival";
 
-	foreach($festivals as $key => $festival) {
+	foreach ($festivals as $key => $festival) {
 		for ($i = 0; $i < count($festival["date"]); $i++) {
-			if (is_this_the_same_day($festival["date"][$i])) {
-				$festival_name = $festival["name"];
-				$festival_class = "is_festival";
-				$wiki_url = get_wiki_link($key);
-                $festival_icon = "$images_path/icons/festival_icon.gif";
-				break;
+			if (!is_this_the_same_day($festival["date"][$i])) {
+                continue;
 			}
+            
+			$festival_name = $festival["name"];
+			$festival_class = "is_festival";
+			$wiki_url = get_wiki_link($key);
+            $festival_icon = "$images_path/icons/festival_icon.gif";
+			break;
 		}
 	}
     

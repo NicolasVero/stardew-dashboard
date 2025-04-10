@@ -37,10 +37,10 @@ function display_detailled_gallery(array $gallery_details, string $width_class =
 
     $item_structure = "";
     
-    foreach($json_data as $version => $json_version) {
+    foreach ($json_data as $version => $json_version) {
         $version_class = get_version_class($version); 
 
-        foreach($json_version as $json_line_name) {
+        foreach ($json_version as $json_line_name) {
             $is_found = array_key_exists($json_line_name, $player_data);
             $element_class = get_found_classes($player_data, $json_filename, $json_line_name, $is_found);
             $element_image = get_detailled_gallery_image($json_filename, $json_line_name);

@@ -14,7 +14,7 @@ function display_skills(): string {
 
     $mastery_visible_class = (empty($player_masteries)) ? "" : "not-hide";
 
-    foreach($player_skills_levels as $key => $level) {
+    foreach ($player_skills_levels as $key => $level) {
         $level_icon_name = explode('_', $key)[0];
         $mastery_class   = (array_key_exists(ucfirst(explode('_', $key)[0]) . " Mastery", $player_masteries)) ? 'found' : 'not-found';
         $mastery_tooltip = ucfirst(explode('_', $key)[0]) . " mastery";

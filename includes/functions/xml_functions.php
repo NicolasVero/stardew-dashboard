@@ -32,8 +32,8 @@ function recursive_xml_search(object $current_level, array $remaining_path): arr
         return $results;
     }
 
-    if (count($remaining_path) == 1) {
-        foreach($current_level->$current_tag as $item) {
+    if (count($remaining_path) === 1) {
+        foreach ($current_level->$current_tag as $item) {
             $results[] = $item;
         }
 		
@@ -42,7 +42,7 @@ function recursive_xml_search(object $current_level, array $remaining_path): arr
 
     $child_remaining_path = array_slice($remaining_path, 1);
 
-    foreach($current_level->$current_tag as $child) {
+    foreach ($current_level->$current_tag as $child) {
         $child_results = recursive_xml_search($child, $child_remaining_path);
         $results = array_merge($results, $child_results);
     }
@@ -61,7 +61,7 @@ function get_gamelocation_index(object $general_data, string $searched_location)
 	$index = 0;
 	$locations = $general_data->locations->GameLocation;
 
-	foreach($locations as $location) {
+	foreach ($locations as $location) {
 		if (isset($location->$searched_location)) {
 			break;
 		}

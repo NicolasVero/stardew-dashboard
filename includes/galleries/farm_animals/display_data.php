@@ -45,10 +45,10 @@ function display_farm_animals_panel(): string {
         ";
     }
 
-    foreach($animals_friendship as $animal_friendship) {
+    foreach ($animals_friendship as $animal_friendship) {
         extract($animal_friendship); //? $id, $animals_data, $counter
 
-        foreach($animals_data as $animal_data) {
+        foreach ($animals_data as $animal_data) {
             extract($animal_data); //? $name, $type, $friendship_level, $happiness, $was_pet
 
             $formatted_type = format_text_for_file($type);

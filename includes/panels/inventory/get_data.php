@@ -31,11 +31,11 @@ function get_player_tools(): array {
 		"locations.GameLocation.buildings.Building.indoors.fridge.items"
 	];
 
-	foreach($player_items_locations as $location) {
+	foreach ($player_items_locations as $location) {
 		$items_arrays = find_xml_tags($data, $location);
 
-		foreach($items_arrays as $items_array) {
-			foreach($items_array as $item) {
+		foreach ($items_arrays as $items_array) {
+			foreach ($items_array as $item) {
 				$item_name = (string) $item->$name_object;
 				$last_item_word = explode(" ", $item_name);
 				$tool_category = end($last_item_word);

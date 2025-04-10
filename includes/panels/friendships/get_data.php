@@ -11,7 +11,7 @@ function get_player_friendship_data(): array {
 	$birthday_json = sanitize_json_with_version("villagers_birthday");
 	$friends_data = [];
 
-	foreach($player_friendships->item as $friend) {
+	foreach ($player_friendships->item as $friend) {
 		$friend_name = (string) $friend->key->string;
 
 		if (!in_array($friend_name, $villagers_json)) {

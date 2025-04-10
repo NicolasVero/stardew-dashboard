@@ -38,7 +38,7 @@ function load_all_json(): void {
 		"wiki_links"
 	];
 
-	foreach($all_json as $json_file) {
+	foreach ($all_json as $json_file) {
 		$GLOBALS["json"][$json_file] = decode($json_file);
 	}
 }
@@ -78,10 +78,12 @@ function sanitize_json_with_version(string $json_name, bool $version_controller 
 	$game_version_score = get_game_version_score($GLOBALS["game_version"]);
 	$sanitize_json = [];
 
-	foreach($original_json as $key => $json_version) {
-		if ($game_version_score > get_game_version_score($key) || !$version_controller) {
-			$sanitize_json += $json_version;
+	foreach ($original_json as $key => $json_version) {
+		if ($game_version_score <= get_game_version_score($key) || $version_controller) {
+			continue;
 		}
+		
+		$sanitize_json += $json_version;
 	}
 	
 	return $sanitize_json;

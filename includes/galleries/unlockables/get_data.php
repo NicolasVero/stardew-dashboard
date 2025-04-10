@@ -10,7 +10,7 @@ function get_player_unlockables(): array {
 	$player_unlockables = [];
 	$unlockables_details = get_unlockables_details();
 
-	foreach($unlockables_details as $unlockable_name => $unlockable_details) {
+	foreach ($unlockables_details as $unlockable_name => $unlockable_details) {
 		extract($unlockable_details); //? $type, $element_name
 
 		switch ($type) {
@@ -137,7 +137,7 @@ function get_player_unlockables_list(): array {
 	$unlockables_json = sanitize_json_with_version("unlockables");
 	$unlockables = get_player_unlockables();
 
-	foreach($unlockables_json as $unlockable_id => $unlockable_name) {
+	foreach ($unlockables_json as $unlockable_id => $unlockable_name) {
 		$formatted_name = format_text_for_file($unlockable_name);
 		$unlockables[$formatted_name] = [
 			"id" => $unlockable_id,

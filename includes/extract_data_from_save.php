@@ -48,7 +48,7 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
 function generate_dev_mode_page(array $pages): string {
     $dev_mode_page = display_landing_page(false);
         
-    foreach($pages as $page) {
+    foreach ($pages as $page) {
         $dev_mode_page .= $page;
     }
     
@@ -68,7 +68,7 @@ function get_farmhands(): array {
     if (is_game_version_older_than_1_6()) {
         $farmhands = find_xml_tags($data, 'locations.GameLocation.buildings.Building.indoors.farmhand');
 
-        foreach($farmhands as $farmhand) {
+        foreach ($farmhands as $farmhand) {
             if ((string) $farmhand->name === "") {
                 continue;
             }
@@ -80,7 +80,7 @@ function get_farmhands(): array {
             return [];
         }
 
-        foreach($data->farmhands->Farmer as $farmhand) {
+        foreach ($data->farmhands->Farmer as $farmhand) {
             if ((string) $farmhand->name === "") {
                 continue;
             }
@@ -107,7 +107,7 @@ function get_all_players_data(): array {
 	$GLOBALS["host_player_data"] = $players_data[0];
 
     if (!empty($farmhands)) {
-        foreach($farmhands as $farmhand) {
+        foreach ($farmhands as $farmhand) {
             array_push($players_data, get_aggregated_data($farmhand));
         }
     }

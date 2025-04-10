@@ -31,7 +31,7 @@ function find_reference(string $reference_id): string {
 		"minerals"
 	];
 
-	foreach($json_list as $json) {
+	foreach ($json_list as $json) {
 		if (isset($reference) && $reference !== null) {
 			continue;
 		}
@@ -105,7 +105,7 @@ function get_special_order_data(object $special_order): array|null {
 	$objective = "$target, $description: $number_obtained/$number_to_get";
 
 	$rewards = [];
-	foreach($special_order->rewards as $reward) {
+	foreach ($special_order->rewards as $reward) {
 		if (!isset($reward->amount)) {
 			continue;
 		}
@@ -137,7 +137,7 @@ function get_player_quest_log(): array {
 	$player_quest_log = $GLOBALS["untreated_player_data"]->questLog;
 	$quests_data = [];
 
-	foreach($player_quest_log->Quest as $quest) {
+	foreach ($player_quest_log->Quest as $quest) {
 		$quest_id = (int) $quest->id;
 		$quest_reference = find_reference_in_json(
 			$quest_id,
@@ -155,10 +155,12 @@ function get_player_quest_log(): array {
 	}
 
 	// Special Orders (Weekly)
-	foreach($entire_data->specialOrders->SpecialOrder as $special_order) {
-		if (($special_order_data = get_special_order_data($special_order)) !== null) {
-			$quests_data[] = $special_order_data;
+	foreach ($entire_data->specialOrders->SpecialOrder as $special_order) {
+		if (($special_order_data = get_special_order_data($special_order)) === null) {
+			continue;
 		}
+		
+		$quests_data[] = $special_order_data;
 	}
 
 	return $quests_data;

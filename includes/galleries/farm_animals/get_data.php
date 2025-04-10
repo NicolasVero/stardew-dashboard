@@ -28,7 +28,7 @@ function get_player_farm_animals(): array {
 
     $animals = find_xml_tags($data, 'locations.GameLocation.buildings.Building.indoors.animals.item.value');
     
-    foreach($animals as $animal) {
+    foreach ($animals as $animal) {
 	    $name = (string) $animal->FarmAnimal->name;
         $full_animal_type = (string) $animal->FarmAnimal->type;
 	    $friendship = (int) $animal->FarmAnimal->friendshipTowardFarmer;
@@ -52,13 +52,15 @@ function get_player_farm_animals(): array {
 
         $animal_type = $all_animals[$full_animal_type];
 
-        if (!isset($animals_data[$animal_type])) {
-            $animals_data[$animal_type] = [
-                "id" => get_custom_id($animal_type),
-	    		"animals_data" => [],
-                "counter" => 0
-            ];
+        if (isset($animals_data[$animal_type])) {
+            continue;
         }
+        
+        $animals_data[$animal_type] = [
+            "id" => get_custom_id($animal_type),
+            "animals_data" => [],
+            "counter" => 0
+        ];
 
         $animals_data[$animal_type]["counter"]++;
 	    array_push($animals_data[$animal_type]["animals_data"], $animal_data);

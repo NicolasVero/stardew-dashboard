@@ -29,7 +29,7 @@ function get_player_gender(): string {
 		$player_data->isMale
 	];
 
-	foreach($genders as $gender) {
+	foreach ($genders as $gender) {
 		if (empty($gender)) {
 			continue;
 		}
@@ -86,17 +86,15 @@ function get_children_amount(): array {
 		"locations.GameLocation.buildings.Building.indoors.characters.NPC"
 	];
 
-	foreach($npc_locations as $npc_location) {
+	foreach ($npc_locations as $npc_location) {
 		$npcs = find_xml_tags($data, $npc_location);
 
-		foreach($npcs as $npc) {
-			if (!isset($npc->idOfParent)) {
+		foreach ($npcs as $npc) {
+			if (!isset($npc->idOfParent) || (int) $npc->idOfParent !== $player_id) {
 				continue;
 			}
 
-			if ((int) $npc->idOfParent === $player_id) {
-				array_push($children_name, $npc->name);
-			}
+			array_push($children_name, $npc->name);
 		}
 	}
 	
@@ -141,17 +139,19 @@ function get_weather(string $weather_location = "Default"): string {
 		'isGreenRain' => 'green_rain'
 	];
 
-    foreach($locations as $complex_location) {
-		foreach($complex_location as $location) {
+    foreach ($locations as $complex_location) {
+		foreach ($complex_location as $location) {
 			if ($location->key->string !== $weather_location) {
 				continue;
 			}
 
 			$weather_data = $location->value->LocationWeather;
-			foreach($weather_conditions as $condition => $result) {
-				if ((string) $weather_data->$condition->string === 'true') {
-					return $result;
+			foreach ($weather_conditions as $condition => $result) {
+				if ((string) $weather_data->$condition->string !== 'true') {
+					continue;
 				}
+
+				return $result;
 			}
 
 			return format_text_for_file((string)$weather_data->weather->string);
@@ -222,23 +222,29 @@ function get_grandpa_score(): int {
     ];
 
     $total_money_earned = $data->totalMoneyEarned;
-    foreach($money_earned_goals as $goal_data) {
-        if ($total_money_earned > $goal_data["goal"]) {
-            $grandpa_points += $goal_data["points"];
-        }
+    foreach ($money_earned_goals as $goal_data) {
+        if ($total_money_earned <= $goal_data["goal"]) {
+			continue;
+		}
+
+		$grandpa_points += $goal_data["points"];
     }
 
     $total_skills_level = get_total_skills_level();
-    foreach($skill_goals as $goal_data) {
-        if ($total_skills_level > $goal_data["goal"]) {
-            $grandpa_points += $goal_data["points"];
+    foreach ($skill_goals as $goal_data) {
+        if ($total_skills_level <= $goal_data["goal"]) {
+			continue;
         }
+
+		$grandpa_points += $goal_data["points"];
     }
 
-    foreach($achievement_ids as $achievement_id) {
-        if (does_player_have_achievement($data->achievements, $achievement_id)) {
-            $grandpa_points++;
+    foreach ($achievement_ids as $achievement_id) {
+        if (!does_player_have_achievement($data->achievements, $achievement_id)) {
+			continue;
         }
+		
+		$grandpa_points++;
     }
 
     $house_level = get_house_upgrade_level($data);
@@ -249,16 +255,20 @@ function get_grandpa_score(): int {
 
     $friendships = get_player_friendship_data($data->friendshipData);
     $friendship_count = 0;
-    foreach($friendships as $friendship) {
-        if ($friendship["friend_level"] >= 8) {
-            $friendship_count++;
-        }
+    foreach ($friendships as $friendship) {
+        if ($friendship["friend_level"] < 8) {
+			continue;
+		}
+
+		$friendship_count++;
     }
 
-    foreach($friendship_goals as $goal) {
-        if ($friendship_count >= $goal) {
-            $grandpa_points++;
+    foreach ($friendship_goals as $goal) {
+        if ($friendship_count < $goal) {
+			continue;
         }
+
+		$grandpa_points++;
     }
 
     if (get_pet_frienship_points() >= 999) {
@@ -369,7 +379,7 @@ function get_perfection_percentage(): string {
 
 	$perfection_elements = get_perfection_elements();
 	$percentage = 0;
-	foreach($perfection_elements as $element_percent) {
+	foreach ($perfection_elements as $element_percent) {
 		$percentage += $element_percent;
 	}
 
@@ -388,36 +398,27 @@ function get_highest_count_for_category(string $category): array {
 	$highest_player = 0;
 	$max_elements = 0;
 
-	$exceptions_recipes = [
-		"cooking_recipes",
-		"crafting_recipes"
-	];
+	$exceptions_recipes = ["cooking_recipes", "crafting_recipes"];
+	$exceptions_level = ["farmer_level"];
 
-	$exceptions_level = [
-		"farmer_level"
-	];
+	for ($player_id = 0; $player_id < $total_players; $player_id++) {
+		$player_data = $all_data[$player_id];
+		$amount_elements = 0;
 
-	for ($current_player = 0; $current_player < $total_players; $current_player++) {
 		if (in_array($category, $exceptions_recipes)) {
-			$filtered_elements = array_filter($all_data[$current_player][$category], function(mixed $item): bool {
-				return $item["counter"] > 0;
-			});
-
-			$amount_elements = count($filtered_elements);
+			$amount_elements = count(array_filter(
+				$player_data[$category], 
+				fn(mixed $item): bool => $item["counter"] > 0
+			));
 		} else if (in_array($category, $exceptions_level)) {
-			$level_category = $all_data[$current_player]["levels"];
-			$amount_elements = 0;
-			
-			foreach($level_category as $level) {
-				$amount_elements += $level;
-			}
+			$amount_elements = array_sum($player_data["levels"]);
 		} else {
-			$amount_elements = count($all_data[$current_player][$category]);	
+			$amount_elements = count($player_data[$category]);	
 		}
 
-		if ($max_elements < $amount_elements) {
+		if ($amount_elements > $max_elements) {
 			$max_elements = $amount_elements;
-			$highest_player = $current_player;
+			$highest_player = $player_id;
 		}
 	}
 
@@ -442,22 +443,25 @@ function get_player_with_highest_friendships(): array {
 	$highest_player = 0;
 	$max_elements = 0;
 
-	for ($current_player = 0; $current_player < $total_players; $current_player++) {
-		$friendships = $all_data[$current_player]["friendship"];
+	for ($player_id = 0; $player_id < $total_players; $player_id++) {
+		$friendships = $all_data[$player_id]["friendship"];
 		$friend_counter = 0;
 
-		foreach($friendships as $friendship_name => $friendship) {
+		foreach ($friendships as $friendship_name => $friendship) {
 			extract($friendship); //? $id, $points, $friend_level, $birthday, $status, $week_gifts
 
 			$can_be_married = in_array($friendship_name, $marriables_npc) && $status === "Friendly";
 
-			if (($can_be_married && $friend_level >= 8) || (!$can_be_married && $friend_level >= 10)) {
-				$friend_counter++;
+			if ($friend_level < 8 || (!$can_be_married && $friend_level < 10)) {
+				continue;
 			}
+
+			$friend_counter++;
 		}
 
 		if ($friend_counter > $max_elements) {
 			$max_elements = $friend_counter;
+			$highest_player = $player_id;
 		}
 	}
 
@@ -482,9 +486,11 @@ function has_any_player_gotten_all_stardrops(): bool {
 	for ($current_player = 0; $current_player < $total_players; $current_player++) {
 		$stardrops_founds = $all_data[$current_player]["general"]["stardrops_found"];
 
-		if ($stardrops_founds === 7) {
-			return true;
+		if ($stardrops_founds !== 7) {
+			continue;
 		}
+
+		return true;
 	}
 
 	return false;
@@ -552,10 +558,12 @@ function get_amount_obelisk_on_map(): int {
 	$data = $GLOBALS["untreated_all_players_data"];
 	$buildings = find_xml_tags($data, 'locations.GameLocation.buildings.Building');
 
-	foreach($buildings as $building) {
-		if (in_array((string) $building->buildingType, $obelisk_names)) {
-            $obelisk_count++;
-        }
+	foreach ($buildings as $building) {
+		if (!in_array((string) $building->buildingType, $obelisk_names)) {
+			continue;
+		}
+
+		$obelisk_count++;
 	}
 
 	return $obelisk_count;
@@ -584,7 +592,7 @@ function is_golden_clock_on_farm(): bool {
 	$data = $GLOBALS["untreated_all_players_data"];
 	$buildings = find_xml_tags($data, 'locations.GameLocation.buildings.Building');
 
-	foreach($buildings as $building) {
+	foreach ($buildings as $building) {
 		if ((string) $building->buildingType !== "Gold Clock") {
 			continue;
 		}
@@ -604,7 +612,7 @@ function get_pet_frienship_points(): int {
 	$data = $GLOBALS["untreated_all_players_data"];
 	$npcs = find_xml_tags($data, 'locations.GameLocation.characters.NPC');
 
-	foreach($npcs as $npc) {
+	foreach ($npcs as $npc) {
 		if (!isset($npc->petType) && !isset($npc->whichBreed)) {
 			continue;
 		}

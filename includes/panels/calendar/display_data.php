@@ -51,6 +51,7 @@ function display_calendar_panel(): string {
                 get_wiki_link(get_custom_id($all_dates[$date][0])),
                 get_wiki_link(get_custom_id($all_dates[$date][1]))
             ];
+            
             $calendar_tooltip = [
                 (in_array($all_dates[$date][0], $villagers)) ? $all_dates[$date][0] . "'s Birthday" : $all_dates[$date][0],
                 (in_array($all_dates[$date][1], $villagers)) ? $all_dates[$date][1] . "'s Birthday" : $all_dates[$date][1]

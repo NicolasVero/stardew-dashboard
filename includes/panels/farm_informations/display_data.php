@@ -22,7 +22,7 @@ function display_farm_informations(): string {
     $images_path = get_images_folder();
     $informations = "";
 
-	foreach($farm_informations as $caption => $count) {
+	foreach ($farm_informations as $caption => $count) {
 		$informations .= "<span class='farm-info'>" . __($caption) . " : " . __($count) . "</span>";
 	}
 

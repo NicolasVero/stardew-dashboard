@@ -25,7 +25,7 @@ function display_visited_locations_panel(): string {
     $batch_size = round(count($json_data) / 2);
     $counter = 0;
     
-    foreach($json_data as $json_line_name) {
+    foreach ($json_data as $json_line_name) {
         if ($counter % $batch_size === 0) {
             $locations .= "<span class='locations-batch'>";
         }

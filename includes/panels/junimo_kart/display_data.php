@@ -23,7 +23,7 @@ function display_junimo_kart_panel(): string {
     $untreated_scores = get_verified_jk_leaderboard($untreated_data->junimoKartLeaderboards->entries);
     $counter = 1;
 
-    foreach($untreated_scores->NetLeaderboardsEntry as $untreated_score) {
+    foreach ($untreated_scores->NetLeaderboardsEntry as $untreated_score) {
         if ($counter > 5) {
             break;
         }

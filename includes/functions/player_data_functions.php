@@ -14,7 +14,7 @@ function get_player_items_list(object $data, string $filename): array {
 
 	$items_data = [];
 
-	foreach($data->item as $item) {
+	foreach ($data->item as $item) {
 		$item_id = format_original_data_string($item->key->string);
 		$item_id = get_correct_id($item_id);
 
@@ -125,6 +125,7 @@ function get_tooltip_text(array $player_data, string $json_line_name, string $da
 	if (!array_key_exists($json_line_name, $player_data) || !isset($player_data[$json_line_name])) {
 		return __($json_line_name);
 	}
+
 	$data_array = $player_data[$json_line_name];
 
     extract($data_array); //? ?$counter, ?$caught_counter, ?$killed_counter, ?$max_length, ?$description
@@ -213,12 +214,19 @@ function get_version_class(string $version): string {
  * @return string Les classes de l'élément trouvé.
  */
 function get_found_classes(array $player_data, string $json_filename, string $json_line_name, bool $is_found): string {
-	$classes = ($is_found) ? "found" : "not-found";
-	
-	if (in_array($json_filename, ["cooking_recipes", "crafting_recipes", "artifacts", "minerals"])) {
-		if ($is_found && $player_data[$json_line_name]["counter"] === 0) {
-			$classes .= " unused";
-		}
+	if (!$is_found) {
+		return "not-found";
 	}
-	return $classes;
+	
+	$types_with_counter = ["cooking_recipes", "crafting_recipes", "artifacts", "minerals"];
+
+	if (!in_array($json_filename, $types_with_counter)) {
+		return "found";
+	}
+	
+	if ($is_found && $player_data[$json_line_name]["counter"] === 0) {
+		return "found unused";
+	}
+
+	return "found";
 }

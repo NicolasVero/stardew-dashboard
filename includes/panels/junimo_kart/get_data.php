@@ -10,8 +10,8 @@ function get_junimo_kart_leaderboard(): array {
 	$all_entries = $data->junimoKartLeaderboards->entries;
 	$leaderboard = [];
 
-	foreach($all_entries as $entries) {
-		foreach($entries as $entry) {
+	foreach ($all_entries as $entries) {
+		foreach ($entries as $entry) {
 			$leaderboard[] = [
 				"score" => (int) $entry->score->int,
 				"name"  => (string) $entry->name->string

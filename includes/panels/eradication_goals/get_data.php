@@ -28,14 +28,16 @@ function get_player_adventurers_guild_data(int $player_id): array {
 	$enemies_killed = $GLOBALS["all_players_data"][$player_id]["enemies_killed"];
 	$adventurers_guild_data = [];
 
-	foreach($categories as $monsters_name => $monster_data) {
+	foreach ($categories as $monsters_name => $monster_data) {
 		$counter = 0;
 		extract($monster_data); //? $target_name, $ids, $limit, $reward
 
-		foreach($enemies_killed as $enemy_killed) {
-			if (in_array($enemy_killed["id"], $ids)) {
-				$counter += $enemy_killed["killed_counter"];
+		foreach ($enemies_killed as $enemy_killed) {
+			if (!in_array($enemy_killed["id"], $ids)) {
+				continue;
 			}
+			
+			$counter += $enemy_killed["killed_counter"];
 		}
 
 		$adventurers_guild_data[$monsters_name] = [
@@ -60,10 +62,12 @@ function get_player_adventurers_guild_data(int $player_id): array {
  */
 function are_all_adventurers_guild_categories_completed(array $adventurers_guild_data): bool {
     $counter = 0;
-    foreach($adventurers_guild_data as $data) {
-        if ($data["is_completed"]) {	
-			$counter++;
+    foreach ($adventurers_guild_data as $data) {
+        if (!$data["is_completed"]) {
+			continue;
 		}
+		
+		$counter++;
     }
 
     return $counter === count($adventurers_guild_data);

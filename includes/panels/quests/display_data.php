@@ -24,7 +24,7 @@ function display_quest_panel(): string {
         $quest_structure = no_items_placeholder();
     }
 
-    foreach($this_player_data as $data) {
+    foreach ($this_player_data as $data) {
 		extract($data); //? $time_limited, $objective, $description, $title, $rewards
 
         $quest_structure .= "

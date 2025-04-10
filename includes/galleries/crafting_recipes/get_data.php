@@ -10,8 +10,7 @@ function get_player_crafting_recipes(): array {
 	$crafting_recipes_json = sanitize_json_with_version("crafting_recipes");
 	$crafting_recipes_data = [];
 
-	foreach($player_crafting_recipes->item as $recipe) {
-		
+	foreach ($player_crafting_recipes->item as $recipe) {
 		$item_name = format_original_data_string($recipe->key->string);
 		$index = array_search($item_name, $crafting_recipes_json);
 

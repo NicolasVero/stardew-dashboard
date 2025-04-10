@@ -11,7 +11,7 @@ function display_monster_eradication_goals_panel(): string {
     $goals_data = get_player_adventurers_guild_data($player_id);
     $goals = "";
 
-    foreach($goals_data as $goal_data) {
+    foreach ($goals_data as $goal_data) {
         if (is_bool($goal_data)) {
             continue;
         }
