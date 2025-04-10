@@ -21,7 +21,17 @@ function display_quest_panel(): string {
     $quest_structure = "";
 
     if (empty($this_player_data)) {
-        $quest_structure = no_items_placeholder();
+        return "
+            <section class='all-quests-$player_id panel quests-panel modal-window'>
+                <div class='panel-header'>
+                    <h2 class='section-title panel-title'>" . __("Quests in progress") . "</h2>
+                    <img src='$images_path/icons/exit.png' class='exit-all-quests-$player_id exit' alt='Exit'>
+                </div>
+                <span class='quests'>
+                    " . no_items_placeholder() . "
+                </span>
+            </section>
+        ";
     }
 
     foreach ($this_player_data as $data) {
@@ -40,14 +50,14 @@ function display_quest_panel(): string {
 			continue;
 		}
         
-		if (isset($daysLeft)) {
-			$day_text = ($daysLeft > 1) ? "days" : "day";
-			$quest_structure .= " <span class='days-left'><img src='$images_path/icons/timer.png' alt='Time left'>$daysLeft " . __($day_text) . "</span>";
+		if (isset($days_left)) {
+			$day_text = ($days_left > 1) ? "days" : "day";
+			$quest_structure .= " <span class='days-left'><img src='$images_path/icons/timer.png' alt='Time left'>$days_left " . __($day_text) . "</span>";
 		}
 
 		$quest_structure .= "<span class='quest-rewards'>";
 		
-        for ($i = 0; $i<count($rewards); $i++) {
+        for ($i = 0; $i < count($rewards); $i++) {
 			// Reward tooltip (pas besoin pourgold and qi gems)
             $quest_structure .= ((is_numeric($rewards[$i]) || $rewards[$i] === null || str_ends_with($rewards[$i], 'q'))) ? "<span class='quest-reward'>" : "<span class='quest-reward tooltip'>";
             

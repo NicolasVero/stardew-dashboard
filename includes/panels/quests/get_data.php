@@ -76,7 +76,7 @@ function get_daily_quest_data(object $quest): array|null {
 		"objective"   	=> $objective,
 		"description" 	=> $description,
 		"title"       	=> $title,
-		"daysLeft"    	=> $days_left,
+		"days_left"    	=> $days_left,
 		"rewards"     	=> $rewards
 	];
 }
@@ -122,7 +122,7 @@ function get_special_order_data(object $special_order): array|null {
 		"objective"   	=> $objective,
 		"description" 	=> $description,
 		"title"       	=> $title,
-		"daysLeft"    	=> $days_left,
+		"days_left"    	=> $days_left,
 		"rewards"     	=> $rewards
 	];
 }
