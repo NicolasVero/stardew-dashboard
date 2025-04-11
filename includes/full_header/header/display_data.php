@@ -110,7 +110,7 @@ function display_festival_icon(): string {
             
 			$festival_name = $festival["name"];
 			$festival_class = "is_festival";
-			$wiki_url = get_wiki_link($key);
+			$wiki_link = get_wiki_link($key);
             $festival_icon = "$images_path/icons/festival_icon.gif";
 			break;
 		}
