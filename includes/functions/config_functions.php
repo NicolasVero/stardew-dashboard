@@ -126,3 +126,16 @@ function is_a_mobile_device(): bool {
 		strpos($_SERVER["HTTP_USER_AGENT"], "iPhone") !== false 
 	);
 }
+
+/**
+ * Supprime les variables GLOBALS sélectionnées.
+ *
+ * @param array $globals Les chaînes de noms de GLOBALS à supprimer.
+ * @return void
+ */
+
+function unset_globals(array $globals): void {
+    foreach ($globals as $global) {
+        unset($GLOBALS[$global]);
+    }
+}

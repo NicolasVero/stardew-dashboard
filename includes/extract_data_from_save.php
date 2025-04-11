@@ -31,7 +31,22 @@ function load_save(string $save_file, bool $use_ajax = true): mixed {
     }
 
     $pages = ($use_ajax) ? $pages : generate_dev_mode_page($pages);
-    
+
+    unset_globals([
+        "json",
+        "functions_files",
+        "folders",
+        "folder",
+        "subfolders",
+        "subfolder",
+        "raw_xml_data",
+        "host_player_data",
+        "current_player_raw_data",
+        "shared_players_data",
+        "players_data",
+        "player_id"
+    ]);
+
     return [
         "players" => $GLOBALS["players_names"],
         "html" => $pages,
