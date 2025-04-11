@@ -52,7 +52,7 @@ function display_farm_animals_panel(): string {
             extract($animal_data); //? $name, $type, $friendship_level, $happiness, $was_pet
 
             $formatted_type = format_text_for_file($type);
-            $wiki_url = get_wiki_link($id);
+            $wiki_link = get_wiki_link($id);
             $animal_icon = "$images_path/farm_animals/$formatted_type.png";
             $pet_class = ($was_pet) ? "pet" : "not-petted";
             $pet_tooltip = ($was_pet) ? __("Caressed by the auto-petter") : __("No auto-petter in this building");
@@ -73,7 +73,7 @@ function display_farm_animals_panel(): string {
 
             $farm_animals_structure .= "
                 <span>
-                    <a href='$wiki_url' class='wiki_link' rel='noreferrer' target='_blank'>
+                    <a href='$wiki_link' class='wiki_link' rel='noreferrer' target='_blank'>
                         <img src='$animal_icon' class='animal-icon' alt='$type icon'>
                     </a>
                     <span class='animal-name'>$name</span>

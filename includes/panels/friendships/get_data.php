@@ -48,7 +48,7 @@ function prepare_all_friendship_info(array $friendship_info): array {
     extract($friendship_info); //? $id, $points, $friend_level, $birthday, $status, $week_gifts
 
     $villager_name = get_item_name_by_id($id);
-    $wiki_url = get_wiki_link(get_item_id_by_name($villager_name));
+    $wiki_link = get_wiki_link(get_item_id_by_name($villager_name));
 
     $can_be_married = in_array($villager_name, $marriables_npc) && $status === "Friendly";
     $hearts_structure = get_hearts_structure([
@@ -66,7 +66,7 @@ function prepare_all_friendship_info(array $friendship_info): array {
 		"points" => $points,
 		"hearts_structure" => $hearts_structure,
 		"week_gifts" => $week_gifts,
-		"wiki_link" => $wiki_url,
+		"wiki_link" => $wiki_link,
 		"birthday" => [
 			"is_birthday" => $is_birthday,
 			"birthdate" => $birthdate

@@ -23,11 +23,11 @@ function display_unlockables(): string {
 	
 			$unlockable_class = ($player_unlockables[$formatted_name]["is_found"]) ? "found" : "not-found";
 			$unlockable_image = "$images_path/unlockables/$formatted_name.png";
-			$wiki_url = get_wiki_link(get_item_id_by_name($unlockable));
+			$wiki_link = get_wiki_link(get_item_id_by_name($unlockable));
 			
 			$unlockables_structure .= "
 				<span class='tooltip'>
-					<a href='$wiki_url' class='wiki_link' rel='noreferrer' target='_blank'>
+					<a href='$wiki_link' class='wiki_link' rel='noreferrer' target='_blank'>
 						<img src='$unlockable_image' class='gallery-item unlockables $unlockable_class $is_newer_version_class' alt='" . __($unlockable) . "'>
 					</a>
 					<span>" . __($unlockable) . "</span>

@@ -44,12 +44,12 @@ function display_detailled_gallery(array $gallery_details, string $width_class =
             $is_found = array_key_exists($json_line_name, $player_data);
             $element_class = get_found_classes($player_data, $json_filename, $json_line_name, $is_found);
             $element_image = get_detailled_gallery_image($json_filename, $json_line_name);
-            $wiki_url = get_detailled_gallery_wiki_link($json_filename, $json_line_name);
+            $wiki_link = get_detailled_gallery_wiki_link($json_filename, $json_line_name);
             $element_tooltip = get_tooltip_text($player_data, $json_line_name, $json_filename);
 
 			$item_structure .= "
 				<span class='tooltip'>
-					<a href='$wiki_url' class='wiki_link' rel='noreferrer' target='_blank'>
+					<a href='$wiki_link' class='wiki_link' rel='noreferrer' target='_blank'>
                         <img src='$element_image' class='gallery-item $json_filename $element_class $version_class' alt='" . __($json_line_name) . "'>
                     </a>
                     <span>" . __($element_tooltip) . "</span>
