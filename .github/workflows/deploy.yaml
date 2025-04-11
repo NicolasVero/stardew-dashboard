@@ -37,6 +37,7 @@ jobs:
           
           # Recursive directories
           echo "Transferring directories..."
+          mirror -R includes/ htdocs/components/
           mirror -R includes/ htdocs/includes/
           mirror -R locales/ htdocs/locales/
           
