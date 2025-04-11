@@ -16,6 +16,10 @@ function display_visited_locations_button(): string {
  * @return string Le code HTML du panneau des lieux visités.
  */
 function display_visited_locations_panel(): string {
+	if (is_game_version_older_than_1_6()) {
+		return "";
+	}
+    
     $player_id = get_current_player_id();
     $visited_locations = get_locations_visited();
     $images_path = get_images_folder();

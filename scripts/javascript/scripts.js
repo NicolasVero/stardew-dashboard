@@ -259,6 +259,12 @@ function easter_egg_monarchy_mayhem() {
         }
     });
 }
+function load_landing_elements() {
+    console.log("hihi");
+    activate_buttons(".landing-upload", ".exit-upload", ".upload-panel");
+    activate_buttons(".landing-languages", ".exit-languages", ".languages-panel");
+    activate_buttons(".landing-settings", ".exit-settings", ".settings");
+}
 function load_error_page_elements() {
     const button_configurations = [
         { open_button: ".main-settings", exit_button: ".exit-settings", modal_panel: ".settings" },

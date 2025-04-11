@@ -1,6 +1,4 @@
 <?php
-//! ONLY WORKS FOR 1.6.0+ RIGHT NOW
-
 /**
  * Récupère les informations de la ferme comme l'ordinateur de ferme.
  * 
