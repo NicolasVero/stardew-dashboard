@@ -82,7 +82,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">get_data.php</h2>
+        <h2 class="phpdocumentor-content__title">game_stats_functions.php</h2>
 
         
 
@@ -95,7 +95,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="files/includes-galleries-skills-get-data.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/includes-functions-game-stats-functions.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -111,44 +111,58 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/includes-galleries-skills-get-data.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/includes-functions-game-stats-functions.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_level_progress_bar">get_level_progress_bar()</a>
+    <a class="" href="namespaces/default.html#function_is_game_version_older_than_1_6">is_game_version_older_than_1_6()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Vérifie si la sauvegarde est plus ancienne que 1.6.0.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_get_game_duration">get_game_duration()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Génère le code HTML d&#039;une barre de progression du niveau de la compétence actuel du joueur.</dd>
+<dd>Récupère le temps de jeu du joueur.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_skills_icons">get_skills_icons()</a>
-    <span>
-                                &nbsp;: string    </span>
-</dt>
-<dd>Génère le code HTML des icônes des compétences du joueur.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_player_skills_data">get_player_skills_data()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd>Renvoie les données des compétences du joueur.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_player_masteries">get_player_masteries()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd>Renvoie les données de maîtrise du joueur.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_total_skills_level">get_total_skills_level()</a>
+    <a class="" href="namespaces/default.html#function_get_number_of_player">get_number_of_player()</a>
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd>Renvoie le niveau total de compétences du joueur.</dd>
+<dd>Récupère le nombre de joueurs dans la partie.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_get_number_of_days_ingame">get_number_of_days_ingame()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Récupère le nombre de jours de jeu.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_get_game_version_score">get_game_version_score()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Récupère le score de la version du jeu.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_is_this_the_same_day">is_this_the_same_day()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Vérifie si la date cherchée est la même que celle du jour actuel.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_is_game_singleplayer">is_game_singleplayer()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Vérifie si la partie est en mode solo.</dd>
 
     </dl>
 
@@ -159,138 +173,62 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/includes-galleries-skills-get-data.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/includes-functions-game-stats-functions.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_level_progress_bar">
-        get_level_progress_bar()
-        <a href="namespaces/default.html#function_get_level_progress_bar" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_is_game_version_older_than_1_6">
+        is_game_version_older_than_1_6()
+        <a href="namespaces/default.html#function_is_game_version_older_than_1_6" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/game_stats_functions.php"><a href="files/includes-functions-game-stats-functions.html"><abbr title="includes/functions/game_stats_functions.php">game_stats_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">10</span>
+    <span class="phpdocumentor-element-found-in__line">8</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Génère le code HTML d&#039;une barre de progression du niveau de la compétence actuel du joueur.</p>
+        <p class="phpdocumentor-summary">Vérifie si la sauvegarde est plus ancienne que 1.6.0.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_level_progress_bar</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$level</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$max_level</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">10</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">is_game_version_older_than_1_6</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
     
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$level</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Niveau actuel de la compétence.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$max_level</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">10</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Niveau maximum de la compétence.</p>
-</section>
-
-            </dd>
-            </dl>
-
+    
     
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
+        <span class="phpdocumentor-signature__response_type">bool</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Code HTML de la barre de progression.</p>
+                <section class="phpdocumentor-description"><p>Indique si la sauvegarde est plus ancienne ou non.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_skills_icons">
-        get_skills_icons()
-        <a href="namespaces/default.html#function_get_skills_icons" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_get_game_duration">
+        get_game_duration()
+        <a href="namespaces/default.html#function_get_game_duration" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/game_stats_functions.php"><a href="files/includes-functions-game-stats-functions.html"><abbr title="includes/functions/game_stats_functions.php">game_stats_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">17</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Génère le code HTML des icônes des compétences du joueur.</p>
+        <p class="phpdocumentor-summary">Récupère le temps de jeu du joueur.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_skills_icons</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$skills</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$current_skill</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$skills</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Liste des compétences du joueur.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$current_skill</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Compétence actuelle du joueur.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>Code HTML des icônes des compétences.</p>
-</section>
-
-            </section>
-
-</article>
-                    <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_player_skills_data">
-        get_player_skills_data()
-        <a href="namespaces/default.html#function_get_player_skills_data" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">69</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Renvoie les données des compétences du joueur.</p>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_player_skills_data</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">get_game_duration</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     
     
@@ -298,67 +236,33 @@
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Données des compétences du joueur.</p>
+                <section class="phpdocumentor-description"><p>Le temps de jeu du joueur.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_player_masteries">
-        get_player_masteries()
-        <a href="namespaces/default.html#function_get_player_masteries" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_get_number_of_player">
+        get_number_of_player()
+        <a href="namespaces/default.html#function_get_number_of_player" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/game_stats_functions.php"><a href="files/includes-functions-game-stats-functions.html"><abbr title="includes/functions/game_stats_functions.php">game_stats_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">90</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Renvoie les données de maîtrise du joueur.</p>
+        <p class="phpdocumentor-summary">Récupère le nombre de joueurs dans la partie.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_player_masteries</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
-
-    
-    
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>Données de maîtrise du joueur.</p>
-</section>
-
-            </section>
-
-</article>
-                    <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_total_skills_level">
-        get_total_skills_level()
-        <a href="namespaces/default.html#function_get_total_skills_level" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">100</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Renvoie le niveau total de compétences du joueur.</p>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_total_skills_level</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+                    <span class="phpdocumentor-signature__name">get_number_of_player</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
     
     
@@ -368,7 +272,167 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">int</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Niveau total de compétences du joueur.</p>
+                <section class="phpdocumentor-description"><p>Le nombre de joueurs.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_get_number_of_days_ingame">
+        get_number_of_days_ingame()
+        <a href="namespaces/default.html#function_get_number_of_days_ingame" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/game_stats_functions.php"><a href="files/includes-functions-game-stats-functions.html"><abbr title="includes/functions/game_stats_functions.php">game_stats_functions.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">44</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Récupère le nombre de jours de jeu.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">get_number_of_days_ingame</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Le nombre de jours de jeu.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_get_game_version_score">
+        get_game_version_score()
+        <a href="namespaces/default.html#function_get_game_version_score" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/game_stats_functions.php"><a href="files/includes-functions-game-stats-functions.html"><abbr title="includes/functions/game_stats_functions.php">game_stats_functions.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">55</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Récupère le score de la version du jeu.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">get_game_version_score</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$version</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>La version du jeu.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Le score de la version du jeu.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_is_this_the_same_day">
+        is_this_the_same_day()
+        <a href="namespaces/default.html#function_is_this_the_same_day" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/game_stats_functions.php"><a href="files/includes-functions-game-stats-functions.html"><abbr title="includes/functions/game_stats_functions.php">game_stats_functions.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">78</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Vérifie si la date cherchée est la même que celle du jour actuel.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">is_this_the_same_day</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$date</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$date</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>La date à vérifier.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Indique si la date est la même que celle du jour actuel.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_is_game_singleplayer">
+        is_game_singleplayer()
+        <a href="namespaces/default.html#function_is_game_singleplayer" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/game_stats_functions.php"><a href="files/includes-functions-game-stats-functions.html"><abbr title="includes/functions/game_stats_functions.php">game_stats_functions.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">88</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Vérifie si la partie est en mode solo.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">is_game_singleplayer</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Indique si la partie est en mode solo.</p>
 </section>
 
             </section>
@@ -380,7 +444,7 @@
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/includes/galleries/skills/get_data.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/includes/functions/game_stats_functions.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -479,7 +543,7 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/includes-galleries-skills-get-data.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/includes-functions-game-stats-functions.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -487,11 +551,13 @@
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/default.html#function_get_level_progress_bar">get_level_progress_bar()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_player_masteries">get_player_masteries()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_player_skills_data">get_player_skills_data()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_skills_icons">get_skills_icons()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_total_skills_level">get_total_skills_level()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_game_duration">get_game_duration()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_game_version_score">get_game_version_score()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_number_of_days_ingame">get_number_of_days_ingame()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_number_of_player">get_number_of_player()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_is_game_singleplayer">is_game_singleplayer()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_is_game_version_older_than_1_6">is_game_version_older_than_1_6()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_is_this_the_same_day">is_this_the_same_day()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -511,7 +577,7 @@
     </section>
 </section>
         </div>
-        <a href="files/includes-galleries-skills-get-data.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/includes-functions-game-stats-functions.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

@@ -82,7 +82,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">get_data.php</h2>
+        <h2 class="phpdocumentor-content__title">formatting_functions.php</h2>
 
         
 
@@ -95,7 +95,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="files/includes-galleries-skills-get-data.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/includes-functions-formatting-functions.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -111,44 +111,44 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/includes-galleries-skills-get-data.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/includes-functions-formatting-functions.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_level_progress_bar">get_level_progress_bar()</a>
+    <a class="" href="namespaces/default.html#function_format_text_for_file">format_text_for_file()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Génère le code HTML d&#039;une barre de progression du niveau de la compétence actuel du joueur.</dd>
+<dd>Formate et retourne un texte pour un fichier.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_skills_icons">get_skills_icons()</a>
+    <a class="" href="namespaces/default.html#function_format_original_data_string">format_original_data_string()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Génère le code HTML des icônes des compétences du joueur.</dd>
+<dd>Formate et retourne un texte pour la gestion des données.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_player_skills_data">get_player_skills_data()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd>Renvoie les données des compétences du joueur.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_player_masteries">get_player_masteries()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd>Renvoie les données de maîtrise du joueur.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_total_skills_level">get_total_skills_level()</a>
+    <a class="" href="namespaces/default.html#function_in_bytes_conversion">in_bytes_conversion()</a>
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd>Renvoie le niveau total de compétences du joueur.</dd>
+<dd>Convertit une chaîne de caractères en octets.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_get_formatted_date">get_formatted_date()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Formate et retourne la date du jeu sous forme de chaîne ou de tableau.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_format_number">format_number()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Formate et retourne un nombre sous forme de chaîne en fonction des normes linguistiques.</dd>
 
     </dl>
 
@@ -159,102 +159,38 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/includes-galleries-skills-get-data.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/includes-functions-formatting-functions.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_level_progress_bar">
-        get_level_progress_bar()
-        <a href="namespaces/default.html#function_get_level_progress_bar" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_format_text_for_file">
+        format_text_for_file()
+        <a href="namespaces/default.html#function_format_text_for_file" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/formatting_functions.php"><a href="files/includes-functions-formatting-functions.html"><abbr title="includes/functions/formatting_functions.php">formatting_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">10</span>
+    <span class="phpdocumentor-element-found-in__line">9</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Génère le code HTML d&#039;une barre de progression du niveau de la compétence actuel du joueur.</p>
+        <p class="phpdocumentor-summary">Formate et retourne un texte pour un fichier.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_level_progress_bar</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$level</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$max_level</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">10</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">format_text_for_file</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$string</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$level</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Niveau actuel de la compétence.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$max_level</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">10</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Niveau maximum de la compétence.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>Code HTML de la barre de progression.</p>
-</section>
-
-            </section>
-
-</article>
-                    <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_skills_icons">
-        get_skills_icons()
-        <a href="namespaces/default.html#function_get_skills_icons" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">36</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Génère le code HTML des icônes des compétences du joueur.</p>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_skills_icons</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$skills</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$current_skill</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$skills</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Liste des compétences du joueur.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$current_skill</span>
+                <span class="phpdocumentor-signature__argument__name">$string</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Compétence actuelle du joueur.</p>
+                    <section class="phpdocumentor-description"><p>Le texte à formater.</p>
 </section>
 
             </dd>
@@ -266,109 +202,209 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Code HTML des icônes des compétences.</p>
+                <section class="phpdocumentor-description"><p>Le texte formaté.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_player_skills_data">
-        get_player_skills_data()
-        <a href="namespaces/default.html#function_get_player_skills_data" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_format_original_data_string">
+        format_original_data_string()
+        <a href="namespaces/default.html#function_format_original_data_string" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/formatting_functions.php"><a href="files/includes-functions-formatting-functions.html"><abbr title="includes/functions/formatting_functions.php">formatting_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">69</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Renvoie les données des compétences du joueur.</p>
+        <p class="phpdocumentor-summary">Formate et retourne un texte pour la gestion des données.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_player_skills_data</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">format_original_data_string</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$str</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     
-    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$str</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Le texte à formater.</p>
+</section>
+
+            </dd>
+            </dl>
+
     
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Données des compétences du joueur.</p>
+                <section class="phpdocumentor-description"><p>Le texte formaté.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_player_masteries">
-        get_player_masteries()
-        <a href="namespaces/default.html#function_get_player_masteries" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_in_bytes_conversion">
+        in_bytes_conversion()
+        <a href="namespaces/default.html#function_in_bytes_conversion" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/formatting_functions.php"><a href="files/includes-functions-formatting-functions.html"><abbr title="includes/functions/formatting_functions.php">formatting_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">90</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Renvoie les données de maîtrise du joueur.</p>
+        <p class="phpdocumentor-summary">Convertit une chaîne de caractères en octets.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_player_masteries</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">in_bytes_conversion</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$size</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$use</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&quot;local&quot;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
     
-    
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>Données de maîtrise du joueur.</p>
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$size</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>La taille à convertir.</p>
 </section>
 
-            </section>
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$use</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&quot;local&quot;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>L'unité à utiliser.</p>
+</section>
 
-</article>
-                    <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_total_skills_level">
-        get_total_skills_level()
-        <a href="namespaces/default.html#function_get_total_skills_level" class="headerlink"><i class="fas fa-link"></i></a>
+            </dd>
+            </dl>
 
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">100</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Renvoie le niveau total de compétences du joueur.</p>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_total_skills_level</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    
-    
     
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">int</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Niveau total de compétences du joueur.</p>
+                <section class="phpdocumentor-description"><p>La taille en octets.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_get_formatted_date">
+        get_formatted_date()
+        <a href="namespaces/default.html#function_get_formatted_date" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/formatting_functions.php"><a href="files/includes-functions-formatting-functions.html"><abbr title="includes/functions/formatting_functions.php">formatting_functions.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">58</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Formate et retourne la date du jeu sous forme de chaîne ou de tableau.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">get_formatted_date</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$display_date</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$display_date</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Indique si la date doit être retournée pour affichage ou non.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">mixed</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>La date formatée.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_format_number">
+        format_number()
+        <a href="namespaces/default.html#function_format_number" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/formatting_functions.php"><a href="files/includes-functions-formatting-functions.html"><abbr title="includes/functions/formatting_functions.php">formatting_functions.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">82</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Formate et retourne un nombre sous forme de chaîne en fonction des normes linguistiques.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">format_number</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$number</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$lang</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&quot;en&quot;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$number</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Le nombre à formater.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$lang</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&quot;en&quot;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>La langue du site.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Le nombre formaté.</p>
 </section>
 
             </section>
@@ -380,7 +416,7 @@
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/includes/galleries/skills/get_data.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/includes/functions/formatting_functions.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -479,7 +515,7 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/includes-galleries-skills-get-data.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/includes-functions-formatting-functions.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -487,11 +523,11 @@
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/default.html#function_get_level_progress_bar">get_level_progress_bar()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_player_masteries">get_player_masteries()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_player_skills_data">get_player_skills_data()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_skills_icons">get_skills_icons()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_total_skills_level">get_total_skills_level()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_format_number">format_number()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_format_original_data_string">format_original_data_string()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_format_text_for_file">format_text_for_file()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_formatted_date">get_formatted_date()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_in_bytes_conversion">in_bytes_conversion()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -511,7 +547,7 @@
     </section>
 </section>
         </div>
-        <a href="files/includes-galleries-skills-get-data.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/includes-functions-formatting-functions.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

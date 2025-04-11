@@ -82,7 +82,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">get_data.php</h2>
+        <h2 class="phpdocumentor-content__title">translation_functions.php</h2>
 
         
 
@@ -95,7 +95,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="files/includes-galleries-skills-get-data.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/includes-functions-translation-functions.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -111,44 +111,58 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/includes-galleries-skills-get-data.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/includes-functions-translation-functions.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_level_progress_bar">get_level_progress_bar()</a>
+    <a class="" href="namespaces/default.html#function___">__()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Génère le code HTML d&#039;une barre de progression du niveau de la compétence actuel du joueur.</dd>
+<dd>Traduit un texte si une traduction est disponible et ajoute des espaces en fonction de l&#039;option spécifiée.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_skills_icons">get_skills_icons()</a>
+    <a class="" href="namespaces/default.html#function_get_translated_wiki_link">get_translated_wiki_link()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Génère le code HTML des icônes des compétences du joueur.</dd>
+<dd>Traduit un lien du wiki si une traduction est disponible.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_player_skills_data">get_player_skills_data()</a>
+    <a class="" href="namespaces/default.html#function_is_the_original_language">is_the_original_language()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Vérifie si la langue actuelle est la langue originale.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_is_a_supported_language">is_a_supported_language()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Vérifie si la langue est une langue supportée.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_get_supported_languages">get_supported_languages()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Renvoie les données des compétences du joueur.</dd>
+<dd>Récupère les langues supportées.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_player_masteries">get_player_masteries()</a>
+    <a class="" href="namespaces/default.html#function_get_site_language">get_site_language()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: string    </span>
 </dt>
-<dd>Renvoie les données de maîtrise du joueur.</dd>
+<dd>Récupère la langue du site.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_total_skills_level">get_total_skills_level()</a>
+    <a class="" href="namespaces/default.html#function_define_site_language">define_site_language()</a>
     <span>
-                                &nbsp;: int    </span>
+                                &nbsp;: void    </span>
 </dt>
-<dd>Renvoie le niveau total de compétences du joueur.</dd>
+<dd>Définit la langue du site.</dd>
 
     </dl>
 
@@ -159,102 +173,47 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/includes-galleries-skills-get-data.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/includes-functions-translation-functions.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_level_progress_bar">
-        get_level_progress_bar()
-        <a href="namespaces/default.html#function_get_level_progress_bar" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function___">
+        __()
+        <a href="namespaces/default.html#function___" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/translation_functions.php"><a href="files/includes-functions-translation-functions.html"><abbr title="includes/functions/translation_functions.php">translation_functions.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">10</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Génère le code HTML d&#039;une barre de progression du niveau de la compétence actuel du joueur.</p>
+        <p class="phpdocumentor-summary">Traduit un texte si une traduction est disponible et ajoute des espaces en fonction de l&#039;option spécifiée.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_level_progress_bar</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$level</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$max_level</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">10</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">__</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$text</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$option</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">SPACE_NONE</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$level</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Niveau actuel de la compétence.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$max_level</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">10</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Niveau maximum de la compétence.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>Code HTML de la barre de progression.</p>
-</section>
-
-            </section>
-
-</article>
-                    <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_skills_icons">
-        get_skills_icons()
-        <a href="namespaces/default.html#function_get_skills_icons" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">36</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Génère le code HTML des icônes des compétences du joueur.</p>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_skills_icons</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$skills</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$current_skill</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$skills</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Liste des compétences du joueur.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$current_skill</span>
+                <span class="phpdocumentor-signature__argument__name">$text</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Compétence actuelle du joueur.</p>
+                    <section class="phpdocumentor-description"><p>Le texte à traduire.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$option</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">SPACE_NONE</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>L'option de l'espacement du texte.</p>
 </section>
 
             </dd>
@@ -266,31 +225,178 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Code HTML des icônes des compétences.</p>
+                <section class="phpdocumentor-description"><p>Le texte traduit.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_player_skills_data">
-        get_player_skills_data()
-        <a href="namespaces/default.html#function_get_player_skills_data" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_get_translated_wiki_link">
+        get_translated_wiki_link()
+        <a href="namespaces/default.html#function_get_translated_wiki_link" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/translation_functions.php"><a href="files/includes-functions-translation-functions.html"><abbr title="includes/functions/translation_functions.php">translation_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">69</span>
+    <span class="phpdocumentor-element-found-in__line">34</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Renvoie les données des compétences du joueur.</p>
+        <p class="phpdocumentor-summary">Traduit un lien du wiki si une traduction est disponible.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_player_skills_data</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">get_translated_wiki_link</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$wiki_link</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$lang</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$wiki_link</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Le lien du wiki à traduire.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$lang</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>La langue du site.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Le lien du wiki traduit.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_is_the_original_language">
+        is_the_original_language()
+        <a href="namespaces/default.html#function_is_the_original_language" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/translation_functions.php"><a href="files/includes-functions-translation-functions.html"><abbr title="includes/functions/translation_functions.php">translation_functions.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">64</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Vérifie si la langue actuelle est la langue originale.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">is_the_original_language</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$language</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$language</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>La langue à vérifier.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Indique si la langue est la langue originale.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_is_a_supported_language">
+        is_a_supported_language()
+        <a href="namespaces/default.html#function_is_a_supported_language" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/translation_functions.php"><a href="files/includes-functions-translation-functions.html"><abbr title="includes/functions/translation_functions.php">translation_functions.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">74</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Vérifie si la langue est une langue supportée.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">is_a_supported_language</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$language</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$language</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>La langue à vérifier.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Indique si la langue est supportée.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_get_supported_languages">
+        get_supported_languages()
+        <a href="namespaces/default.html#function_get_supported_languages" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/translation_functions.php"><a href="files/includes-functions-translation-functions.html"><abbr title="includes/functions/translation_functions.php">translation_functions.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">83</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Récupère les langues supportées.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">get_supported_languages</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     
     
@@ -300,31 +406,31 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Données des compétences du joueur.</p>
+                <section class="phpdocumentor-description"><p>Les langues supportées.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_player_masteries">
-        get_player_masteries()
-        <a href="namespaces/default.html#function_get_player_masteries" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_get_site_language">
+        get_site_language()
+        <a href="namespaces/default.html#function_get_site_language" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/translation_functions.php"><a href="files/includes-functions-translation-functions.html"><abbr title="includes/functions/translation_functions.php">translation_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">90</span>
+    <span class="phpdocumentor-element-found-in__line">94</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Renvoie les données de maîtrise du joueur.</p>
+        <p class="phpdocumentor-summary">Récupère la langue du site.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_player_masteries</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">get_site_language</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     
     
@@ -332,47 +438,39 @@
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Données de maîtrise du joueur.</p>
+                <section class="phpdocumentor-description"><p>La langue du site.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_total_skills_level">
-        get_total_skills_level()
-        <a href="namespaces/default.html#function_get_total_skills_level" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_define_site_language">
+        define_site_language()
+        <a href="namespaces/default.html#function_define_site_language" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="includes/galleries/skills/get_data.php"><a href="files/includes-galleries-skills-get-data.html"><abbr title="includes/galleries/skills/get_data.php">get_data.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/translation_functions.php"><a href="files/includes-functions-translation-functions.html"><abbr title="includes/functions/translation_functions.php">translation_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">100</span>
+    <span class="phpdocumentor-element-found-in__line">103</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Renvoie le niveau total de compétences du joueur.</p>
+        <p class="phpdocumentor-summary">Définit la langue du site.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_total_skills_level</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+                    <span class="phpdocumentor-signature__name">define_site_language</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
     
     
 
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>Niveau total de compétences du joueur.</p>
-</section>
-
-            </section>
-
+    
 </article>
             </section>
 
@@ -380,7 +478,7 @@
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/includes/galleries/skills/get_data.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/includes/functions/translation_functions.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -479,7 +577,7 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/includes-galleries-skills-get-data.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/includes-functions-translation-functions.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -487,11 +585,13 @@
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/default.html#function_get_level_progress_bar">get_level_progress_bar()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_player_masteries">get_player_masteries()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_player_skills_data">get_player_skills_data()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_skills_icons">get_skills_icons()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_total_skills_level">get_total_skills_level()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function___">__()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_define_site_language">define_site_language()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_site_language">get_site_language()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_supported_languages">get_supported_languages()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_translated_wiki_link">get_translated_wiki_link()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_is_a_supported_language">is_a_supported_language()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_is_the_original_language">is_the_original_language()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -511,7 +611,7 @@
     </section>
 </section>
         </div>
-        <a href="files/includes-galleries-skills-get-data.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/includes-functions-translation-functions.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

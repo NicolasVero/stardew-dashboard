@@ -82,7 +82,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">locale_loader.php</h2>
+        <h2 class="phpdocumentor-content__title">ui_functions.php</h2>
 
         
 
@@ -95,7 +95,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="files/locales-locale-loader.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/includes-functions-ui-functions.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -111,30 +111,44 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/locales-locale-loader.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/includes-functions-ui-functions.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_locale_file_loader">locale_file_loader()</a>
+    <a class="" href="namespaces/default.html#function_get_script_loader">get_script_loader()</a>
     <span>
-                                &nbsp;: bool    </span>
+                                &nbsp;: string    </span>
 </dt>
-<dd>Charge les fichiers de traduction et met à jour les variables globales.</dd>
+<dd>Récupère le script pour charger les éléments du tableau de bord.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_expand_dynamic_keys">expand_dynamic_keys()</a>
+    <a class="" href="namespaces/default.html#function_no_items_placeholder">no_items_placeholder()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Renvoie la chaîne de caractères pour les galleries vides.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_display_project_contributor">display_project_contributor()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Génère le texte concernant les contributeurs d&#039;un projet.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_display_loading_strip">display_loading_strip()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Génère le texte d&#039;affichage de la bande de chargement.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/default.html#function_get_contributors">get_contributors()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Remplace les clés dynamiques dans les traductions.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_traductions_files">get_traductions_files()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd>Retourne les fichiers de traduction à charger.</dd>
+<dd>Récupère les informations des contributeurs du projet.</dd>
 
     </dl>
 
@@ -145,28 +159,28 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/locales-locale-loader.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/includes-functions-ui-functions.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_locale_file_loader">
-        locale_file_loader()
-        <a href="namespaces/default.html#function_locale_file_loader" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_get_script_loader">
+        get_script_loader()
+        <a href="namespaces/default.html#function_get_script_loader" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="locales/locale_loader.php"><a href="files/locales-locale-loader.html"><abbr title="locales/locale_loader.php">locale_loader.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/ui_functions.php"><a href="files/includes-functions-ui-functions.html"><abbr title="includes/functions/ui_functions.php">ui_functions.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">8</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Charge les fichiers de traduction et met à jour les variables globales.</p>
+        <p class="phpdocumentor-summary">Récupère le script pour charger les éléments du tableau de bord.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">locale_file_loader</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+                    <span class="phpdocumentor-signature__name">get_script_loader</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     
     
@@ -174,43 +188,77 @@
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">bool</span>
+        <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Indique si le chargement des fichiers de traduction a réussi.</p>
+                <section class="phpdocumentor-description"><p>Le script pour charger les éléments du tableau de bord.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_expand_dynamic_keys">
-        expand_dynamic_keys()
-        <a href="namespaces/default.html#function_expand_dynamic_keys" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_no_items_placeholder">
+        no_items_placeholder()
+        <a href="namespaces/default.html#function_no_items_placeholder" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="locales/locale_loader.php"><a href="files/locales-locale-loader.html"><abbr title="locales/locale_loader.php">locale_loader.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/ui_functions.php"><a href="files/includes-functions-ui-functions.html"><abbr title="includes/functions/ui_functions.php">ui_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Remplace les clés dynamiques dans les traductions.</p>
+        <p class="phpdocumentor-summary">Renvoie la chaîne de caractères pour les galleries vides.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">expand_dynamic_keys</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$translations</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">no_items_placeholder</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>La chaîne de caractères.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_display_project_contributor">
+        display_project_contributor()
+        <a href="namespaces/default.html#function_display_project_contributor" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/ui_functions.php"><a href="files/includes-functions-ui-functions.html"><abbr title="includes/functions/ui_functions.php">ui_functions.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">33</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Génère le texte concernant les contributeurs d&#039;un projet.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">display_project_contributor</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$translations</span>
+                <span class="phpdocumentor-signature__argument__name">$options</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Les traductions à traiter.</p>
+                    <section class="phpdocumentor-description"><p>Les options pour générer le texte.</p>
 </section>
 
             </dd>
@@ -220,33 +268,67 @@
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Les traductions avec les clés dynamiques remplacées.</p>
+                <section class="phpdocumentor-description"><p>Le texte concernant les contributeurs d'un projet.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_traductions_files">
-        get_traductions_files()
-        <a href="namespaces/default.html#function_get_traductions_files" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_display_loading_strip">
+        display_loading_strip()
+        <a href="namespaces/default.html#function_display_loading_strip" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="locales/locale_loader.php"><a href="files/locales-locale-loader.html"><abbr title="locales/locale_loader.php">locale_loader.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/ui_functions.php"><a href="files/includes-functions-ui-functions.html"><abbr title="includes/functions/ui_functions.php">ui_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">63</span>
+    <span class="phpdocumentor-element-found-in__line">75</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Retourne les fichiers de traduction à charger.</p>
+        <p class="phpdocumentor-summary">Génère le texte d&#039;affichage de la bande de chargement.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_traductions_files</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">display_loading_strip</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Le texte d'affichage de la bande de chargement.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_get_contributors">
+        get_contributors()
+        <a href="namespaces/default.html#function_get_contributors" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/ui_functions.php"><a href="files/includes-functions-ui-functions.html"><abbr title="includes/functions/ui_functions.php">ui_functions.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">86</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Récupère les informations des contributeurs du projet.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">get_contributors</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     
     
@@ -256,7 +338,7 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Les fichiers de traduction à charger.</p>
+                <section class="phpdocumentor-description"><p>Les informations des contributeurs.</p>
 </section>
 
             </section>
@@ -268,7 +350,7 @@
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/locales/locale_loader.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/includes/functions/ui_functions.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -367,7 +449,7 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/locales-locale-loader.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/includes-functions-ui-functions.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -375,9 +457,11 @@
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/default.html#function_expand_dynamic_keys">expand_dynamic_keys()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_traductions_files">get_traductions_files()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_locale_file_loader">locale_file_loader()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_display_loading_strip">display_loading_strip()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_display_project_contributor">display_project_contributor()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_contributors">get_contributors()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_get_script_loader">get_script_loader()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_no_items_placeholder">no_items_placeholder()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -397,7 +481,7 @@
     </section>
 </section>
         </div>
-        <a href="files/locales-locale-loader.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/includes-functions-ui-functions.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

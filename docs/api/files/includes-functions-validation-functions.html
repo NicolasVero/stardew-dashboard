@@ -82,7 +82,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">locale_loader.php</h2>
+        <h2 class="phpdocumentor-content__title">validation_functions.php</h2>
 
         
 
@@ -95,7 +95,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="files/locales-locale-loader.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/includes-functions-validation-functions.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -111,30 +111,23 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/locales-locale-loader.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/includes-functions-validation-functions.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_locale_file_loader">locale_file_loader()</a>
+    <a class="" href="namespaces/default.html#function_array_keys_exists">array_keys_exists()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd>Charge les fichiers de traduction et met à jour les variables globales.</dd>
+<dd>Vérifie si toutes les clés spécifiées existent dans un tableau.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_expand_dynamic_keys">expand_dynamic_keys()</a>
+    <a class="" href="namespaces/default.html#function_is_object_empty">is_object_empty()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd>Remplace les clés dynamiques dans les traductions.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/default.html#function_get_traductions_files">get_traductions_files()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd>Retourne les fichiers de traduction à charger.</dd>
+<dd>Vérifie si un objet est vide.</dd>
 
     </dl>
 
@@ -145,72 +138,47 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/locales-locale-loader.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/includes-functions-validation-functions.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_locale_file_loader">
-        locale_file_loader()
-        <a href="namespaces/default.html#function_locale_file_loader" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_array_keys_exists">
+        array_keys_exists()
+        <a href="namespaces/default.html#function_array_keys_exists" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="locales/locale_loader.php"><a href="files/locales-locale-loader.html"><abbr title="locales/locale_loader.php">locale_loader.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/validation_functions.php"><a href="files/includes-functions-validation-functions.html"><abbr title="includes/functions/validation_functions.php">validation_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">8</span>
+    <span class="phpdocumentor-element-found-in__line">10</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Charge les fichiers de traduction et met à jour les variables globales.</p>
+        <p class="phpdocumentor-summary">Vérifie si toutes les clés spécifiées existent dans un tableau.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">locale_file_loader</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
-
-    
-    
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">bool</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>Indique si le chargement des fichiers de traduction a réussi.</p>
-</section>
-
-            </section>
-
-</article>
-                    <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_expand_dynamic_keys">
-        expand_dynamic_keys()
-        <a href="namespaces/default.html#function_expand_dynamic_keys" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="locales/locale_loader.php"><a href="files/locales-locale-loader.html"><abbr title="locales/locale_loader.php">locale_loader.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">36</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Remplace les clés dynamiques dans les traductions.</p>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">expand_dynamic_keys</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$translations</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">array_keys_exists</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$keys</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$translations</span>
+                <span class="phpdocumentor-signature__argument__name">$keys</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Les traductions à traiter.</p>
+                    <section class="phpdocumentor-description"><p>Les clés à vérifier.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Le tableau à vérifier.</p>
 </section>
 
             </dd>
@@ -220,43 +188,55 @@
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">bool</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Les traductions avec les clés dynamiques remplacées.</p>
+                <section class="phpdocumentor-description"><p>Indique si toutes les clés existent.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_get_traductions_files">
-        get_traductions_files()
-        <a href="namespaces/default.html#function_get_traductions_files" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_is_object_empty">
+        is_object_empty()
+        <a href="namespaces/default.html#function_is_object_empty" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="locales/locale_loader.php"><a href="files/locales-locale-loader.html"><abbr title="locales/locale_loader.php">locale_loader.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="includes/functions/validation_functions.php"><a href="files/includes-functions-validation-functions.html"><abbr title="includes/functions/validation_functions.php">validation_functions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">63</span>
+    <span class="phpdocumentor-element-found-in__line">20</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Retourne les fichiers de traduction à charger.</p>
+        <p class="phpdocumentor-summary">Vérifie si un objet est vide.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">get_traductions_files</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">is_object_empty</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$object</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
     
-    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$object</span>
+                : <span class="phpdocumentor-signature__argument__return-type">object</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>L'objet à vérifier.</p>
+</section>
+
+            </dd>
+            </dl>
+
     
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">bool</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Les fichiers de traduction à charger.</p>
+                <section class="phpdocumentor-description"><p>Indique si l'objet est vide.</p>
 </section>
 
             </section>
@@ -268,7 +248,7 @@
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/locales/locale_loader.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/includes/functions/validation_functions.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -367,7 +347,7 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/locales-locale-loader.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/includes-functions-validation-functions.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -375,9 +355,8 @@
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/default.html#function_expand_dynamic_keys">expand_dynamic_keys()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_get_traductions_files">get_traductions_files()</a></li>
-                                                    <li class=""><a href="namespaces/default.html#function_locale_file_loader">locale_file_loader()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_array_keys_exists">array_keys_exists()</a></li>
+                                                    <li class=""><a href="namespaces/default.html#function_is_object_empty">is_object_empty()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -397,7 +376,7 @@
     </section>
 </section>
         </div>
-        <a href="files/locales-locale-loader.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/includes-functions-validation-functions.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
