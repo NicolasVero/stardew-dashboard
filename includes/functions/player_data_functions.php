@@ -99,18 +99,18 @@ function has_element(object $element): int {
 /**
  * Vérifie si un joueur possède un élèment en fonction de la version du jeu.
  * 
- * @param string $element_older_version L'élément pour les versions antérieures à 1.6.0.
- * @param string $element_newer_version L'élément pour les versions postérieures à 1.6.0.
+ * @param string $older_version_element L'élément pour les versions antérieures à 1.6.0.
+ * @param string $newer_version_element L'élément pour les versions postérieures à 1.6.0.
  * @return int Indique si l'élément est possédé.
  */
-function has_element_based_on_version(string $element_older_version, string $element_newer_version): int {
+function has_element_based_on_version(string $older_version_element, string $newer_version_element): int {
 	$player_raw_data = $GLOBALS["current_player_raw_data"];
 
 	if (is_game_version_older_than_1_6()) {
-		return has_element($player_raw_data->$element_older_version);
+		return has_element($player_raw_data->$older_version_element);
 	}
 
-	return has_element_in_mail($element_newer_version);
+	return has_element_in_mail($newer_version_element);
 }
 
 /**

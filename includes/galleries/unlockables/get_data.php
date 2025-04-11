@@ -107,15 +107,15 @@ function get_unlockables_details(): array {
  * Vérifie si le joueur hôte a un élément dans ses mails.
  * 
  * @param string $element Le nom de l'élément.
- * @param string $element_newer_version Le nom de l'élément dans la version 1.6.0.
+ * @param string $newer_version_element Le nom de l'élément dans la version 1.6.0.
  * @return int Indique si le joueur hôte a l'élément ou non.
  */
-function has_unlockable_element_based_on_host(string $element, string $element_newer_version): int {
+function has_unlockable_element_based_on_host(string $element, string $newer_version_element): int {
 	if (isset($GLOBALS["host_player_data"])) {
 		return does_host_has_unlockable_element($element);
 	}
 	
-	return has_element_in_mail($element_newer_version);
+	return has_element_in_mail($newer_version_element);
 }
 
 /**
