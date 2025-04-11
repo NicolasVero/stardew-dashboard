@@ -38,15 +38,18 @@ function display_project_contributor(array $options): string {
     $presentation = "";
     $socials_links = "";
 
-    foreach($texts as $text) {
+    foreach ($texts as $text) {
         $presentation .= "<span>$text</span>";
     }
 
-    foreach($socials as $social_name => $social) {
+    foreach ($socials as $social_name => $social) {
         extract($social); //? $url, $on_display
-        if ($on_display) {
-            $socials_links .= "<a href='$url' rel='noreferrer' target='_blank'><img src='$images_path/social/$social_name.png' alt='$social_name'></a>";
+		
+        if (!$on_display) {
+			continue;
         }
+
+		$socials_links .= "<a href='$url' rel='noreferrer' target='_blank'><img src='$images_path/social/$social_name.png' alt='$social_name'></a>";
     }
 
     return "

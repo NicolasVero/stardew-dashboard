@@ -7,14 +7,14 @@
  */
 function display_skills(): string {
     $images_path = get_images_folder();
-	$player_skills = get_skills_data();
-	$player_skills_levels = get_levels_data();
-	$player_masteries = get_masteries_data();
+	$player_skills = get_skills();
+	$player_skills_levels = get_skills_levels();
+	$player_masteries = get_masteries();
     $skill_structure = "";
 
     $mastery_visible_class = (empty($player_masteries)) ? "" : "not-hide";
 
-    foreach($player_skills_levels as $key => $level) {
+    foreach ($player_skills_levels as $key => $level) {
         $level_icon_name = explode('_', $key)[0];
         $mastery_class   = (array_key_exists(ucfirst(explode('_', $key)[0]) . " Mastery", $player_masteries)) ? 'found' : 'not-found';
         $mastery_tooltip = ucfirst(explode('_', $key)[0]) . " mastery";

@@ -63,7 +63,7 @@ function display_top_friendships(int $limit = 5): string {
  */
 function display_friendships(int $limit = -1): string {
     $player_id = get_current_player_id();
-    $friendship_data = sort_by_friend_level(get_friendships_data());
+    $friendship_data = sort_by_friend_level(get_friendships());
     $images_path = get_images_folder();
     $villagers_json = sanitize_json_with_version("villagers");
     
@@ -87,7 +87,7 @@ function display_friendships(int $limit = -1): string {
 
         $all_villagers = array_merge(array_keys($friendship_data), array_diff($villagers_json, array_keys($friendship_data)));
 
-        foreach($all_villagers as $villager_name) {
+        foreach ($all_villagers as $villager_name) {
             if ($limit === 0) {
                 break;
             }

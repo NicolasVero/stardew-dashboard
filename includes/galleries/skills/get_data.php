@@ -37,20 +37,21 @@ function get_skills_icons(array $skills, string $current_skill): string {
     $images_path = get_images_folder();
     $skill_structure = "";
 
-    foreach($skills as $skill) {
-        if ($current_skill === strtolower($skill["source"])) {
-
-            $skill_icon = strtolower($skill["skill"]);
-            $skill_icon_path = "$images_path/skills/$skill_icon.png";
-            $skill_description = $skill["description"];
-
-            $skill_structure .= "
-                <span class='tooltip'>
-                    <img src='$skill_icon_path' alt='" . __($skill_description) . "'>
-                    <span>" . __($skill_description) . "</span>
-                </span>
-			";
+    foreach ($skills as $skill) {
+        if ($current_skill !== strtolower($skill["source"])) {
+            continue;
         }
+
+        $skill_icon = strtolower($skill["skill"]);
+        $skill_icon_path = "$images_path/skills/$skill_icon.png";
+        $skill_description = $skill["description"];
+
+        $skill_structure .= "
+            <span class='tooltip'>
+                <img src='$skill_icon_path' alt='" . __($skill_description) . "'>
+                <span>" . __($skill_description) . "</span>
+            </span>
+        ";
     }
 
     return "
@@ -66,19 +67,19 @@ function get_skills_icons(array $skills, string $current_skill): string {
  * @return array Données des compétences du joueur.
  */
 function get_player_skills_data(): array {
-	$player_skills = (array) $GLOBALS["untreated_player_data"]->professions->int;
+	$player_skills = (array) $GLOBALS["current_player_raw_data"]->professions->int;
 	$json_skills = sanitize_json_with_version("skills");
-	$skills_data = [];
+	$skills = [];
 
-	foreach($json_skills as $key => $skill) {
+	foreach ($json_skills as $key => $skill) {
 		if (!in_array($key, $player_skills)) {
 			continue;
 		}
 
-		$skills_data[] = $json_skills[$key];
+		$skills[] = $json_skills[$key];
 	}
 
-	return $skills_data;
+	return $skills;
 }
 
 /**
@@ -87,7 +88,7 @@ function get_player_skills_data(): array {
  * @return array Données de maîtrise du joueur.
  */
 function get_player_masteries(): array {
-	$player_masteries = $GLOBALS["untreated_player_data"]->stats->Values;
+	$player_masteries = $GLOBALS["current_player_raw_data"]->stats->Values;
 	return get_player_items_list($player_masteries, "masteries");
 }
 
@@ -97,7 +98,7 @@ function get_player_masteries(): array {
  * @return int Niveau total de compétences du joueur.
  */
 function get_total_skills_level(): int {
-    $player_data = $GLOBALS["untreated_player_data"];
+    $player_raw_data = $GLOBALS["current_player_raw_data"];
 	$skill_types = [
 		"farmingLevel",
 		"miningLevel",
@@ -107,8 +108,8 @@ function get_total_skills_level(): int {
 	];
 
 	$total_levels = 0;
-	foreach($skill_types as $skill) {
-		$total_levels += $player_data->$skill;
+	foreach ($skill_types as $skill) {
+		$total_levels += $player_raw_data->$skill;
 	}
 
 	return $total_levels;

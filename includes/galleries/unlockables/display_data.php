@@ -6,16 +6,16 @@
  * @return string Le code HTML de la galerie des éléments débloqués par le joueur.
  */
 function display_unlockables(): string {
-    $player_unlockables = get_unlockables_data();
+    $player_unlockables = get_unlockables();
     $images_path = get_images_folder();
 	$version_score = get_game_version_score($GLOBALS["game_version"]);
 	$decoded_unlockables = $GLOBALS["json"]["unlockables"];
     $unlockables_structure = "";
 
-	foreach($decoded_unlockables as $version => $unlockables) {
+	foreach ($decoded_unlockables as $version => $unlockables) {
         $is_newer_version_class = ($version_score < get_game_version_score($version)) ? "newer-version" : "older-version";
         
-		foreach($unlockables as $unlockable) {
+		foreach ($unlockables as $unlockable) {
 			$formatted_name = format_text_for_file($unlockable);
 			if (!isset($player_unlockables[$formatted_name]["is_found"])) {
 				continue;

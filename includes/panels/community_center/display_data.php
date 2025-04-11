@@ -22,7 +22,7 @@ function display_community_center_panel(): string {
 	$cc_binary = get_cc_binary_hash($player_bundles);
     $cc_structure = "";
     
-    foreach($bundles_json as $room_name => $room_details) {
+    foreach ($bundles_json as $room_name => $room_details) {
         if ($room_name === "Bulletin Board" && has_element_in_mail("JojaMember")) {
             continue;
         }
@@ -33,7 +33,7 @@ function display_community_center_panel(): string {
                 <span class='bundles'>
         ";
 
-        foreach($room_details["bundle_ids"] as $bundle_id) {
+        foreach ($room_details["bundle_ids"] as $bundle_id) {
             $bundle_details = $player_bundles[$bundle_id];
             $bundle_name = $bundle_details["bundle_name"];
             $formatted_bundle_name = format_text_for_file($bundle_name);
@@ -62,7 +62,6 @@ function display_community_center_panel(): string {
                     </span>
                 ";
             }
-            
             
             $cc_structure .= "
                 <span class='bundle $bundle_tooltip_class'>
@@ -101,7 +100,7 @@ function display_bundle_requirements(array $requirements, array $added_items): s
     $images_path = get_images_folder();
     $structure = "";
     
-    foreach($requirements as $requirement) {
+    foreach ($requirements as $requirement) {
         extract($requirement); //? $id, $name, $quantity, $quality, $type
 
         $formatted_item_name = format_text_for_file($name);

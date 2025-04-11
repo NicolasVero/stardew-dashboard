@@ -6,10 +6,10 @@
  * @return string Le code HTML des statistiques générales.
  */
 function display_general_stats(): string {
-	$all_players_data = get_general_data();
+	$general_data = get_general_data();
     $all_buttons = get_all_buttons();
 
-    extract($all_players_data); //? all field "general" in extract_data_from_save.php
+    extract($general_data); //? all field "general" in extract_data_from_save.php
 
     $max_mine_level = 120;
     $deepest_mine_level = ($mine_level > $max_mine_level) ? $max_mine_level : $mine_level; 

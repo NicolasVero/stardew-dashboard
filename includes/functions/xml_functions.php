@@ -32,8 +32,8 @@ function recursive_xml_search(object $current_level, array $remaining_path): arr
         return $results;
     }
 
-    if (count($remaining_path) == 1) {
-        foreach($current_level->$current_tag as $item) {
+    if (count($remaining_path) === 1) {
+        foreach ($current_level->$current_tag as $item) {
             $results[] = $item;
         }
 		
@@ -42,7 +42,7 @@ function recursive_xml_search(object $current_level, array $remaining_path): arr
 
     $child_remaining_path = array_slice($remaining_path, 1);
 
-    foreach($current_level->$current_tag as $child) {
+    foreach ($current_level->$current_tag as $child) {
         $child_results = recursive_xml_search($child, $child_remaining_path);
         $results = array_merge($results, $child_results);
     }
@@ -53,15 +53,15 @@ function recursive_xml_search(object $current_level, array $remaining_path): arr
 /**
  * Récupère l'index d'une balise XML correspondant à un chemin spécifié dans un objet XML.
  * 
- * @param object $general_data Les données générales du joueur.
+ * @param object $raw_data Les données générales du joueur.
  * @param string $searched_location La balise XML à rechercher.
  * @return int L'index de la balise XML trouvée.
  */
-function get_gamelocation_index(object $general_data, string $searched_location): int {
+function get_gamelocation_index(object $raw_data, string $searched_location): int {
 	$index = 0;
-	$locations = $general_data->locations->GameLocation;
+	$locations = $raw_data->locations->GameLocation;
 
-	foreach($locations as $location) {
+	foreach ($locations as $location) {
 		if (isset($location->$searched_location)) {
 			break;
 		}
@@ -78,6 +78,6 @@ function get_gamelocation_index(object $general_data, string $searched_location)
  * @return int L'index de la balise XML GameLocation du musée.
  */
 function get_museum_index(): int {
-    $untreated_all_data = $GLOBALS["untreated_all_players_data"];
-	return get_gamelocation_index($untreated_all_data, "museumPieces");
+    $raw_data = $GLOBALS["raw_xml_data"];
+	return get_gamelocation_index($raw_data, "museumPieces");
 }

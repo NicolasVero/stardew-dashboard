@@ -7,7 +7,7 @@
  */
 function display_enemies(): string {
     $gallery_details = [
-        "player_data" => get_enemies_killed_data(),
+        "player_data" => get_enemies_killed(),
         "json_filename" => "enemies",
         "section_title" => "Enemies killed"
     ];

@@ -17,12 +17,12 @@ function display_farm_informations_button(): string {
  * @return string Le code HTML du panneau des outils du joueur.
  */
 function display_farm_informations(): string {
-	$farm_informations = get_farm_informations_data();
+	$farm_informations = get_farm_informations();
 	$player_id = get_current_player_id();
     $images_path = get_images_folder();
     $informations = "";
 
-	foreach($farm_informations as $caption => $count) {
+	foreach ($farm_informations as $caption => $count) {
 		$informations .= "<span class='farm-info'>" . __($caption) . " : " . __($count) . "</span>";
 	}
 

@@ -3,18 +3,18 @@
 /**
  * Récupère les données des éléments possédés par un joueur.
  * 
- * @param object $data Les données du joueur.
+ * @param object $player_data Les données du joueur.
  * @param string $filename Le nom du fichier JSON.
  * @return array Les données des éléments possédés par un joueur.
  */
-function get_player_items_list(object $data, string $filename): array {
+function get_player_items_list(object $player_data, string $filename): array {
 	if (is_game_version_older_than_1_6()) {
 		return [];
 	}
 
 	$items_data = [];
 
-	foreach($data->item as $item) {
+	foreach ($player_data->item as $item) {
 		$item_id = format_original_data_string($item->key->string);
 		$item_id = get_correct_id($item_id);
 
@@ -36,11 +36,11 @@ function get_player_items_list(object $data, string $filename): array {
  * @return array Les noms des joueurs.
  */
 function get_players_name(): array {
-	$players_data = $GLOBALS["all_players_data"];
+	$players_data = $GLOBALS["players_data"];
 	$players_names = [];
 
-	for ($i = 0; $i < count($players_data); $i++) {
-		array_push($players_names, $players_data[$i]["general"]["name"]);
+	for ($player_id = 0; $player_id < count($players_data); $player_id++) {
+		array_push($players_names, $players_data[$player_id]["general"]["name"]);
 	}
 
 	return $players_names;
@@ -64,11 +64,11 @@ function sort_by_friend_level(array $friendship_data): array {
 	$married = array();
     $others = array();
 
-    foreach ($friendship_data as $name => $data) {
-        if ($data['status'] === 'Married') {
-            $married[$name] = $data;
+    foreach ($friendship_data as $name => $friend_data) {
+        if ($friend_data['status'] === 'Married') {
+            $married[$name] = $friend_data;
         } else {
-            $others[$name] = $data;
+            $others[$name] = $friend_data;
         }
     }
 
@@ -82,8 +82,8 @@ function sort_by_friend_level(array $friendship_data): array {
  * @return int Indique si l'élément est présent.
  */
 function has_element_in_mail(string $element): int {
-	$player_data = $GLOBALS["untreated_player_data"] ?? $GLOBALS["untreated_all_players_data"]->player;
-    return (in_array($element, (array) $player_data->mailReceived->string)) ? 1 : 0;
+	$player_raw_data = $GLOBALS["current_player_raw_data"] ?? $GLOBALS["raw_xml_data"]->player;
+    return (in_array($element, (array) $player_raw_data->mailReceived->string)) ? 1 : 0;
 }
 
 /**
@@ -99,18 +99,18 @@ function has_element(object $element): int {
 /**
  * Vérifie si un joueur possède un élèment en fonction de la version du jeu.
  * 
- * @param string $element_older_version L'élément pour les versions antérieures à 1.6.0.
- * @param string $element_newer_version L'élément pour les versions postérieures à 1.6.0.
+ * @param string $older_version_element L'élément pour les versions antérieures à 1.6.0.
+ * @param string $newer_version_element L'élément pour les versions postérieures à 1.6.0.
  * @return int Indique si l'élément est possédé.
  */
-function has_element_based_on_version(string $element_older_version, string $element_newer_version): int {
-	$player_data = $GLOBALS["untreated_player_data"];
+function has_element_based_on_version(string $older_version_element, string $newer_version_element): int {
+	$player_raw_data = $GLOBALS["current_player_raw_data"];
 
 	if (is_game_version_older_than_1_6()) {
-		return has_element($player_data->$element_older_version);
+		return has_element($player_raw_data->$older_version_element);
 	}
 
-	return has_element_in_mail($element_newer_version);
+	return has_element_in_mail($newer_version_element);
 }
 
 /**
@@ -125,6 +125,7 @@ function get_tooltip_text(array $player_data, string $json_line_name, string $da
 	if (!array_key_exists($json_line_name, $player_data) || !isset($player_data[$json_line_name])) {
 		return __($json_line_name);
 	}
+
 	$data_array = $player_data[$json_line_name];
 
     extract($data_array); //? ?$counter, ?$caught_counter, ?$killed_counter, ?$max_length, ?$description
@@ -213,12 +214,19 @@ function get_version_class(string $version): string {
  * @return string Les classes de l'élément trouvé.
  */
 function get_found_classes(array $player_data, string $json_filename, string $json_line_name, bool $is_found): string {
-	$classes = ($is_found) ? "found" : "not-found";
-	
-	if (in_array($json_filename, ["cooking_recipes", "crafting_recipes", "artifacts", "minerals"])) {
-		if ($is_found && $player_data[$json_line_name]["counter"] === 0) {
-			$classes .= " unused";
-		}
+	if (!$is_found) {
+		return "not-found";
 	}
-	return $classes;
+	
+	$types_with_counter = ["cooking_recipes", "crafting_recipes", "artifacts", "minerals"];
+
+	if (!in_array($json_filename, $types_with_counter)) {
+		return "found";
+	}
+	
+	if ($is_found && $player_data[$json_line_name]["counter"] === 0) {
+		return "found unused";
+	}
+
+	return "found";
 }

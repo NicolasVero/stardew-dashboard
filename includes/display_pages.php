@@ -21,7 +21,7 @@ function display_landing_page(bool $with_topbar = true): string {
 	$contributors_structure = "";
 	$contributors = get_contributors();
 
-	foreach($contributors as $contributor) {
+	foreach ($contributors as $contributor) {
 		$contributors_structure .= display_project_contributor($contributor);
 	}
 
@@ -128,7 +128,7 @@ function display_mobile_landing_page(): string {
 	$contributors_structure = "";
 	$contributors = get_contributors();
 
-	foreach($contributors as $contributor) {
+	foreach ($contributors as $contributor) {
 		$contributors_structure .= display_project_contributor($contributor);
 	}
 	

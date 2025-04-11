@@ -25,20 +25,22 @@ function has_players_done_monster_slayer_hero(): bool {
  */
 function get_player_adventurers_guild_data(int $player_id): array {
 	$categories = get_all_adventurers_guild_categories();
-	$enemies_killed = $GLOBALS["all_players_data"][$player_id]["enemies_killed"];
-	$adventurers_guild_data = [];
+	$enemies_killed = $GLOBALS["players_data"][$player_id]["enemies_killed"];
+	$adventurers_guild = [];
 
-	foreach($categories as $monsters_name => $monster_data) {
+	foreach ($categories as $monsters_name => $monster) {
 		$counter = 0;
-		extract($monster_data); //? $target_name, $ids, $limit, $reward
+		extract($monster); //? $target_name, $ids, $limit, $reward
 
-		foreach($enemies_killed as $enemy_killed) {
-			if (in_array($enemy_killed["id"], $ids)) {
-				$counter += $enemy_killed["killed_counter"];
+		foreach ($enemies_killed as $enemy_killed) {
+			if (!in_array($enemy_killed["id"], $ids)) {
+				continue;
 			}
+			
+			$counter += $enemy_killed["killed_counter"];
 		}
 
-		$adventurers_guild_data[$monsters_name] = [
+		$adventurers_guild[$monsters_name] = [
 			"target"		=> $target_name,
 			"counter"		=> $counter,
 			"limit"			=> $limit,
@@ -47,26 +49,28 @@ function get_player_adventurers_guild_data(int $player_id): array {
 		];
 	}
 
-    $adventurers_guild_data["is_all_completed"] = are_all_adventurers_guild_categories_completed($adventurers_guild_data);
+    $adventurers_guild["is_all_completed"] = are_all_adventurers_guild_categories_completed($adventurers_guild);
 
-	return $adventurers_guild_data;
+	return $adventurers_guild;
 }
 
 /**
  * Vérifie si le joueur a rempli toutes les catégories de l'objectif "Monster Slayer Hero".
  * 
- * @param array $adventurers_guild_data Les données de l'objectif "Monster Slayer Hero".
+ * @param array $goals Les données de l'objectif "Monster Slayer Hero".
  * @return bool Indique si le joueur a rempli toutes les catégories de l'objectif "Monster Slayer Hero".
  */
-function are_all_adventurers_guild_categories_completed(array $adventurers_guild_data): bool {
+function are_all_adventurers_guild_categories_completed(array $goals): bool {
     $counter = 0;
-    foreach($adventurers_guild_data as $data) {
-        if ($data["is_completed"]) {	
-			$counter++;
+    foreach ($goals as $goal) {
+        if (!$goal["is_completed"]) {
+			continue;
 		}
+		
+		$counter++;
     }
 
-    return $counter === count($adventurers_guild_data);
+    return $counter === count($goals);
 }
 
 /**

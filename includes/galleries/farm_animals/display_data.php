@@ -7,7 +7,7 @@
  */
 function display_farm_animals(): string {
     $gallery_details = [
-        "player_data" => get_farm_animals_data(),
+        "player_data" => get_farm_animals(),
         "json_filename" => "farm_animals",
         "section_title" => "Farm animals"
     ];
@@ -27,7 +27,7 @@ function display_farm_animals(): string {
  */
 function display_farm_animals_panel(): string {
 	$player_id = get_current_player_id();
-    $animals_friendship = get_farm_animals_data();
+    $animals_friendship = get_farm_animals();
     $images_path = get_images_folder();
     $farm_animals_structure = "";
 
@@ -45,10 +45,10 @@ function display_farm_animals_panel(): string {
         ";
     }
 
-    foreach($animals_friendship as $animal_friendship) {
+    foreach ($animals_friendship as $animal_friendship) {
         extract($animal_friendship); //? $id, $animals_data, $counter
 
-        foreach($animals_data as $animal_data) {
+        foreach ($animals_data as $animal_data) {
             extract($animal_data); //? $name, $type, $friendship_level, $happiness, $was_pet
 
             $formatted_type = format_text_for_file($type);

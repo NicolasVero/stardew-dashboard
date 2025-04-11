@@ -203,12 +203,18 @@ function display_player_selection(): string {
     $players_names = $GLOBALS["players_names"];
     $players_name_structure = "";
 
-    if (count($players_names) > 1) {
-        for ($i = 0; $i < count($players_names); $i++) {
-            $players_name_structure .= "<li class='player_selection' value='player_$i'>" . $players_names[$i] . "</option>";
-        }
+    if (count($players_names) <= 1) {
+        return "
+            <ul id='players_selection'>
+            </ul>
+        ";
     }
 
+    
+    for ($i = 0; $i < count($players_names); $i++) {
+        $players_name_structure .= "<li class='player_selection' value='player_$i'>" . $players_names[$i] . "</option>";
+    }
+    
     return "
         <ul id='players_selection'>
             $players_name_structure
@@ -307,7 +313,7 @@ function display_all_languages_button(): string {
     $languages = get_supported_languages();
     $structure = "";
 
-    foreach($languages as $language) {
+    foreach ($languages as $language) {
         $url = get_site_root() . (is_the_original_language($language) ? "" : "/$language");
         $structure .= "
             <a href='$url' class='language-selection buttons' rel='noreferrer' value='$language'>

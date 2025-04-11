@@ -8,7 +8,7 @@
 function display_calendar_panel(): string {
 	$player_id = get_current_player_id();
     $images_path = get_images_folder();
-    $season = get_date_data()["season"];
+    $season = get_date()["season"];
     $all_dates = $GLOBALS["json"]["all_dates"];
     $villagers = sanitize_json_with_version("villagers");
     $week_count = 4;
@@ -51,6 +51,7 @@ function display_calendar_panel(): string {
                 get_wiki_link(get_custom_id($all_dates[$date][0])),
                 get_wiki_link(get_custom_id($all_dates[$date][1]))
             ];
+            
             $calendar_tooltip = [
                 (in_array($all_dates[$date][0], $villagers)) ? $all_dates[$date][0] . "'s Birthday" : $all_dates[$date][0],
                 (in_array($all_dates[$date][1], $villagers)) ? $all_dates[$date][1] . "'s Birthday" : $all_dates[$date][1]

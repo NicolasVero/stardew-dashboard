@@ -17,15 +17,15 @@ function display_visited_locations_button(): string {
  */
 function display_visited_locations_panel(): string {
     $player_id = get_current_player_id();
-    $visited_locations = get_locations_visited_data();
+    $visited_locations = get_locations_visited();
     $images_path = get_images_folder();
-    $json_data = sanitize_json_with_version("locations_to_visit");
+    $locations_to_visit = sanitize_json_with_version("locations_to_visit");
 
     $locations = "";  
-    $batch_size = round(count($json_data) / 2);
+    $batch_size = round(count($locations_to_visit) / 2);
     $counter = 0;
     
-    foreach($json_data as $json_line_name) {
+    foreach ($locations_to_visit as $json_line_name) {
         if ($counter % $batch_size === 0) {
             $locations .= "<span class='locations-batch'>";
         }
@@ -42,7 +42,7 @@ function display_visited_locations_panel(): string {
 
         $counter++;
 
-        if ($counter % $batch_size === 0 || $counter === count($json_data)) {
+        if ($counter % $batch_size === 0 || $counter === count($locations_to_visit)) {
             $locations .= "</span>";
         }
     }

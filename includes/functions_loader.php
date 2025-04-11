@@ -41,10 +41,10 @@ $functions_files = [
 $backtrace = debug_backtrace()[1]["file"] ?? "";
 $path_prefix = (str_contains($backtrace, "get_xml_data.php")) ? "../" : "";
 
-foreach($functions_files as $folder => $subfolders) {
-    $folders_to_include = (is_array($subfolders)) ? $subfolders : [$subfolders];
+foreach ($functions_files as $folder => $subfolders) {
+    $folders = (is_array($subfolders)) ? $subfolders : [$subfolders];
 
-    foreach($folders_to_include as $subfolder) {
+    foreach ($folders as $subfolder) {
         include_files_if_exists("{$path_prefix}includes/{$folder}/{$subfolder}/get_data.php");
         include_files_if_exists("{$path_prefix}includes/{$folder}/{$subfolder}/display_data.php");
     }
