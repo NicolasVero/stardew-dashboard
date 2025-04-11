@@ -10,7 +10,7 @@ function get_player_tools(): array {
 		return [];
 	}
 
-	$data = $GLOBALS["untreated_all_players_data"];
+	$raw_data = $GLOBALS["raw_xml_data"];
 	$name_object = (is_game_version_older_than_1_6()) ? "Name" : "name";
 	$player_items = get_starting_tools();
 	$tools_name_dictionary = get_tools_dictionary();
@@ -32,7 +32,7 @@ function get_player_tools(): array {
 	];
 
 	foreach ($player_items_locations as $location) {
-		$items_arrays = find_xml_tags($data, $location);
+		$items_arrays = find_xml_tags($raw_data, $location);
 
 		foreach ($items_arrays as $items_array) {
 			foreach ($items_array as $item) {
@@ -58,7 +58,7 @@ function get_player_tools(): array {
 	}
 
 	// Separate search for the player's trashcan
-	$trashcan_level = (int) $data->player->trashCanLevel;
+	$trashcan_level = (int) $raw_data->player->trashCanLevel;
 	$player_trashcan = [
 		"Trash Can",
 		"Copper Trash Can",

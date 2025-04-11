@@ -8,7 +8,7 @@
 function display_calendar_panel(): string {
 	$player_id = get_current_player_id();
     $images_path = get_images_folder();
-    $season = get_date_data()["season"];
+    $season = get_date()["season"];
     $all_dates = $GLOBALS["json"]["all_dates"];
     $villagers = sanitize_json_with_version("villagers");
     $week_count = 4;

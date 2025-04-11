@@ -7,7 +7,7 @@
  */
 function display_farm_animals(): string {
     $gallery_details = [
-        "player_data" => get_farm_animals_data(),
+        "player_data" => get_farm_animals(),
         "json_filename" => "farm_animals",
         "section_title" => "Farm animals"
     ];
@@ -27,7 +27,7 @@ function display_farm_animals(): string {
  */
 function display_farm_animals_panel(): string {
 	$player_id = get_current_player_id();
-    $animals_friendship = get_farm_animals_data();
+    $animals_friendship = get_farm_animals();
     $images_path = get_images_folder();
     $farm_animals_structure = "";
 

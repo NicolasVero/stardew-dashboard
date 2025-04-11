@@ -53,13 +53,13 @@ function recursive_xml_search(object $current_level, array $remaining_path): arr
 /**
  * Récupère l'index d'une balise XML correspondant à un chemin spécifié dans un objet XML.
  * 
- * @param object $general_data Les données générales du joueur.
+ * @param object $raw_data Les données générales du joueur.
  * @param string $searched_location La balise XML à rechercher.
  * @return int L'index de la balise XML trouvée.
  */
-function get_gamelocation_index(object $general_data, string $searched_location): int {
+function get_gamelocation_index(object $raw_data, string $searched_location): int {
 	$index = 0;
-	$locations = $general_data->locations->GameLocation;
+	$locations = $raw_data->locations->GameLocation;
 
 	foreach ($locations as $location) {
 		if (isset($location->$searched_location)) {
@@ -78,6 +78,6 @@ function get_gamelocation_index(object $general_data, string $searched_location)
  * @return int L'index de la balise XML GameLocation du musée.
  */
 function get_museum_index(): int {
-    $untreated_all_data = $GLOBALS["untreated_all_players_data"];
-	return get_gamelocation_index($untreated_all_data, "museumPieces");
+    $raw_data = $GLOBALS["raw_xml_data"];
+	return get_gamelocation_index($raw_data, "museumPieces");
 }

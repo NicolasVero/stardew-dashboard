@@ -8,11 +8,11 @@
 function display_header(): string {
 	$player_id = get_current_player_id();
     $images_path = get_images_folder();
-	$all_players_data = get_general_data();
+	$general_data = get_general_data();
 	$festival_icon = display_festival_icon();
     $weather_icon = display_weather_icon();
     
-    extract($all_players_data); //? all field "general" in extract_data_from_save.php
+    extract($general_data); //? all field "general" in extract_data_from_save.php
 
     $pet_icon = $pet['type'] . "_" . $pet['breed'];
 	$farm_name = str_contains(strtolower($farm_name), "farm") ? $farm_name : $farm_name . " " . __("farm");
@@ -77,9 +77,9 @@ function display_header(): string {
  * @return string Le code HTML de l'icône de la météo.
  */
 function display_weather_icon(): string {
-    $data = $GLOBALS["shared_players_data"];
+    $shared_data = $GLOBALS["shared_players_data"];
     $images_path = get_images_folder();
-    $weather = $data["weather"];
+    $weather = $shared_data["weather"];
 
     return "
         <span class='tooltip'>

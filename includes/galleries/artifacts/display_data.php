@@ -7,7 +7,7 @@
  */
 function display_artifacts(): string {
     $gallery_details = [
-        "player_data" => get_artifacts_data(),
+        "player_data" => get_artifacts(),
         "json_filename" => "artifacts",
         "section_title" => "Artifacts"
     ];

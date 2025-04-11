@@ -7,7 +7,7 @@
  */
 function display_fish(): string {
     $gallery_details = [
-        "player_data" => get_fish_data(),
+        "player_data" => get_fish(),
         "json_filename" => "fish",
         "section_title" => "Fish caught"
     ];

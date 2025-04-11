@@ -16,11 +16,11 @@ function display_quest_button(): string {
  */
 function display_quest_panel(): string {
 	$player_id = get_current_player_id();
-	$this_player_data = get_quest_log_data();
+	$player_quests = get_quest_log();
     $images_path = get_images_folder();
     $quest_structure = "";
 
-    if (empty($this_player_data)) {
+    if (empty($player_quests)) {
         return "
             <section class='all-quests-$player_id panel quests-panel modal-window'>
                 <div class='panel-header'>
@@ -34,8 +34,8 @@ function display_quest_panel(): string {
         ";
     }
 
-    foreach ($this_player_data as $data) {
-		extract($data); //? $time_limited, $objective, $description, $title, $rewards
+    foreach ($player_quests as $quest) {
+		extract($quest); //? $time_limited, $objective, $description, $title, $rewards
 
         $quest_structure .= "
             <span class='quest'>

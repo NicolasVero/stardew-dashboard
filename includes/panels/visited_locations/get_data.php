@@ -10,7 +10,7 @@ function get_player_visited_locations(): array {
 		return [];
 	}
 
-	$player_data = $GLOBALS["untreated_player_data"];
+	$player_raw_data = $GLOBALS["current_player_raw_data"];
 	$locations_to_visit = sanitize_json_with_version("locations_to_visit");
 	$player_visited_locations = [];
 	$locations_real_name = [
@@ -27,7 +27,7 @@ function get_player_visited_locations(): array {
 		"MasteryCave" => "Mastery Cave"
 	];
 
-	foreach ($player_data->locationsVisited->string as $location_visited) {
+	foreach ($player_raw_data->locationsVisited->string as $location_visited) {
 		$location_name = (string) $location_visited;
 		$location_real_name = $locations_real_name[$location_name] ?? "";
 

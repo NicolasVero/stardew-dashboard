@@ -6,8 +6,8 @@
  * @return array Les données du tableau des scores de Junimo Kart.
  */
 function get_junimo_kart_leaderboard(): array {
-	$data = $GLOBALS["untreated_all_players_data"];
-	$all_entries = $data->junimoKartLeaderboards->entries;
+	$raw_data = $GLOBALS["raw_xml_data"];
+	$all_entries = $raw_data->junimoKartLeaderboards->entries;
 	$leaderboard = [];
 
 	foreach ($all_entries as $entries) {

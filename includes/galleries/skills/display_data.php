@@ -7,9 +7,9 @@
  */
 function display_skills(): string {
     $images_path = get_images_folder();
-	$player_skills = get_skills_data();
-	$player_skills_levels = get_levels_data();
-	$player_masteries = get_masteries_data();
+	$player_skills = get_skills();
+	$player_skills_levels = get_skills_levels();
+	$player_masteries = get_masteries();
     $skill_structure = "";
 
     $mastery_visible_class = (empty($player_masteries)) ? "" : "not-hide";

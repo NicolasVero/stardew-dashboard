@@ -6,9 +6,9 @@
  * @return array Les données des minéraux trouvés par le joueur.
  */
 function get_player_minerals(): array {
-	$player_minerals = $GLOBALS["untreated_player_data"]->mineralsFound;
-    $general_data = $GLOBALS["untreated_all_players_data"];
-	$minerals_data = [];
+	$player_minerals = $GLOBALS["current_player_raw_data"]->mineralsFound;
+    $raw_data = $GLOBALS["raw_xml_data"];
+	$minerals = [];
 
 	foreach ($player_minerals->item as $mineral) {
 		$mineral_id = ((is_game_version_older_than_1_6())) ? $mineral->key->int : $mineral->key->string;
@@ -22,11 +22,11 @@ function get_player_minerals(): array {
 			continue;
 		}
 		
-		$minerals_data[$minerals_reference] = [
+		$minerals[$minerals_reference] = [
 			"id"      => $mineral_id,
-			"counter" => is_given_to_museum($mineral_id, $general_data, $museum_index)
+			"counter" => is_given_to_museum($mineral_id, $raw_data, $museum_index)
 		];
 	}
 	
-	return $minerals_data;
+	return $minerals;
 }

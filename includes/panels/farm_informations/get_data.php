@@ -6,7 +6,7 @@
  * 
  * @return array Les informations de la ferme.
  */
-function get_farm_informations(): array {
+function get_farm_informations_data(): array {
 	$informations = get_complex_farm_informations();
 
 	return [
@@ -27,8 +27,8 @@ function get_farm_informations(): array {
  * @return array Les informations de la ferme.
  */
 function get_complex_farm_informations(): array {
-	$data = $GLOBALS["untreated_all_players_data"];
-	$game_locations = find_xml_tags($data, "locations.GameLocation");
+	$raw_data = $GLOBALS["raw_xml_data"];
+	$game_locations = find_xml_tags($raw_data, "locations.GameLocation");
 
 	foreach ($game_locations as $game_location) {		
 		if ((string) $game_location->name === "Farm") {
@@ -63,7 +63,7 @@ function get_complex_farm_informations(): array {
  * @return int Le nombre de pièces de foin.
  */
 function get_hay_pieces_in_farm(): int {
-	$data = $GLOBALS["untreated_all_players_data"];
+	$raw_data = $GLOBALS["raw_xml_data"];
 	$hay_count = 0;
 	$hay_searches = [
 		"locations.GameLocation.buildings.Building.indoors.piecesOfHay",
@@ -71,7 +71,7 @@ function get_hay_pieces_in_farm(): int {
 	];
 
 	foreach ($hay_searches as $hay_search) {
-		$hay_locations = find_xml_tags($data, $hay_search);
+		$hay_locations = find_xml_tags($raw_data, $hay_search);
 
 		foreach ($hay_locations as $hay_location) {
 			if (($hay_amount = (int) $hay_location) === 0) {
@@ -91,9 +91,9 @@ function get_hay_pieces_in_farm(): int {
  * @return int Le nombre de pièces maximum de foin.
  */
 function get_max_hay_pieces(): int {
-	$data = $GLOBALS["untreated_all_players_data"];
+	$raw_data = $GLOBALS["raw_xml_data"];
 	$hay_count = 0;
-	$hay_locations = find_xml_tags($data, "locations.GameLocation.buildings.Building.hayCapacity");
+	$hay_locations = find_xml_tags($raw_data, "locations.GameLocation.buildings.Building.hayCapacity");
 
 	foreach ($hay_locations as $hay_location) {
 		if (($hay_amount = (int) $hay_location) === 0) {

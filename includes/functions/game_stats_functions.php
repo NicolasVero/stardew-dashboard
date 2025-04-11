@@ -15,7 +15,7 @@ function is_game_version_older_than_1_6(): bool {
  * @return string Le temps de jeu du joueur.
  */
 function get_game_duration(): string {
-	$player_game_duration = (int) $GLOBALS["untreated_player_data"]->millisecondsPlayed;
+	$player_game_duration = (int) $GLOBALS["current_player_raw_data"]->millisecondsPlayed;
 
     $total_seconds = intdiv($player_game_duration, 1000);
     $total_minutes = intdiv($total_seconds, 60);
@@ -42,8 +42,8 @@ function get_number_of_player(): int {
  * @return int Le nombre de jours de jeu.
  */
 function get_number_of_days_ingame(): int {
-	$data = $GLOBALS["untreated_player_data"];
-    return ((($data->dayOfMonthForSaveGame - 1)) + ($data->seasonForSaveGame * 28) + (($data->yearForSaveGame - 1) * 112));
+	$raw_player_data = $GLOBALS["current_player_raw_data"];
+    return ((($raw_player_data->dayOfMonthForSaveGame - 1)) + ($raw_player_data->seasonForSaveGame * 28) + (($raw_player_data->yearForSaveGame - 1) * 112));
 }
 
 /**

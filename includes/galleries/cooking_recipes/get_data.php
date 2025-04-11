@@ -6,10 +6,10 @@
  * @return array Les données des recettes de cuisine débloquées par le joueur.
  */
 function get_player_cooking_recipes(): array {
-	$player_recipes = $GLOBALS["untreated_player_data"]->cookingRecipes;
-	$player_recipes_cooked = $GLOBALS["untreated_player_data"]->recipesCooked;
+	$player_recipes = $GLOBALS["current_player_raw_data"]->cookingRecipes;
+	$player_recipes_cooked = $GLOBALS["current_player_raw_data"]->recipesCooked;
 	$cooking_recipes_json = sanitize_json_with_version("cooking_recipes");
-	$cooking_recipes_data = [];
+	$cooking_recipes = [];
 
 	$has_ever_cooked = (!empty((array) $player_recipes_cooked)) ? true : false;
 
@@ -23,7 +23,7 @@ function get_player_cooking_recipes(): array {
 				$recipe_id = get_correct_id($recipe_id);
 
 				if ($recipe_id === $index) {
-					$cooking_recipes_data[$item_name] = [
+					$cooking_recipes[$item_name] = [
 						"id"      => $recipe_id,
 						"counter" => (int) $recipe_cooked->value->int
 					];
@@ -31,17 +31,17 @@ function get_player_cooking_recipes(): array {
 				}
 			}
 
-			if (isset($cooking_recipes_data[$item_name])) {
+			if (isset($cooking_recipes[$item_name])) {
 				continue;
 			}
 		}
 		
-		$cooking_recipes_data[$item_name] = [
+		$cooking_recipes[$item_name] = [
 			"id"      => $index,
 			"counter" => 0
 		];
 
 	}
 	
-	return $cooking_recipes_data;
+	return $cooking_recipes;
 }

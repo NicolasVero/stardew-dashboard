@@ -23,10 +23,10 @@ function get_weather_tooltip(string $weather): string {
  * @return string Le genre du joueur.
  */
 function get_player_gender(): string {
-	$player_data = $GLOBALS["untreated_player_data"];
+	$player_raw_data = $GLOBALS["current_player_raw_data"];
 	$genders = [
-		$player_data->gender,
-		$player_data->isMale
+		$player_raw_data->gender,
+		$player_raw_data->isMale
 	];
 
 	foreach ($genders as $gender) {
@@ -49,8 +49,8 @@ function get_player_gender(): string {
  * @return bool Indique si le joueur est marié.
  */
 function get_is_married(): bool {
-	$data = $GLOBALS["untreated_player_data"];
-	return isset($data->spouse);
+	$player_raw_data = $GLOBALS["current_player_raw_data"];
+	return isset($player_raw_data->spouse);
 }
 
 /**
@@ -59,8 +59,8 @@ function get_is_married(): bool {
  * @return mixed Le nom du conjoint du joueur, ou null s'il n'est pas marié.
  */
 function get_spouse(): mixed {
-	$player_data = $GLOBALS["untreated_player_data"];
-	return (!empty($player_data->spouse)) ? $player_data->spouse : null;
+	$player_raw_data = $GLOBALS["current_player_raw_data"];
+	return (!empty($player_raw_data->spouse)) ? $player_raw_data->spouse : null;
 }
 
 /**
@@ -69,7 +69,7 @@ function get_spouse(): mixed {
  * @return int Le niveau d'amélioration de la maison du joueur.
  */
 function get_house_upgrade_level(): int {
-	return (int) $GLOBALS["untreated_player_data"]->houseUpgradeLevel;
+	return (int) $GLOBALS["current_player_raw_data"]->houseUpgradeLevel;
 }
 
 /**
@@ -78,8 +78,8 @@ function get_house_upgrade_level(): int {
  * @return array Le nombre d'enfants du joueur.
  */
 function get_children_amount(): array {
-	$player_id = (int) $GLOBALS["untreated_player_data"]->UniqueMultiplayerID;
-	$data = $GLOBALS["untreated_all_players_data"];
+	$player_id = (int) $GLOBALS["current_player_raw_data"]->UniqueMultiplayerID;
+	$raw_data = $GLOBALS["raw_xml_data"];
 	$children_name = [];
 	$npc_locations =  [
 		"locations.GameLocation.characters.NPC",
@@ -87,7 +87,7 @@ function get_children_amount(): array {
 	];
 
 	foreach ($npc_locations as $npc_location) {
-		$npcs = find_xml_tags($data, $npc_location);
+		$npcs = find_xml_tags($raw_data, $npc_location);
 
 		foreach ($npcs as $npc) {
 			if (!isset($npc->idOfParent) || (int) $npc->idOfParent !== $player_id) {
@@ -129,8 +129,8 @@ function get_the_married_person_gender(string $spouse): string {
  * @return string La météo actuelle.
  */
 function get_weather(string $weather_location = "Default"): string {
-    $data = $GLOBALS["untreated_all_players_data"];
-    $locations = $data->locationWeather;
+    $raw_data = $GLOBALS["raw_xml_data"];
+    $locations = $raw_data->locationWeather;
 	$weather_conditions = [
 		'Festival' => 'Festival',
 		'isRaining' => 'rain',
@@ -167,8 +167,8 @@ function get_weather(string $weather_location = "Default"): string {
  * @return string Le niveau du joueur.
  */
 function get_farmer_level(): string {
-	$player_data = $GLOBALS["untreated_player_data"];
-    $level = (get_total_skills_level() + $player_data->luckLevel) / 2;
+	$player_raw_data = $GLOBALS["current_player_raw_data"];
+    $level = (get_total_skills_level() + $player_raw_data->luckLevel) / 2;
     $level_names = [
         "Newcomer",
         "Greenhorn",
@@ -197,7 +197,7 @@ function get_farmer_level(): string {
  * @return int Le score du grand-père du joueur.
  */
 function get_grandpa_score(): int {
-    $data = $GLOBALS["untreated_player_data"];
+    $player_raw_data = $GLOBALS["current_player_raw_data"];
     $grandpa_points = 0;
 
     // 1. Points basés sur l'argent gagné
@@ -209,7 +209,7 @@ function get_grandpa_score(): int {
         ["goal" => 500000, "points" => 1],
         ["goal" => 1000000, "points" => 2]
     ];
-    $total_money_earned = $data->totalMoneyEarned;
+    $total_money_earned = $player_raw_data->totalMoneyEarned;
     foreach ($money_earned_goals as $goal_data) {
         if ($total_money_earned > $goal_data["goal"]) {
             $grandpa_points += $goal_data["points"];
@@ -231,21 +231,21 @@ function get_grandpa_score(): int {
     // 3. Points pour les succès spécifiques
     $achievement_ids = [5, 26, 34];
     foreach ($achievement_ids as $achievement_id) {
-        if (does_player_have_achievement($data->achievements, $achievement_id)) {
+        if (does_player_have_achievement($player_raw_data->achievements, $achievement_id)) {
             $grandpa_points++;
         }
     }
 
     // 4. Point pour maison niveau 2+ et être marié
-    $house_level = get_house_upgrade_level($data);
+    $house_level = get_house_upgrade_level($player_raw_data);
     $is_married = get_is_married();
     if ($house_level >= 2 && $is_married) {
         $grandpa_points++;
     }
 
     // 5. Points basés sur les amitiés de + de 8 coeurs
-    $friendships = get_player_friendship_data($data->friendshipData);
-    $friendship_count = count(array_filter($friendships, fn($f) => $f["friend_level"] >= 8));
+    $friendships = get_player_friendship_data($player_raw_data->friendshipData);
+    $friendship_count = count(array_filter($friendships, fn(array $f): bool => $f["friend_level"] >= 8));
     
     $friendship_goals = [5, 10];
     foreach ($friendship_goals as $goal) {
@@ -273,7 +273,7 @@ function get_grandpa_score(): int {
     }
 
     // 8. Points pour avoir vu un évènement spécifique (Complétion du CC)
-    if (in_array(191393, (array)$data->eventsSeen->int)) {
+    if (in_array(191393, (array)$player_raw_data->eventsSeen->int)) {
         $grandpa_points += 2;
     }
 
@@ -331,7 +331,7 @@ function get_perfection_max_elements(): array {
  * @return array Les éléments de perfection.
  */
 function get_perfection_elements(): array {
-	$general_data = $GLOBALS["host_player_data"]["general"];
+	$host_general_data = get_general_data(0);
 	$perfection_elements = get_perfection_max_elements();
 
 	$highest_items_shipped 		= get_highest_count_for_category("shipped_items")["highest_count"];
@@ -342,7 +342,7 @@ function get_perfection_elements(): array {
 	$highest_friendship 		= get_player_with_highest_friendships()["highest_count"];
 
 	return [
-		"Golden Walnuts found"		=> get_element_completion_percentage($perfection_elements["golden_walnuts"], (int) $general_data["golden_walnuts"]) * 5,
+		"Golden Walnuts found"		=> get_element_completion_percentage($perfection_elements["golden_walnuts"], (int) $host_general_data["golden_walnuts"]) * 5,
 		"Crafting Recipes Made"		=> get_element_completion_percentage($perfection_elements["crafting_recipes"], $highest_crafting_recipes) * 10,
 		"Cooking Recipes Made"		=> get_element_completion_percentage($perfection_elements["cooking_recipes"], $highest_cooking_recipes) * 10,
 		"Produce & Forage Shipped"	=> get_element_completion_percentage($perfection_elements["shipped_items"], $highest_items_shipped) * 15,
@@ -362,8 +362,8 @@ function get_perfection_elements(): array {
  * @return string Le pourcentage de complétion.
  */
 function get_perfection_percentage(): string {
-	$untreated_data = $GLOBALS["untreated_all_players_data"];
-	if ((string) $untreated_data->farmPerfect === "true") {
+	$raw_data = $GLOBALS["raw_xml_data"];
+	if ((string) $raw_data->farmPerfect === "true") {
 		return "100";
 	}
 
@@ -384,7 +384,7 @@ function get_perfection_percentage(): string {
  */
 function get_highest_count_for_category(string $category): array {
 	$total_players = get_number_of_player();
-	$all_data = $GLOBALS["all_players_data"];
+	$players_data = $GLOBALS["players_data"];
 	$highest_player = 0;
 	$max_elements = 0;
 
@@ -392,7 +392,7 @@ function get_highest_count_for_category(string $category): array {
 	$exceptions_level = ["farmer_level"];
 
 	for ($player_id = 0; $player_id < $total_players; $player_id++) {
-		$player_data = $all_data[$player_id];
+		$player_data = $players_data[$player_id];
 		$amount_elements = 0;
 
 		if (in_array($category, $exceptions_recipes)) {
@@ -429,12 +429,12 @@ function get_highest_count_for_category(string $category): array {
 function get_player_with_highest_friendships(): array {
 	$total_players = get_number_of_player();
     $marriables_npc = sanitize_json_with_version("marriables");
-	$all_data = $GLOBALS["all_players_data"];
+	$players_data = $GLOBALS["players_data"];
 	$highest_player = 0;
 	$max_elements = 0;
 
 	for ($player_id = 0; $player_id < $total_players; $player_id++) {
-		$friendships = $all_data[$player_id]["friendship"];
+		$friendships = $players_data[$player_id]["friendship"];
 		$friend_counter = 0;
 
 		foreach ($friendships as $friendship_name => $friendship) {
@@ -471,10 +471,10 @@ function get_player_with_highest_friendships(): array {
  */
 function has_any_player_gotten_all_stardrops(): bool {
 	$total_players = get_number_of_player();
-	$all_data = $GLOBALS["all_players_data"];
+	$players_data = $GLOBALS["players_data"];
 
 	for ($current_player = 0; $current_player < $total_players; $current_player++) {
-		$stardrops_founds = $all_data[$current_player]["general"]["stardrops_found"];
+		$stardrops_founds = $players_data[$current_player]["general"]["stardrops_found"];
 
 		if ($stardrops_founds !== 7) {
 			continue;
@@ -512,12 +512,12 @@ function get_child_tooltip(string $spouse, array $children): string {
  * @return array Les données de l'animal de compagnie du joueur.
  */
 function get_player_pet(): array {
-	$player_data = $GLOBALS["untreated_player_data"];
-	$breed = (int) $player_data->whichPetBreed;
+	$raw_player_data = $GLOBALS["current_player_raw_data"];
+	$breed = (int) $raw_player_data->whichPetBreed;
 	$type = (is_game_version_older_than_1_6()) ?
-		(((string) $player_data->catPerson === "true") ? "cat" : "dog")
+		(((string) $raw_player_data->catPerson === "true") ? "cat" : "dog")
 		:
-		lcfirst((string) $player_data->whichPetType);
+		lcfirst((string) $raw_player_data->whichPetType);
 
 	return [
 		"type"  => $type,
@@ -531,7 +531,7 @@ function get_player_pet(): array {
  * @return int Le nombre de stardrops trouvés par le joueur.
  */
 function get_player_stardrops_found(): int {
-	$player_stamina = (int) $GLOBALS["untreated_player_data"]->maxStamina;
+	$player_stamina = (int) $GLOBALS["current_player_raw_data"]->maxStamina;
 	$min_stamina = 270;
 	$stamina_per_stardrop = 34;
 	return ($player_stamina - $min_stamina) / $stamina_per_stardrop;
@@ -545,8 +545,8 @@ function get_player_stardrops_found(): int {
 function get_amount_obelisk_on_map(): int {
 	$obelisk_count = 0;
 	$obelisk_names = get_obelisk_names();
-	$data = $GLOBALS["untreated_all_players_data"];
-	$buildings = find_xml_tags($data, 'locations.GameLocation.buildings.Building');
+	$raw_data = $GLOBALS["raw_xml_data"];
+	$buildings = find_xml_tags($raw_data, 'locations.GameLocation.buildings.Building');
 
 	foreach ($buildings as $building) {
 		if (!in_array((string) $building->buildingType, $obelisk_names)) {
@@ -579,8 +579,8 @@ function get_obelisk_names(): array {
  * @return bool Indique si l'horloge dorée est sur la ferme.
  */
 function is_golden_clock_on_farm(): bool {	
-	$data = $GLOBALS["untreated_all_players_data"];
-	$buildings = find_xml_tags($data, 'locations.GameLocation.buildings.Building');
+	$raw_data = $GLOBALS["raw_xml_data"];
+	$buildings = find_xml_tags($raw_data, 'locations.GameLocation.buildings.Building');
 
 	foreach ($buildings as $building) {
 		if ((string) $building->buildingType !== "Gold Clock") {
@@ -599,10 +599,10 @@ function is_golden_clock_on_farm(): bool {
  * @return int Les points d'amitié de l'animal de compagnie.
  */
 function get_pet_frienship_points(): int {
-	$data = $GLOBALS["untreated_all_players_data"];
-	$npcs = find_xml_tags($data, 'locations.GameLocation.characters.NPC');
+	$raw_data = $GLOBALS["raw_xml_data"];
+	$npcs_locations = find_xml_tags($raw_data, 'locations.GameLocation.characters.NPC');
 
-	foreach ($npcs as $npc) {
+	foreach ($npcs_locations as $npc) {
 		if (!isset($npc->petType) && !isset($npc->whichBreed)) {
 			continue;
 		}

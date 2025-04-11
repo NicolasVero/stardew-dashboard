@@ -6,9 +6,9 @@
  * @return array Les données des artéfacts trouvés par le joueur.
  */
 function get_player_artifacts(): array {
-	$player_artifacts = $GLOBALS["untreated_player_data"]->archaeologyFound;
-    $general_data = $GLOBALS["untreated_all_players_data"];
-	$artifacts_data = [];
+	$player_artifacts = $GLOBALS["current_player_raw_data"]->archaeologyFound;
+    $raw_data = $GLOBALS["raw_xml_data"];
+	$artifacts = [];
 
 	foreach ($player_artifacts->item as $artifact) {
 		$artifact_id = ((is_game_version_older_than_1_6())) ? $artifact->key->int : $artifact->key->string;
@@ -22,11 +22,11 @@ function get_player_artifacts(): array {
 			continue;
 		}
 		
-		$artifacts_data[$artifacts_reference] = [
+		$artifacts[$artifacts_reference] = [
 			"id"      => $artifact_id,
-			"counter" => is_given_to_museum($artifact_id, $general_data, $museum_index)
+			"counter" => is_given_to_museum($artifact_id, $raw_data, $museum_index)
 		];
 	}
 	
-	return $artifacts_data;
+	return $artifacts;
 }

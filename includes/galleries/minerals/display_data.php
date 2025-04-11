@@ -7,7 +7,7 @@
  */
 function display_minerals(): string {
     $gallery_details = [
-        "player_data" => get_minerals_data(),
+        "player_data" => get_minerals(),
         "json_filename" => "minerals",
         "section_title" => "Minerals"
     ];

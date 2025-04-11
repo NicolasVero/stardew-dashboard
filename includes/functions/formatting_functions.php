@@ -22,11 +22,11 @@ function format_text_for_file(string $string): string {
 /**
  * Formate et retourne un texte pour la gestion des données.
  * 
- * @param string $data Le texte à formater.
+ * @param string $str Le texte à formater.
  * @return string Le texte formaté.
  */
-function format_original_data_string(string $data): string {
-    return str_replace("(O)", "", $data);
+function format_original_data_string(string $str): string {
+    return str_replace("(O)", "", $str);
 }
 
 /**
@@ -56,10 +56,10 @@ function in_bytes_conversion(string $size, string $use = "local"): int {
  * @return mixed La date formatée.
  */
 function get_formatted_date(bool $display_date = true): mixed {
-	$data = $GLOBALS["untreated_player_data"];
-    $day    = $data->dayOfMonthForSaveGame;
-    $season = ["spring", "summer", "fall", "winter"][$data->seasonForSaveGame % 4];
-    $year   = $data->yearForSaveGame;
+	$raw_player_data = $GLOBALS["current_player_raw_data"];
+    $day    = $raw_player_data->dayOfMonthForSaveGame;
+    $season = ["spring", "summer", "fall", "winter"][$raw_player_data->seasonForSaveGame % 4];
+    $year   = $raw_player_data->yearForSaveGame;
 
     if ($display_date) {
 		return __("Day") . " $day " . __("of $season") . ", " . __("Year") . " $year";

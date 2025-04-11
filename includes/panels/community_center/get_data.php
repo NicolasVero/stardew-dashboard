@@ -235,11 +235,11 @@ function has_been_donated_in_bundle(string $name, array $donated_items): bool {
  * @return array Les bundles entiers du joueur.
  */
 function get_player_bundles(): array {
-    $untreated_all_data = $GLOBALS["untreated_all_players_data"];
-	$bundles_index = get_gamelocation_index($untreated_all_data, "bundles");
+    $raw_data = $GLOBALS["raw_xml_data"];
+	$bundles_index = get_gamelocation_index($raw_data, "bundles");
 	$bundles_json = sanitize_json_with_version("bundles", true);
-	$bundles_data = $untreated_all_data->bundleData;
-	$bundle_arrays = $untreated_all_data->locations->GameLocation[$bundles_index]->bundles;
+	$bundles_data = $raw_data->bundleData;
+	$bundle_arrays = $raw_data->locations->GameLocation[$bundles_index]->bundles;
 
 	foreach ($bundle_arrays->item as $bundle_array) {
 		$bundle_id = (int) $bundle_array->key->int;

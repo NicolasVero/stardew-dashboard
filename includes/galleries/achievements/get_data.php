@@ -6,17 +6,17 @@
  * @return array Les données des succès débloqués par le joueur.
  */
 function get_player_achievements(): array {
-    $player_achievements = $GLOBALS["untreated_player_data"]->achievements;
-	$achievements_data = [];
+    $player_achievements = $GLOBALS["current_player_raw_data"]->achievements;
+	$achievements = [];
 	
 	foreach ($player_achievements->int as $achievement) {
 		$achievement = find_reference_in_json((int) $achievement, "achievements_details");
 		extract($achievement); //? $title, $description
 
-		$achievements_data[$title] = [ "description" => $description ];
+		$achievements[$title] = [ "description" => $description ];
 	}
 	
-	return $achievements_data;
+	return $achievements;
 }
 
 /**

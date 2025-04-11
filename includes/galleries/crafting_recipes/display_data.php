@@ -7,7 +7,7 @@
  */
 function display_crafting_recipes(): string {
     $gallery_details = [
-        "player_data" => get_crafting_recipes_data(),
+        "player_data" => get_crafting_recipes(),
         "json_filename" => "crafting_recipes",
         "section_title" => "Crafting recipes"
     ];
