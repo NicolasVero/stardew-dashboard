@@ -6,9 +6,7 @@
  * @return string Le code HTML du bouton des informations de la ferme.
  */
 function display_farm_informations_button(): string {
-	if (is_game_version_older_than_1_6()) {
-		return "";
-	}
+    $version_class = get_version_class("1.6.0");
 
 	return "<img src='" . get_images_folder() . "/icons/farm_computer.png' class='$version_class-icon farm-informations-icon view-farm-informations view-farm-informations-" . get_current_player_id() . " button-elements modal-opener icon' alt='Farm informations icon'>";
 }
