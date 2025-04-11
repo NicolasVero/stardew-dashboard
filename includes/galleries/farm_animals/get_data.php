@@ -6,8 +6,7 @@
  * @return array Les données des animaux de la ferme par le joueur.
  */
 function get_player_farm_animals(): array {
-    $data = $GLOBALS["untreated_all_players_data"];
-    $animals_data = [];
+    $raw_data = $GLOBALS["raw_xml_data"];
     
     $all_animals = [
         "Duck"              => "Duck",
@@ -26,9 +25,10 @@ function get_player_farm_animals(): array {
         "Ostrich"           => "Ostrich"
     ];
 
-    $animals = find_xml_tags($data, 'locations.GameLocation.buildings.Building.indoors.animals.item.value');
+    $animals_locations = find_xml_tags($raw_data, 'locations.GameLocation.buildings.Building.indoors.animals.item.value');
     
-    foreach($animals as $animal) {
+    $animals = [];
+    foreach ($animals_locations as $animal) {
 	    $name = (string) $animal->FarmAnimal->name;
         $full_animal_type = (string) $animal->FarmAnimal->type;
 	    $friendship = (int) $animal->FarmAnimal->friendshipTowardFarmer;
@@ -46,25 +46,27 @@ function get_player_farm_animals(): array {
 	    	"was_pet" => $was_pet
 	    ];
 
-        if(!isset($all_animals[$full_animal_type])) {
+        if (!isset($all_animals[$full_animal_type])) {
             continue;
         }
 
         $animal_type = $all_animals[$full_animal_type];
 
-        if(!isset($animals_data[$animal_type])) {
-            $animals_data[$animal_type] = [
-                "id" => get_custom_id($animal_type),
-	    		"animals_data" => [],
-                "counter" => 0
-            ];
+        if (isset($animals[$animal_type])) {
+            continue;
         }
+        
+        $animals[$animal_type] = [
+            "id" => get_custom_id($animal_type),
+            "animals_data" => [],
+            "counter" => 0
+        ];
 
-        $animals_data[$animal_type]["counter"]++;
-	    array_push($animals_data[$animal_type]["animals_data"], $animal_data);
+        $animals[$animal_type]["counter"]++;
+	    array_push($animals[$animal_type]["animals_data"], $animal_data);
     }
 
-    return $animals_data;
+    return $animals;
 }
 
 /**

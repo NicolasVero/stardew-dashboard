@@ -161,8 +161,8 @@
 			justify-content: center;
 			
 			&::after {
-				content: "";
 				border-top: 1px solid @checkboxes-bc;
+				content: "";
 			}
 
 			.checkbox {
@@ -204,8 +204,8 @@
 			form {
 				align-items: flex-start;
 				display: flex;
-				gap: @big-gap;
 				flex-direction: column;
+				gap: @big-gap;
 
 				& > span {
 					&:first-of-type {
@@ -283,12 +283,12 @@
 				}
 
 				input[type=number] {
-					appearance: textfield;
 					-moz-appearance: textfield;
+					appearance: textfield;
 					
 					&::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
-						margin: 0;
 						-webkit-appearance: none;
+						margin: 0;
 					}
 				}
 
@@ -302,8 +302,8 @@
 	&.visited-locations-panel {
 		.big-panel-width;
 		.invisible-panel;
-		.panel-with-border;
 		.panel-with-background;
+		.panel-with-border;
 		aspect-ratio: 1.79;
 		background-image: url("../../assets/images/content/map_no_border.png");
 		color: @goal-fc;
@@ -501,15 +501,15 @@
 
 	&.calendar-panel {
 		.invisible-panel;
-		@calendar-ratio: 1;
-		@used-width: 50vw;
-		@calendar-width: 480;
-		// (used-width en vw * valeur en pixel) / calendar-width en px
 		@calendar-block: ((@used-width * 64) / @calendar-width) * @calendar-ratio;
 		@calendar-border-width: ((@used-width * 2) / @calendar-width) * @calendar-ratio;
 		@calendar-left-margin: ((@used-width * 16) / @calendar-width) * @calendar-ratio;
+		@calendar-ratio: 1;
 		@calendar-real-width: ((@used-width * @calendar-width) / @calendar-width) * @calendar-ratio;
 		@calendar-top-margin: ((@used-width * 37) / @calendar-width) * @calendar-ratio;
+		@calendar-width: 480;
+		@used-width: 50vw;
+		// (used-width en vw * valeur en pixel) / calendar-width en px
 
 		aspect-ratio: 1.55;
 		width: @calendar-real-width;
@@ -729,14 +729,14 @@
 		.invisible-panel;
 		.panel-with-background;
 		.panel-with-border;
-		@museum-ratio: 1;
-		@used-width: 50vw;
-		@museum-width: 757;
 		// (used-width en vw * valeur en pixel) / museum-width en px
 		@museum-block: ((@used-width * 31.75) / @museum-width) * @museum-ratio;
 		@museum-left-margin: ((@used-width * 14) / @museum-width) * @museum-ratio;
+		@museum-ratio: 1;
 		@museum-real-width: ((@used-width * @museum-width) / @museum-width) * @museum-ratio;
 		@museum-top-margin: ((@used-width * 144) / @museum-width) * @museum-ratio;
+		@museum-width: 757;
+		@used-width: 50vw;
 
 		aspect-ratio: 1.29;
 		background-image: url("../../assets/images/content/museum_bg.png");
@@ -792,10 +792,10 @@
 		.invisible-panel;
 		.panel-with-border;
 		@cc-ratio: 1.5;
-		@used-width: 60vw;
-		@cc-width: 1120;
-		// (used-width en vw * valeur en pixel) / cc-width en px
 		@cc-real-width: ((@used-width * @cc-width) / @cc-width) * @cc-ratio;
+		@cc-width: 1120;
+		@used-width: 60vw;
+		// (used-width en vw * valeur en pixel) / cc-width en px
 		
 		aspect-ratio: 2.33;
 		width: @cc-real-width;
@@ -825,6 +825,7 @@
 			0%, 100% {
 				transform: translateY(0);
 			}
+
 			50% {
 				transform: translateY(-10px);
 			}
@@ -859,22 +860,22 @@
 						position: relative;
 
 						&.bundle-tooltip > span {
-							@cc-ratio: 1;
-							@used-width: 20vw;
-							@cc-width: 340;
 							// (used-width en vw * valeur en pixel) / cc-width en px
 							@cc-background-width: ((@used-width * @cc-width) / @cc-width) * @cc-ratio;
 							@cc-image-left-margin: ((@used-width * 136.5) / @cc-width) * @cc-ratio;
-							@cc-items-left-margin: ((@used-width * 66) / @cc-width) * @cc-ratio;
-							@cc-items-width: ((@used-width * 198) / @cc-width) * @cc-ratio;
 							@cc-image-top-margin: ((@used-width * 44) / @cc-width) * @cc-ratio;
 							@cc-image-width: ((@used-width * 64) / @cc-width) * @cc-ratio;
+							@cc-items-left-margin: ((@used-width * 66) / @cc-width) * @cc-ratio;
+							@cc-items-width: ((@used-width * 198) / @cc-width) * @cc-ratio;
+							@cc-ratio: 1;
 							@cc-required-height: ((@used-width * 62) / @cc-width) * @cc-ratio;
 							@cc-required-top-margin: ((@used-width * 138) / @cc-width) * @cc-ratio;
 							@cc-slot-border-width: ((@used-width * 8) / @cc-width) * @cc-ratio;
 							@cc-slot-height: ((@used-width * 84) / @cc-width) * @cc-ratio;
 							@cc-slot-top-margin: ((@used-width * 228) / @cc-width) * @cc-ratio;
 							@cc-slot-width: ((@used-width * 182) / @cc-width) * @cc-ratio;
+							@cc-width: 340;
+							@used-width: 20vw;
 
 							& > .bundle-bg {
 								width: @cc-background-width;
@@ -920,8 +921,8 @@
 									& > .quantity {
 										bottom: -.5vw;
 										color: @third-fc;
-										position: absolute;
 										left: 0;
+										position: absolute;
 										font-size: .75vw;
 									}
 								}
@@ -977,8 +978,8 @@
 	&.tools {
 		.invisible-panel;
 		.limit-panel-width;
-		.panel-with-border;
 		.medium-panel-width;
+		.panel-with-border;
 		color: @primary-fc;
 		font-family: @primary-ff;
 		font-size: @md-fs;
@@ -1023,8 +1024,8 @@
 	&.farm-informations {
 		.invisible-panel;
 		.limit-panel-width;
-		.panel-with-border;
 		.medium-panel-width;
+		.panel-with-border;
 		color: @primary-fc;
 		font-family: @primary-ff;
 		font-size: @md-fs;

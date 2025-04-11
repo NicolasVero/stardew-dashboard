@@ -6,11 +6,11 @@
  * @return array Les lieux visités par le joueur.
  */
 function get_player_visited_locations(): array {
-	if(is_game_version_older_than_1_6()) {
+	if (is_game_version_older_than_1_6()) {
 		return [];
 	}
 
-	$player_data = $GLOBALS["untreated_player_data"];
+	$player_raw_data = $GLOBALS["current_player_raw_data"];
 	$locations_to_visit = sanitize_json_with_version("locations_to_visit");
 	$player_visited_locations = [];
 	$locations_real_name = [
@@ -27,27 +27,31 @@ function get_player_visited_locations(): array {
 		"MasteryCave" => "Mastery Cave"
 	];
 
-	foreach($player_data->locationsVisited->string as $location_visited) {
+	foreach ($player_raw_data->locationsVisited->string as $location_visited) {
 		$location_name = (string) $location_visited;
 		$location_real_name = $locations_real_name[$location_name] ?? "";
 
-		if(in_array($location_real_name, $locations_to_visit)) {
-			$player_visited_locations[$location_real_name] = [
-				"id" => get_item_id_by_name($location_real_name)
-			];
+		if (!in_array($location_real_name, $locations_to_visit)) {
+			continue;
 		}
+		
+		$player_visited_locations[$location_real_name] = [
+			"id" => get_item_id_by_name($location_real_name)
+		];
 	}
 
 	$additional_locations = [
 		"VisitedQuarryMine" => "Quarry"
 	];
 
-	foreach($additional_locations as $additional_location => $location_real_name) {
-		if(has_element_in_mail($additional_location)) {
-			$player_visited_locations[$location_real_name] = [
-				"id" => get_item_id_by_name($location_real_name)
-			];
+	foreach ($additional_locations as $additional_location => $location_real_name) {
+		if (!has_element_in_mail($additional_location)) {
+			continue;
 		}
+
+		$player_visited_locations[$location_real_name] = [
+			"id" => get_item_id_by_name($location_real_name)
+		];
 	}
 
 	return $player_visited_locations;

@@ -13,11 +13,11 @@ const os_paths: Map<OS, string> = new Map([
 function detect_os(): OS {
 	const user_agent: string = window.navigator.userAgent.toLowerCase();
 
-	if(user_agent.includes("mac")) {   
+	if (user_agent.includes("mac")) {   
         return OS.mac;
     }
 
-	if(user_agent.includes("linux")) {   
+	if (user_agent.includes("linux")) {   
         return OS.linux;
     }
 

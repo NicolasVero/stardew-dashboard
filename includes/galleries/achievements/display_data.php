@@ -7,7 +7,7 @@
  */
 function display_achievements(): string {
     $gallery_details = [
-        "player_data" => get_achievements_data(),
+        "player_data" => get_achievements(),
         "json_filename" => "achievements",
         "section_title" => "In-game achievements"
     ];

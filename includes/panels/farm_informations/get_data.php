@@ -4,11 +4,7 @@
  * 
  * @return array Les informations de la ferme.
  */
-function get_farm_informations(): array {
-	if (is_game_version_older_than_1_6()) {
-		return [];
-	}
-
+function get_farm_informations_data(): array {
 	$informations = get_complex_farm_informations();
 
 	return [
@@ -29,11 +25,11 @@ function get_farm_informations(): array {
  * @return array Les informations de la ferme.
  */
 function get_complex_farm_informations(): array {
-	$data = $GLOBALS["untreated_all_players_data"];
-	$game_locations = find_xml_tags($data, "locations.GameLocation");
+	$raw_data = $GLOBALS["raw_xml_data"];
+	$game_locations = find_xml_tags($raw_data, "locations.GameLocation");
 
-	foreach($game_locations as $game_location) {
-		if((string) $game_location->name === "Farm") {
+	foreach ($game_locations as $game_location) {		
+		if ((string) $game_location->name === "Farm") {
 			$is_farm_cave_ready = ((string) $game_location->farmCaveReady === "true") ? "Yes" : "No";
 	
 			$crops = get_crops_on_farm($game_location);
@@ -41,7 +37,7 @@ function get_complex_farm_informations(): array {
 			$tilled_soils = get_tilled_soil_count($game_location);
 		}
 
-		if((string) $game_location->name === "Greenhouse") {
+		if ((string) $game_location->name === "Greenhouse") {
 			$greenhouse_crops = get_crops_on_farm($game_location);
 		}
 
@@ -65,18 +61,18 @@ function get_complex_farm_informations(): array {
  * @return int Le nombre de pièces de foin.
  */
 function get_hay_pieces_in_farm(): int {
-	$data = $GLOBALS["untreated_all_players_data"];
+	$raw_data = $GLOBALS["raw_xml_data"];
 	$hay_count = 0;
 	$hay_searches = [
 		"locations.GameLocation.buildings.Building.indoors.piecesOfHay",
 		"locations.GameLocation.piecesOfHay"
 	];
 
-	foreach($hay_searches as $hay_search) {
-		$hay_locations = find_xml_tags($data, $hay_search);
+	foreach ($hay_searches as $hay_search) {
+		$hay_locations = find_xml_tags($raw_data, $hay_search);
 
-		foreach($hay_locations as $hay_location) {
-			if(($hay_amount = (int) $hay_location) === 0) {
+		foreach ($hay_locations as $hay_location) {
+			if (($hay_amount = (int) $hay_location) === 0) {
 				continue;
 			}
 
@@ -93,12 +89,12 @@ function get_hay_pieces_in_farm(): int {
  * @return int Le nombre de pièces maximum de foin.
  */
 function get_max_hay_pieces(): int {
-	$data = $GLOBALS["untreated_all_players_data"];
+	$raw_data = $GLOBALS["raw_xml_data"];
 	$hay_count = 0;
-	$hay_locations = find_xml_tags($data, "locations.GameLocation.buildings.Building.hayCapacity");
+	$hay_locations = find_xml_tags($raw_data, "locations.GameLocation.buildings.Building.hayCapacity");
 
-	foreach($hay_locations as $hay_location) {
-		if(($hay_amount = (int) $hay_location) === 0) {
+	foreach ($hay_locations as $hay_location) {
+		if (($hay_amount = (int) $hay_location) === 0) {
 			continue;
 		}
 
@@ -118,24 +114,24 @@ function get_crops_on_farm(SimpleXMLElement $game_location): array {
 	$crops_ready_count = 0;
 	$unwatered_crops = 0;
 
-	foreach($game_location->terrainFeatures->item as $crops_location) {
-		if(!isset($crops_location->value->TerrainFeature->crop)) {
+	foreach ($game_location->terrainFeatures->item as $crops_location) {
+		if (!isset($crops_location->value->TerrainFeature->crop)) {
 			continue;
 		}
 
 		$crops_location = $crops_location->value->TerrainFeature;
 
-		if((string) $crops_location->crop->dead === "true") {
+		if ((string) $crops_location->crop->dead === "true") {
 			continue;
 		}
 		
 		$crops_count++;
 
-		if((int) $crops_location->state === 0) {
+		if ((int) $crops_location->state === 0) {
 			$unwatered_crops++;
 		}
 
-		if((string) $crops_location->crop->fullGrown === "true") {
+		if ((string) $crops_location->crop->fullGrown === "true") {
 			$crops_ready_count++;
 		}
 	}
@@ -155,18 +151,18 @@ function get_crops_on_farm(SimpleXMLElement $game_location): array {
 function get_machines_ready_on_farm(SimpleXMLElement $game_location): int {
 	$machines_count = 0;
 
-	foreach($game_location->objects->item as $object) {
-		if(!isset($object->value->Object->readyForHarvest) || (string) $object->value->Object->readyForHarvest === "false") {
+	foreach ($game_location->objects->item as $object) {
+		if (!isset($object->value->Object->readyForHarvest) || (string) $object->value->Object->readyForHarvest === "false") {
 			continue;
 		}
 
-		if((string) $object->value->Object->readyForHarvest === "true") {
+		if ((string) $object->value->Object->readyForHarvest === "true") {
 			$machines_count++;
 		}
 	}
 
-	foreach($game_location->buildings->Building as $building) {
-		if(!isset($building->output) || empty((array) $building->output) || count((array) $building->output) > 1) {
+	foreach ($game_location->buildings->Building as $building) {
+		if (!isset($building->output) || empty((array) $building->output) || count((array) $building->output) > 1) {
 			continue;
 		}
 
@@ -184,8 +180,8 @@ function get_machines_ready_on_farm(SimpleXMLElement $game_location): int {
 function get_tilled_soil_count(SimpleXMLElement $game_location): int {
 	$tilled_soil_count = 0;
 
-	foreach($game_location->terrainFeatures->item as $soil) {
-		if(isset($soil->value->TerrainFeature->state) && !isset($soil->value->TerrainFeature->crop)) {
+	foreach ($game_location->terrainFeatures->item as $soil) {
+		if (isset($soil->value->TerrainFeature->state) && !isset($soil->value->TerrainFeature->crop)) {
 			$tilled_soil_count++;
 		}
 	}

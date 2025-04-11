@@ -6,12 +6,12 @@
  * @return array Les données du tableau des scores de Junimo Kart.
  */
 function get_junimo_kart_leaderboard(): array {
-	$data = $GLOBALS["untreated_all_players_data"];
-	$all_entries = $data->junimoKartLeaderboards->entries;
+	$raw_data = $GLOBALS["raw_xml_data"];
+	$all_entries = $raw_data->junimoKartLeaderboards->entries;
 	$leaderboard = [];
 
-	foreach($all_entries as $entries) {
-		foreach($entries as $entry) {
+	foreach ($all_entries as $entries) {
+		foreach ($entries as $entry) {
 			$leaderboard[] = [
 				"score" => (int) $entry->score->int,
 				"name"  => (string) $entry->name->string
@@ -29,7 +29,7 @@ function get_junimo_kart_leaderboard(): array {
  * @return object Le tableau des scores de Junimo Kart.
  */
 function get_verified_jk_leaderboard(object $junimo_leaderboard): object {
-	if(is_object_empty($junimo_leaderboard)) {
+	if (is_object_empty($junimo_leaderboard)) {
 		return get_junimo_kart_fake_leaderboard();
 	}
 

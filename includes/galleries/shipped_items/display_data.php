@@ -7,7 +7,7 @@
  */
 function display_shipped_items(): string {
     $gallery_details = [
-        "player_data" => get_shipped_items_data(),
+        "player_data" => get_shipped_items(),
         "json_filename" => "shipped_items",
         "section_title" => "Shipped items"
     ];

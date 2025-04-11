@@ -22,7 +22,7 @@ function easter_egg_characters(): void {
 	const character: string = characters[index_picker];
 	const elements: NodeListOf<Element> = document.querySelectorAll(".character-name." + character);
 
-	if(elements.length === 0) {
+	if (elements.length === 0) {
 		return;
 	}
 
@@ -30,7 +30,7 @@ function easter_egg_characters(): void {
 	let is_playing: boolean = false;
 
 	const play_once = (): void => {
-		if(!is_playing) {
+		if (!is_playing) {
 			is_playing = true;
 
 			const fullscreen_image: HTMLImageElement = document.createElement("img");
@@ -62,7 +62,7 @@ function easter_egg_characters(): void {
 function easter_egg_kaaris(): void {
     const element: HTMLElement = document.querySelector(".house")?.previousElementSibling?.querySelector("img");
 
-    if(element === null) {
+    if (element === null) {
         return;
     }
 	
@@ -72,7 +72,7 @@ function easter_egg_kaaris(): void {
     let is_playing: boolean = false;
 
     element.addEventListener("dblclick", () => {
-        if(!is_playing) {
+        if (!is_playing) {
             is_playing = true;
             audio.play().finally(() => is_playing = false);
         }
@@ -88,12 +88,12 @@ function easter_egg_monarchy_mayhem(): void {
     document.addEventListener("keydown", (event) => {
         current_input += event.key.toLowerCase();
 
-        if(current_input.length > target_sequence.length) {
+        if (current_input.length > target_sequence.length) {
             current_input = current_input.slice(-target_sequence.length);
         }
 
-        if(current_input === target_sequence) {			
-			if(!is_playing) {
+        if (current_input === target_sequence) {			
+			if (!is_playing) {
 				is_playing = true;
 				audio.play().finally(() => is_playing = false);
 			
@@ -142,7 +142,7 @@ function easter_egg_monarchy_mayhem(): void {
 					];
 
 					const images: HTMLImageElement[] = [];
-					positions.forEach((position, index) => {
+					positions.forEach((position: Position, index: number) => {
 						const img: HTMLImageElement = document.createElement("img");
 						img.src = get_site_root() + `/assets/images/easter_eggs/monarchy_mayhem_${index + 1}.gif`;
 						
@@ -178,34 +178,15 @@ function easter_egg_monarchy_mayhem(): void {
 						window.open("https://monarchymayhem.itch.io/monarchymayhem", "_blank");
 					});
 
-					const style: HTMLStyleElement = document.createElement("style");
-					style.innerHTML = `
-						@keyframes colorChange {
-							0% { color: red; }
-							25% { color: green; }
-							50% { color: blue; }
-							75% { color: violet; }
-							100% { color: red; }
-						}
-						
-						@keyframes rotateText {
-							0% { transform: translateX(-50%) rotate(0deg); }
-							100% { transform: translateX(-50%) rotate(360deg); }
-						}
-					`;
-					document.head.appendChild(style);
-
 					setTimeout(() => {
 						images.forEach(img => img.remove());
 						title.remove();
-						style.remove();
 						html.style.background = "#0a0523 url(" + get_site_root() + "/assets/images/content/bg.png) no-repeat fixed center center / cover";
 					}, 15500);
 				}, 1600);
 
 				current_input = "";
 			}
-            
         }
     });
 }

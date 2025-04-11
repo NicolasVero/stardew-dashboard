@@ -6,19 +6,19 @@
  * @return array Les données de l'amitié du joueur.
  */
 function get_player_friendship_data(): array {
-	$player_friendships = $GLOBALS["untreated_player_data"]->friendshipData;
+	$player_friendships = $GLOBALS["current_player_raw_data"]->friendshipData;
 	$villagers_json = sanitize_json_with_version("villagers");
 	$birthday_json = sanitize_json_with_version("villagers_birthday");
-	$friends_data = [];
+	$friends = [];
 
-	foreach($player_friendships->item as $friend) {
+	foreach ($player_friendships->item as $friend) {
 		$friend_name = (string) $friend->key->string;
 
-		if(!in_array($friend_name, $villagers_json)) {
+		if (!in_array($friend_name, $villagers_json)) {
 			continue;
 		}
 
-		$friends_data[$friend_name] = [
+		$friends[$friend_name] = [
 			"id"              => get_custom_id($friend_name),
 			"points"          => (int) $friend->value->Friendship->Points,
 			"friend_level"    => (int) floor(($friend->value->Friendship->Points) / 250),
@@ -28,11 +28,11 @@ function get_player_friendship_data(): array {
 		];
 	}
 
-	uasort($friends_data, function (array $a, array $b): bool {
+	uasort($friends, function (array $a, array $b): bool {
 		return $b["points"] - $a["points"];
 	});
 
-	return $friends_data; 
+	return $friends; 
 }
 
 /**
@@ -48,7 +48,7 @@ function prepare_all_friendship_info(array $friendship_info): array {
     extract($friendship_info); //? $id, $points, $friend_level, $birthday, $status, $week_gifts
 
     $villager_name = get_item_name_by_id($id);
-    $wiki_url = get_wiki_link(get_item_id_by_name($villager_name));
+    $wiki_link = get_wiki_link(get_item_id_by_name($villager_name));
 
     $can_be_married = in_array($villager_name, $marriables_npc) && $status === "Friendly";
     $hearts_structure = get_hearts_structure([
@@ -66,7 +66,7 @@ function prepare_all_friendship_info(array $friendship_info): array {
 		"points" => $points,
 		"hearts_structure" => $hearts_structure,
 		"week_gifts" => $week_gifts,
-		"wiki_link" => $wiki_url,
+		"wiki_link" => $wiki_link,
 		"birthday" => [
 			"is_birthday" => $is_birthday,
 			"birthdate" => $birthdate
@@ -119,9 +119,9 @@ function get_hearts_structure(array $hearts_info): string {
     $max_heart = ($status) === "Married" ? 14 : 10;
 
 	$hearts_structure = "";
-    for($i = 1; $i <= $max_heart; $i++) {
+    for ($i = 1; $i <= $max_heart; $i++) {
         $heart_icon = "$images_path/icons/" . (($i > 8 && $can_be_married) ? "locked_heart.png" : (($friend_level >= $i) ? "heart.png" : "empty_heart.png"));
-        $hearts_structure .= "<img src='$heart_icon' class='hearts' alt=''/>";
+        $hearts_structure .= "<img src='$heart_icon' class='hearts' alt=''>";
     }
 
 	return $hearts_structure;

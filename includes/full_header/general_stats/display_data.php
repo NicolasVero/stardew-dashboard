@@ -6,10 +6,10 @@
  * @return string Le code HTML des statistiques générales.
  */
 function display_general_stats(): string {
-	$all_players_data = get_general_data();
+	$general_data = get_general_data();
     $all_buttons = get_all_buttons();
 
-    extract($all_players_data); //? all field "general" in extract_data_from_save.php
+    extract($general_data); //? all field "general" in extract_data_from_save.php
 
     $max_mine_level = 120;
     $deepest_mine_level = ($mine_level > $max_mine_level) ? $max_mine_level : $mine_level; 
@@ -90,9 +90,9 @@ function display_stat(array $parameters): string {
     $formatted_value = filter_var($value, FILTER_VALIDATE_INT) ? format_number($value, $GLOBALS["site_language"]) : $value;
     $alt = $alt ?? $icon;
     $label = $label ?? $icon;
-    $image = "<img src='$images_path/icons/$formatted_icon.png' alt='$alt'/>";
+    $image = "<img src='$images_path/icons/$formatted_icon.png' alt='$alt'>";
 
-    if(isset($tooltip)) {
+    if (isset($tooltip)) {
         $image = "
             <span class='tooltip'>
                 $image
@@ -101,7 +101,7 @@ function display_stat(array $parameters): string {
         ";
     }
 
-    if(isset($wiki_link)) {
+    if (isset($wiki_link)) {
         return "
             <a href='" . __("https://stardewvalleywiki.com/$wiki_link") . "' class='wiki_link' rel='noreferrer' target='_blank'>
                 <span>
@@ -130,7 +130,7 @@ function display_stat(array $parameters): string {
  * @return string Le code HTML du conjoint.
  */
 function display_spouse(mixed $spouse, array $children): string {
-    if(empty($spouse)) {
+    if (empty($spouse)) {
         return "";
     }
 
@@ -140,7 +140,7 @@ function display_spouse(mixed $spouse, array $children): string {
         <a href='" . get_wiki_link_by_name("children") . "' class='wiki_link' rel='noreferrer' target='_blank'>
             <span>
                 <span class='tooltip'>
-                <img src='$images_path/characters/" . lcfirst($spouse) . ".png' alt='$spouse'/>
+                <img src='$images_path/characters/" . lcfirst($spouse) . ".png' alt='$spouse'>
                     <span>" . get_child_tooltip($spouse, $children) . "</span>
                 </span>
                 <span class='data data-family'>" . count($children) . "</span>

@@ -6,11 +6,8 @@
  * @return string Le code HTML du bouton pour afficher le panneau des lieux visités.
  */
 function display_visited_locations_button(): string {
-	if (is_game_version_older_than_1_6()) {
-		return "";
-	}
-
-	return "<img src='" . get_images_folder() . "/icons/location_icon.png' class='visited-locations-icon view-visited-locations view-visited-locations-" . get_current_player_id() . " button-elements modal-opener icon' alt='Visited locations icon'/>";
+    $version_class = get_version_class("1.6.0");
+	return "<img src='" . get_images_folder() . "/icons/location_icon.png' class='$version_class-icon visited-locations-icon view-visited-locations view-visited-locations-" . get_current_player_id() . " button-elements modal-opener icon' alt='Visited locations icon'>";
 }
 
 /**
@@ -24,16 +21,16 @@ function display_visited_locations_panel(): string {
 	}
     
     $player_id = get_current_player_id();
-    $visited_locations = get_locations_visited_data();
+    $visited_locations = get_locations_visited();
     $images_path = get_images_folder();
-    $json_data = sanitize_json_with_version("locations_to_visit");
+    $locations_to_visit = sanitize_json_with_version("locations_to_visit");
 
     $locations = "";  
-    $batch_size = round(count($json_data) / 2);
+    $batch_size = round(count($locations_to_visit) / 2);
     $counter = 0;
     
-    foreach($json_data as $json_line_name) {
-        if($counter % $batch_size === 0) {
+    foreach ($locations_to_visit as $json_line_name) {
+        if ($counter % $batch_size === 0) {
             $locations .= "<span class='locations-batch'>";
         }
 
@@ -49,7 +46,7 @@ function display_visited_locations_panel(): string {
 
         $counter++;
 
-        if($counter % $batch_size === 0 || $counter === count($json_data)) {
+        if ($counter % $batch_size === 0 || $counter === count($locations_to_visit)) {
             $locations .= "</span>";
         }
     }
@@ -60,8 +57,8 @@ function display_visited_locations_panel(): string {
             <span class='title'>
                 <span>" . __("Visited Locations") . "</span>
             </span>
-            <img src='$images_path/content/white_dashes.png' class='dashes' alt=''/>
-            <img src='$images_path/icons/exit.png' class='exit-visited-locations exit-visited-locations-$player_id exit' alt='Exit'/>
+            <img src='$images_path/content/white_dashes.png' class='dashes' alt=''>
+            <img src='$images_path/icons/exit.png' class='exit-visited-locations exit-visited-locations-$player_id exit' alt='Exit'>
             <span class='locations'>
                 $locations
             </span>

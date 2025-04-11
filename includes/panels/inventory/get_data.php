@@ -6,11 +6,11 @@
  * @return array Les outils du joueur.
  */
 function get_player_tools(): array {
-	if(!is_game_singleplayer()) {
+	if (!is_game_singleplayer()) {
 		return [];
 	}
 
-	$data = $GLOBALS["untreated_all_players_data"];
+	$raw_data = $GLOBALS["raw_xml_data"];
 	$name_object = (is_game_version_older_than_1_6()) ? "Name" : "name";
 	$player_items = get_starting_tools();
 	$tools_name_dictionary = get_tools_dictionary();
@@ -31,26 +31,26 @@ function get_player_tools(): array {
 		"locations.GameLocation.buildings.Building.indoors.fridge.items"
 	];
 
-	foreach($player_items_locations as $location) {
-		$items_arrays = find_xml_tags($data, $location);
+	foreach ($player_items_locations as $location) {
+		$items_arrays = find_xml_tags($raw_data, $location);
 
-		foreach($items_arrays as $items_array) {
-			foreach($items_array as $item) {
+		foreach ($items_arrays as $items_array) {
+			foreach ($items_array as $item) {
 				$item_name = (string) $item->$name_object;
 				$last_item_word = explode(" ", $item_name);
 				$tool_category = end($last_item_word);
 
-				if($tool_category === "Rod" || $tool_category === "Pole") {
+				if ($tool_category === "Rod" || $tool_category === "Pole") {
 					$tool_category = "Rod-Pole";
 				}
 
 				$tool_list = $normalized_tools_dictionary[$tool_category] ?? null;
 
-				if($tool_list === null) {
+				if ($tool_list === null) {
 					continue;
 				}
 
-				if(array_search($item_name, $tool_list) > array_search($player_items[$tools_categories[$tool_category]], $tool_list)) {
+				if (array_search($item_name, $tool_list) > array_search($player_items[$tools_categories[$tool_category]], $tool_list)) {
 					$player_items[$tools_categories[$tool_category]] = $item_name;
 				}
 			}
@@ -58,7 +58,7 @@ function get_player_tools(): array {
 	}
 
 	// Separate search for the player's trashcan
-	$trashcan_level = (int) $data->player->trashCanLevel;
+	$trashcan_level = (int) $raw_data->player->trashCanLevel;
 	$player_trashcan = [
 		"Trash Can",
 		"Copper Trash Can",

@@ -6,7 +6,7 @@
  * @param array $quest Les données raw de la quête.
  * @return array Les données de la quête.
  */
-function get_story_quest_data(array $quest): array {
+function get_story_quest(array $quest): array {
 	return [
 		"time_limited"	=> false,
 		"objective"   	=> $quest["objective"],
@@ -25,14 +25,10 @@ function get_story_quest_data(array $quest): array {
  */
 function find_reference(string $reference_id): string {
 	$reference_id = format_original_data_string($reference_id);
-	$json_list = [
-		"shipped_items",
-		"fish",
-		"minerals"
-	];
+	$json_list = ["shipped_items", "fish", "minerals"];
 
-	foreach($json_list as $json) {
-		if(isset($reference) && $reference !== null) {
+	foreach ($json_list as $json) {
+		if (isset($reference) && $reference !== null) {
 			continue;
 		}
 
@@ -48,14 +44,14 @@ function find_reference(string $reference_id): string {
  * @param object $quest Les données raw de la quête.
  * @return array|null Les données de la quête.
  */
-function get_daily_quest_data(object $quest): array|null {
+function get_daily_quest(object $quest): array|null {
 	$quest_type = (int) $quest->questType;
 	$days_left = (int) $quest->daysLeft;
 	$rewards = [(int) $quest->reward];
 	$target = $quest->target;
 	$quest_configs = get_daily_quest_configs();
 
-	if(!isset($quest_configs[$quest_type])) {
+	if (!isset($quest_configs[$quest_type])) {
 		return null;
 	}
 	
@@ -76,7 +72,7 @@ function get_daily_quest_data(object $quest): array|null {
 		"objective"   	=> $objective,
 		"description" 	=> $description,
 		"title"       	=> $title,
-		"daysLeft"    	=> $days_left,
+		"days_left"    	=> $days_left,
 		"rewards"     	=> $rewards
 	];
 }
@@ -87,10 +83,10 @@ function get_daily_quest_data(object $quest): array|null {
  * @param object $special_order Les données raw de la quête.
  * @return array|null Les données de la quête.
  */
-function get_special_order_data(object $special_order): array|null {
+function get_special_order(object $special_order): array|null {
 	$special_orders_json = sanitize_json_with_version("special_orders", true);
 
-	if(((string) $special_order->questState) !== "InProgress") {
+	if (((string) $special_order->questState) !== "InProgress") {
 		return null;
 	}
 
@@ -105,12 +101,12 @@ function get_special_order_data(object $special_order): array|null {
 	$objective = "$target, $description: $number_obtained/$number_to_get";
 
 	$rewards = [];
-	foreach($special_order->rewards as $reward) {
-		if(!isset($reward->amount)) {
+	foreach ($special_order->rewards as $reward) {
+		if (!isset($reward->amount)) {
 			continue;
 		}
 
-		if($is_qi_order) {
+		if ($is_qi_order) {
 			$rewards[] = (int) $reward->amount->int . "_q";
 		} else {
 			$rewards[] = ((int) $reward->amount->int) * ((int) $reward->multiplier->float);
@@ -122,7 +118,7 @@ function get_special_order_data(object $special_order): array|null {
 		"objective"   	=> $objective,
 		"description" 	=> $description,
 		"title"       	=> $title,
-		"daysLeft"    	=> $days_left,
+		"days_left"    	=> $days_left,
 		"rewards"     	=> $rewards
 	];
 }
@@ -133,11 +129,11 @@ function get_special_order_data(object $special_order): array|null {
  * @return array Le journal de quêtes.
  */
 function get_player_quest_log(): array {
-	$entire_data = $GLOBALS["untreated_all_players_data"];
-	$player_quest_log = $GLOBALS["untreated_player_data"]->questLog;
-	$quests_data = [];
+	$raw_data = $GLOBALS["raw_xml_data"];
+	$player_quest_log = $GLOBALS["current_player_raw_data"]->questLog;
+	$quests = [];
 
-	foreach($player_quest_log->Quest as $quest) {
+	foreach ($player_quest_log->Quest as $quest) {
 		$quest_id = (int) $quest->id;
 		$quest_reference = find_reference_in_json(
 			$quest_id,
@@ -145,23 +141,25 @@ function get_player_quest_log(): array {
 		);
 
 		// if -> Quête histoire // else -> Quête daily
-		if(!empty($quest_reference)){
-			$quests_data[] = get_story_quest_data($quest_reference);
+		if (!empty($quest_reference)){
+			$quests[] = get_story_quest($quest_reference);
 		} else {
-			if(($quest_data = get_daily_quest_data($quest)) !== null) {
-				$quests_data[] = $quest_data;
+			if (($quest = get_daily_quest($quest)) !== null) {
+				$quests[] = $quest;
 			}
 		}
 	}
 
 	// Special Orders (Weekly)
-	foreach($entire_data->specialOrders->SpecialOrder as $special_order) {
-		if(($special_order_data = get_special_order_data($special_order)) !== null) {
-			$quests_data[] = $special_order_data;
+	foreach ($raw_data->specialOrders->SpecialOrder as $raw_special_order) {
+		if (($special_order = get_special_order($raw_special_order)) === null) {
+			continue;
 		}
+		
+		$quests[] = $special_order;
 	}
 
-	return $quests_data;
+	return $quests;
 }
 
 /**

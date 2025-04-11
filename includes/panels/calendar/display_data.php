@@ -8,7 +8,7 @@
 function display_calendar_panel(): string {
 	$player_id = get_current_player_id();
     $images_path = get_images_folder();
-    $season = get_date_data()["season"];
+    $season = get_date()["season"];
     $all_dates = $GLOBALS["json"]["all_dates"];
     $villagers = sanitize_json_with_version("villagers");
     $week_count = 4;
@@ -16,14 +16,14 @@ function display_calendar_panel(): string {
 
     $table_structure = "";
 
-    for($lines = 0; $lines < $week_count; $lines++) {
+    for ($lines = 0; $lines < $week_count; $lines++) {
         $table_structure .= "<tr>";
 
-        for($columns = 1; $columns <= $day_count; $columns++) {
+        for ($columns = 1; $columns <= $day_count; $columns++) {
             $day_digit = ($lines * $day_count) + $columns;
             $date = "$day_digit/$season";
 
-            if(!array_key_exists($date, $all_dates)) {
+            if (!array_key_exists($date, $all_dates)) {
                 $table_structure .= "
                 <td class='simple-event not-filled'>
                     <span></span>
@@ -32,7 +32,7 @@ function display_calendar_panel(): string {
                 continue;
             }
 
-            if(!is_array($all_dates[$date])) {
+            if (!is_array($all_dates[$date])) {
                 $wiki_link = get_wiki_link(get_custom_id($all_dates[$date]));
                 $calendar_tooltip = (in_array($all_dates[$date], $villagers)) ? $all_dates[$date] . "'s Birthday" : $all_dates[$date];
                 $table_structure .= "
@@ -51,6 +51,7 @@ function display_calendar_panel(): string {
                 get_wiki_link(get_custom_id($all_dates[$date][0])),
                 get_wiki_link(get_custom_id($all_dates[$date][1]))
             ];
+            
             $calendar_tooltip = [
                 (in_array($all_dates[$date][0], $villagers)) ? $all_dates[$date][0] . "'s Birthday" : $all_dates[$date][0],
                 (in_array($all_dates[$date][1], $villagers)) ? $all_dates[$date][1] . "'s Birthday" : $all_dates[$date][1]
@@ -77,8 +78,8 @@ function display_calendar_panel(): string {
     return "
         <section class='calendar-$player_id panel calendar-panel modal-window'>
             <span class='calendar-block'>
-                <img src='$images_path/icons/exit.png' class='absolute-exit exit exit-calendar-$player_id' alt='Exit'/>
-                <img src='$images_path/content/calendar_$season.png' class='calendar-bg' alt='Calendar background'/>
+                <img src='$images_path/icons/exit.png' class='absolute-exit exit exit-calendar-$player_id' alt='Exit'>
+                <img src='$images_path/content/calendar_$season.png' class='calendar-bg' alt='Calendar background'>
                 <span class='calendar-month'>" . __(ucfirst($season)) . "</span>
                 <table>
                     <tbody>

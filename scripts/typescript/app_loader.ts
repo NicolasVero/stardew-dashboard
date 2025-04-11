@@ -4,13 +4,7 @@ window.addEventListener("load", () => {
     const os_path: string = get_os_path(detect_os());
     const tag: HTMLElement = document.getElementById("save_os_path");
     
-    if (localStorage.getItem("error_popup") === "true") {
-        localStorage.removeItem("error_popup");
-        document.body.innerHTML += error_popup();
-        activate_buttons(".error", ".exit-error-popup", ".error-popup");
-    }
-    
-    if(tag !== null) {
+    if (tag !== null) {
         tag.innerHTML = os_path;
     }
     
@@ -19,30 +13,32 @@ window.addEventListener("load", () => {
     const spoil_mode: HTMLElement = document.getElementById("spoil_mode");
     const steam_achievements: HTMLElement = document.getElementById("steam_achievements");
     
-    if(toggle_versions_items_mode !== null) {
+    if (toggle_versions_items_mode !== null) {
         toggle_versions_items_mode.addEventListener("change", handle_toggle_versions_mode);
     }
     
-    if(no_spoil_mode !== null) {
+    if (no_spoil_mode !== null) {
         no_spoil_mode.addEventListener("change", handle_no_spoil_mode);
     }
 
-    if(spoil_mode !== null) {
+    if (spoil_mode !== null) {
         spoil_mode.addEventListener("change", handle_spoil_mode);
     }
 
-    if(steam_achievements !== null) {
+    if (steam_achievements !== null) {
         steam_achievements.addEventListener("change", handle_steam_mode);
     }
 
     const save_upload: HTMLElement = document.getElementById("save-upload");
-    if(save_upload !== null) {
+    if (save_upload !== null) {
         save_upload.addEventListener("change", file_choice);
     }
 
     save_landing_topbar();
     prevent_panel_scroll();
-    load_landing_elements();
+    activate_buttons(".landing-upload", ".exit-upload", ".upload-panel");
+    activate_buttons(".landing-languages", ".exit-languages", ".languages-panel");
+    activate_buttons(".landing-settings", ".exit-settings", ".settings");
     toggle_custom_checkboxes(".checkmark");
     activate_feedback_ajax_trigger();
 });

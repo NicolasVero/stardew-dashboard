@@ -6,7 +6,7 @@
  * @return string Le code HTML du bouton du Centre communautaire.
  */
 function display_community_center_button(): string {
-	return "<img src='" . get_images_folder() . "/icons/golden_scroll.png' class='golden-scroll-icon view-community-center view-community-center-" . get_current_player_id() . " button-elements modal-opener icon' alt='Golden Scroll icon'/>";
+	return "<img src='" . get_images_folder() . "/icons/golden_scroll.png' class='golden-scroll-icon view-community-center view-community-center-" . get_current_player_id() . " button-elements modal-opener icon' alt='Golden Scroll icon'>";
 }
 
 /**
@@ -22,8 +22,8 @@ function display_community_center_panel(): string {
 	$cc_binary = get_cc_binary_hash($player_bundles);
     $cc_structure = "";
     
-    foreach($bundles_json as $room_name => $room_details) {
-        if($room_name === "Bulletin Board" && has_element_in_mail("JojaMember")) {
+    foreach ($bundles_json as $room_name => $room_details) {
+        if ($room_name === "Bulletin Board" && has_element_in_mail("JojaMember")) {
             continue;
         }
 
@@ -33,12 +33,12 @@ function display_community_center_panel(): string {
                 <span class='bundles'>
         ";
 
-        foreach($room_details["bundle_ids"] as $bundle_id) {
+        foreach ($room_details["bundle_ids"] as $bundle_id) {
             $bundle_details = $player_bundles[$bundle_id];
             $bundle_name = $bundle_details["bundle_name"];
             $formatted_bundle_name = format_text_for_file($bundle_name);
 
-            if($bundle_details["is_complete"]) {
+            if ($bundle_details["is_complete"]) {
                 $is_complete_class = "complete";
                 $bundle_tooltip_class = "";
                 $bundle_tooltip = "";
@@ -51,8 +51,8 @@ function display_community_center_panel(): string {
 
                 $bundle_tooltip = "
                     <span>
-                        <img src='$images_path/content/bundle_bg.png' class='bundle-bg' alt='Bundle background'/>
-                        <img src='$images_path/bundles/{$formatted_bundle_name}_bundle.png' class='bundle-icon' alt='$bundle_name Bundle'/>
+                        <img src='$images_path/content/bundle_bg.png' class='bundle-bg' alt='Bundle background'>
+                        <img src='$images_path/bundles/{$formatted_bundle_name}_bundle.png' class='bundle-icon' alt='$bundle_name Bundle'>
                         <span class='required-items'>
                             $required_items
                         </span>
@@ -63,10 +63,9 @@ function display_community_center_panel(): string {
                 ";
             }
             
-            
             $cc_structure .= "
                 <span class='bundle $bundle_tooltip_class'>
-                    <img src='$images_path/bundles/{$formatted_bundle_name}_bundle.png' class='$is_complete_class' alt='$bundle_name Bundle'/>
+                    <img src='$images_path/bundles/{$formatted_bundle_name}_bundle.png' class='$is_complete_class' alt='$bundle_name Bundle'>
                     $bundle_tooltip
                 </span>
             ";
@@ -80,10 +79,10 @@ function display_community_center_panel(): string {
 
     return "
         <section class='community-center-$player_id panel community-center-panel modal-window'>
-            <img src='$images_path/icons/exit.png' class='absolute-exit exit exit-community-center-$player_id' alt='Exit'/>
+            <img src='$images_path/icons/exit.png' class='absolute-exit exit exit-community-center-$player_id' alt='Exit'>
             <div class='community-center-background-container'>
-                <img src='$images_path/bundles/CC_$cc_binary.png' class='background-image' alt='Community center background'/>
-                <img src='$images_path/icons/chevron_down.png' class='chevron-down' alt='Scroll indicator'/>
+                <img src='$images_path/bundles/CC_$cc_binary.png' class='background-image' alt='Community center background'>
+                <img src='$images_path/icons/chevron_down.png' class='chevron-down' alt='Scroll indicator'>
             </div>
             <span class='rooms'>
                 $cc_structure
@@ -101,17 +100,17 @@ function display_bundle_requirements(array $requirements, array $added_items): s
     $images_path = get_images_folder();
     $structure = "";
     
-    foreach($requirements as $requirement) {
+    foreach ($requirements as $requirement) {
         extract($requirement); //? $id, $name, $quantity, $quality, $type
 
         $formatted_item_name = format_text_for_file($name);
         $has_been_donated = (has_been_donated_in_bundle($name, $added_items)) ? "donated" : "not-donated";
         
         $item_image = "
-            <img src='$images_path/$type/$formatted_item_name.png' class='item $has_been_donated' alt='$name'/>
+            <img src='$images_path/$type/$formatted_item_name.png' class='item $has_been_donated' alt='$name'>
         ";
         $quality_image = ($quality > 0 && $quality < 4) ? "
-            <img src='$images_path/icons/quality_$quality.png' class='quality' alt=''/>
+            <img src='$images_path/icons/quality_$quality.png' class='quality' alt=''>
         " : "";
         $quantity = ($quantity > 1) ? "<span class='quantity'>$quantity</span>" : "";
 
@@ -136,19 +135,19 @@ function display_bundle_added_items(array $added_items, int $limit): string {
     $structure = "";
     $images_path = get_images_folder();
     
-    for($i = 0; $i < $limit; $i++) {
+    for ($i = 0; $i < $limit; $i++) {
         $added_item = "";
 
-        if(isset($added_items[$i])) {
+        if (isset($added_items[$i])) {
             $item_name = $added_items[$i]["name"];
             $formatted_item_name = format_text_for_file($item_name);
             $type = $added_items[$i]["type"];
-            $added_item = "<img src='$images_path/$type/$formatted_item_name.png' class='added-item' alt='$item_name'/>";
+            $added_item = "<img src='$images_path/$type/$formatted_item_name.png' class='added-item' alt='$item_name'>";
         }
 
         $structure .= "
             <span class='slot'>
-                <img src='$images_path/icons/bundle_slot.png' class='empty-slot' alt=''/>
+                <img src='$images_path/icons/bundle_slot.png' class='empty-slot' alt=''>
                 $added_item
             </span>
         ";
@@ -163,5 +162,5 @@ function display_bundle_added_items(array $added_items, int $limit): string {
  * @return string Le code HTML du bouton d'achat du Centre communautaire.
  */
 function display_bundle_purchase(): string {
-    return "<img src='" . get_images_folder() . "/content/purchase.png' class='purchase' alt=''/>";
+    return "<img src='" . get_images_folder() . "/content/purchase.png' class='purchase' alt=''>";
 }

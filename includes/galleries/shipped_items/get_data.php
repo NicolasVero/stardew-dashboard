@@ -6,10 +6,10 @@
  * @return array Les données des objets expédiés par le joueur.
  */
 function get_player_shipped_items(): array {
-	$player_items = $GLOBALS["untreated_player_data"]->basicShipped;
-	$shipped_items_data = [];
+	$player_items = $GLOBALS["current_player_raw_data"]->basicShipped;
+	$shipped_items = [];
 
-	foreach($player_items->item as $item) {
+	foreach ($player_items->item as $item) {
 		$item_id = (is_game_version_older_than_1_6()) ? $item->key->int : $item->key->string;
 		$item_id = format_original_data_string($item_id);
 		$item_id = get_correct_id($item_id);
@@ -17,15 +17,15 @@ function get_player_shipped_items(): array {
 
 		$shipped_items_reference = find_reference_in_json($item_id, "shipped_items");
 
-		if(empty($shipped_items_reference)) {
+		if (empty($shipped_items_reference)) {
 			continue;
 		}
 
-		$shipped_items_data[$shipped_items_reference] = [
+		$shipped_items[$shipped_items_reference] = [
 			"id" => $item_id,
 			"counter" => $counter
 		];
 	}
 	
-	return $shipped_items_data;
+	return $shipped_items;
 }

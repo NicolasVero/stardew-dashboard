@@ -16,43 +16,28 @@ jobs:
       - name: LFTP install
         run: sudo apt-get install -y lftp
 
-      - name: Create LFTP script
-        run: |
-          cat > deploy.lftp << EOF
-          open -u ${{ secrets.FTP_USER }},${{ secrets.FTP_PASS }} ${{ secrets.FTP_HOST }}
-          
-          # Global settings
-          set mirror:use-pget-n 5
-          set mirror:parallel-transfer-count 5
-          
-          # Individual files
-          put index.php -o /htdocs/index.php
-          put functions.php -o /htdocs/functions.php
-
-          # Mirror specific directories
-          mirror -R assets/audio/ /htdocs/assets/audio/
-          mirror -R assets/fonts/ /htdocs/assets/fonts/
-          mirror -R assets/images/content/ /htdocs/assets/images/content/
-          mirror -R assets/images/cursors/ /htdocs/assets/images/cursors/
-          mirror -R components/ /htdocs/components/
-          mirror -R data/json/ /htdocs/data/json/
-          
-          # Recursive directories
-          mirror -R includes/ /htdocs/includes/
-          mirror -R locales/ /htdocs/locales/
-          mirror -R scripts/javascript/ /htdocs/scripts/javascript/
-          mirror -R styles/css/ /htdocs/styles/css/
-          
-          # Individual file in subdirectory
-          mkdir -f -p /htdocs/data/saves/
-          put data/saves/example -o /htdocs/data/saves/example
-          
-          bye
-          EOF
-
       - name: Deployment script execution
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
         run: |
           echo "Script beginning..."
-          echo "Connection to ${{ secrets.FTP_HOST }} with username ${{ secrets.FTP_USER }}"
-          lftp -f deploy.lftp
+          echo "Connection to $FTP_HOST with username $FTP_USER"
+          /usr/bin/lftp -u $FTP_USER,$FTP_PASS $FTP_HOST -e "mirror -R ./ /htdocs/ \
+          --include index.php \
+          --include functions.php \
+          --include assets/audio/** \
+          --include assets/fonts/** \
+          --include assets/images/content/** \
+          --include assets/images/cursors/** \
+          --include assets/images/easter_eggs/** \
+          --include components/** \
+          --include data/json/** \
+          --include data/saves/example \
+          --include includes/** \
+          --include locales/** \
+          --include scripts/javascript/** \
+          --include styles/css/** \
+          --reverse-include; quit"
           echo "Script finished."

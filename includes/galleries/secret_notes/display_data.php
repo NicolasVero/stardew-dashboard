@@ -7,7 +7,7 @@
  */
 function display_secret_notes(): string {
     $gallery_details = [
-        "player_data" => get_secret_notes_data(),
+        "player_data" => get_secret_notes(),
         "json_filename" => "secret_notes",
         "section_title" => "Secret notes"
     ];

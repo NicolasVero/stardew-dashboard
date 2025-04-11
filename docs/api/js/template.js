@@ -29,6 +29,6 @@ function openSvg(svg) {
 
 
 var svgs = document.querySelectorAll(".phpdocumentor-uml-diagram svg");
-for( var i=0,il = svgs.length; i< il; i ++ ) {
+for ( var i=0,il = svgs.length; i< il; i ++ ) {
     svgs[i].onclick = (evt) => openSvg(evt.target);
 }
