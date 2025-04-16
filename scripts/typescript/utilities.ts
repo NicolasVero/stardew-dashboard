@@ -95,10 +95,6 @@ function close_all_panels(panel_selectors: string[], include_setting_panels: boo
 }
 
 function can_close_panel(event: Event): boolean {
-    if (document.querySelector(".feedback-panel") !== null) {
-        return true;
-    }
-
     return (
         current_section
         && event.target instanceof HTMLElement

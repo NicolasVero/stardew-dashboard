@@ -31,16 +31,16 @@ function feedback_form_creation(): void {
     .then((response: Response) => response.text())
     .then((data: string) => {
         const temp_container : HTMLDivElement = document.createElement("div");
-        current_section = document.querySelector(".feedback-panel");
         temp_container.innerHTML = data;
 
         while (temp_container.firstChild) {
             xml_upload?.appendChild(temp_container.firstChild);
         }
-
+        
         feedback_custom_radio();
         activate_feedback_form();
         activate_close_buttons(".exit-feedback", ".feedback-panel");
+        current_section = document.querySelector(".feedback-panel");
     })
     .catch((error: any) => console.error("Error:", error));
 }
